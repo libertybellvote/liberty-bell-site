@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-16T21:00:00-04:00",
+  "lastUpdated": "2026-08-17T14:30:00-04:00",
   "libertyBellIndex": {
     "democratic": 58,
     "republican": 42
@@ -9,8 +9,8 @@
       {
         "name": "Alexandria Ocasio-Cortez",
         "role": "U.S. Representative, NY-14",
-        "odds": "18%",
-        "oddsNum": 18,
+        "odds": "17%",
+        "oddsNum": 17,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Alexandria%20Ocasio-Cortez%20Official%20Portrait.jpg?width=300",
         "vibe": "The field’s best natural communicator with younger, online audiences. High energy, high name recognition.",
         "strength": "Unmatched enthusiasm from the party’s progressive wing; took the market lead after Vance himself named her a threat.",
@@ -18,7 +18,7 @@
         "audience": "Young progressives, social-media-native voters.",
         "pulseDir": "up",
         "rankChange": 3,
-        "pulse": "Now leads the field — up from 9% to 18% since June.",
+        "pulse": "Still up sharply since June, but today’s snapshot shows the top genuinely tightening — multiple sources have her, Newsom, and Ossoff within a point of each other.",
         "ourTake": "Our pick. She's the clearest insurgent brand in either party, and the momentum is real: rising odds, a viral head-to-head lead over Vance, right as the economic backdrop starts favoring an outsider message.",
         "pick": true,
         "fragility": "Her authenticity cuts both ways. The same unscripted style that built her following also produced a real stumble on Taiwan policy.",
@@ -28,8 +28,8 @@
       {
         "name": "Gavin Newsom",
         "role": "Governor of California",
-        "odds": "17%",
-        "oddsNum": 17,
+        "odds": "18%",
+        "oddsNum": 18,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Governor%20of%20California%20Gavin%20Newsom,%202026%20Official%20Portrait%202.jpg?width=300",
         "vibe": "Polished and combative in interviews. Built a media profile sparring directly with conservative hosts.",
         "strength": "National visibility, deep donor network, executive record leading the largest state economy.",
@@ -37,7 +37,7 @@
         "audience": "National Democratic donors, media-savvy suburban voters.",
         "pulseDir": "down",
         "rankChange": -1,
-        "pulse": "Fell from 25% in June to 17% now — the sharpest slide of anyone in the field.",
+        "pulse": "Fell hard from 25% in June, but today’s snapshot shows the first real tick back up — too early to call it a recovery, but the slide has at least paused.",
         "ourTake": "Was the presumed favorite two months ago. That’s no longer true, and it happened fast.",
         "pick": false,
         "fragility": "An active DOJ tax investigation into him and his wife is unresolved, not just a headline that faded.",
@@ -47,8 +47,8 @@
       {
         "name": "Jon Ossoff",
         "role": "U.S. Senator, Georgia",
-        "odds": "17%",
-        "oddsNum": 17,
+        "odds": "16%",
+        "oddsNum": 16,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Jon%20Ossoff%20Senate%20Portrait%202021.jpg?width=300",
         "vibe": "Long the disciplined, understated one next to louder rivals. That changed Sunday with the sharpest applause line of his campaign.",
         "strength": "Raised over $25 million for his own 2026 re-election, and just proved he can land a live shot too. A rally jab linking Trump to aide Natalie Harp went viral within hours.",
@@ -56,7 +56,7 @@
         "audience": "Swing-state moderates, small-dollar donors, Georgia’s Democratic coalition.",
         "pulseDir": "up",
         "rankChange": 5,
-        "pulse": "The fastest riser in the field just got faster. Under 4% in January, 17% now, and Sunday’s viral rally line hasn’t fully hit the market yet.",
+        "pulse": "Still the fastest riser in the field since January, even with a slight dip in today’s snapshot — Sunday’s viral rally line may not be fully priced in yet either way.",
         "ourTake": "The most underrated story in this field, and getting harder to justify underrating. Money, polling, and now a genuine viral moment are all moving his way at once.",
         "pick": false,
         "fragility": "His own team has been called insular, and the knock has been that he’s unproven off-script. Sunday’s rally line complicates that critique.",
@@ -399,7 +399,7 @@
       "whyShort": "The economic backdrop is the tell: Trump’s approval sits at 38%, worse among independents.",
       "pickName": null,
       "pickParty": null,
-      "thumbnailName": "Alexandria Ocasio-Cortez",
+      "partySeal": "d",
       "reasoning": "The market’s ~59% actually undersells this one, in our view. Trump’s approval is stuck at 38-39%, with independent approval at 34% — below the 36% threshold that preceded Democrats’ 41-seat wave in 2018. Net approval on inflation alone is as low as -42%. That’s the single input with the best historical track record of moving elections, and it’s been worsening, not stabilizing.",
       "outcomes": [
         {

@@ -748,6 +748,12 @@
     background:rgba(184,146,63,0.12); color:var(--brass);
   }
   .call-side.ours .call-portrait .fallback svg{width:72%; height:auto;}
+  .call-portrait-seal{
+    display:flex; align-items:center; justify-content:center;
+    border:none !important;
+  }
+  .call-portrait-seal::before{display:none;}
+  .call-portrait-seal .seal{width:56px; height:56px; font-size:22px;}
   .call-side.ours .call-text{flex:1; min-width:0;}
   .call-verdict{
     font-family:'Libre Caslon Display', serif; font-weight:400;
@@ -1198,7 +1204,7 @@
     // should overwrite just this ISO string on each run. Everywhere the
     // date is shown on the site reads from here, formatted at render
     // time, instead of a hardcoded date living in the HTML.
-    let LAST_UPDATED = '2026-08-16T21:00:00-04:00';
+    let LAST_UPDATED = '2026-08-17T14:30:00-04:00';
 
     // The daily "Bell Swing" — whoever has the most real momentum, virality,
     // or sentiment shift TODAY. This is explicitly NOT the nomination pick;
@@ -1233,40 +1239,40 @@
     const STATIC_FIELD = {
       democratic: [
         {
-          name: 'Alexandria Ocasio-Cortez', role: 'U.S. Representative, NY-14', odds: '18%', oddsNum: 18,
+          name: 'Alexandria Ocasio-Cortez', role: 'U.S. Representative, NY-14', odds: '17%', oddsNum: 17,
           photo: 'https://en.wikipedia.org/wiki/Special:FilePath/Alexandria%20Ocasio-Cortez%20Official%20Portrait.jpg?width=300',
           vibe: 'The field\u2019s best natural communicator with younger, online audiences. High energy, high name recognition.',
           strength: 'Unmatched enthusiasm from the party\u2019s progressive wing; took the market lead after Vance himself named her a threat.',
           weakness: 'Still says she\u2019s undecided about running; general-election viability questioned by party strategists.',
           audience: 'Young progressives, social-media-native voters.',
           pulseDir: 'up', rankChange: 3,
-          pulse: 'Now leads the field \u2014 up from 9% to 18% since June.',
+          pulse: 'Still up sharply since June, but today\u2019s snapshot shows the top genuinely tightening \u2014 multiple sources have her, Newsom, and Ossoff within a point of each other.',
           ourTake: 'Our pick. She\'s the clearest insurgent brand in either party, and the momentum is real: rising odds, a viral head-to-head lead over Vance, right as the economic backdrop starts favoring an outsider message.',
           pick: true,
           fragility: 'Her authenticity cuts both ways. The same unscripted style that built her following also produced a real stumble on Taiwan policy.', lane: 'Insurgent. The clearest outsider brand in either party.', laneClass: 'insurgent'
         },
         {
-          name: 'Gavin Newsom', role: 'Governor of California', odds: '17%', oddsNum: 17,
+          name: 'Gavin Newsom', role: 'Governor of California', odds: '18%', oddsNum: 18,
           photo: 'https://en.wikipedia.org/wiki/Special:FilePath/Governor%20of%20California%20Gavin%20Newsom,%202026%20Official%20Portrait%202.jpg?width=300',
           vibe: 'Polished and combative in interviews. Built a media profile sparring directly with conservative hosts.',
           strength: 'National visibility, deep donor network, executive record leading the largest state economy.',
           weakness: 'California\u2019s cost-of-living and homelessness numbers are a ready-made attack line in swing states.',
           audience: 'National Democratic donors, media-savvy suburban voters.',
           pulseDir: 'down', rankChange: -1,
-          pulse: 'Fell from 25% in June to 17% now \u2014 the sharpest slide of anyone in the field.',
+          pulse: 'Fell hard from 25% in June, but today\u2019s snapshot shows the first real tick back up \u2014 too early to call it a recovery, but the slide has at least paused.',
           ourTake: 'Was the presumed favorite two months ago. That\u2019s no longer true, and it happened fast.',
           pick: false,
           fragility: 'An active DOJ tax investigation into him and his wife is unresolved, not just a headline that faded.', lane: 'Institutional.', laneClass: 'institutional'
         },
         {
-          name: 'Jon Ossoff', role: 'U.S. Senator, Georgia', odds: '17%', oddsNum: 17,
+          name: 'Jon Ossoff', role: 'U.S. Senator, Georgia', odds: '16%', oddsNum: 16,
           photo: 'https://en.wikipedia.org/wiki/Special:FilePath/Jon%20Ossoff%20Senate%20Portrait%202021.jpg?width=300',
           vibe: 'Long the disciplined, understated one next to louder rivals. That changed Sunday with the sharpest applause line of his campaign.',
           strength: 'Raised over $25 million for his own 2026 re-election, and just proved he can land a live shot too. A rally jab linking Trump to aide Natalie Harp went viral within hours.',
           weakness: 'Publicly downplays any presidential interest, and still has to win his own Senate re-election first.',
           audience: 'Swing-state moderates, small-dollar donors, Georgia\u2019s Democratic coalition.',
           pulseDir: 'up', rankChange: 5,
-          pulse: 'The fastest riser in the field just got faster. Under 4% in January, 17% now, and Sunday\u2019s viral rally line hasn\u2019t fully hit the market yet.',
+          pulse: 'Still the fastest riser in the field since January, even with a slight dip in today\u2019s snapshot \u2014 Sunday\u2019s viral rally line may not be fully priced in yet either way.',
           ourTake: 'The most underrated story in this field, and getting harder to justify underrating. Money, polling, and now a genuine viral moment are all moving his way at once.',
           pick: false,
           fragility: 'His own team has been called insular, and the knock has been that he\u2019s unproven off-script. Sunday\u2019s rally line complicates that critique.', lane: 'Institutional, with a genuinely viral moment now on the record.', laneClass: 'institutional'
@@ -1515,7 +1521,7 @@
         ourCall: 'Leans Democratic, and getting more confident',
         whyShort: 'The economic backdrop is the tell: Trump\u2019s approval sits at 38%, worse among independents.',
         pickName: null, pickParty: null,
-        thumbnailName: 'Alexandria Ocasio-Cortez',
+        partySeal: 'd', // shows the Democratic party seal, not a candidate photo — this call is about the party, not a person
         reasoning: 'The market\u2019s ~59% actually undersells this one, in our view. Trump\u2019s approval is stuck at 38-39%, with independent approval at 34% \u2014 below the 36% threshold that preceded Democrats\u2019 41-seat wave in 2018. Net approval on inflation alone is as low as -42%. That\u2019s the single input with the best historical track record of moving elections, and it\u2019s been worsening, not stabilizing.',
         outcomes: [
           { label: 'Democratic', probability: 59.0, platform: 'Polymarket' },
@@ -1748,7 +1754,7 @@
           </div>`).join('');
         const platforms = [...new Set(call.outcomes.map(o => o.platform))].join(' / ');
 
-        const pick = findCandidate(call.pickName) || findCandidate(call.thumbnailName);
+        const pick = findCandidate(call.pickName);
         const marketLeader = sortedOutcomes[0];
         const pickOutcome = call.pickName ? syncedOutcomes.find(o => o.label === call.pickName) : null;
         const diverges = pickOutcome && marketLeader && pickOutcome.label !== marketLeader.label;
@@ -1756,7 +1762,9 @@
           ? `<span class="call-vs-tag">VS. THE MARKET</span>`
           : `<span class="call-vs-tag agree">AGREES WITH MARKET</span>`;
 
-        const portraitHtml = pick ? `
+        const portraitHtml = call.partySeal
+          ? `<div class="call-portrait call-portrait-seal"><span class="seal ${call.partySeal}">${call.partySeal.toUpperCase()}</span></div>`
+          : pick ? `
           <div class="call-portrait">
             <img src="${pick.photo}" alt="${pick.name}" loading="lazy" onerror="this.style.display='none';">
             <div class="fallback"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3"><circle cx="50" cy="34" r="18"/><path d="M14,94 C14,64 30,50 50,50 C70,50 86,64 86,94"/></svg></div>
