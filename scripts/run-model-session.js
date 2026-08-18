@@ -1,17 +1,6 @@
 // Liberty Bell — automated model session.
 // Runs on GitHub's own servers via GitHub Actions, on a schedule. Does not
 // depend on any laptop, desktop app, browser, or connector being open.
-//
-// What it does:
-//   1. Reads the current frontend/site-data.json
-//   2. Pulls live odds from Polymarket's public API (best-effort — if this
-//      fails, the session still runs, just without a fresh odds snapshot)
-//   3. Sends everything to Claude with instructions to run the nine-lens
-//      model and return an updated site-data.json
-//   4. Writes the result back to frontend/site-data.json
-//
-// The GitHub Actions workflow (.github/workflows/model-update.yml) commits
-// and pushes the change — this script only writes the local file.
 
 const fs = require('fs');
 const path = require('path');
@@ -26,9 +15,6 @@ if (!ANTHROPIC_API_KEY) {
 }
 
 async function fetchPolymarketSnapshot() {
-  // Best-effort: pulls a few relevant Polymarket markets by slug. If this
-  // fails or the market slugs have changed, we fall back to letting Claude
-  // work from its own web knowledge / whatever is in the current JSON.
   const slugs = [
     'which-party-wins-2028-us-presidential-election',
     'democratic-presidential-nominee-2028',
@@ -79,7 +65,7 @@ Run today's Liberty Bell analysis session using the nine-lens model. Check curre
     },
     body: JSON.stringify({
       model: MODEL,
-      max_tokens: 8000,
+      max_tokens: 16000,
       system: systemPrompt,
       messages: [{ role: 'user', content: userPrompt }],
       tools: [{ type: 'web_search_20250305', name: 'web_search' }],
@@ -93,16 +79,15 @@ Run today's Liberty Bell analysis session using the nine-lens model. Check curre
 
   const data = await res.json();
   const textBlocks = data.content.filter(b => b.type === 'text').map(b => b.text);
-  const rawText = textBlocks.join('\n').trim();
+  const rawText = textBlocks.length > 0 ? textBlocks[textBlocks.length - 1].trim() : '';
 
-  // Strip markdown code fences if Claude added them despite instructions
   const cleaned = rawText.replace(/^```json\s*/i, '').replace(/```\s*$/i, '').trim();
 
   let updated;
   try {
     updated = JSON.parse(cleaned);
   } catch (err) {
-    throw new Error(`Model response was not valid JSON. First 500 chars:\n${cleaned.slice(0, 500)}`);
+    throw new Error(`Model response was not valid JSON. Got ${textBlocks.length} text block(s) in the response. Last block, first 500 chars:\n${cleaned.slice(0, 500)}`);
   }
 
   return updated;
@@ -145,7 +130,5 @@ async function main() {
 
 main().catch(err => {
   console.error('Model session failed:', err.message);
-  // Exit non-zero so the GitHub Action shows a failed run instead of
-  // silently committing nothing (or worse, a broken file).
   process.exit(1);
 });
