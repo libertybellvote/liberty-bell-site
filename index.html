@@ -43,6 +43,23 @@
     --shadow: 0 2px 4px rgba(28,25,17,0.04), 0 12px 32px rgba(28,25,17,0.07);
   }
 
+  body.dark-mode{
+    --paper:#16140f;
+    --paper-deep:#211d15;
+    --card:#1e1b14;
+    --ink:#efe7d2;
+    --ink-soft:#c4b89a;
+    --ink-faint:#8a8068;
+    --federal:#6f93c9;
+    --brass:#d4ab5c;
+    --brass-glow:#e8c883;
+    --line: rgba(239,231,210,0.14);
+    --shadow: 0 2px 4px rgba(0,0,0,0.25), 0 12px 32px rgba(0,0,0,0.35);
+  }
+  body, .page, .card, .candidate-card, .call-card, .bio-verdict-block, header, .tabs, .header-search-input, .search-input{
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  }
+
   *{box-sizing:border-box; margin:0; padding:0;}
 
   body{
@@ -52,6 +69,9 @@
     font-family:'Inter', -apple-system, sans-serif;
     -webkit-font-smoothing:antialiased;
     padding:28px 16px 60px;
+  }
+  body.dark-mode{
+    background-image: radial-gradient(circle at 15% 8%, rgba(111,147,201,0.08), transparent 45%);
   }
 
   .page{
@@ -95,6 +115,21 @@
     display:flex; align-items:center; justify-content:space-between;
     padding:36px 24px 0;
   }
+  .header-right{
+    display:flex; align-items:center; gap:10px;
+  }
+  .dark-toggle{
+    display:flex; align-items:center; justify-content:center;
+    width:34px; height:34px; flex-shrink:0;
+    background:var(--paper-deep);
+    border:1px solid var(--line);
+    border-radius:50%;
+    cursor:pointer;
+    color:var(--ink-soft);
+    transition:background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  }
+  .dark-toggle:hover{color:var(--brass); border-color:var(--brass);}
+  .dark-toggle svg{width:17px; height:17px;}
   .wordmark{
     display:flex; align-items:center; gap:10px;
     font-family:'Libre Caslon Display', serif; font-weight:400;
@@ -865,7 +900,7 @@
 
   /* ---------- FOOTER : one line ---------- */
   footer{
-    background:var(--ink);
+    background:#1c1911;
     color:#efe7d2;
     margin-top:20px;
     padding:52px 24px 0;
@@ -929,10 +964,15 @@
 
   <header>
     <div class="wordmark"><span class="mark"></span> Liberty Bell<span class="header-tagline">Live 2028 Forecast</span></div>
-    <div class="header-search">
-      <input type="search" id="global-search" class="header-search-input" placeholder="Search Liberty Bell..." autocomplete="off"
-             oninput="globalSearch(this.value)" onfocus="globalSearch(this.value)">
-      <div class="header-search-results" id="global-search-results"></div>
+    <div class="header-right">
+      <div class="header-search">
+        <input type="search" id="global-search" class="header-search-input" placeholder="Search Liberty Bell..." autocomplete="off"
+               oninput="globalSearch(this.value)" onfocus="globalSearch(this.value)">
+        <div class="header-search-results" id="global-search-results"></div>
+      </div>
+      <button class="dark-toggle" id="dark-toggle" onclick="toggleDarkMode()" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <svg id="dark-toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      </button>
     </div>
   </header>
 
@@ -991,9 +1031,9 @@
   <section class="races" id="field-section" style="display:none;">
     <div class="field-intro">
       <div class="kicker">The 2028 Invisible Primary</div>
-      <h3 id="field-intro-h">A three-way tie has opened on the left. The right remains Vance's race, with Rubio the clear No. 2.</h3>
+      <h3 id="field-intro-h">A three-way tie has opened on the left. On the right, Rubio has closed the gap on Vance.</h3>
       <p id="field-intro-p">
-        Every name below is polling or trading well enough to matter. The Democratic field is fragmented, thirteen names deep. The Republican field is Vance's, with Rubio a distant but real No. 2.
+        Every name below is polling or trading well enough to matter. The Democratic field is fragmented, thirteen names deep. The Republican field is realistically down to two names: Vance still leads, but Rubio has built real, independent momentum behind him.
       </p>
     </div>
 
@@ -1204,7 +1244,7 @@
     // should overwrite just this ISO string on each run. Everywhere the
     // date is shown on the site reads from here, formatted at render
     // time, instead of a hardcoded date living in the HTML.
-    let LAST_UPDATED = '2026-08-17T14:30:00-04:00';
+    let LAST_UPDATED = '2026-08-17T20:50:00-04:00';
 
     // The daily "Bell Swing" — whoever has the most real momentum, virality,
     // or sentiment shift TODAY. This is explicitly NOT the nomination pick;
@@ -1239,7 +1279,7 @@
     const STATIC_FIELD = {
       democratic: [
         {
-          name: 'Alexandria Ocasio-Cortez', role: 'U.S. Representative, NY-14', odds: '17%', oddsNum: 17,
+          name: 'Alexandria Ocasio-Cortez', role: 'U.S. Representative, NY-14', odds: '18%', oddsNum: 18,
           photo: 'https://en.wikipedia.org/wiki/Special:FilePath/Alexandria%20Ocasio-Cortez%20Official%20Portrait.jpg?width=300',
           vibe: 'The field\u2019s best natural communicator with younger, online audiences. High energy, high name recognition.',
           strength: 'Unmatched enthusiasm from the party\u2019s progressive wing; took the market lead after Vance himself named her a threat.',
@@ -1252,7 +1292,7 @@
           fragility: 'Her authenticity cuts both ways. The same unscripted style that built her following also produced a real stumble on Taiwan policy.', lane: 'Insurgent. The clearest outsider brand in either party.', laneClass: 'insurgent'
         },
         {
-          name: 'Gavin Newsom', role: 'Governor of California', odds: '18%', oddsNum: 18,
+          name: 'Gavin Newsom', role: 'Governor of California', odds: '17%', oddsNum: 17,
           photo: 'https://en.wikipedia.org/wiki/Special:FilePath/Governor%20of%20California%20Gavin%20Newsom,%202026%20Official%20Portrait%202.jpg?width=300',
           vibe: 'Polished and combative in interviews. Built a media profile sparring directly with conservative hosts.',
           strength: 'National visibility, deep donor network, executive record leading the largest state economy.',
@@ -1272,7 +1312,7 @@
           weakness: 'Publicly downplays any presidential interest, and still has to win his own Senate re-election first.',
           audience: 'Swing-state moderates, small-dollar donors, Georgia\u2019s Democratic coalition.',
           pulseDir: 'up', rankChange: 5,
-          pulse: 'Still the fastest riser in the field since January, even with a slight dip in today\u2019s snapshot \u2014 Sunday\u2019s viral rally line may not be fully priced in yet either way.',
+          pulse: 'Still the fastest riser in the field since January, even with a slight dip in today\u2019s snapshot \u2014 Sunday\u2019s viral rally line may not be fully priced in yet either way. Also newly drawing speculation as half of a potential Ossoff-Kelly ticket, though that\u2019s commentary, not anything either senator has confirmed.',
           ourTake: 'The most underrated story in this field, and getting harder to justify underrating. Money, polling, and now a genuine viral moment are all moving his way at once.',
           pick: false,
           fragility: 'His own team has been called insular, and the knock has been that he\u2019s unproven off-script. Sunday\u2019s rally line complicates that critique.', lane: 'Institutional, with a genuinely viral moment now on the record.', laneClass: 'institutional'
@@ -1382,17 +1422,17 @@
           fragility: 'Low name recognition outside political-media and online-progressive circles.', lane: 'Institutional-progressive hybrid.', laneClass: 'mixed'
         },
         {
-          name: 'Mark Kelly', role: 'U.S. Senator, Arizona', odds: 'n/a', oddsNum: 0,
+          name: 'Mark Kelly', role: 'U.S. Senator, Arizona', odds: 'n/a', oddsNum: 1,
           photo: 'https://en.wikipedia.org/wiki/Special:FilePath/Mark%20Kelly%2C%20Official%20Portrait%20117th.jpg?width=300',
-          vibe: 'A former astronaut and Navy combat veteran with a low-drama Senate record in one of the country\u2019s top swing states.',
-          strength: 'Represents Arizona, a genuine swing state, with a biography built for a general election.',
-          weakness: 'Low national name recognition compared to governors and House members getting more media attention.',
-          audience: 'Swing-state moderates, veterans, independents.',
-          pulseDir: 'flat', rankChange: null,
-          pulse: 'Not yet meaningfully priced in nomination markets, but consistently named as a top \u201calternative\u201d pick.',
-          ourTake: 'One of the strongest general-election profiles in the field on paper. Still an unknown to most primary voters.',
+          vibe: 'A former astronaut and Navy combat veteran whose low-drama Senate record just collided with a real national profile.',
+          strength: 'Represents Arizona, a genuine swing state; a public legal fight with the Trump administration over an "illegal orders" video has raised his national visibility sharply, and he\u2019s been raising serious money \u2014 over $1 million recently \u2014 well beyond what a senator not eyeing something bigger typically raises.',
+          weakness: 'Still says no decision has been made; has explicitly deferred any real answer until after the 2026 midterms.',
+          audience: 'Swing-state moderates, veterans, independents \u2014 now with real national anti-Trump visibility layered on top.',
+          pulseDir: 'up', rankChange: null,
+          pulse: 'The most-changed story among the lower-tier candidates this week: Political Wire is now openly asking whether his fundraising pace "foreshadows an Ossoff-Kelly 2028 Democratic ticket."',
+          ourTake: 'No longer just an "on paper" general-election profile \u2014 the fundraising and the ticket speculation are both real, current developments, not hypotheticals. Worth tracking closely, not dismissing as background noise anymore.',
           pick: false,
-          fragility: 'Strong general-election profile, but low name recognition limits his current standing.', lane: 'Institutional, low-key.', laneClass: 'institutional'
+          fragility: 'Says he\u2019ll decide after the 2026 midterms, not before \u2014 anyone reading more into the fundraising pace right now is speculating, including us.', lane: 'Institutional record, but an increasingly insurgent-coded profile given the direct fight with the administration.', laneClass: 'mixed'
         },
         {
           name: 'Rahm Emanuel', role: 'Former U.S. Ambassador to Japan', odds: 'n/a', oddsNum: 0,
@@ -1423,17 +1463,17 @@
           fragility: 'His standing is partly borrowed from Trump. That\'s a ceiling that isn\'t fully his if that support shifts.', lane: 'Was insurgent in spirit; now institutional as the sitting VP.', laneClass: 'institutional'
         },
         {
-          name: 'Marco Rubio', role: 'Secretary of State', odds: '15%', oddsNum: 15,
+          name: 'Marco Rubio', role: 'Secretary of State', odds: '28%', oddsNum: 28,
           photo: 'https://en.wikipedia.org/wiki/Special:FilePath/Official%20portrait%20of%20Secretary%20Marco%20Rubio.jpg?width=300',
-          vibe: 'Polished, experienced on a debate stage. A 2016 national campaign veteran with a much steadier interview style than Vance.',
-          strength: 'Cabinet-level foreign policy visibility; leads Vance among Republican primary voters over 50; the clear second choice in the field.',
-          weakness: 'Lost decisively to Trump in 2016; seen by the base as the safer, less exciting choice.',
-          audience: 'Older, establishment-leaning Republicans.',
-          pulseDir: 'flat', rankChange: 0,
-          pulse: 'Steadily the field\u2019s clear No. 2 \u2014 the only real alternative to Vance with sustained market support.',
-          ourTake: 'No longer our top pick. Vance’s position looks more secure than it did, but he’s still the hedge worth watching if that changes.',
+          vibe: 'No longer running as the safe establishment alternative. A hardline foreign policy record, built through the Iran conflict and a public push to dismantle the ICC, is what\u2019s actually driving his rise now.',
+          strength: 'Leadership through the Iran military action and an aggressive stance against the ICC have made him genuinely popular with the MAGA base, not just older primary voters. His odds have roughly doubled over the past several months on the strength of that record.',
+          weakness: 'Lost decisively to Trump in 2016; still an open question whether hardline credentials translate to real primary votes against a sitting VP.',
+          audience: 'A wider coalition than before: older, establishment-leaning Republicans, plus MAGA-base voters won over by his foreign policy record specifically.',
+          pulseDir: 'up', rankChange: 3,
+          pulse: 'The most underpriced move in either field right now. Real, sustained climb across multiple markets, not a blip, driven by a specific and identifiable cause: his Iran and ICC record.',
+          ourTake: 'Still the hedge, not the pick \u2014 Vance leads by a real 11 points. But he\u2019s no longer a distant afterthought if Vance stumbles; he\u2019s built real, independent standing with the same base Vance is supposed to own.',
           pick: false,
-          fragility: 'Already lost once to an insurgent candidate, Trump, back in 2016. Same establishment lane, same risk.', lane: 'Institutional.', laneClass: 'institutional'
+          fragility: 'Already lost once to an insurgent candidate, Trump, back in 2016. The open question is whether a foreign-policy-driven surge holds up once actual voting starts.', lane: 'Institutional record, insurgent-coded momentum right now.', laneClass: 'mixed'
         },
         {
           name: 'Robert F. Kennedy Jr.', role: 'Secretary of Health and Human Services', odds: '8%', oddsNum: 8,
@@ -1519,10 +1559,10 @@
       {
         question: 'Which party wins the presidency?',
         ourCall: 'Leans Democratic, and getting more confident',
-        whyShort: 'The economic backdrop is the tell: Trump\u2019s approval sits at 38%, worse among independents.',
+        whyShort: 'Trump\u2019s approval hit 33% today, the lowest of his presidency. Democrats now lead on the economy for the first time in about a decade.',
         pickName: null, pickParty: null,
         partySeal: 'd', // shows the Democratic party seal, not a candidate photo — this call is about the party, not a person
-        reasoning: 'The market\u2019s ~59% actually undersells this one, in our view. Trump\u2019s approval is stuck at 38-39%, with independent approval at 34% \u2014 below the 36% threshold that preceded Democrats\u2019 41-seat wave in 2018. Net approval on inflation alone is as low as -42%. That\u2019s the single input with the best historical track record of moving elections, and it\u2019s been worsening, not stabilizing.',
+        reasoning: 'Today gave us the clearest single data point yet: a Reuters/Ipsos poll released this morning has Trump\u2019s approval at 33%, the lowest of his entire presidency, tying the worst point of his first term. A separate poll shows his net approval among Republicans specifically dropped 8 points in the last month alone. And for the first time in roughly a decade, Reuters/Ipsos has Democrats leading Republicans on who handles the economy better, 38% to 35%, an issue that has been a GOP strength for years. That\u2019s the single input with the best historical track record of moving elections, and today it moved further in one direction than it has in weeks.',
         outcomes: [
           { label: 'Democratic', probability: 59.0, platform: 'Polymarket' },
           { label: 'Republican', probability: 41.0, platform: 'Polymarket' }
@@ -1530,13 +1570,13 @@
       },
       {
         question: 'Who wins the Republican nomination?',
-        ourCall: 'Vance \u2014 agreeing with the market on this one',
-        whyShort: 'No real second act has emerged. An earlier RFK Jr. "surge" turned out to be bad data.',
+        ourCall: 'Vance leads, but this is now genuinely a two-man race',
+        whyShort: 'Rubio\u2019s odds have roughly doubled since spring, driven by his Iran and ICC record, not vibes.',
         pickName: 'JD Vance', pickParty: 'r',
-        reasoning: 'We\u2019d flagged a "tight contest" story with RFK Jr. in an earlier pass; on closer, better-sourced inspection that turned out to be low-quality data, not a real trend. The real picture: Vance leads every recent GOP primary poll, usually by double digits, with no second act anywhere close. His fragility is real \u2014 his standing is partly borrowed from Trump\u2019s \u2014 but nothing currently threatens it. Rubio remains the hedge if that ever breaks.',
+        reasoning: 'This field is now realistically about two names, not five. Vance still leads clearly at 39%, and his fragility (standing partly borrowed from Trump) hasn\u2019t changed. But Rubio has built something real behind him: his handling of the Iran conflict and a hardline push to dismantle the ICC have made him genuinely popular with the MAGA base, not just older establishment voters, and his odds have climbed from the high teens into the high 20s over several months on the strength of that record specifically. RFK Jr., Cruz, and DeSantis are no longer where the real action is on the Republican side.',
         outcomes: [
           { label: 'JD Vance', probability: 39.0, platform: 'Polymarket' },
-          { label: 'Marco Rubio', probability: 15.0, platform: 'Polymarket' },
+          { label: 'Marco Rubio', probability: 28.0, platform: 'Polymarket' },
           { label: 'Robert F. Kennedy Jr.', probability: 8.0, platform: 'Polymarket' },
           { label: 'Ted Cruz', probability: 4.0, platform: 'Polymarket' },
           { label: 'Ron DeSantis', probability: 2.0, platform: 'Polymarket' }
@@ -1570,13 +1610,13 @@
 
     function formatLastUpdated(isoString){
       const d = new Date(isoString);
-      const dateStr = d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-      const timeStr = d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
-      return `${dateStr} \u00b7 ${timeStr}`;
+      const dateStr = d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'America/New_York' });
+      const timeStr = d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'America/New_York' });
+      return `${dateStr} \u00b7 ${timeStr} ET`;
     }
 
     function formatDateOnly(isoString){
-      return new Date(isoString).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+      return new Date(isoString).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'America/New_York' });
     }
 
     function getSyncedIndex(){
@@ -2115,6 +2155,28 @@
         img.src = c.photo;
       });
     }
+
+    const SUN_ICON = '<path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/><circle cx="12" cy="12" r="5"/>';
+    const MOON_ICON = '<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>';
+
+    function applyDarkMode(isDark){
+      document.body.classList.toggle('dark-mode', isDark);
+      const icon = document.getElementById('dark-toggle-icon');
+      if(icon) icon.innerHTML = isDark ? SUN_ICON : MOON_ICON;
+      try{ localStorage.setItem('libertyBellDarkMode', isDark ? '1' : '0'); }catch(e){}
+    }
+
+    function toggleDarkMode(){
+      applyDarkMode(!document.body.classList.contains('dark-mode'));
+    }
+
+    // Apply saved preference immediately, before the first render, so
+    // there's no flash of the wrong theme on load.
+    (function initDarkMode(){
+      let saved = null;
+      try{ saved = localStorage.getItem('libertyBellDarkMode'); }catch(e){}
+      if(saved === '1') applyDarkMode(true);
+    })();
 
     // Render immediately from the data baked into this file, then try to
     // replace it with whatever the live JSON file has, and keep checking
