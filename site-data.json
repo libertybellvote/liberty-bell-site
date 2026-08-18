@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-17T14:30:00-04:00",
+  "lastUpdated": "2026-08-17T16:15:00-04:00",
   "libertyBellIndex": {
     "democratic": 58,
     "republican": 42
@@ -56,7 +56,7 @@
         "audience": "Swing-state moderates, small-dollar donors, Georgia’s Democratic coalition.",
         "pulseDir": "up",
         "rankChange": 5,
-        "pulse": "Still the fastest riser in the field since January, even with a slight dip in today’s snapshot — Sunday’s viral rally line may not be fully priced in yet either way.",
+        "pulse": "Still the fastest riser in the field since January, even with a slight dip in today’s snapshot — Sunday’s viral rally line may not be fully priced in yet either way. Also newly drawing speculation as half of a potential Ossoff-Kelly ticket, though that’s commentary, not anything either senator has confirmed.",
         "ourTake": "The most underrated story in this field, and getting harder to justify underrating. Money, polling, and now a genuine viral moment are all moving his way at once.",
         "pick": false,
         "fragility": "His own team has been called insular, and the knock has been that he’s unproven off-script. Sunday’s rally line complicates that critique.",
@@ -219,20 +219,20 @@
         "name": "Mark Kelly",
         "role": "U.S. Senator, Arizona",
         "odds": "n/a",
-        "oddsNum": 0,
+        "oddsNum": 1,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Mark%20Kelly%2C%20Official%20Portrait%20117th.jpg?width=300",
-        "vibe": "A former astronaut and Navy combat veteran with a low-drama Senate record in one of the country’s top swing states.",
-        "strength": "Represents Arizona, a genuine swing state, with a biography built for a general election.",
-        "weakness": "Low national name recognition compared to governors and House members getting more media attention.",
-        "audience": "Swing-state moderates, veterans, independents.",
-        "pulseDir": "flat",
+        "vibe": "A former astronaut and Navy combat veteran whose low-drama Senate record just collided with a real national profile.",
+        "strength": "Represents Arizona, a genuine swing state; a public legal fight with the Trump administration over an \"illegal orders\" video has raised his national visibility sharply, and he’s been raising serious money — over $1 million recently — well beyond what a senator not eyeing something bigger typically raises.",
+        "weakness": "Still says no decision has been made; has explicitly deferred any real answer until after the 2026 midterms.",
+        "audience": "Swing-state moderates, veterans, independents — now with real national anti-Trump visibility layered on top.",
+        "pulseDir": "up",
         "rankChange": null,
-        "pulse": "Not yet meaningfully priced in nomination markets, but consistently named as a top “alternative” pick.",
-        "ourTake": "One of the strongest general-election profiles in the field on paper. Still an unknown to most primary voters.",
+        "pulse": "The most-changed story among the lower-tier candidates this week: Political Wire is now openly asking whether his fundraising pace \"foreshadows an Ossoff-Kelly 2028 Democratic ticket.\"",
+        "ourTake": "No longer just an \"on paper\" general-election profile — the fundraising and the ticket speculation are both real, current developments, not hypotheticals. Worth tracking closely, not dismissing as background noise anymore.",
         "pick": false,
-        "fragility": "Strong general-election profile, but low name recognition limits his current standing.",
-        "lane": "Institutional, low-key.",
-        "laneClass": "institutional"
+        "fragility": "Says he’ll decide after the 2026 midterms, not before — anyone reading more into the fundraising pace right now is speculating, including us.",
+        "lane": "Institutional record, but an increasingly insurgent-coded profile given the direct fight with the administration.",
+        "laneClass": "mixed"
       },
       {
         "name": "Rahm Emanuel",
@@ -396,11 +396,11 @@
     {
       "question": "Which party wins the presidency?",
       "ourCall": "Leans Democratic, and getting more confident",
-      "whyShort": "The economic backdrop is the tell: Trump’s approval sits at 38%, worse among independents.",
+      "whyShort": "Trump’s approval hit 33% today, the lowest of his presidency. Democrats now lead on the economy for the first time in about a decade.",
       "pickName": null,
       "pickParty": null,
       "partySeal": "d",
-      "reasoning": "The market’s ~59% actually undersells this one, in our view. Trump’s approval is stuck at 38-39%, with independent approval at 34% — below the 36% threshold that preceded Democrats’ 41-seat wave in 2018. Net approval on inflation alone is as low as -42%. That’s the single input with the best historical track record of moving elections, and it’s been worsening, not stabilizing.",
+      "reasoning": "Today gave us the clearest single data point yet: a Reuters/Ipsos poll released this morning has Trump’s approval at 33%, the lowest of his entire presidency, tying the worst point of his first term. A separate poll shows his net approval among Republicans specifically dropped 8 points in the last month alone. And for the first time in roughly a decade, Reuters/Ipsos has Democrats leading Republicans on who handles the economy better, 38% to 35%, an issue that has been a GOP strength for years. That’s the single input with the best historical track record of moving elections, and today it moved further in one direction than it has in weeks.",
       "outcomes": [
         {
           "label": "Democratic",
