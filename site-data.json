@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-18T18:45:00-04:00",
+  "lastUpdated": "2026-08-18T18:15:00-04:00",
   "libertyBellIndex": {
     "democratic": 58,
     "republican": 42
@@ -9,8 +9,8 @@
       {
         "name": "Alexandria Ocasio-Cortez",
         "role": "U.S. Representative, NY-14",
-        "odds": "20%",
-        "oddsNum": 20,
+        "odds": "19%",
+        "oddsNum": 19,
         "pollAvg": 9.2,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Alexandria%20Ocasio-Cortez%20Official%20Portrait.jpg?width=300",
         "vibe": "The field’s best natural communicator with younger, online audiences. High energy, high name recognition.",
@@ -49,8 +49,8 @@
       {
         "name": "Jon Ossoff",
         "role": "U.S. Senator, Georgia",
-        "odds": "15%",
-        "oddsNum": 15,
+        "odds": "14%",
+        "oddsNum": 14,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Jon%20Ossoff%20Senate%20Portrait%202021.jpg?width=300",
         "vibe": "Long the disciplined, understated one next to louder rivals. Still building a national profile even while directly denying he wants one.",
         "strength": "Raised over $25 million for his own 2026 re-election, and leads his Republican challenger by roughly 8 points in Georgia, the best number of any battleground Senate candidate in either party.",
@@ -545,7 +545,7 @@
       "outcomes": [
         {
           "label": "Alexandria Ocasio-Cortez",
-          "probability": 20,
+          "probability": 19,
           "platform": "Polymarket"
         },
         {
