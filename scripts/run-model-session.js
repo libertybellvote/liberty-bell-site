@@ -65,7 +65,7 @@ Run today's Liberty Bell analysis session using the nine-lens model. Check curre
     },
     body: JSON.stringify({
       model: MODEL,
-      max_tokens: 16000,
+      max_tokens: 32000,
       system: systemPrompt,
       messages: [{ role: 'user', content: userPrompt }],
       tools: [{ type: 'web_search_20250305', name: 'web_search' }],
@@ -83,11 +83,15 @@ Run today's Liberty Bell analysis session using the nine-lens model. Check curre
 
   const cleaned = rawText.replace(/^```json\s*/i, '').replace(/```\s*$/i, '').trim();
 
+  if (data.stop_reason === 'max_tokens') {
+    throw new Error(`Response was cut off by the max_tokens limit before finishing (stop_reason: max_tokens). The output was truncated mid-JSON. Increase max_tokens further. Response length was ${cleaned.length} characters.`);
+  }
+
   let updated;
   try {
     updated = JSON.parse(cleaned);
   } catch (err) {
-    throw new Error(`Model response was not valid JSON. Got ${textBlocks.length} text block(s) in the response. Last block, first 500 chars:\n${cleaned.slice(0, 500)}`);
+    throw new Error(`Model response was not valid JSON (stop_reason: ${data.stop_reason}). Got ${textBlocks.length} text block(s). Last block, first 500 chars:\n${cleaned.slice(0, 500)}\n...last 200 chars:\n${cleaned.slice(-200)}`);
   }
 
   return updated;
