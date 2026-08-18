@@ -376,6 +376,13 @@
   .franklin-bubble-text{
     font-size:13.5px; line-height:1.55; color:var(--ink);
   }
+  .franklin-diverge-tag{
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace; font-size:9px; letter-spacing:0.03em;
+    background:rgba(140,58,50,0.12); color:#8c3a32;
+    padding:2px 7px; border-radius:3px;
+    margin:0 2px;
+  }
 
   .franklin-message-prompt{justify-content:flex-end;}
   .franklin-prompt-bubble{
@@ -1486,12 +1493,34 @@
     // should overwrite just this ISO string on each run. Everywhere the
     // date is shown on the site reads from here, formatted at render
     // time, instead of a hardcoded date living in the HTML.
-    let LAST_UPDATED = '2026-08-18T18:15:00-04:00';
+    let LAST_UPDATED = '2026-08-18T18:40:00-04:00';
 
     // The daily "Bell Swing" — whoever has the most real momentum, virality,
     // or sentiment shift TODAY. This is explicitly NOT the nomination pick;
     // it can be any candidate in any party, including a longshot having a
     // moment. Update this object daily as part of the editorial refresh.
+    // Franklin's own predictions. Unlike the rest of the site, these are
+    // NOT computed from the live candidate/odds data below — they're
+    // authored independently each session, the way a person reasoning
+    // fresh would, and can genuinely disagree with Our Call. Only the
+    // photo lookup reuses the shared candidate data; the actual picks and
+    // reasoning here are Franklin's own.
+    const FRANKLIN_PREDICTIONS = {
+      demNominee: {
+        name: 'Alexandria Ocasio-Cortez',
+        take: 'I keep coming back to the energy, not just the odds. The Sanders tour, the crowds, the way she moves a room. Newsom and Ossoff are both playing this safer right now, and safer rarely wins a primary.'
+      },
+      repNominee: {
+        name: 'Marco Rubio',
+        take: 'Now here is where I part ways with the market. Vance leads today, plainly. But I am a man who bets on which way the wind is blowing, not where it presently sits. Rubio\u2019s climb on the Iran and ICC record is the real story this year, and I expect it continues.'
+      },
+      partyWinner: {
+        party: 'Democrats',
+        pct: 56,
+        take: 'An approval rating this poor, the worst of a man\u2019s entire presidency, is not easily outrun. I lean Democratic, perhaps a touch less certain than the market\u2019s own number, but a lean all the same.'
+      }
+    };
+
     const POWER_RANKING = {
       candidateName: 'Marco Rubio',
       reason: 'His odds have nearly doubled since spring on the strength of his Iran and ICC record, and he\u2019s now the field\u2019s clearest riser while Ossoff\u2019s own denial cools speculation on the other side.',
@@ -2076,30 +2105,31 @@
       nextTurn();
     }
 
+    function franklinDivergenceTag(pickName, party){
+      const flat = allCandidatesFlat();
+      const marketLeader = [...flat.filter(c => c.party === party)].sort((a,b) => (b.oddsNum||0) - (a.oddsNum||0))[0];
+      if(marketLeader && marketLeader.name !== pickName){
+        return ` <span class="franklin-diverge-tag">Against the market leader (${marketLeader.name})</span>`;
+      }
+      return '';
+    }
+
     function renderFranklin(){
       const el = document.getElementById('franklin-predictions');
       const flat = allCandidatesFlat();
-      const demLeader = [...flat.filter(c => c.party === 'd')].sort((a,b) => (b.oddsNum||0) - (a.oddsNum||0))[0];
-      const repLeader = [...flat.filter(c => c.party === 'r')].sort((a,b) => (b.oddsNum||0) - (a.oddsNum||0))[0];
-      const index = getSyncedIndex();
-      const demMargin = index.democratic - index.republican;
-      const favoredParty = demMargin >= 0 ? 'Democrats' : 'Republicans';
-      const favoredPct = demMargin >= 0 ? index.democratic : index.republican;
 
-      // Franklin's own voice: aphoristic, plainspoken, a touch formal, the
-      // way Poor Richard's Almanack read, but never so archaic it obscures
-      // the actual call. The data (name, percentage) stays exact.
-      const demQuote = demLeader
-        ? `I am persuaded it shall be <strong>${demLeader.name}</strong>. As Poor Richard used to say, well done is better than well said, and at ${demLeader.odds}, no rival stands near enough to trouble my sleep on the matter.`
-        : `There is not yet sufficient evidence on the board for me to hazard a guess on this one, and a wise man does not wager on fog.`;
-      const repQuote = repLeader
-        ? `On the other side of the aisle, my money follows <strong>${repLeader.name}</strong> as well. A lead of ${repLeader.odds} is no trifling sum. A bird in the hand, sir, is worth two in the bush.`
-        : `Nor is the Republican field settled enough yet for a sensible man to commit his shilling.`;
-      const presQuote = `And who shall occupy the President's House come 2029? I lean <strong>${favoredParty}</strong>, presently near ${favoredPct.toFixed(0)}%. Mind you, even the wisest almanack errs on occasion. Ask me again next week, and I may yet surprise you.`;
+      // Look up photos for whoever Franklin names, from the shared candidate
+      // data — but WHO he names, and WHY, is his own, not derived from odds.
+      const demCandidate = flat.find(c => c.name === FRANKLIN_PREDICTIONS.demNominee.name) || null;
+      const repCandidate = flat.find(c => c.name === FRANKLIN_PREDICTIONS.repNominee.name) || null;
+
+      const demQuote = `I am persuaded it shall be <strong>${FRANKLIN_PREDICTIONS.demNominee.name}</strong>.${franklinDivergenceTag(FRANKLIN_PREDICTIONS.demNominee.name, 'd')} ${FRANKLIN_PREDICTIONS.demNominee.take}`;
+      const repQuote = `<strong>${FRANKLIN_PREDICTIONS.repNominee.name}</strong> is my call here.${franklinDivergenceTag(FRANKLIN_PREDICTIONS.repNominee.name, 'r')} ${FRANKLIN_PREDICTIONS.repNominee.take}`;
+      const presQuote = `And who shall occupy the President's House come 2029? I lean <strong>${FRANKLIN_PREDICTIONS.partyWinner.party}</strong>, my own estimate near ${FRANKLIN_PREDICTIONS.partyWinner.pct}%. ${FRANKLIN_PREDICTIONS.partyWinner.take}`;
 
       const turns = [
-        { question: 'Who wins the Democratic nomination?', label: 'Democratic Nominee', candidate: demLeader, answer: demQuote },
-        { question: 'Who wins the Republican nomination?', label: 'Republican Nominee', candidate: repLeader, answer: repQuote },
+        { question: 'Who wins the Democratic nomination?', label: 'Democratic Nominee', candidate: demCandidate, answer: demQuote },
+        { question: 'Who wins the Republican nomination?', label: 'Republican Nominee', candidate: repCandidate, answer: repQuote },
         { question: 'Which party wins the presidency?', label: 'Who Wins The Presidency', candidate: null, answer: presQuote },
       ];
 
