@@ -135,6 +135,7 @@
     font-family:'Libre Caslon Display', serif; font-weight:400;
     font-size:17px;
     color:var(--ink);
+    cursor:pointer;
   }
   .wordmark .mark{
     width:16px; height:16px;
@@ -1008,7 +1009,7 @@
   <div class="page">
 
   <header>
-    <div class="wordmark"><span class="mark"></span> Liberty Bell Vote<span class="header-tagline">Live 2028 Forecast</span></div>
+    <div class="wordmark" onclick="footerNav(null, 'home')" role="button" tabindex="0" title="Go to home"><span class="mark"></span> Liberty Bell Vote<span class="header-tagline">Live 2028 Forecast</span></div>
     <div class="header-right">
       <div class="header-search">
         <input type="search" id="global-search" class="header-search-input" placeholder="Search Liberty Bell Vote..." autocomplete="off"
@@ -1031,7 +1032,7 @@
   <section class="hero" id="hero-section">
     <div class="hero-eyebrow" id="hero-eyebrow"><span class="pulse-dot"></span> LIBERTY BELL FORECAST</div>
     <div class="hero-tag" id="hero-tag">2028 Presidential Election</div>
-    <h1 class="hero-title" id="hero-title">Liberty Bell Vote's Call: Leans Democratic</h1>
+    <h1 class="hero-title" id="hero-title">Liberty Bell's Call: Leans Democratic</h1>
 
     <div class="bell-wrap">
       <div class="bell-glow"></div>
@@ -1224,7 +1225,7 @@
   <footer>
     <div class="footer-top">
       <div class="footer-brand">
-        <div class="wordmark" style="color:#f5efdf;"><span class="mark" style="border-color:var(--brass-glow);"></span> Liberty Bell Vote</div>
+        <div class="wordmark" style="color:#f5efdf;" onclick="footerNav(null, 'home')" role="button" tabindex="0" title="Go to home"><span class="mark" style="border-color:var(--brass-glow);"></span> Liberty Bell Vote</div>
         <div class="footer-tagline">Which way will the Bell swing?</div>
         <p class="footer-desc">Independent analysis of the 2028 presidential race &mdash; polling, betting markets, campaign fundamentals, and our own call, all in one place.</p>
         <div class="footer-embed">
@@ -1701,7 +1702,7 @@
       const margin = index.democratic - index.republican;
       const leader = margin >= 0 ? 'Democratic' : 'Republican';
       const strength = Math.abs(margin) < 3 ? 'Toss-up' : Math.abs(margin) < 10 ? `Leans ${leader}` : `Favors ${leader}`;
-      document.getElementById('hero-title').textContent = `Liberty Bell Vote's Call: ${strength}`;
+      document.getElementById('hero-title').textContent = `Liberty Bell's Call: ${strength}`;
       document.getElementById('hero-meta').innerHTML = `<span class="dot"></span> Updated ${formatLastUpdated(LAST_UPDATED)}`;
       const footerCallText = document.getElementById('footer-call-text');
       if(footerCallText) footerCallText.textContent = strength;
