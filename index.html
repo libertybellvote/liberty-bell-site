@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Liberty Bell Vote &mdash; Live 2028 Presidential Election Forecast</title>
+<title>Liberty Bell Vote: Live 2028 Presidential Election Forecast</title>
 <meta name="description" content="Liberty Bell Vote tracks the 2028 presidential race with live betting odds, polling, and our own independent call on which way the race is swinging. Non-partisan analysis of every major candidate, updated daily.">
 
 <!-- Favicon -->
@@ -14,7 +14,7 @@
 <!-- Open Graph / social preview (Facebook, iMessage, Slack, LinkedIn, etc.) -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Liberty Bell Vote">
-<meta property="og:title" content="Liberty Bell Vote &mdash; Live 2028 Presidential Election Forecast">
+<meta property="og:title" content="Liberty Bell Vote: Live 2028 Presidential Election Forecast">
 <meta property="og:description" content="Live betting odds, polling, and our own independent call on which way the 2028 race is swinging. Non-partisan analysis of every major candidate, updated daily.">
 <meta property="og:image" content="https://libertybell.vote/og-image.png">
 <meta property="og:url" content="https://libertybell.vote">
@@ -22,7 +22,7 @@
 <!-- Twitter/X Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@LibertyBellVote">
-<meta name="twitter:title" content="Liberty Bell Vote &mdash; Live 2028 Presidential Election Forecast">
+<meta name="twitter:title" content="Liberty Bell Vote: Live 2028 Presidential Election Forecast">
 <meta name="twitter:description" content="Live betting odds, polling, and our own independent call on which way the 2028 race is swinging.">
 <meta name="twitter:image" content="https://libertybell.vote/og-image.png">
 
@@ -971,6 +971,19 @@
     max-width:280px; margin-top:18px;
     border-radius:10px; overflow:hidden;
   }
+  .footer-support-btn{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--brass-glow); color:#1c1911;
+    font-weight:600; font-size:13px;
+    padding:10px 18px;
+    border-radius:24px;
+    text-decoration:none;
+    margin-top:16px;
+    transition:background-color 0.2s ease, transform 0.2s ease;
+  }
+  .footer-support-btn:hover{background:#f0d99a; transform:translateY(-1px);}
+  .footer-support-btn svg{width:16px; height:16px;}
+
   .footer-col-head{
     font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.08em;
     text-transform:uppercase; color:var(--brass-glow);
@@ -1227,7 +1240,13 @@
       <div class="footer-brand">
         <div class="wordmark" style="color:#f5efdf;" onclick="footerNav(null, 'home')" role="button" tabindex="0" title="Go to home"><span class="mark" style="border-color:var(--brass-glow);"></span> Liberty Bell Vote</div>
         <div class="footer-tagline">Which way will the Bell swing?</div>
-        <p class="footer-desc">Independent analysis of the 2028 presidential race &mdash; polling, betting markets, campaign fundamentals, and our own call, all in one place.</p>
+        <p class="footer-desc">Independent analysis of the 2028 presidential race. Polling, betting markets, campaign fundamentals, and our own call, all in one place.</p>
+
+        <a href="https://ko-fi.com/libertybellvote" class="footer-support-btn" id="footer-support-btn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          Support Liberty Bell Vote
+        </a>
+
         <div class="footer-embed">
           <a class="twitter-timeline" data-height="320" data-theme="dark" data-chrome="noheader nofooter noborders transparent" href="https://twitter.com/LibertyBellVote?ref_src=twsrc%5Etfw">Tweets by LibertyBellVote</a>
         </div>
@@ -1307,15 +1326,15 @@
     // should overwrite just this ISO string on each run. Everywhere the
     // date is shown on the site reads from here, formatted at render
     // time, instead of a hardcoded date living in the HTML.
-    let LAST_UPDATED = '2026-08-17T20:50:00-04:00';
+    let LAST_UPDATED = '2026-08-18T10:30:00-04:00';
 
     // The daily "Bell Swing" — whoever has the most real momentum, virality,
     // or sentiment shift TODAY. This is explicitly NOT the nomination pick;
     // it can be any candidate in any party, including a longshot having a
     // moment. Update this object daily as part of the editorial refresh.
     const POWER_RANKING = {
-      candidateName: 'Jon Ossoff',
-      reason: 'A rally line about Trump and aide Natalie Harp went viral within hours Sunday night, right as his fundraising and polling were already trending up.',
+      candidateName: 'Marco Rubio',
+      reason: 'His odds have nearly doubled since spring on the strength of his Iran and ICC record, and he\u2019s now the field\u2019s clearest riser while Ossoff\u2019s own denial cools speculation on the other side.',
     };
 
     // Real 2028 DNC-approved early primary calendar (adopted July 2026).
@@ -1349,36 +1368,36 @@
           weakness: 'Still says she\u2019s undecided about running; general-election viability questioned by party strategists.',
           audience: 'Young progressives, social-media-native voters.',
           pulseDir: 'up', rankChange: 3,
-          pulse: 'Still up sharply since June, but today\u2019s snapshot shows the top genuinely tightening \u2014 multiple sources have her, Newsom, and Ossoff within a point of each other.',
+          pulse: 'Still up sharply since June. Today’s snapshot shows the top genuinely tightening: multiple sources have her, Newsom, and Ossoff within a point of each other.',
           ourTake: 'Our pick. She\'s the clearest insurgent brand in either party, and the momentum is real: rising odds, a viral head-to-head lead over Vance, right as the economic backdrop starts favoring an outsider message.',
           pick: true,
           fragility: 'Her authenticity cuts both ways. The same unscripted style that built her following also produced a real stumble on Taiwan policy.', lane: 'Insurgent. The clearest outsider brand in either party.', laneClass: 'insurgent'
         },
         {
-          name: 'Gavin Newsom', role: 'Governor of California', odds: '17%', oddsNum: 17, pollAvg: 16.7,
+          name: 'Gavin Newsom', role: 'Governor of California', odds: '16%', oddsNum: 16, pollAvg: 16.7,
           photo: 'https://en.wikipedia.org/wiki/Special:FilePath/Governor%20of%20California%20Gavin%20Newsom,%202026%20Official%20Portrait%202.jpg?width=300',
           vibe: 'Polished and combative in interviews. Built a media profile sparring directly with conservative hosts.',
           strength: 'National visibility, deep donor network, executive record leading the largest state economy.',
           weakness: 'California\u2019s cost-of-living and homelessness numbers are a ready-made attack line in swing states.',
           audience: 'National Democratic donors, media-savvy suburban voters.',
           pulseDir: 'down', rankChange: -1,
-          pulse: 'Fell hard from 25% in June, but today\u2019s snapshot shows the first real tick back up \u2014 too early to call it a recovery, but the slide has at least paused.',
+          pulse: 'Fell hard from 25% in June. Today’s snapshot shows the first real tick back up. Too early to call it a recovery, but the slide has at least paused.',
           ourTake: 'Was the presumed favorite two months ago. That\u2019s no longer true, and it happened fast.',
           pick: false,
           fragility: 'An active DOJ tax investigation into him and his wife is unresolved, not just a headline that faded.', lane: 'Institutional.', laneClass: 'institutional'
         },
         {
-          name: 'Jon Ossoff', role: 'U.S. Senator, Georgia', odds: '16%', oddsNum: 16,
+          name: 'Jon Ossoff', role: 'U.S. Senator, Georgia', odds: '15%', oddsNum: 15,
           photo: 'https://en.wikipedia.org/wiki/Special:FilePath/Jon%20Ossoff%20Senate%20Portrait%202021.jpg?width=300',
-          vibe: 'Long the disciplined, understated one next to louder rivals. That changed Sunday with the sharpest applause line of his campaign.',
-          strength: 'Raised over $25 million for his own 2026 re-election, and just proved he can land a live shot too. A rally jab linking Trump to aide Natalie Harp went viral within hours.',
-          weakness: 'Publicly downplays any presidential interest, and still has to win his own Senate re-election first.',
+          vibe: 'Long the disciplined, understated one next to louder rivals. Still building a national profile even while directly denying he wants one.',
+          strength: 'Raised over $25 million for his own 2026 re-election, and leads his Republican challenger by roughly 8 points in Georgia, the best number of any battleground Senate candidate in either party.',
+          weakness: 'Told MS NOW directly this week that he has \u201czero interest\u201d in running in 2028, and dismissed a potential ticket with Mark Kelly when asked about it by name. Says the 2026 midterms are \u201cthe whole ballgame\u201d right now, not 2028.',
           audience: 'Swing-state moderates, small-dollar donors, Georgia\u2019s Democratic coalition.',
-          pulseDir: 'up', rankChange: 5,
-          pulse: 'Still the fastest riser in the field since January, even with a slight dip in today\u2019s snapshot \u2014 Sunday\u2019s viral rally line may not be fully priced in yet either way. Also newly drawing speculation as half of a potential Ossoff-Kelly ticket, though that\u2019s commentary, not anything either senator has confirmed.',
-          ourTake: 'The most underrated story in this field, and getting harder to justify underrating. Money, polling, and now a genuine viral moment are all moving his way at once.',
+          pulseDir: 'flat', rankChange: 2,
+          pulse: 'His own denial is now the story. Market odds cooled slightly this week, from 16% to about 15%, which tracks with a candidate publicly and repeatedly ruling himself out rather than building a campaign.',
+          ourTake: 'We take this denial more seriously than the earlier speculation. He has now said \u201czero interest\u201d on the record, twice, unprompted about the Kelly ticket specifically. That\u2019s a real signal, not boilerplate deflection, even if candidates in his position have reversed course before.',
           pick: false,
-          fragility: 'His own team has been called insular, and the knock has been that he\u2019s unproven off-script. Sunday\u2019s rally line complicates that critique.', lane: 'Institutional, with a genuinely viral moment now on the record.', laneClass: 'institutional'
+          fragility: 'Has explicitly and repeatedly denied any 2028 interest this week, tying his full focus to the 2026 midterms. Worth taking at face value for now, while watching whether that holds after November.', lane: 'Institutional, actively distancing from the insurgent 2028 narrative built around him.', laneClass: 'institutional'
         },
         {
           name: 'Pete Buttigieg', role: 'Former Secretary of Transportation', odds: '5%', oddsNum: 5, pollAvg: 11.0,
@@ -1401,7 +1420,7 @@
           weakness: 'Some major donors and party figures remain skeptical of a second run after 2024.',
           audience: 'Longtime party base, especially Black voters.',
           pulseDir: 'flat', rankChange: 0,
-          pulse: 'Holding steady near 8% for months \u2014 neither gaining nor fading.',
+          pulse: 'Holding steady near 8% for months. Neither gaining nor fading.',
           ourTake: 'A known quantity in a party actively looking for something new. Hard to see the path back to the top.',
           pick: false,
           fragility: 'Her entire polling lead is basically 2024 residue, name recognition more than anything else. That\'s historically the most brittle kind of number once actual voting starts.', lane: 'Institutional.', laneClass: 'institutional'
@@ -1415,16 +1434,16 @@
           audience: 'Swing-state moderates, institutional Democrats.',
           pulseDir: 'down', rankChange: -1,
           pulse: 'Cooled after the court-reform comments, but still a top-tier name if he actually runs.',
-          ourTake: 'The most under-priced executive credential in the field \u2014 but that one comment shows real message-discipline risk.',
+          ourTake: 'The most under-priced executive credential in the field. But that one comment shows real message-discipline risk.',
           pick: false,
           fragility: 'A call for aggressive Supreme Court reform already showed real message-discipline risk.', lane: 'Institutional.', laneClass: 'institutional'
         },
         {
           name: 'Andy Beshear', role: 'Governor of Kentucky', odds: '2%', oddsNum: 2,
           photo: 'https://en.wikipedia.org/wiki/Special:FilePath/Beshear%20of%20Kentucky%202020.jpg?width=300',
-          vibe: 'A red-state Democrat who has twice won statewide in a state Trump carried by 30 points \u2014 the single hardest trick in the party right now.',
+          vibe: 'A red-state Democrat who has twice won statewide in a state Trump carried by 30 points. That’s the single hardest trick in the party right now.',
           strength: 'Proven ability to win in Trump country; chairs the Democratic Governors Association through the 2026 cycle.',
-          weakness: 'Deliberately delaying any 2028 decision until his DGA term ends \u2014 gives faster-moving rivals a head start.',
+          weakness: 'Deliberately delaying any 2028 decision until his DGA term ends. Gives faster-moving rivals a head start.',
           audience: 'Rural and working-class Democrats, swing-state moderates.',
           pulseDir: 'up', rankChange: 1,
           pulse: 'Heavy 2026 travel has fueled real speculation he\u2019s laying groundwork, even without saying so.',
@@ -1440,7 +1459,7 @@
           weakness: 'A billionaire-governor profile cuts against the party\u2019s populist economic message in a way rivals don\u2019t have to answer for.',
           audience: 'Institutional Democrats, anti-Trump base voters, major party donors.',
           pulseDir: 'flat', rankChange: 0,
-          pulse: 'Consistently mentioned, but stuck at 1% in nomination trading \u2014 money hasn\u2019t moved his number yet.',
+          pulse: 'Consistently mentioned, but stuck at 1% in nomination trading. Money hasn’t moved his number yet.',
           ourTake: 'Has the resources to run whenever he wants. Hasn\u2019t shown voters why they\u2019d pick him over cheaper, fresher options.',
           pick: false,
           fragility: 'A billionaire-governor profile cuts directly against the party\'s own populist economic message.', lane: 'Institutional.', laneClass: 'institutional'
@@ -1450,7 +1469,7 @@
           photo: 'https://en.wikipedia.org/wiki/Special:FilePath/Cory%20Booker%2C%20official%20portrait%20(119th%20Congress).jpg?width=300',
           vibe: 'A veteran of the crowded 2020 primary, re-emerging as a visible Senate floor presence against the administration.',
           strength: 'Ranked among the top candidates seen as \u201cmost electable\u201d in a recent youth poll; deep institutional relationships.',
-          weakness: 'Ran in 2020 and didn\u2019t make it to a single vote cast \u2014 the same top-of-ticket doubts haven\u2019t gone away.',
+          weakness: 'Ran in 2020 and didn’t make it to a single vote cast. The same top-of-ticket doubts haven’t gone away.',
           audience: 'Institutional Democrats, primary voters looking for a known quantity.',
           pulseDir: 'flat', rankChange: 0,
           pulse: 'Newly reappearing in serious 2028 rankings after being largely written off since 2020.',
@@ -1463,7 +1482,7 @@
           photo: 'https://en.wikipedia.org/wiki/Special:FilePath/Wes%20Moore%20Official%20Governor%20Portrait.jpg?width=300',
           vibe: 'A first-term governor, Army veteran, and author building a compelling personal-story campaign before he\u2019s even run one.',
           strength: 'A rare combination of military, business, and executive credentials, plus a strong personal biography.',
-          weakness: 'Only in his first term as governor \u2014 thin executive record to campaign on nationally.',
+          weakness: 'Only in his first term as governor. Thin executive record to campaign on nationally.',
           audience: 'Younger Democrats, voters looking for a next-generation face.',
           pulseDir: 'up', rankChange: 1,
           pulse: 'Consistently named as a rising star; already headlining early-state party dinners in South Carolina.',
@@ -1479,7 +1498,7 @@
           weakness: 'Low name recognition outside political-media circles; represents one of the least politically representative districts in the country.',
           audience: 'Online progressives, tech-adjacent Democrats.',
           pulseDir: 'flat', rankChange: 0,
-          pulse: 'Steady at 2% for months \u2014 a real niche audience, not yet a broad one.',
+          pulse: 'Steady at 2% for months. A real niche audience, not yet a broad one.',
           ourTake: 'The most online candidate in the field. That\u2019s a ceiling right now as much as it\u2019s a strength.',
           pick: false,
           fragility: 'Low name recognition outside political-media and online-progressive circles.', lane: 'Institutional-progressive hybrid.', laneClass: 'mixed'
@@ -1488,14 +1507,14 @@
           name: 'Mark Kelly', role: 'U.S. Senator, Arizona', odds: 'n/a', oddsNum: 1, pollAvg: 5.8,
           photo: 'https://en.wikipedia.org/wiki/Special:FilePath/Mark%20Kelly%2C%20Official%20Portrait%20117th.jpg?width=300',
           vibe: 'A former astronaut and Navy combat veteran whose low-drama Senate record just collided with a real national profile.',
-          strength: 'Represents Arizona, a genuine swing state; a public legal fight with the Trump administration over an "illegal orders" video has raised his national visibility sharply, and he\u2019s been raising serious money \u2014 over $1 million recently \u2014 well beyond what a senator not eyeing something bigger typically raises.',
+          strength: 'Represents Arizona, a genuine swing state. A public legal fight with the Trump administration over an "illegal orders" video has raised his national visibility sharply, and he’s been raising serious money, over $1 million recently, well beyond what a senator not eyeing something bigger typically raises.',
           weakness: 'Still says no decision has been made; has explicitly deferred any real answer until after the 2026 midterms.',
-          audience: 'Swing-state moderates, veterans, independents \u2014 now with real national anti-Trump visibility layered on top.',
+          audience: 'Swing-state moderates, veterans, independents. Now with real national anti-Trump visibility layered on top.',
           pulseDir: 'up', rankChange: null,
-          pulse: 'The most-changed story among the lower-tier candidates this week: Political Wire is now openly asking whether his fundraising pace "foreshadows an Ossoff-Kelly 2028 Democratic ticket."',
-          ourTake: 'No longer just an "on paper" general-election profile \u2014 the fundraising and the ticket speculation are both real, current developments, not hypotheticals. Worth tracking closely, not dismissing as background noise anymore.',
+          pulse: 'Political Wire floated an Ossoff-Kelly ticket based on his fundraising pace. Worth noting: Ossoff himself was asked about it directly this week and dismissed it, saying he has "zero interest" in 2028 at all.',
+          ourTake: 'No longer just an "on paper" general-election profile. The fundraising and the ticket speculation are both real, current developments, not hypotheticals. Worth tracking closely, not dismissing as background noise anymore.',
           pick: false,
-          fragility: 'Says he\u2019ll decide after the 2026 midterms, not before \u2014 anyone reading more into the fundraising pace right now is speculating, including us.', lane: 'Institutional record, but an increasingly insurgent-coded profile given the direct fight with the administration.', laneClass: 'mixed'
+          fragility: 'Says he’ll decide after the 2026 midterms, not before. Anyone reading more into the fundraising pace right now is speculating, including us.', lane: 'Institutional record, but an increasingly insurgent-coded profile given the direct fight with the administration.', laneClass: 'mixed'
         },
         {
           name: 'Rahm Emanuel', role: 'Former U.S. Ambassador to Japan', odds: 'n/a', oddsNum: 0,
@@ -1509,6 +1528,32 @@
           ourTake: 'A candidate for the moment the party decides it wants a brawler. That moment hasn\u2019t obviously arrived.',
           pick: false,
           fragility: 'His combative Chicago-machine reputation is exactly what a “change” message would have to explain away.', lane: 'Deeply institutional.', laneClass: 'institutional'
+        },
+        {
+          name: 'Gretchen Whitmer', role: 'Governor of Michigan', odds: 'n/a', oddsNum: 0,
+          photo: 'https://en.wikipedia.org/wiki/Special:FilePath/Governor%20Gretchen%20Whitmer%20official%20portrait.jpg?width=300',
+          vibe: 'Two-term governor of a genuine swing state, term-limited out of Lansing in January 2027, with the kind of resume that lands on every “real 2028 shortlist” without her ever campaigning for it.',
+          strength: 'Won statewide twice in Michigan, including a comfortable 2022 re-election in a cycle that was rough for many Democrats elsewhere. Real executive record: infrastructure, abortion rights, manufacturing investment.',
+          weakness: 'Has consistently declined to engage with 2028 speculation, and term-limited status means she’ll be out of statewide office for two years before the election, an unusual position for a frontrunner.',
+          audience: 'Midwest swing-state Democrats, labor, suburban moderates.',
+          pulseDir: 'flat', rankChange: null,
+          pulse: 'Not yet meaningfully priced in nomination markets. Tracked consistently as a name, without the active campaign-shaped movement AOC, Newsom, or Ossoff are generating right now.',
+          ourTake: 'A real, credible option if the field stays fragmented into 2027, but she is not building a national campaign right now, and the field ahead of her is.',
+          pick: false,
+          fragility: 'Out of statewide office for two years before the election is unusual positioning for a frontrunner, and she has shown no urgency to change that.', lane: 'Institutional, Michigan-rooted.', laneClass: 'institutional'
+        },
+        {
+          name: 'Stephen A. Smith', role: 'ESPN Broadcaster', odds: 'n/a', oddsNum: 0,
+          photo: 'https://en.wikipedia.org/wiki/Special:FilePath/Stephen%20A.%20Smith%20by%20Gage%20Skidmore.jpg?width=300',
+          vibe: 'A sports-media personality with a bigger public platform than most senators, who has repeatedly floated running and has not ruled it out.',
+          strength: 'Genuine name recognition and communication skill built over decades of live television. Reaches an audience most Democratic candidates structurally cannot.',
+          weakness: 'Zero elected or governing experience. Tracked on real betting markets, but at negligible volume, meaning almost no one with money on the line is treating this as likely.',
+          audience: 'Sports and media audiences, some Black male voters Democrats have struggled to reach through traditional channels.',
+          pulseDir: 'flat', rankChange: null,
+          pulse: 'A real, tracked market listing, priced at well under 1%. More a cultural story about celebrity-and-politics blending than an active campaign.',
+          ourTake: 'We track him because the market does and because he keeps not ruling it out, not because we think this is likely. Worth watching if that changes.',
+          pick: false,
+          fragility: 'No governing record at all is the single biggest question a real campaign would have to answer immediately.', lane: 'Pure outsider, untested.', laneClass: 'insurgent'
         }
       ],
       republican: [
@@ -1520,7 +1565,7 @@
           weakness: 'Polarizing outside the base; his standing is partly borrowed from Trump\u2019s, which is a risk if that shifts.',
           audience: 'Core MAGA base, younger Republican voters.',
           pulseDir: 'flat', rankChange: 0,
-          pulse: 'The clear, consistent frontrunner \u2014 no rival has meaningfully closed the gap on Polymarket\u2019s flagship nomination market.',
+          pulse: 'The clear, consistent frontrunner. No rival has meaningfully closed the gap on Polymarket’s flagship nomination market.',
           ourTake: 'Our pick, and we\'re agreeing with the market this time. His fragility is real (his standing is partly borrowed from Trump), but nothing currently threatens it. Rubio\'s the hedge if that ever breaks.',
           pick: true,
           fragility: 'His standing is partly borrowed from Trump. That\'s a ceiling that isn\'t fully his if that support shifts.', lane: 'Was insurgent in spirit; now institutional as the sitting VP.', laneClass: 'institutional'
@@ -1534,7 +1579,7 @@
           audience: 'A wider coalition than before: older, establishment-leaning Republicans, plus MAGA-base voters won over by his foreign policy record specifically.',
           pulseDir: 'up', rankChange: 3,
           pulse: 'The most underpriced move in either field right now. Real, sustained climb across multiple markets, not a blip, driven by a specific and identifiable cause: his Iran and ICC record.',
-          ourTake: 'Still the hedge, not the pick \u2014 Vance leads by a real 11 points. But he\u2019s no longer a distant afterthought if Vance stumbles; he\u2019s built real, independent standing with the same base Vance is supposed to own.',
+          ourTake: 'Still the hedge, not the pick. Vance leads by a real 11 points. But he’s no longer a distant afterthought if Vance stumbles: he’s built real, independent standing with the same base Vance is supposed to own.',
           pick: false,
           fragility: 'Already lost once to an insurgent candidate, Trump, back in 2016. The open question is whether a foreign-policy-driven surge holds up once actual voting starts.', lane: 'Institutional record, insurgent-coded momentum right now.', laneClass: 'mixed'
         },
@@ -1546,7 +1591,7 @@
           weakness: 'No history of winning a competitive Republican primary; unclear his coalition actually shows up as GOP primary voters.',
           audience: 'Health-and-wellness independents, anti-establishment voters across the spectrum.',
           pulseDir: 'up', rankChange: 1,
-          pulse: 'A real name in the field now, well behind Vance and Rubio \u2014 worth tracking, not yet a frontrunner story.',
+          pulse: 'A real name in the field now, well behind Vance and Rubio. Worth tracking, not yet a frontrunner story.',
           ourTake: 'A genuine wildcard with real name recognition, third in line behind two candidates with an actual path to the nomination.',
           pick: false,
           fragility: 'No history winning a competitive Republican primary; unclear his coalition shows up as actual GOP primary voters.', lane: 'Genuinely insurgent. The closest thing to a wildcard in either party.', laneClass: 'insurgent'
@@ -1559,7 +1604,7 @@
           weakness: 'Faces the same problem as everyone not named Vance: no clear lane while a sitting VP dominates the base.',
           audience: 'Movement conservatives, 2016-era Cruz loyalists.',
           pulseDir: 'flat', rankChange: 0,
-          pulse: 'Present but static \u2014 no real movement in either direction this year.',
+          pulse: 'Present but static. No real movement in either direction this year.',
           ourTake: 'A name on the ballot more than a real threat, unless the Vance-RFK Jr. fight opens a lane nobody\u2019s using yet.',
           pick: false,
           fragility: 'No clear lane while Vance dominates the base he\'d need.', lane: 'Was insurgent in 2016; now reads as a fixture.', laneClass: 'institutional'
@@ -1572,10 +1617,36 @@
           weakness: 'Lost badly to Trump in 2024; still working to rebuild a coalition that fractured then.',
           audience: 'Conservatives wary of a Trump-family or Vance-anointed succession.',
           pulseDir: 'down', rankChange: -1,
-          pulse: 'Cooled considerably since 2024 \u2014 hasn\u2019t recovered the coalition that fractured then.',
+          pulse: 'Cooled considerably since 2024. Hasn’t recovered the coalition that fractured then.',
           ourTake: 'Hasn\u2019t shown us yet why 2028 goes any differently than 2024 did.',
           pick: false,
           fragility: 'Hasn\'t rebuilt the coalition that fractured after his 2024 defeat.', lane: 'Institutional, diminished.', laneClass: 'institutional'
+        },
+        {
+          name: 'Nikki Haley', role: 'Former U.S. Ambassador to the U.N.', odds: 'n/a', oddsNum: 1,
+          photo: 'https://en.wikipedia.org/wiki/Special:FilePath/Nikki%20Haley%20official%20portrait.jpg?width=300',
+          vibe: 'The last real primary challenger to actually take votes off Trump in 2024, now on the sidelines at a think tank while Vance and Rubio run the table.',
+          strength: 'Real 2024 primary infrastructure and donor relationships, proven appeal to college-educated and moderate Republicans who have never fully warmed to Trump.',
+          weakness: 'Has shown no public sign of gearing up again, and the anti-Trump lane she ran in barely exists inside a party now led by his own vice president.',
+          audience: 'Moderate, college-educated, foreign-policy-hawk Republicans.',
+          pulseDir: 'flat', rankChange: null,
+          pulse: 'Tracked at roughly 1% across betting markets, essentially unchanged for months. No sign of renewed activity.',
+          ourTake: 'A real name with a real 2024 track record, but the lane she ran in has narrowed to almost nothing under a Vance-led party.',
+          pick: false,
+          fragility: 'The moderate, anti-Trump lane she needs barely exists in today\u2019s Republican Party.', lane: 'Institutional, sidelined.', laneClass: 'institutional'
+        },
+        {
+          name: 'Donald Trump', role: 'President of the United States', odds: 'n/a', oddsNum: 0,
+          photo: 'https://en.wikipedia.org/wiki/Special:FilePath/Official%20Presidential%20Portrait%20of%20President%20Donald%20J.%20Trump%20(2025).jpg?width=300',
+          vibe: 'Has spent much of 2026 teasing a third term, in speeches, on Truth Social, and with literal "Trump 2028" hats. As of this week, even he has stopped pretending otherwise.',
+          strength: 'None that matters here. This has been a media and messaging phenomenon, not an electoral path.',
+          weakness: 'The 22nd Amendment bars anyone elected twice from being elected again, and Trump has now said so himself, directly: "I\u2019m not allowed to run. It\u2019s too bad." House Speaker Mike Johnson separately says there is "no path" to amending it in time.',
+          audience: 'Supporters who enjoyed the "Trump 2028" hat and meme era. Not a real campaign audience.',
+          pulseDir: 'down', rankChange: null,
+          pulse: 'This story just ended, in his own words, this week. Any residual market pricing above zero is lagging his own on-the-record concession.',
+          ourTake: 'We tracked this because it was a genuine, sustained storyline for most of 2026, not because we ever thought it was a live electoral possibility. Trump himself has now closed it. He has separately said he wants Vance to run.',
+          pick: false,
+          fragility: 'Constitutionally ineligible, and now says so himself. There is no real path here.', lane: 'Not a real candidacy.', laneClass: 'institutional'
         }
       ]
     };
@@ -1588,13 +1659,13 @@
       {
         name: 'Tucker Carlson', role: 'Media commentator, former Fox News host', odds: 'n/a', oddsNum: 0,
         photo: 'https://en.wikipedia.org/wiki/Special:FilePath/Tucker%20Carlson%20by%20Gage%20Skidmore.jpg?width=300',
-        vibe: 'Broke publicly with Trump over the Iran conflict and floated a 10-point platform for a new party \u2014 while repeatedly denying he\u2019ll run himself.',
+        vibe: 'Broke publicly with Trump over the Iran conflict and floated a 10-point platform for a new party. Keeps repeatedly denying he’ll run himself.',
         strength: 'An enormous built-in media audience and a real coalition of Trump-skeptical populists actively urging him to run.',
         weakness: 'Has ruled out running multiple times, most recently in June 2026; 50-state third-party ballot access is a brutal, expensive slog.',
         audience: 'Anti-interventionist populists, MAGA voters disillusioned with Trump.',
         pulseDir: 'up', rankChange: 1,
-        pulse: 'The most-discussed \u201cwill he or won\u2019t he\u201d story in either race right now \u2014 without an actual campaign.',
-        ourTake: 'Take the denials at face value until proven otherwise \u2014 but the coalition forming around him is real regardless of what he ultimately decides.',
+        pulse: 'The most-discussed “will he or won’t he” story in either race right now. Still no actual campaign.',
+        ourTake: 'Take the denials at face value until proven otherwise. But the coalition forming around him is real regardless of what he ultimately decides.',
         pick: false,
           fragility: 'Has denied running multiple times; 50-state ballot access for a new party is a brutal, expensive slog even if he changes his mind.', lane: 'The purest insurgent energy on this page. Tracked, not bet on.', laneClass: 'insurgent'
       },
@@ -1606,7 +1677,7 @@
         weakness: 'Polled under 1% nationally in 2024, with no visible sign of a bigger coalition forming for a fourth run.',
         audience: 'Left-of-Democratic progressives, anti-war voters.',
         pulseDir: 'flat', rankChange: 0,
-        pulse: 'No new 2028-specific movement yet \u2014 speculation rests entirely on her running pattern, not new signals.',
+        pulse: 'No new 2028-specific movement yet. Speculation rests entirely on her running pattern, not new signals.',
         ourTake: 'The default protest-vote option on the left if she runs again. Not a factor in who actually wins.',
         pick: false,
           fragility: 'Permanently under 1%. Not a factor in who wins, only in margins if a major nominee is weak with the base.', lane: 'Perennial insurgent.', laneClass: 'insurgent'
@@ -1650,11 +1721,11 @@
         ourCall: 'Ocasio-Cortez, carefully',
         whyShort: 'Polls still say Harris. Markets and momentum say Ocasio-Cortez. This is the real split to watch.',
         pickName: 'Alexandria Ocasio-Cortez', pickParty: 'd',
-        reasoning: 'This is the least settled call on the page, and we want to show the actual tension rather than hide it: national primary polling still shows Harris leading at 26% on name recognition, while betting markets have Ocasio-Cortez as the clear leader at 20%, up from 9% in June \u2014 a sustained climb, not a spike, and backed by a viral head-to-head poll putting her ahead of Vance. Her fragility is real (an unscripted-moment stumble has already happened once), but right now she\u2019s the only candidate who is both genuinely insurgent-coded and has real current momentum \u2014 which matters given how bad the environment looks for the incumbent party. Ossoff remains our hedge, and his case just got stronger: real fundraising strength, now paired with a viral rally moment of his own.',
+        reasoning: 'This is the least settled call on the page, and we want to show the actual tension rather than hide it. National primary polling still shows Harris leading on name recognition. Betting markets have Ocasio-Cortez as the clear leader at 20%, up from 9% in June, a sustained climb, not a spike, backed by a viral head-to-head poll putting her ahead of Vance. Her fragility is real (an unscripted-moment stumble has already happened once). But right now she’s the only candidate who is both genuinely insurgent-coded and has real current momentum, which matters given how bad the environment looks for the incumbent party. Ossoff’s case is more complicated than it was a few days ago: he explicitly and repeatedly denied any 2028 interest this week, and his own market odds cooled slightly in response. We are taking that denial seriously rather than assuming it’s theater, which is why he is no longer our clear hedge. Newsom is closer to that role now on pure market standing. Whitmer, Kelly, and Stephen A. Smith remain real names we track, none yet building an active campaign.',
         outcomes: [
           { label: 'Alexandria Ocasio-Cortez', probability: 20.0, platform: 'Polymarket' },
-          { label: 'Gavin Newsom', probability: 17.0, platform: 'Polymarket' },
-          { label: 'Jon Ossoff', probability: 17.0, platform: 'Polymarket' },
+          { label: 'Gavin Newsom', probability: 16.0, platform: 'Polymarket' },
+          { label: 'Jon Ossoff', probability: 15.0, platform: 'Polymarket' },
           { label: 'Kamala Harris', probability: 8.0, platform: 'Polymarket' },
           { label: 'Pete Buttigieg', probability: 5.0, platform: 'Polymarket' }
         ]
@@ -1999,14 +2070,14 @@
     const INFO_PAGES = {
       methodology: {
         kicker: 'How We Call It',
-        title: 'Liberty Bell Vote’s Methodology',
+        title: 'The LBV Model',
         body: `
           <h4>Nine inputs, one call</h4>
-          <p>Every Liberty Bell Vote forecast is built from reading across several kinds of signal, not one: polling (head-to-head and primary), live betting market odds, campaign fundamentals (fundraising, ground game, endorsements), candidate quality (experience, communication under pressure, debate performance), coalition strength and durability, social sentiment, momentum, the economic backdrop, and a ninth lens &mdash; fragility and insurgency: what's each candidate's single point of failure, and are they running as an outsider or an institutional figure in their own party right now.</p>
+          <p>Every Liberty Bell Vote forecast, what we call the LBV Model, is built from reading across several kinds of signal, not one: polling (head-to-head and primary), live betting market odds, campaign fundamentals (fundraising, ground game, endorsements), candidate quality (experience, communication under pressure, debate performance), coalition strength and durability, social sentiment, momentum, the economic backdrop, and a ninth lens: fragility and insurgency. What's each candidate's single point of failure, and are they running as an outsider or an institutional figure in their own party right now.</p>
           <h4>Where this stands today</h4>
-          <p>Right now, synthesizing those nine inputs into a single call is editorial judgment, informed by real data, not yet a disclosed, repeatable formula. That's an honest starting point, not a finished product. We show our reasoning on every call rather than just a number with no explanation behind it.</p>
+          <p>Right now, synthesizing those nine inputs into a single call through the LBV Model is editorial judgment, informed by real data, not yet a disclosed, repeatable formula. That's an honest starting point, not a finished product. We show our reasoning on every call rather than just a number with no explanation behind it.</p>
           <h4>What "Our Pick" means</h4>
-          <p>When we mark a candidate as Our Pick, it means our independent read differs from &mdash; or specifically confirms against skepticism of &mdash; the betting market's favorite. We say so explicitly on Our Call, including when our pick and the market agree.</p>
+          <p>When we mark a candidate as Our Pick, it means our independent read differs from the betting market's favorite, or specifically confirms it against real skepticism. We say so explicitly on Our Call, including when our pick and the market agree.</p>
           <h4>Non-partisan, provably</h4>
           <p>We apply the same scrutiny to both parties' fields, and we publish calls that cut against either side when the inputs say so. This page itself is part of that: publishing how we think, not just what we think.</p>
           <h4>Track record</h4>
@@ -2017,7 +2088,7 @@
         kicker: 'Legal',
         title: 'Privacy Policy',
         body: `
-          <p><em>Last updated August 2026. This is a working draft for a small, independent outlet &mdash; not a substitute for professional legal review before public launch, particularly once advertising is active.</em></p>
+          <p><em>Last updated August 2026. This is a working draft for a small, independent outlet. Not a substitute for professional legal review before public launch, particularly once advertising is active.</em></p>
           <h4>What we collect</h4>
           <p>Liberty Bell Vote does not require an account to read. We do not collect names, emails, or personal information unless you contact us directly. Standard web server logs (IP address, browser type, pages visited) may be collected automatically by our hosting provider.</p>
           <h4>Advertising</h4>
@@ -2144,11 +2215,11 @@
       });
 
       (allCalls || []).forEach(call => {
-        items.push({ type: 'call', label: call.question, sub: `Our Call \u2014 ${call.ourCall}`, action: () => footerNav(null, 'markets') });
+        items.push({ type: 'call', label: call.question, sub: `Our Call · ${call.ourCall}`, action: () => footerNav(null, 'markets') });
       });
 
       (allCalendar || []).forEach(ev => {
-        items.push({ type: 'event', label: ev.title, sub: `Timeline \u2014 ${ev.date}`, action: () => footerNav(null, 'calendar') });
+        items.push({ type: 'event', label: ev.title, sub: `Timeline · ${ev.date}`, action: () => footerNav(null, 'calendar') });
       });
 
       return items;
