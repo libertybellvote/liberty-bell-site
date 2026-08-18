@@ -9,8 +9,9 @@
       {
         "name": "Alexandria Ocasio-Cortez",
         "role": "U.S. Representative, NY-14",
-        "odds": "18%",
-        "oddsNum": 18,
+        "odds": "20%",
+        "oddsNum": 20,
+        "pollAvg": 9.2,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Alexandria%20Ocasio-Cortez%20Official%20Portrait.jpg?width=300",
         "vibe": "The field’s best natural communicator with younger, online audiences. High energy, high name recognition.",
         "strength": "Unmatched enthusiasm from the party’s progressive wing; took the market lead after Vance himself named her a threat.",
@@ -30,6 +31,7 @@
         "role": "Governor of California",
         "odds": "17%",
         "oddsNum": 17,
+        "pollAvg": 16.7,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Governor%20of%20California%20Gavin%20Newsom,%202026%20Official%20Portrait%202.jpg?width=300",
         "vibe": "Polished and combative in interviews. Built a media profile sparring directly with conservative hosts.",
         "strength": "National visibility, deep donor network, executive record leading the largest state economy.",
@@ -68,6 +70,7 @@
         "role": "Former Secretary of Transportation",
         "odds": "5%",
         "oddsNum": 5,
+        "pollAvg": 11,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Pete%20Buttigieg%20official%20photo%20(cropped).jpg?width=300",
         "vibe": "Widely regarded as the field’s strongest live communicator. Sharp and unflappable in hostile interviews.",
         "strength": "Led an Emerson poll of the actual field outright, ahead of both Newsom and Ocasio-Cortez.",
@@ -87,6 +90,7 @@
         "role": "Former Vice President",
         "odds": "8%",
         "oddsNum": 8,
+        "pollAvg": 28.7,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Kamala%20Harris%20Vice%20Presidential%20Portrait%20(cropped).jpg?width=300",
         "vibe": "Highest name recognition in the field, but 2024 leaves a mixed record to run on.",
         "strength": "Executive-branch experience, strong standing with core Democratic base voters, still leads some head-to-head polls.",
@@ -106,6 +110,7 @@
         "role": "Governor of Pennsylvania",
         "odds": "5%",
         "oddsNum": 5,
+        "pollAvg": 6.6,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Josh%20Shapiro%202021.jpg?width=300",
         "vibe": "Battle-tested in the single most important swing state on the map, with limited national-stage vetting so far.",
         "strength": "Pennsylvania is the state the whole election could hinge on; strong home-state fundraising and approval.",
@@ -220,6 +225,7 @@
         "role": "U.S. Senator, Arizona",
         "odds": "n/a",
         "oddsNum": 1,
+        "pollAvg": 5.8,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Mark%20Kelly%2C%20Official%20Portrait%20117th.jpg?width=300",
         "vibe": "A former astronaut and Navy combat veteran whose low-drama Senate record just collided with a real national profile.",
         "strength": "Represents Arizona, a genuine swing state; a public legal fight with the Trump administration over an \"illegal orders\" video has raised his national visibility sharply, and he’s been raising serious money — over $1 million recently — well beyond what a senator not eyeing something bigger typically raises.",
@@ -258,8 +264,9 @@
       {
         "name": "JD Vance",
         "role": "Vice President",
-        "odds": "39%",
-        "oddsNum": 39,
+        "odds": "40%",
+        "oddsNum": 40,
+        "pollAvg": 39.8,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/JD%20Vance%20official%20portrait%20(cropped%20headshot).jpg?width=300",
         "vibe": "Combative, online-native style that plays well with the base; described by allies as “the closest thing to Trump.”",
         "strength": "Sitting VP with the sitting president’s implicit backing; commanding lead in actual GOP primary polling, not just markets.",
@@ -277,8 +284,9 @@
       {
         "name": "Marco Rubio",
         "role": "Secretary of State",
-        "odds": "28%",
-        "oddsNum": 28,
+        "odds": "25%",
+        "oddsNum": 25,
+        "pollAvg": 21.6,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Official%20portrait%20of%20Secretary%20Marco%20Rubio.jpg?width=300",
         "vibe": "No longer running as the safe establishment alternative. A hardline foreign policy record, built through the Iran conflict and a public push to dismantle the ICC, is what’s actually driving his rise now.",
         "strength": "Leadership through the Iran military action and an aggressive stance against the ICC have made him genuinely popular with the MAGA base, not just older primary voters. His odds have roughly doubled over the past several months on the strength of that record.",
@@ -298,6 +306,7 @@
         "role": "Secretary of Health and Human Services",
         "odds": "8%",
         "oddsNum": 8,
+        "pollAvg": 3.8,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Robert%20F.%20Kennedy%20Jr.%2C%20official%20portrait%20(2025).jpg?width=300",
         "vibe": "A cabinet-level platform and a following that doesn’t map neatly onto either party’s usual base.",
         "strength": "Built-in name recognition and an independent, health-and-wellness-driven coalition Vance can’t easily match.",
@@ -336,6 +345,7 @@
         "role": "Governor of Florida",
         "odds": "2%",
         "oddsNum": 2,
+        "pollAvg": 7.1,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Ron%20DeSantis%20official%20photo%20(cropped).jpg?width=300",
         "vibe": "Widely panned for a stiff, unpersuasive interview and debate style during his 2024 run. The opposite of a natural retail politician.",
         "strength": "Real executive experience, prior national campaign infrastructure, strong fundraising base.",
@@ -424,12 +434,12 @@
       "outcomes": [
         {
           "label": "JD Vance",
-          "probability": 39,
+          "probability": 40,
           "platform": "Polymarket"
         },
         {
           "label": "Marco Rubio",
-          "probability": 28,
+          "probability": 25,
           "platform": "Polymarket"
         },
         {
@@ -459,7 +469,7 @@
       "outcomes": [
         {
           "label": "Alexandria Ocasio-Cortez",
-          "probability": 18,
+          "probability": 20,
           "platform": "Polymarket"
         },
         {
