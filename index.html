@@ -305,6 +305,112 @@
     position:absolute; inset:0; width:100%; height:100%; border:0;
   }
 
+  /* ---------- FRANKLIN AI: CHAT INTERFACE ---------- */
+  .franklin-chat{
+    border:1px solid var(--line);
+    border-radius:14px;
+    overflow:hidden;
+    background:var(--card);
+  }
+  .franklin-chat-header{
+    display:flex; align-items:center; gap:12px;
+    padding:14px 18px;
+    background:var(--paper-deep);
+    border-bottom:1px solid var(--line);
+  }
+  .franklin-avatar-photo{
+    width:44px; height:44px; border-radius:50%; flex-shrink:0;
+    overflow:hidden;
+    border:2px solid var(--brass);
+  }
+  .franklin-avatar-photo img{width:100%; height:100%; object-fit:cover;}
+  .franklin-name{
+    font-family:'Libre Caslon Display', serif; font-weight:400; font-size:16px;
+    color:var(--ink);
+    display:flex; align-items:center; gap:7px;
+  }
+  .franklin-online-dot{
+    width:8px; height:8px; border-radius:50%;
+    background:#4caf6d;
+    display:inline-block;
+    box-shadow:0 0 0 2px var(--paper-deep);
+  }
+  .franklin-subtitle{font-size:11.5px; color:var(--ink-faint); margin-top:1px;}
+
+  .franklin-messages{
+    padding:20px 18px;
+    display:flex; flex-direction:column; gap:16px;
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(28,25,17,0.02) 40px);
+  }
+  .franklin-message{
+    display:flex; gap:10px;
+    align-items:flex-start;
+    animation:franklinFadeIn 0.35s ease-out;
+  }
+  @keyframes franklinFadeIn{
+    from{opacity:0; transform:translateY(6px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+  .franklin-message-avatar{
+    width:28px; height:28px; border-radius:50%; flex-shrink:0;
+    overflow:hidden; margin-top:2px;
+  }
+  .franklin-message-avatar img{width:100%; height:100%; object-fit:cover;}
+  .franklin-bubble{
+    position:relative;
+    background:var(--paper-deep);
+    border-radius:4px 14px 14px 14px;
+    padding:12px 16px;
+    max-width:min(440px, 82%);
+  }
+  .franklin-bubble-label{
+    font-family:'IBM Plex Mono', monospace; font-size:9px; letter-spacing:0.07em; text-transform:uppercase;
+    color:var(--brass); margin-bottom:5px;
+    display:flex; align-items:center; gap:6px;
+  }
+  .franklin-bubble-photo{
+    width:16px; height:16px; border-radius:50%; overflow:hidden; flex-shrink:0;
+  }
+  .franklin-bubble-photo img{width:100%; height:100%; object-fit:cover;}
+  .franklin-bubble-text{
+    font-size:13.5px; line-height:1.55; color:var(--ink);
+  }
+
+  .franklin-message-prompt{justify-content:flex-end;}
+  .franklin-prompt-bubble{
+    background:var(--federal);
+    color:#fff;
+    border-radius:14px 4px 14px 14px;
+    padding:10px 16px;
+    font-size:13px;
+    max-width:min(360px, 78%);
+  }
+  .franklin-cursor{
+    display:inline-block; width:2px; height:13px;
+    background:#fff; margin-left:2px; vertical-align:middle;
+    animation:franklinBlink 0.9s step-end infinite;
+  }
+  @keyframes franklinBlink{
+    50%{opacity:0;}
+  }
+
+  .franklin-typing-bubble{
+    display:flex; align-items:center; gap:4px;
+    padding:14px 16px;
+  }
+  .franklin-dot{
+    width:6px; height:6px; border-radius:50%;
+    background:var(--ink-faint);
+    animation:franklinBounce 1.1s ease-in-out infinite;
+  }
+  .franklin-dot:nth-child(2){animation-delay:0.15s;}
+  .franklin-dot:nth-child(3){animation-delay:0.3s;}
+  @keyframes franklinBounce{
+    0%, 60%, 100%{transform:translateY(0); opacity:0.5;}
+    30%{transform:translateY(-4px); opacity:1;}
+  }
+
   /* ---------- HOME: POWER RANKING (momentum, not a nomination pick) ---------- */
   .power-rank{
     display:flex; align-items:center; gap:14px;
@@ -884,6 +990,8 @@
     .bio-odds-num{font-size:34px;}
     .bio-verdict-block{padding:18px 18px 18px 44px;}
     .header-tagline{display:none;}
+    .tab{font-size:10.5px; padding:10px 3px 12px;}
+    .franklin-bubble{max-width:88%;}
     .hub-stat-value{font-size:15px;}
     .hub-stat{padding:11px 6px;}
     .header-search{width:130px;}
@@ -1068,6 +1176,7 @@
     <button class="tab" data-tab="field" role="tab">The Field</button>
     <button class="tab" data-tab="calendar" role="tab">Timeline</button>
     <button class="tab" data-tab="markets" role="tab">Our Call</button>
+    <button class="tab" data-tab="franklin" role="tab">Franklin AI</button>
   </div>
 
   <section class="hero" id="hero-section">
@@ -1254,6 +1363,29 @@
     </p>
   </section>
 
+  <section class="races" id="franklin-section" style="display:none;">
+    <div class="field-intro">
+      <div class="kicker">Franklin AI</div>
+      <h3>We asked our AI to predict 2028. Here's what it said.</h3>
+      <p>Franklin is Liberty Bell Vote's AI, reading the same live data as the rest of the site but giving its own unscripted take, not our official editorial call. That's still <a href="#" onclick="event.preventDefault(); footerNav(event,'markets')">Our Call</a>.</p>
+    </div>
+
+    <div class="franklin-chat">
+      <div class="franklin-chat-header">
+        <div class="franklin-avatar-photo"><img src="franklin-avatar.jpg" alt="Franklin AI"></div>
+        <div>
+          <div class="franklin-name">Franklin AI <span class="franklin-online-dot"></span></div>
+          <div class="franklin-subtitle">Predicting 2028, live</div>
+        </div>
+      </div>
+      <div class="franklin-messages" id="franklin-predictions"></div>
+    </div>
+
+    <p style="font-size:10.5px; color:var(--ink-faint); margin-top:20px; text-align:center;">
+      Franklin's predictions update alongside the rest of the site's live data. Not financial or voting advice, just an AI having an opinion.
+    </p>
+  </section>
+
   <section class="races" id="info-section" style="display:none;">
     <button class="bio-back" onclick="hideInfo()">&larr; Back</button>
     <div class="field-intro">
@@ -1354,7 +1486,7 @@
     // should overwrite just this ISO string on each run. Everywhere the
     // date is shown on the site reads from here, formatted at render
     // time, instead of a hardcoded date living in the HTML.
-    let LAST_UPDATED = '2026-08-18T17:25:00-04:00';
+    let LAST_UPDATED = '2026-08-18T18:45:00-04:00';
 
     // The daily "Bell Swing" — whoever has the most real momentum, virality,
     // or sentiment shift TODAY. This is explicitly NOT the nomination pick;
@@ -1872,6 +2004,108 @@
         </div>`;
     }
 
+    let franklinTimers = [];
+    function clearFranklinTimers(){
+      franklinTimers.forEach(t => clearTimeout(t));
+      franklinTimers = [];
+    }
+
+    function franklinTurnHTML(n, label, candidate, question){
+      const bubblePhoto = candidate ? `
+        <div class="franklin-bubble-photo">
+          <img src="${candidate.photo}" alt="${candidate.name}" loading="lazy" onerror="this.style.display='none';">
+        </div>` : '';
+      return `
+        <div class="franklin-message franklin-message-prompt" id="franklin-turn-${n}-prompt" style="display:none;">
+          <div class="franklin-prompt-bubble"><span id="franklin-turn-${n}-prompt-text"></span><span class="franklin-cursor"></span></div>
+        </div>
+        <div class="franklin-message" id="franklin-turn-${n}-typing" style="display:none;">
+          <div class="franklin-message-avatar"><img src="franklin-avatar.jpg" alt="Franklin AI"></div>
+          <div class="franklin-bubble franklin-typing-bubble"><span class="franklin-dot"></span><span class="franklin-dot"></span><span class="franklin-dot"></span></div>
+        </div>
+        <div class="franklin-message" id="franklin-turn-${n}-answer" style="display:none;">
+          <div class="franklin-message-avatar"><img src="franklin-avatar.jpg" alt="Franklin AI"></div>
+          <div class="franklin-bubble">
+            <div class="franklin-bubble-label">${bubblePhoto}${label}</div>
+            <div class="franklin-bubble-text" id="franklin-turn-${n}-text"></div>
+          </div>
+        </div>`;
+    }
+
+    function typeInto(elId, text, speed, onDone){
+      const el = document.getElementById(elId);
+      let i = 0;
+      function step(){
+        if(i <= text.length){
+          el.textContent = text.slice(0, i);
+          i++;
+          franklinTimers.push(setTimeout(step, speed));
+        } else if(onDone){
+          onDone();
+        }
+      }
+      step();
+    }
+
+    function runFranklinSequence(turns){
+      clearFranklinTimers();
+      let idx = 0;
+      function nextTurn(){
+        if(idx >= turns.length) return;
+        const n = idx;
+        const promptEl = document.getElementById(`franklin-turn-${n}-prompt`);
+        const typingEl = document.getElementById(`franklin-turn-${n}-typing`);
+        const answerEl = document.getElementById(`franklin-turn-${n}-answer`);
+        const answerTextEl = document.getElementById(`franklin-turn-${n}-text`);
+
+        promptEl.style.display = '';
+        typeInto(`franklin-turn-${n}-prompt-text`, turns[n].question, 24, () => {
+          franklinTimers.push(setTimeout(() => {
+            typingEl.style.display = '';
+            franklinTimers.push(setTimeout(() => {
+              typingEl.style.display = 'none';
+              answerTextEl.innerHTML = turns[n].answer;
+              answerEl.style.display = '';
+              idx++;
+              franklinTimers.push(setTimeout(nextTurn, 550));
+            }, 1000));
+          }, 350));
+        });
+      }
+      nextTurn();
+    }
+
+    function renderFranklin(){
+      const el = document.getElementById('franklin-predictions');
+      const flat = allCandidatesFlat();
+      const demLeader = [...flat.filter(c => c.party === 'd')].sort((a,b) => (b.oddsNum||0) - (a.oddsNum||0))[0];
+      const repLeader = [...flat.filter(c => c.party === 'r')].sort((a,b) => (b.oddsNum||0) - (a.oddsNum||0))[0];
+      const index = getSyncedIndex();
+      const demMargin = index.democratic - index.republican;
+      const favoredParty = demMargin >= 0 ? 'Democrats' : 'Republicans';
+      const favoredPct = demMargin >= 0 ? index.democratic : index.republican;
+
+      // Franklin's own voice: aphoristic, plainspoken, a touch formal, the
+      // way Poor Richard's Almanack read, but never so archaic it obscures
+      // the actual call. The data (name, percentage) stays exact.
+      const demQuote = demLeader
+        ? `I am persuaded it shall be <strong>${demLeader.name}</strong>. As Poor Richard used to say, well done is better than well said, and at ${demLeader.odds}, no rival stands near enough to trouble my sleep on the matter.`
+        : `There is not yet sufficient evidence on the board for me to hazard a guess on this one, and a wise man does not wager on fog.`;
+      const repQuote = repLeader
+        ? `On the other side of the aisle, my money follows <strong>${repLeader.name}</strong> as well. A lead of ${repLeader.odds} is no trifling sum. A bird in the hand, sir, is worth two in the bush.`
+        : `Nor is the Republican field settled enough yet for a sensible man to commit his shilling.`;
+      const presQuote = `And who shall occupy the President's House come 2029? I lean <strong>${favoredParty}</strong>, presently near ${favoredPct.toFixed(0)}%. Mind you, even the wisest almanack errs on occasion. Ask me again next week, and I may yet surprise you.`;
+
+      const turns = [
+        { question: 'Who wins the Democratic nomination?', label: 'Democratic Nominee', candidate: demLeader, answer: demQuote },
+        { question: 'Who wins the Republican nomination?', label: 'Republican Nominee', candidate: repLeader, answer: repQuote },
+        { question: 'Which party wins the presidency?', label: 'Who Wins The Presidency', candidate: null, answer: presQuote },
+      ];
+
+      el.innerHTML = turns.map((t, n) => franklinTurnHTML(n, t.label, t.candidate, t.question)).join('');
+      runFranklinSequence(turns);
+    }
+
     function renderPowerRanking(ranking){
       const el = document.getElementById('power-rank');
       const c = allCandidatesFlat().find(x => x.name === ranking.candidateName);
@@ -2047,9 +2281,10 @@
       const fieldSection = document.getElementById('field-section');
       const calendarSection = document.getElementById('calendar-section');
       const marketsSection = document.getElementById('markets-section');
+      const franklinSection = document.getElementById('franklin-section');
       const bioSection = document.getElementById('bio-section');
       const infoSection = document.getElementById('info-section');
-      [heroSection, fieldSection, calendarSection, marketsSection, bioSection, infoSection].forEach(s => s.style.display = 'none');
+      [heroSection, fieldSection, calendarSection, marketsSection, franklinSection, bioSection, infoSection].forEach(s => s.style.display = 'none');
 
       if(currentInfo){
         infoSection.style.display = '';
@@ -2058,6 +2293,12 @@
 
       if(currentBio){
         bioSection.style.display = '';
+        return;
+      }
+
+      if(currentTab === 'franklin'){
+        franklinSection.style.display = '';
+        renderFranklin();
         return;
       }
 
@@ -2234,6 +2475,7 @@
       items.push({ type: 'page', label: 'The Field', sub: 'Every 2028 contender', action: () => footerNav(null, 'field') });
       items.push({ type: 'page', label: 'Timeline', sub: 'Key dates to the election', action: () => footerNav(null, 'calendar') });
       items.push({ type: 'page', label: 'Our Call', sub: 'Our call vs. the market', action: () => footerNav(null, 'markets') });
+      items.push({ type: 'page', label: 'Franklin Predicts', sub: "Our AI's own read", action: () => footerNav(null, 'franklin') });
       items.push({ type: 'page', label: 'Our Methodology', sub: 'How we call it', action: () => showInfo('methodology') });
       items.push({ type: 'page', label: 'Privacy Policy', sub: '', action: () => showInfo('privacy') });
       items.push({ type: 'page', label: 'Site Map', sub: '', action: () => showInfo('sitemap') });
@@ -2317,6 +2559,7 @@
         currentTab = btn.dataset.tab;
         currentBio = null;
         currentInfo = null;
+        clearFranklinTimers();
         updateView();
       });
     });
