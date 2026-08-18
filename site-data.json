@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-17T16:15:00-04:00",
+  "lastUpdated": "2026-08-17T20:50:00-04:00",
   "libertyBellIndex": {
     "democratic": 58,
     "republican": 42
@@ -277,21 +277,21 @@
       {
         "name": "Marco Rubio",
         "role": "Secretary of State",
-        "odds": "15%",
-        "oddsNum": 15,
+        "odds": "28%",
+        "oddsNum": 28,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Official%20portrait%20of%20Secretary%20Marco%20Rubio.jpg?width=300",
-        "vibe": "Polished, experienced on a debate stage. A 2016 national campaign veteran with a much steadier interview style than Vance.",
-        "strength": "Cabinet-level foreign policy visibility; leads Vance among Republican primary voters over 50; the clear second choice in the field.",
-        "weakness": "Lost decisively to Trump in 2016; seen by the base as the safer, less exciting choice.",
-        "audience": "Older, establishment-leaning Republicans.",
-        "pulseDir": "flat",
-        "rankChange": 0,
-        "pulse": "Steadily the field’s clear No. 2 — the only real alternative to Vance with sustained market support.",
-        "ourTake": "No longer our top pick. Vance’s position looks more secure than it did, but he’s still the hedge worth watching if that changes.",
+        "vibe": "No longer running as the safe establishment alternative. A hardline foreign policy record, built through the Iran conflict and a public push to dismantle the ICC, is what’s actually driving his rise now.",
+        "strength": "Leadership through the Iran military action and an aggressive stance against the ICC have made him genuinely popular with the MAGA base, not just older primary voters. His odds have roughly doubled over the past several months on the strength of that record.",
+        "weakness": "Lost decisively to Trump in 2016; still an open question whether hardline credentials translate to real primary votes against a sitting VP.",
+        "audience": "A wider coalition than before: older, establishment-leaning Republicans, plus MAGA-base voters won over by his foreign policy record specifically.",
+        "pulseDir": "up",
+        "rankChange": 3,
+        "pulse": "The most underpriced move in either field right now. Real, sustained climb across multiple markets, not a blip, driven by a specific and identifiable cause: his Iran and ICC record.",
+        "ourTake": "Still the hedge, not the pick — Vance leads by a real 11 points. But he’s no longer a distant afterthought if Vance stumbles; he’s built real, independent standing with the same base Vance is supposed to own.",
         "pick": false,
-        "fragility": "Already lost once to an insurgent candidate, Trump, back in 2016. Same establishment lane, same risk.",
-        "lane": "Institutional.",
-        "laneClass": "institutional"
+        "fragility": "Already lost once to an insurgent candidate, Trump, back in 2016. The open question is whether a foreign-policy-driven surge holds up once actual voting starts.",
+        "lane": "Institutional record, insurgent-coded momentum right now.",
+        "laneClass": "mixed"
       },
       {
         "name": "Robert F. Kennedy Jr.",
@@ -416,11 +416,11 @@
     },
     {
       "question": "Who wins the Republican nomination?",
-      "ourCall": "Vance — agreeing with the market on this one",
-      "whyShort": "No real second act has emerged. An earlier RFK Jr. \"surge\" turned out to be bad data.",
+      "ourCall": "Vance leads, but this is now genuinely a two-man race",
+      "whyShort": "Rubio’s odds have roughly doubled since spring, driven by his Iran and ICC record, not vibes.",
       "pickName": "JD Vance",
       "pickParty": "r",
-      "reasoning": "We’d flagged a \"tight contest\" story with RFK Jr. in an earlier pass; on closer, better-sourced inspection that turned out to be low-quality data, not a real trend. The real picture: Vance leads every recent GOP primary poll, usually by double digits, with no second act anywhere close. His fragility is real — his standing is partly borrowed from Trump’s — but nothing currently threatens it. Rubio remains the hedge if that ever breaks.",
+      "reasoning": "This field is now realistically about two names, not five. Vance still leads clearly at 39%, and his fragility (standing partly borrowed from Trump) hasn’t changed. But Rubio has built something real behind him: his handling of the Iran conflict and a hardline push to dismantle the ICC have made him genuinely popular with the MAGA base, not just older establishment voters, and his odds have climbed from the high teens into the high 20s over several months on the strength of that record specifically. RFK Jr., Cruz, and DeSantis are no longer where the real action is on the Republican side.",
       "outcomes": [
         {
           "label": "JD Vance",
@@ -429,7 +429,7 @@
         },
         {
           "label": "Marco Rubio",
-          "probability": 15,
+          "probability": 28,
           "platform": "Polymarket"
         },
         {
