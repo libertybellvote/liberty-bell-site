@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Liberty Bell &mdash; Live 2028 Presidential Election Forecast</title>
-<meta name="description" content="Liberty Bell tracks the 2028 presidential race with live betting odds, polling, and our own independent call on which way the race is swinging. Non-partisan analysis of every major candidate, updated daily.">
+<title>Liberty Bell Vote &mdash; Live 2028 Presidential Election Forecast</title>
+<meta name="description" content="Liberty Bell Vote tracks the 2028 presidential race with live betting odds, polling, and our own independent call on which way the race is swinging. Non-partisan analysis of every major candidate, updated daily.">
 
 <!-- Favicon -->
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -13,8 +13,8 @@
 
 <!-- Open Graph / social preview (Facebook, iMessage, Slack, LinkedIn, etc.) -->
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Liberty Bell">
-<meta property="og:title" content="Liberty Bell &mdash; Live 2028 Presidential Election Forecast">
+<meta property="og:site_name" content="Liberty Bell Vote">
+<meta property="og:title" content="Liberty Bell Vote &mdash; Live 2028 Presidential Election Forecast">
 <meta property="og:description" content="Live betting odds, polling, and our own independent call on which way the 2028 race is swinging. Non-partisan analysis of every major candidate, updated daily.">
 <meta property="og:image" content="https://libertybell.vote/og-image.png">
 <meta property="og:url" content="https://libertybell.vote">
@@ -22,7 +22,7 @@
 <!-- Twitter/X Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@LibertyBellVote">
-<meta name="twitter:title" content="Liberty Bell &mdash; Live 2028 Presidential Election Forecast">
+<meta name="twitter:title" content="Liberty Bell Vote &mdash; Live 2028 Presidential Election Forecast">
 <meta name="twitter:description" content="Live betting odds, polling, and our own independent call on which way the 2028 race is swinging.">
 <meta name="twitter:image" content="https://libertybell.vote/og-image.png">
 
@@ -44,17 +44,17 @@
   }
 
   body.dark-mode{
-    --paper:#16140f;
-    --paper-deep:#211d15;
-    --card:#1e1b14;
-    --ink:#efe7d2;
-    --ink-soft:#c4b89a;
-    --ink-faint:#8a8068;
-    --federal:#6f93c9;
-    --brass:#d4ab5c;
-    --brass-glow:#e8c883;
-    --line: rgba(239,231,210,0.14);
-    --shadow: 0 2px 4px rgba(0,0,0,0.25), 0 12px 32px rgba(0,0,0,0.35);
+    --paper:#0b0b0b;
+    --paper-deep:#1a1a1a;
+    --card:#151515;
+    --ink:#eaeaea;
+    --ink-soft:#a3a3a3;
+    --ink-faint:#6b6b6b;
+    --federal:#7ca3d9;
+    --brass:#c9a04e;
+    --brass-glow:#ddc07a;
+    --line: rgba(255,255,255,0.12);
+    --shadow: 0 2px 4px rgba(0,0,0,0.4), 0 12px 32px rgba(0,0,0,0.5);
   }
   body, .page, .card, .candidate-card, .call-card, .bio-verdict-block, header, .tabs, .header-search-input, .search-input{
     transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
@@ -71,7 +71,7 @@
     padding:28px 16px 60px;
   }
   body.dark-mode{
-    background-image: radial-gradient(circle at 15% 8%, rgba(111,147,201,0.08), transparent 45%);
+    background-image: radial-gradient(circle at 15% 8%, rgba(255,255,255,0.04), transparent 45%);
   }
 
   .page{
@@ -263,6 +263,46 @@
     display:flex; align-items:center; justify-content:center; gap:8px;
   }
   .hero-meta .dot{width:5px; height:5px; border-radius:50%; background:var(--brass);}
+
+  /* ---------- HOME: HUB STATS (VoteHub-style at-a-glance dashboard) ---------- */
+  .hub-stats{
+    display:grid; grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:10px;
+    overflow:hidden;
+    margin-top:28px;
+  }
+  .hub-stat{
+    background:var(--card);
+    padding:14px 12px;
+    text-align:center;
+  }
+  .hub-stat-value{
+    font-family:'Libre Caslon Display', serif; font-weight:400; font-size:19px;
+    color:var(--ink); line-height:1.15;
+  }
+  .hub-stat-label{
+    font-family:'IBM Plex Mono', monospace; font-size:8.5px; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--ink-faint); margin-top:4px;
+  }
+
+  /* ---------- HOME: VIDEO EMBED ---------- */
+  .video-block{margin-top:34px;}
+  .video-block-label{
+    font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--brass); margin-bottom:10px; text-align:center;
+  }
+  .video-frame{
+    position:relative; width:100%; padding-top:56.25%;
+    border-radius:10px; overflow:hidden;
+    border:1px solid var(--line);
+    background:var(--paper-deep);
+  }
+  .video-frame iframe{
+    position:absolute; inset:0; width:100%; height:100%; border:0;
+  }
 
   /* ---------- HOME: POWER RANKING (momentum, not a nomination pick) ---------- */
   .power-rank{
@@ -546,6 +586,8 @@
     background:linear-gradient(90deg, var(--brass), var(--brass-glow));
     transition:width 700ms ease-out;
   }
+  .bio-odds-num-poll{color:var(--federal); font-size:32px;}
+  .bio-odds-bar-poll{background:linear-gradient(90deg, var(--federal), #7ca3d9);}
 
   .bio-verdict-block{
     position:relative;
@@ -841,6 +883,8 @@
     .bio-odds-num{font-size:34px;}
     .bio-verdict-block{padding:18px 18px 18px 44px;}
     .header-tagline{display:none;}
+    .hub-stat-value{font-size:15px;}
+    .hub-stat{padding:11px 6px;}
     .header-search{width:130px;}
   }
 
@@ -963,10 +1007,10 @@
   <div class="page">
 
   <header>
-    <div class="wordmark"><span class="mark"></span> Liberty Bell<span class="header-tagline">Live 2028 Forecast</span></div>
+    <div class="wordmark"><span class="mark"></span> Liberty Bell Vote<span class="header-tagline">Live 2028 Forecast</span></div>
     <div class="header-right">
       <div class="header-search">
-        <input type="search" id="global-search" class="header-search-input" placeholder="Search Liberty Bell..." autocomplete="off"
+        <input type="search" id="global-search" class="header-search-input" placeholder="Search Liberty Bell Vote..." autocomplete="off"
                oninput="globalSearch(this.value)" onfocus="globalSearch(this.value)">
         <div class="header-search-results" id="global-search-results"></div>
       </div>
@@ -986,7 +1030,7 @@
   <section class="hero" id="hero-section">
     <div class="hero-eyebrow" id="hero-eyebrow"><span class="pulse-dot"></span> LIBERTY BELL FORECAST</div>
     <div class="hero-tag" id="hero-tag">2028 Presidential Election</div>
-    <h1 class="hero-title" id="hero-title">Liberty Bell's Call: Leans Democratic</h1>
+    <h1 class="hero-title" id="hero-title">Liberty Bell Vote's Call: Leans Democratic</h1>
 
     <div class="bell-wrap">
       <div class="bell-glow"></div>
@@ -1022,10 +1066,19 @@
     </p>
     <div class="hero-meta" id="hero-meta"><span class="dot"></span> Updated August 12, 2026</div>
 
+    <div class="hub-stats" id="hub-stats"></div>
+
     <div class="power-rank" id="power-rank"></div>
 
     <div class="pick-strip" id="pick-strip"></div>
     <button class="field-cta" id="field-cta">See the Full Field &rarr;</button>
+
+    <div class="video-block">
+      <div class="video-block-label">Latest From Liberty Bell Vote</div>
+      <div class="video-frame">
+        <iframe src="https://www.youtube.com/embed/s6mE-C1XHxo" title="Liberty Bell Vote" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
   </section>
 
   <section class="races" id="field-section" style="display:none;">
@@ -1078,6 +1131,14 @@
       <div class="bio-odds-side">
         <div class="bio-odds-label">Nomination odds, Polymarket</div>
         <div class="bio-odds-bar-track"><div class="bio-odds-bar-fill" id="bio-odds-bar"></div></div>
+      </div>
+    </div>
+
+    <div class="bio-odds-row" id="bio-poll-row" style="display:none;">
+      <div class="bio-odds-num bio-odds-num-poll" id="bio-poll-num"></div>
+      <div class="bio-odds-side">
+        <div class="bio-odds-label">RCP polling average</div>
+        <div class="bio-odds-bar-track"><div class="bio-odds-bar-fill bio-odds-bar-poll" id="bio-poll-bar"></div></div>
       </div>
     </div>
 
@@ -1162,7 +1223,7 @@
   <footer>
     <div class="footer-top">
       <div class="footer-brand">
-        <div class="wordmark" style="color:#f5efdf;"><span class="mark" style="border-color:var(--brass-glow);"></span> Liberty Bell</div>
+        <div class="wordmark" style="color:#f5efdf;"><span class="mark" style="border-color:var(--brass-glow);"></span> Liberty Bell Vote</div>
         <div class="footer-tagline">Which way will the Bell swing?</div>
         <p class="footer-desc">Independent analysis of the 2028 presidential race &mdash; polling, betting markets, campaign fundamentals, and our own call, all in one place.</p>
         <div class="footer-embed">
@@ -1208,7 +1269,7 @@
         <span class="pulse-dot" style="background:var(--brass-glow);"></span> Current call: <strong id="footer-call-text">&mdash;</strong>
       </div>
       <div class="footer-legal">
-        &copy; 2026 Liberty Bell. All rights reserved. &middot;
+        &copy; 2026 Liberty Bell Vote. All rights reserved. &middot;
         <a href="#" onclick="event.preventDefault(); showInfo('privacy')">Privacy</a> &middot;
         <a href="#" onclick="event.preventDefault(); showInfo('sitemap')">Site Map</a>
       </div>
@@ -1279,7 +1340,7 @@
     const STATIC_FIELD = {
       democratic: [
         {
-          name: 'Alexandria Ocasio-Cortez', role: 'U.S. Representative, NY-14', odds: '18%', oddsNum: 18,
+          name: 'Alexandria Ocasio-Cortez', role: 'U.S. Representative, NY-14', odds: '20%', oddsNum: 20, pollAvg: 9.2,
           photo: 'https://en.wikipedia.org/wiki/Special:FilePath/Alexandria%20Ocasio-Cortez%20Official%20Portrait.jpg?width=300',
           vibe: 'The field\u2019s best natural communicator with younger, online audiences. High energy, high name recognition.',
           strength: 'Unmatched enthusiasm from the party\u2019s progressive wing; took the market lead after Vance himself named her a threat.',
@@ -1292,7 +1353,7 @@
           fragility: 'Her authenticity cuts both ways. The same unscripted style that built her following also produced a real stumble on Taiwan policy.', lane: 'Insurgent. The clearest outsider brand in either party.', laneClass: 'insurgent'
         },
         {
-          name: 'Gavin Newsom', role: 'Governor of California', odds: '17%', oddsNum: 17,
+          name: 'Gavin Newsom', role: 'Governor of California', odds: '17%', oddsNum: 17, pollAvg: 16.7,
           photo: 'https://en.wikipedia.org/wiki/Special:FilePath/Governor%20of%20California%20Gavin%20Newsom,%202026%20Official%20Portrait%202.jpg?width=300',
           vibe: 'Polished and combative in interviews. Built a media profile sparring directly with conservative hosts.',
           strength: 'National visibility, deep donor network, executive record leading the largest state economy.',
@@ -1318,7 +1379,7 @@
           fragility: 'His own team has been called insular, and the knock has been that he\u2019s unproven off-script. Sunday\u2019s rally line complicates that critique.', lane: 'Institutional, with a genuinely viral moment now on the record.', laneClass: 'institutional'
         },
         {
-          name: 'Pete Buttigieg', role: 'Former Secretary of Transportation', odds: '5%', oddsNum: 5,
+          name: 'Pete Buttigieg', role: 'Former Secretary of Transportation', odds: '5%', oddsNum: 5, pollAvg: 11.0,
           photo: 'https://en.wikipedia.org/wiki/Special:FilePath/Pete%20Buttigieg%20official%20photo%20(cropped).jpg?width=300',
           vibe: 'Widely regarded as the field\u2019s strongest live communicator. Sharp and unflappable in hostile interviews.',
           strength: 'Led an Emerson poll of the actual field outright, ahead of both Newsom and Ocasio-Cortez.',
@@ -1331,7 +1392,7 @@
           fragility: 'Never won a swing-state race; thin executive record to run on nationally.', lane: 'Institutional-adjacent.', laneClass: 'institutional'
         },
         {
-          name: 'Kamala Harris', role: 'Former Vice President', odds: '8%', oddsNum: 8,
+          name: 'Kamala Harris', role: 'Former Vice President', odds: '8%', oddsNum: 8, pollAvg: 28.7,
           photo: 'https://en.wikipedia.org/wiki/Special:FilePath/Kamala%20Harris%20Vice%20Presidential%20Portrait%20(cropped).jpg?width=300',
           vibe: 'Highest name recognition in the field, but 2024 leaves a mixed record to run on.',
           strength: 'Executive-branch experience, strong standing with core Democratic base voters, still leads some head-to-head polls.',
@@ -1344,7 +1405,7 @@
           fragility: 'Her entire polling lead is basically 2024 residue, name recognition more than anything else. That\'s historically the most brittle kind of number once actual voting starts.', lane: 'Institutional.', laneClass: 'institutional'
         },
         {
-          name: 'Josh Shapiro', role: 'Governor of Pennsylvania', odds: '5%', oddsNum: 5,
+          name: 'Josh Shapiro', role: 'Governor of Pennsylvania', odds: '5%', oddsNum: 5, pollAvg: 6.6,
           photo: 'https://en.wikipedia.org/wiki/Special:FilePath/Josh%20Shapiro%202021.jpg?width=300',
           vibe: 'Battle-tested in the single most important swing state on the map, with limited national-stage vetting so far.',
           strength: 'Pennsylvania is the state the whole election could hinge on; strong home-state fundraising and approval.',
@@ -1422,7 +1483,7 @@
           fragility: 'Low name recognition outside political-media and online-progressive circles.', lane: 'Institutional-progressive hybrid.', laneClass: 'mixed'
         },
         {
-          name: 'Mark Kelly', role: 'U.S. Senator, Arizona', odds: 'n/a', oddsNum: 1,
+          name: 'Mark Kelly', role: 'U.S. Senator, Arizona', odds: 'n/a', oddsNum: 1, pollAvg: 5.8,
           photo: 'https://en.wikipedia.org/wiki/Special:FilePath/Mark%20Kelly%2C%20Official%20Portrait%20117th.jpg?width=300',
           vibe: 'A former astronaut and Navy combat veteran whose low-drama Senate record just collided with a real national profile.',
           strength: 'Represents Arizona, a genuine swing state; a public legal fight with the Trump administration over an "illegal orders" video has raised his national visibility sharply, and he\u2019s been raising serious money \u2014 over $1 million recently \u2014 well beyond what a senator not eyeing something bigger typically raises.',
@@ -1450,7 +1511,7 @@
       ],
       republican: [
         {
-          name: 'JD Vance', role: 'Vice President', odds: '39%', oddsNum: 39,
+          name: 'JD Vance', role: 'Vice President', odds: '40%', oddsNum: 40, pollAvg: 39.8,
           photo: 'https://en.wikipedia.org/wiki/Special:FilePath/JD%20Vance%20official%20portrait%20(cropped%20headshot).jpg?width=300',
           vibe: 'Combative, online-native style that plays well with the base; described by allies as \u201cthe closest thing to Trump.\u201d',
           strength: 'Sitting VP with the sitting president\u2019s implicit backing; commanding lead in actual GOP primary polling, not just markets.',
@@ -1463,7 +1524,7 @@
           fragility: 'His standing is partly borrowed from Trump. That\'s a ceiling that isn\'t fully his if that support shifts.', lane: 'Was insurgent in spirit; now institutional as the sitting VP.', laneClass: 'institutional'
         },
         {
-          name: 'Marco Rubio', role: 'Secretary of State', odds: '28%', oddsNum: 28,
+          name: 'Marco Rubio', role: 'Secretary of State', odds: '25%', oddsNum: 25, pollAvg: 21.6,
           photo: 'https://en.wikipedia.org/wiki/Special:FilePath/Official%20portrait%20of%20Secretary%20Marco%20Rubio.jpg?width=300',
           vibe: 'No longer running as the safe establishment alternative. A hardline foreign policy record, built through the Iran conflict and a public push to dismantle the ICC, is what\u2019s actually driving his rise now.',
           strength: 'Leadership through the Iran military action and an aggressive stance against the ICC have made him genuinely popular with the MAGA base, not just older primary voters. His odds have roughly doubled over the past several months on the strength of that record.',
@@ -1476,7 +1537,7 @@
           fragility: 'Already lost once to an insurgent candidate, Trump, back in 2016. The open question is whether a foreign-policy-driven surge holds up once actual voting starts.', lane: 'Institutional record, insurgent-coded momentum right now.', laneClass: 'mixed'
         },
         {
-          name: 'Robert F. Kennedy Jr.', role: 'Secretary of Health and Human Services', odds: '8%', oddsNum: 8,
+          name: 'Robert F. Kennedy Jr.', role: 'Secretary of Health and Human Services', odds: '8%', oddsNum: 8, pollAvg: 3.8,
           photo: 'https://en.wikipedia.org/wiki/Special:FilePath/Robert%20F.%20Kennedy%20Jr.%2C%20official%20portrait%20(2025).jpg?width=300',
           vibe: 'A cabinet-level platform and a following that doesn\u2019t map neatly onto either party\u2019s usual base.',
           strength: 'Built-in name recognition and an independent, health-and-wellness-driven coalition Vance can\u2019t easily match.',
@@ -1502,7 +1563,7 @@
           fragility: 'No clear lane while Vance dominates the base he\'d need.', lane: 'Was insurgent in 2016; now reads as a fixture.', laneClass: 'institutional'
         },
         {
-          name: 'Ron DeSantis', role: 'Governor of Florida', odds: '2%', oddsNum: 2,
+          name: 'Ron DeSantis', role: 'Governor of Florida', odds: '2%', oddsNum: 2, pollAvg: 7.1,
           photo: 'https://en.wikipedia.org/wiki/Special:FilePath/Ron%20DeSantis%20official%20photo%20(cropped).jpg?width=300',
           vibe: 'Widely panned for a stiff, unpersuasive interview and debate style during his 2024 run. The opposite of a natural retail politician.',
           strength: 'Real executive experience, prior national campaign infrastructure, strong fundraising base.',
@@ -1575,8 +1636,8 @@
         pickName: 'JD Vance', pickParty: 'r',
         reasoning: 'This field is now realistically about two names, not five. Vance still leads clearly at 39%, and his fragility (standing partly borrowed from Trump) hasn\u2019t changed. But Rubio has built something real behind him: his handling of the Iran conflict and a hardline push to dismantle the ICC have made him genuinely popular with the MAGA base, not just older establishment voters, and his odds have climbed from the high teens into the high 20s over several months on the strength of that record specifically. RFK Jr., Cruz, and DeSantis are no longer where the real action is on the Republican side.',
         outcomes: [
-          { label: 'JD Vance', probability: 39.0, platform: 'Polymarket' },
-          { label: 'Marco Rubio', probability: 28.0, platform: 'Polymarket' },
+          { label: 'JD Vance', probability: 40.0, platform: 'Polymarket' },
+          { label: 'Marco Rubio', probability: 25.0, platform: 'Polymarket' },
           { label: 'Robert F. Kennedy Jr.', probability: 8.0, platform: 'Polymarket' },
           { label: 'Ted Cruz', probability: 4.0, platform: 'Polymarket' },
           { label: 'Ron DeSantis', probability: 2.0, platform: 'Polymarket' }
@@ -1589,7 +1650,7 @@
         pickName: 'Alexandria Ocasio-Cortez', pickParty: 'd',
         reasoning: 'This is the least settled call on the page, and we want to show the actual tension rather than hide it: national primary polling still shows Harris leading at 26% on name recognition, while betting markets have Ocasio-Cortez as the clear leader at 20%, up from 9% in June \u2014 a sustained climb, not a spike, and backed by a viral head-to-head poll putting her ahead of Vance. Her fragility is real (an unscripted-moment stumble has already happened once), but right now she\u2019s the only candidate who is both genuinely insurgent-coded and has real current momentum \u2014 which matters given how bad the environment looks for the incumbent party. Ossoff remains our hedge, and his case just got stronger: real fundraising strength, now paired with a viral rally moment of his own.',
         outcomes: [
-          { label: 'Alexandria Ocasio-Cortez', probability: 18.0, platform: 'Polymarket' },
+          { label: 'Alexandria Ocasio-Cortez', probability: 20.0, platform: 'Polymarket' },
           { label: 'Gavin Newsom', probability: 17.0, platform: 'Polymarket' },
           { label: 'Jon Ossoff', probability: 17.0, platform: 'Polymarket' },
           { label: 'Kamala Harris', probability: 8.0, platform: 'Polymarket' },
@@ -1639,7 +1700,7 @@
       const margin = index.democratic - index.republican;
       const leader = margin >= 0 ? 'Democratic' : 'Republican';
       const strength = Math.abs(margin) < 3 ? 'Toss-up' : Math.abs(margin) < 10 ? `Leans ${leader}` : `Favors ${leader}`;
-      document.getElementById('hero-title').textContent = `Liberty Bell's Call: ${strength}`;
+      document.getElementById('hero-title').textContent = `Liberty Bell Vote's Call: ${strength}`;
       document.getElementById('hero-meta').innerHTML = `<span class="dot"></span> Updated ${formatLastUpdated(LAST_UPDATED)}`;
       const footerCallText = document.getElementById('footer-call-text');
       if(footerCallText) footerCallText.textContent = strength;
@@ -1676,6 +1737,38 @@
           </div>
         </div>`).join('');
       el.innerHTML = cards;
+    }
+
+    function daysUntil(dateStr){
+      // Handles both ISO ("2028-11-07") and human-readable ("Jan 22, 2028")
+      // date strings — the calendar data uses the latter, the hardcoded
+      // election date uses the former.
+      const isIso = /^\d{4}-\d{2}-\d{2}$/.test(dateStr);
+      const target = isIso ? new Date(dateStr + 'T00:00:00-05:00') : new Date(dateStr + ' 00:00:00');
+      const now = new Date();
+      return Math.ceil((target - now) / (1000 * 60 * 60 * 24));
+    }
+
+    function renderHubStats(field, calendar){
+      const el = document.getElementById('hub-stats');
+      const days = daysUntil('2028-11-07');
+      const firstPrimary = (calendar || []).find(c => c.type === 'd');
+      const daysToFirst = firstPrimary ? daysUntil(firstPrimary.date) : null;
+      const totalTracked = (field.democratic||[]).length + (field.republican||[]).length;
+
+      el.innerHTML = `
+        <div class="hub-stat">
+          <div class="hub-stat-value">${days.toLocaleString()}</div>
+          <div class="hub-stat-label">Days to Election Day</div>
+        </div>
+        <div class="hub-stat">
+          <div class="hub-stat-value">${daysToFirst != null ? daysToFirst.toLocaleString() : '\u2014'}</div>
+          <div class="hub-stat-label">Days to First Primary</div>
+        </div>
+        <div class="hub-stat">
+          <div class="hub-stat-value">${totalTracked}</div>
+          <div class="hub-stat-label">Candidates Tracked</div>
+        </div>`;
     }
 
     function renderPowerRanking(ranking){
@@ -1817,7 +1910,7 @@
               <div class="call-side ours">
                 ${portraitHtml}
                 <div class="call-text">
-                  <div class="call-label">Liberty Bell’s Call ${divergenceTag}</div>
+                  <div class="call-label">Liberty Bell Vote’s Call ${divergenceTag}</div>
                   <div class="call-verdict">${call.ourCall}</div>
                   <div class="call-why">${call.whyShort || ''}</div>
                   ${call.reasoning ? `<details class="call-details"><summary>Full reasoning</summary><p>${call.reasoning}</p></details>` : ''}
@@ -1888,6 +1981,7 @@
       // Home tab: the Liberty Bell prediction
       heroSection.style.display = '';
       renderPredictionBell(getSyncedIndex());
+      renderHubStats(allField, allCalendar);
       renderPowerRanking(POWER_RANKING);
       renderPickStrip(allField);
     }
@@ -1903,10 +1997,10 @@
     const INFO_PAGES = {
       methodology: {
         kicker: 'How We Call It',
-        title: 'Liberty Bell’s Methodology',
+        title: 'Liberty Bell Vote’s Methodology',
         body: `
           <h4>Nine inputs, one call</h4>
-          <p>Every Liberty Bell forecast is built from reading across several kinds of signal, not one: polling (head-to-head and primary), live betting market odds, campaign fundamentals (fundraising, ground game, endorsements), candidate quality (experience, communication under pressure, debate performance), coalition strength and durability, social sentiment, momentum, the economic backdrop, and a ninth lens &mdash; fragility and insurgency: what's each candidate's single point of failure, and are they running as an outsider or an institutional figure in their own party right now.</p>
+          <p>Every Liberty Bell Vote forecast is built from reading across several kinds of signal, not one: polling (head-to-head and primary), live betting market odds, campaign fundamentals (fundraising, ground game, endorsements), candidate quality (experience, communication under pressure, debate performance), coalition strength and durability, social sentiment, momentum, the economic backdrop, and a ninth lens &mdash; fragility and insurgency: what's each candidate's single point of failure, and are they running as an outsider or an institutional figure in their own party right now.</p>
           <h4>Where this stands today</h4>
           <p>Right now, synthesizing those nine inputs into a single call is editorial judgment, informed by real data, not yet a disclosed, repeatable formula. That's an honest starting point, not a finished product. We show our reasoning on every call rather than just a number with no explanation behind it.</p>
           <h4>What "Our Pick" means</h4>
@@ -1923,7 +2017,7 @@
         body: `
           <p><em>Last updated August 2026. This is a working draft for a small, independent outlet &mdash; not a substitute for professional legal review before public launch, particularly once advertising is active.</em></p>
           <h4>What we collect</h4>
-          <p>Liberty Bell does not require an account to read. We do not collect names, emails, or personal information unless you contact us directly. Standard web server logs (IP address, browser type, pages visited) may be collected automatically by our hosting provider.</p>
+          <p>Liberty Bell Vote does not require an account to read. We do not collect names, emails, or personal information unless you contact us directly. Standard web server logs (IP address, browser type, pages visited) may be collected automatically by our hosting provider.</p>
           <h4>Advertising</h4>
           <p>If and when third-party advertising (such as Google AdSense) is active on this site, those providers may use cookies to serve relevant ads. We do not control third-party ad-tracking practices directly; consult the advertiser's own privacy policy for details.</p>
           <h4>Third-party data</h4>
@@ -2000,6 +2094,17 @@
       bar.style.width = '0%';
       setTimeout(() => { bar.style.width = Math.max(oddsNum, 3) + '%'; }, 50);
 
+      const pollRow = document.getElementById('bio-poll-row');
+      if(candidate.pollAvg != null){
+        pollRow.style.display = '';
+        document.getElementById('bio-poll-num').textContent = candidate.pollAvg.toFixed(1) + '%';
+        const pollBar = document.getElementById('bio-poll-bar');
+        pollBar.style.width = '0%';
+        setTimeout(() => { pollBar.style.width = Math.max(candidate.pollAvg, 3) + '%'; }, 50);
+      } else {
+        pollRow.style.display = 'none';
+      }
+
       document.getElementById('bio-verdict').textContent = candidate.ourTake;
       document.getElementById('bio-strength').textContent = candidate.strength;
       document.getElementById('bio-weakness').textContent = candidate.weakness;
@@ -2024,7 +2129,7 @@
     function buildSearchIndex(){
       const items = [];
 
-      items.push({ type: 'page', label: 'Home', sub: "Liberty Bell’s call", action: () => footerNav(null, 'home') });
+      items.push({ type: 'page', label: 'Home', sub: "Liberty Bell Vote’s call", action: () => footerNav(null, 'home') });
       items.push({ type: 'page', label: 'The Field', sub: 'Every 2028 contender', action: () => footerNav(null, 'field') });
       items.push({ type: 'page', label: 'Timeline', sub: 'Key dates to the election', action: () => footerNav(null, 'calendar') });
       items.push({ type: 'page', label: 'Our Call', sub: 'Our call vs. the market', action: () => footerNav(null, 'markets') });
@@ -2140,7 +2245,7 @@
 
         updateView();
       }catch(err){
-        console.warn('Liberty Bell: could not load live site-data.json, showing last-shipped data.', err);
+        console.warn('Liberty Bell Vote: could not load live site-data.json, showing last-shipped data.', err);
       }
     }
 
