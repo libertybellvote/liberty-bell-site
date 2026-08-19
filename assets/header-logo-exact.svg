@@ -4,7 +4,7 @@
   <rect width="1120" height="340" fill="#171714"/>
   <g transform="translate(20 -39) scale(.82)">
     <circle cx="204" cy="209" r="106" fill="none" stroke="#D7B052" stroke-width="8"/>
-    <path fill="#D7B052" d="M183 167c14-7 29-8 43 0l5 35c2 15 5 28 14 40 3 5 2 9-2 13-4 4-9 6-16 6h-47c-7 0-12-2-16-6-4-4-5-8-2-13 9-12 12-25 14-40l5-35Z"/>
+    <path fill="#D7B052" d="M181 169c1-2 2-3 4-4 13-6 28-6 41 1l5 36c2 15 5 28 14 40 3 5 2 9-2 13-4 4-9 6-16 6h-47c-7 0-12-2-16-6-4-4-5-8-2-13 9-12 12-25 14-40l5-33Z"/>
     <circle cx="220" cy="260" r="15" fill="#D7B052"/>
     <path d="M207 175l15 75" fill="none" stroke="#171714" stroke-width="7"/>
   </g>

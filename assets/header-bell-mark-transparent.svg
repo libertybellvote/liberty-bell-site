@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 408 408" role="img" aria-label="The Bell transparent mark">
+  <defs>
+    <mask id="bell-cut">
+      <rect width="408" height="408" fill="white"/>
+      <path d="M207 175l15 75" fill="none" stroke="black" stroke-width="7"/>
+    </mask>
+  </defs>
+  <circle cx="204" cy="209" r="106" fill="none" stroke="#D7B052" stroke-width="8"/>
+  <g mask="url(#bell-cut)">
+    <path fill="#D7B052" d="M181 169c1-2 2-3 4-4 13-6 28-6 41 1l5 36c2 15 5 28 14 40 3 5 2 9-2 13-4 4-9 6-16 6h-47c-7 0-12-2-16-6-4-4-5-8-2-13 9-12 12-25 14-40l5-33Z"/>
+    <circle cx="220" cy="260" r="15" fill="#D7B052"/>
+  </g>
+</svg>
