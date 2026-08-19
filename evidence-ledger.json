@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-19T14:53:24.063Z",
+  "updatedAt": "2026-08-19T15:16:37.627Z",
   "modelVersion": "3.0",
   "callStatus": "scored",
   "coverage": {
@@ -22,25 +22,25 @@
       "factor": "bettingMarkets",
       "url": "https://polymarket.com",
       "status": "current",
-      "retrievedAt": "2026-08-19T14:53:24.020Z",
+      "retrievedAt": "2026-08-19T15:15:51.689Z",
       "evidence": {
         "source": "Polymarket public market data",
-        "retrievedAt": "2026-08-19T14:53:24.020Z",
+        "retrievedAt": "2026-08-19T15:15:51.689Z",
         "partyIndex": {
           "democratic": 58.5,
           "republican": 41.5
         },
         "party": {
           "volume": 2066601.0433389994,
-          "liquidity": 410634.4364
+          "liquidity": 411264.7999
         },
         "democraticNomination": {
-          "volume": 1262356162.7022932,
-          "liquidity": 80159171.82758
+          "volume": 1262358191.191729,
+          "liquidity": 80173866.26072
         },
         "republicanNomination": {
-          "volume": 689114659.2009761,
-          "liquidity": 56884676.81194
+          "volume": 689115836.216366,
+          "liquidity": 57369380.73372
         }
       }
     },
@@ -50,7 +50,7 @@
       "factor": "bettingMarkets",
       "url": "https://kalshi.com",
       "status": "unavailable",
-      "retrievedAt": "2026-08-19T14:53:24.063Z",
+      "retrievedAt": "2026-08-19T15:16:37.627Z",
       "error": "No open 2028 presidential market was returned"
     },
     {
@@ -59,7 +59,7 @@
       "factor": "economicBackdrop",
       "url": "https://www.bls.gov/developers/",
       "status": "current",
-      "retrievedAt": "2026-08-19T14:53:24.063Z",
+      "retrievedAt": "2026-08-19T15:16:37.627Z",
       "evidence": [
         {
           "seriesId": "CUUR0000SA0",
@@ -219,7 +219,7 @@
       "factor": "polling",
       "url": "https://www.realclearpolling.com/latest-polls/2028",
       "status": "unavailable",
-      "retrievedAt": "2026-08-19T14:53:24.063Z",
+      "retrievedAt": "2026-08-19T15:16:37.627Z",
       "error": "HTTP 403"
     },
     {
@@ -228,7 +228,7 @@
       "factor": "polling",
       "url": "https://votehub.com/feed/",
       "status": "current",
-      "retrievedAt": "2026-08-19T14:53:24.063Z",
+      "retrievedAt": "2026-08-19T15:16:37.627Z",
       "evidence": [
         {
           "title": "2026 Florida Republican Gubernatorial Primary",
@@ -288,7 +288,7 @@
       "factor": "momentum",
       "url": "https://decisiondeskhq.com/feed/",
       "status": "unavailable",
-      "retrievedAt": "2026-08-19T14:53:24.063Z",
+      "retrievedAt": "2026-08-19T15:16:37.627Z",
       "error": "HTTP 404"
     }
   ],

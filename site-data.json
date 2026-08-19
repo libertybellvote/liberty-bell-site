@@ -1,6 +1,6 @@
 {
   "lastUpdated": "2026-08-19T02:30:45.655Z",
-  "modelUpdatedAt": "2026-08-19T15:08:45.490Z",
+  "modelUpdatedAt": "2026-08-19T15:16:38.192Z",
   "libertyBellIndex": {
     "democratic": 58,
     "republican": 42
@@ -32,7 +32,7 @@
         "name": "Gavin Newsom",
         "role": "Governor of California",
         "odds": "15%",
-        "oddsNum": 15.4,
+        "oddsNum": 15.2,
         "pollAvg": 16.7,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Governor%20of%20California%20Gavin%20Newsom,%202026%20Official%20Portrait%202.jpg?width=300",
         "vibe": "Polished and combative in interviews. Built a media profile sparring directly with conservative hosts.",
@@ -158,7 +158,7 @@
         "name": "JB Pritzker",
         "role": "Governor of Illinois",
         "odds": "1%",
-        "oddsNum": 1,
+        "oddsNum": 1.2,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Governor%20JB%20Pritzker%20official%20portrait%202019%20(crop).jpg?width=300",
         "vibe": "Self-funded billionaire governor leaning hard into anti-Trump messaging as a re-election and national strategy at once.",
         "strength": "Able to self-fund at a scale no rival can match; was on Harris’s 2024 VP shortlist.",
@@ -327,8 +327,8 @@
       {
         "name": "JD Vance",
         "role": "Vice President",
-        "odds": "40%",
-        "oddsNum": 40,
+        "odds": "47%",
+        "oddsNum": 47.4,
         "pollAvg": 39.6,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/JD%20Vance%20official%20portrait%20(cropped%20headshot).jpg?width=300",
         "vibe": "Combative, online-native style that plays well with the base; described by allies as “the closest thing to Trump.”",
@@ -545,7 +545,7 @@
       "outcomes": [
         {
           "label": "JD Vance",
-          "probability": 40,
+          "probability": 47.4,
           "platform": "Polymarket"
         },
         {
@@ -585,7 +585,7 @@
         },
         {
           "label": "Gavin Newsom",
-          "probability": 15.4,
+          "probability": 15.2,
           "platform": "Polymarket"
         },
         {
@@ -650,28 +650,28 @@
   },
   "marketMeta": {
     "source": "Polymarket public market data",
-    "retrievedAt": "2026-08-19T14:53:24.020Z",
+    "retrievedAt": "2026-08-19T15:15:51.689Z",
     "partyIndex": {
       "democratic": 58.5,
       "republican": 41.5
     },
     "party": {
       "volume": 2066601.0433389994,
-      "liquidity": 410634.4364
+      "liquidity": 411264.7999
     },
     "democraticNomination": {
-      "volume": 1262356162.7022932,
-      "liquidity": 80159171.82758
+      "volume": 1262358191.191729,
+      "liquidity": 80173866.26072
     },
     "republicanNomination": {
-      "volume": 689114659.2009761,
-      "liquidity": 56884676.81194
+      "volume": 689115836.216366,
+      "liquidity": 57369380.73372
     }
   },
-  "marketUpdatedAt": "2026-08-19T14:53:24.020Z",
+  "marketUpdatedAt": "2026-08-19T15:15:51.689Z",
   "modelMeta": {
     "version": "3.0",
-    "updatedAt": "2026-08-19T15:08:45.490Z",
+    "updatedAt": "2026-08-19T15:16:38.192Z",
     "status": "scored",
     "signalCoverage": "9/9",
     "score": 32,
@@ -732,10 +732,10 @@
         },
         {
           "name": "Gavin Newsom",
-          "score": 39.2,
+          "score": 39.1,
           "factors": {
             "polling": 0.5738831615120275,
-            "bettingMarkets": 0.7298578199052133,
+            "bettingMarkets": 0.7203791469194312,
             "campaignFundamentals": 0.7,
             "candidateQuality": 0.6,
             "coalitionStrength": 0.35,
@@ -809,10 +809,10 @@
         },
         {
           "name": "Marco Rubio",
-          "score": 49.5,
+          "score": 48.4,
           "factors": {
             "polling": 0.5328282828282829,
-            "bettingMarkets": 0.5725,
+            "bettingMarkets": 0.4831223628691983,
             "campaignFundamentals": 0.75,
             "candidateQuality": 0.7,
             "coalitionStrength": 0.65,
@@ -824,10 +824,10 @@
         },
         {
           "name": "Ron DeSantis",
-          "score": 16.3,
+          "score": 16.1,
           "factors": {
             "polling": 0.19444444444444445,
-            "bettingMarkets": 0.0725,
+            "bettingMarkets": 0.06118143459915612,
             "campaignFundamentals": 0.65,
             "candidateQuality": 0.35,
             "coalitionStrength": 0.55,
@@ -839,10 +839,10 @@
         },
         {
           "name": "Ted Cruz",
-          "score": 13.8,
+          "score": 13.7,
           "factors": {
             "polling": 0.07575757575757576,
-            "bettingMarkets": 0.025,
+            "bettingMarkets": 0.02109704641350211,
             "campaignFundamentals": 0.55,
             "candidateQuality": 0.5,
             "coalitionStrength": 0.5,
@@ -857,7 +857,7 @@
           "score": 4.1,
           "factors": {
             "polling": 0.07575757575757576,
-            "bettingMarkets": 0.0125,
+            "bettingMarkets": 0.010548523206751054,
             "campaignFundamentals": 0.3,
             "candidateQuality": 0.25,
             "coalitionStrength": 0.35,
@@ -869,7 +869,7 @@
         }
       ]
     },
-    "evidenceUpdatedAt": "2026-08-19T14:53:24.063Z"
+    "evidenceUpdatedAt": "2026-08-19T15:16:37.627Z"
   },
   "pollingMeta": {
     "source": "Wikipedia national polling aggregation",
