@@ -51,8 +51,8 @@ function personName(candidate, className = '') {
   return `<span class="person-name ${className}"><img src="${candidate.photo || ''}" alt="" loading="lazy"><span>${candidate.name}</span></span>`;
 }
 
-function miniField(list, party) {
-  return (list || []).slice(0, 5).map((candidate, index) => `<div class="field-line"><span class="field-rank">${index + 1}</span>${personName(candidate, 'field-person')}<span class="field-track"><i style="width:${Math.min(100, candidate.oddsNum * 3.3)}%"></i></span><strong>${candidate.odds}</strong>${partyBadge(party)}</div>`).join('');
+function miniField(list) {
+  return (list || []).slice(0, 5).map((candidate, index) => `<div class="field-line"><span class="field-rank">${index + 1}</span>${personName(candidate, 'field-person')}<span class="field-track"><i style="width:${Math.min(100, candidate.oddsNum * 3.3)}%"></i></span><strong>${candidate.odds}</strong></div>`).join('');
 }
 
 function renderForecast(data) {
@@ -80,19 +80,23 @@ function renderForecast(data) {
   $('#bell-reading').textContent = `${abs.toFixed(1)}-point market edge`;
   $('#swing-arm').style.transform = `rotate(${Math.max(-24, Math.min(24, margin * 1.2))}deg)`;
   $('#updated').textContent = updated(data.lastUpdated);
-  $('#party-headline').innerHTML = `${partyBadge(leader)} ${partyPlural} hold the early edge.`;
+  $('#party-headline').textContent = `${partyPlural} hold the early edge.`;
   $('#forecast-summary').textContent = call?.whyShort || 'The market has a favorite. The race does not have a winner.';
-  $('#dem-mini').innerHTML = miniField(dems, 'democratic');
-  $('#rep-mini').innerHTML = miniField(reps, 'republican');
-  $('#field-read').innerHTML = `${personName(dems[0], 'wire-person')} ${personName(reps[0], 'wire-person')}`;
+  $('#dem-mini').innerHTML = miniField(dems);
+  $('#rep-mini').innerHTML = miniField(reps);
+  $('#wire-dem').style.width = dem + '%';
+  $('#wire-rep').style.width = rep + '%';
+  $('#wire-party-score').textContent = `${fmt(dem)} to ${fmt(rep)}`;
+  $('#wire-field-visual').innerHTML = `<div>${personName(dems[0], 'wire-person')}<small>${dems[0].odds}</small></div><b>vs.</b><div>${personName(reps[0], 'wire-person')}<small>${reps[0].odds}</small></div>`;
   $('#market-read').innerHTML = `The party market favors ${partyBadge(leader)} <strong>${partyPlural}</strong>. Both nomination fights are still open.`;
-  $('#mover-name').innerHTML = watch ? personName(watch, 'watch-person') : (watchName || 'No material move');
+  $('#wire-watch-visual').innerHTML = watch ? `<img src="${watch.photo}" alt="${watch.name}"><span>↗</span>` : '';
+  $('#mover-name').textContent = watch?.name || watchName || 'No material move';
   $('#mover-copy').textContent = data.powerRanking?.reason || 'No meaningful change in the latest run.';
 }
 
 function candidateCard(candidate, index, party) {
   const [label, cls] = movement(candidate);
-  return `<article class="candidate-card compact-candidate"><div class="candidate-photo"><img src="${candidate.photo || ''}" alt="${candidate.name}" loading="lazy"><span class="standing">#${index + 1}</span>${partyBadge(party)}</div><div class="candidate-body"><div class="candidate-name-row">${personName(candidate)}${partyBadge(party)}</div><div class="role">${candidate.role || ''}</div><div class="candidate-metrics"><div class="candidate-metric"><strong>${candidate.odds || 'N/A'}</strong><span>Market</span></div><div class="candidate-metric"><strong>${candidate.pollAvg != null ? candidate.pollAvg.toFixed(1) + '%' : 'N/A'}</strong><span>Polling</span></div><div class="candidate-metric"><strong class="pulse ${cls}">${label}</strong><span>Move</span></div></div><p class="candidate-take">${candidate.ourTake || ''}</p><details class="candidate-details"><summary>The case and the catch</summary><p><strong>Base:</strong> ${candidate.audience || 'Not yet assessed.'}</p><p><strong>Read:</strong> ${candidate.pulse || 'No material change.'}</p><p><strong>Risk:</strong> ${candidate.fragility || candidate.weakness || 'Not yet assessed.'}</p></details></div></article>`;
+  return `<article class="candidate-card compact-candidate"><div class="candidate-photo"><img src="${candidate.photo || ''}" alt="${candidate.name}" loading="lazy"><span class="standing">#${index + 1}</span></div><div class="candidate-body"><div class="candidate-name-row"><h2>${candidate.name}</h2>${partyBadge(party)}</div><div class="role">${candidate.role || ''}</div><div class="candidate-metrics"><div class="candidate-metric"><strong>${candidate.odds || 'N/A'}</strong><span>Market</span></div><div class="candidate-metric"><strong>${candidate.pollAvg != null ? candidate.pollAvg.toFixed(1) + '%' : 'N/A'}</strong><span>Polling</span></div><div class="candidate-metric"><strong class="pulse ${cls}">${label}</strong><span>Move</span></div></div><p class="candidate-take">${candidate.ourTake || ''}</p><details class="candidate-details"><summary>The case and the catch</summary><p><strong>Base:</strong> ${candidate.audience || 'Not yet assessed.'}</p><p><strong>Read:</strong> ${candidate.pulse || 'No material change.'}</p><p><strong>Risk:</strong> ${candidate.fragility || candidate.weakness || 'Not yet assessed.'}</p></details></div></article>`;
 }
 
 function renderCandidates(data) {
