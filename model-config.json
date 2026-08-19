@@ -1,0 +1,24 @@
+{
+  "version": "2.0",
+  "minimumCurrentFactors": 6,
+  "minimumSourceFamilies": 3,
+  "maximumAgeHours": 168,
+  "factors": {
+    "polling": { "weight": 18, "label": "Polling" },
+    "bettingMarkets": { "weight": 12, "label": "Betting market odds" },
+    "campaignFundamentals": { "weight": 12, "label": "Campaign fundamentals" },
+    "candidateQuality": { "weight": 10, "label": "Candidate quality" },
+    "coalitionStrength": { "weight": 12, "label": "Coalition strength" },
+    "socialSentiment": { "weight": 6, "label": "Social sentiment" },
+    "momentum": { "weight": 10, "label": "Momentum" },
+    "economicBackdrop": { "weight": 14, "label": "Economic backdrop" },
+    "fragility": { "weight": 6, "label": "Fragility and insurgency" }
+  },
+  "rules": {
+    "missingEvidence": "missing",
+    "marketsAreOneFactor": true,
+    "attentionIsNotSupport": true,
+    "freezeBelowCoverageThreshold": true,
+    "platformsMustRemainSeparate": true
+  }
+}

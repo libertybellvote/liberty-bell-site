@@ -25,10 +25,13 @@ jobs:
       - name: Run Liberty Bell model session
         run: node scripts/run-model-session.js
 
+      - name: Collect free nine-signal evidence
+        run: node scripts/collect-evidence.js
+
       - name: Commit and push if site-data.json changed
         run: |
           git config user.name "Liberty Bell Bot"
           git config user.email "actions@github.com"
-          git add site-data.json ledger.json
+          git add site-data.json ledger.json evidence-ledger.json
           git diff --staged --quiet || git commit -m "Automated model update $(date -u +'%Y-%m-%d %H:%M UTC')"
           git push

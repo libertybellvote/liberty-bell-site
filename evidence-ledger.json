@@ -1,0 +1,360 @@
+{
+  "updatedAt": "2026-08-19T04:16:18.786Z",
+  "modelVersion": "2.0",
+  "callStatus": "frozen",
+  "coverage": {
+    "currentFactors": 0,
+    "requiredFactors": 6,
+    "sourceFamilies": 3,
+    "requiredSourceFamilies": 3
+  },
+  "safeguards": {
+    "missingEvidence": "missing",
+    "marketsAreOneFactor": true,
+    "attentionIsNotSupport": true,
+    "freezeBelowCoverageThreshold": true,
+    "platformsMustRemainSeparate": true
+  },
+  "sources": [
+    {
+      "name": "Polymarket",
+      "family": "prediction-markets",
+      "factor": "bettingMarkets",
+      "url": "https://polymarket.com",
+      "status": "current",
+      "retrievedAt": "2026-08-19T04:04:15.848Z",
+      "evidence": {
+        "source": "Polymarket public market data",
+        "retrievedAt": "2026-08-19T04:04:15.848Z",
+        "partyIndex": {
+          "democratic": 58.5,
+          "republican": 41.5
+        },
+        "party": {
+          "volume": 2064342.3687639995,
+          "liquidity": 360752.1121
+        },
+        "democraticNomination": {
+          "volume": 1262047861.606785,
+          "liquidity": 79808523.06687
+        },
+        "republicanNomination": {
+          "volume": 689013588.7314961,
+          "liquidity": 57096940.70826
+        }
+      }
+    },
+    {
+      "name": "Kalshi",
+      "family": "prediction-markets",
+      "factor": "bettingMarkets",
+      "url": "https://kalshi.com",
+      "status": "unavailable",
+      "retrievedAt": "2026-08-19T04:16:18.786Z",
+      "error": "No open 2028 presidential market was returned"
+    },
+    {
+      "name": "U.S. Bureau of Labor Statistics",
+      "family": "government-economic-data",
+      "factor": "economicBackdrop",
+      "url": "https://www.bls.gov/developers/",
+      "status": "current",
+      "retrievedAt": "2026-08-19T04:16:18.786Z",
+      "evidence": [
+        {
+          "seriesId": "CUUR0000SA0",
+          "observations": [
+            {
+              "year": "2026",
+              "period": "M07",
+              "value": 333.918
+            },
+            {
+              "year": "2026",
+              "period": "M06",
+              "value": 333.952
+            },
+            {
+              "year": "2026",
+              "period": "M05",
+              "value": 335.123
+            },
+            {
+              "year": "2026",
+              "period": "M04",
+              "value": 333.02
+            },
+            {
+              "year": "2026",
+              "period": "M03",
+              "value": 330.213
+            },
+            {
+              "year": "2026",
+              "period": "M02",
+              "value": 326.785
+            },
+            {
+              "year": "2026",
+              "period": "M01",
+              "value": 325.252
+            },
+            {
+              "year": "2025",
+              "period": "M12",
+              "value": 324.054
+            },
+            {
+              "year": "2025",
+              "period": "M11",
+              "value": 324.122
+            },
+            {
+              "year": "2025",
+              "period": "M10",
+              "value": null
+            },
+            {
+              "year": "2025",
+              "period": "M09",
+              "value": 324.8
+            },
+            {
+              "year": "2025",
+              "period": "M08",
+              "value": 323.976
+            },
+            {
+              "year": "2025",
+              "period": "M07",
+              "value": 323.048
+            },
+            {
+              "year": "2025",
+              "period": "M06",
+              "value": 322.561
+            }
+          ]
+        },
+        {
+          "seriesId": "LNS14000000",
+          "observations": [
+            {
+              "year": "2026",
+              "period": "M07",
+              "value": 4.1
+            },
+            {
+              "year": "2026",
+              "period": "M06",
+              "value": 4.2
+            },
+            {
+              "year": "2026",
+              "period": "M05",
+              "value": 4.3
+            },
+            {
+              "year": "2026",
+              "period": "M04",
+              "value": 4.3
+            },
+            {
+              "year": "2026",
+              "period": "M03",
+              "value": 4.3
+            },
+            {
+              "year": "2026",
+              "period": "M02",
+              "value": 4.4
+            },
+            {
+              "year": "2026",
+              "period": "M01",
+              "value": 4.3
+            },
+            {
+              "year": "2025",
+              "period": "M12",
+              "value": 4.4
+            },
+            {
+              "year": "2025",
+              "period": "M11",
+              "value": 4.5
+            },
+            {
+              "year": "2025",
+              "period": "M10",
+              "value": null
+            },
+            {
+              "year": "2025",
+              "period": "M09",
+              "value": 4.4
+            },
+            {
+              "year": "2025",
+              "period": "M08",
+              "value": 4.3
+            },
+            {
+              "year": "2025",
+              "period": "M07",
+              "value": 4.3
+            },
+            {
+              "year": "2025",
+              "period": "M06",
+              "value": 4.1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "VoteHub",
+      "family": "election-analysis",
+      "factor": "polling",
+      "url": "https://votehub.com/feed/",
+      "status": "current",
+      "retrievedAt": "2026-08-19T04:16:18.786Z",
+      "evidence": [
+        {
+          "title": "Internal Florida Gov R Primary",
+          "link": "https://votehub.com/2026_fl_gov_rep_primary_49122341_internal",
+          "publishedAt": "Wed, 19 Aug 2026 03:01:42 +0000"
+        },
+        {
+          "title": "2026 FL-20 Democratic Primary",
+          "link": "https://votehub.com/2026_fl20dem_primary",
+          "publishedAt": "Tue, 18 Aug 2026 17:40:14 +0000"
+        },
+        {
+          "title": "2026 FL-25 Democratic Primary",
+          "link": "https://votehub.com/2026_fl25dem_primary",
+          "publishedAt": "Tue, 18 Aug 2026 17:39:39 +0000"
+        },
+        {
+          "title": "A Sunshine State Showdown: August 17 Primaries Preview",
+          "link": "https://votehub.com/2026/08/18/a-sunshine-state-showdown-august-17-primaries-preview/",
+          "publishedAt": "Tue, 18 Aug 2026 15:42:26 +0000"
+        },
+        {
+          "title": "An Upper Midwest Marathon: Primaries Postmortem",
+          "link": "https://votehub.com/2026/08/17/an-upper-midwest-marathon-primaries-postmortem/",
+          "publishedAt": "Mon, 17 Aug 2026 16:27:58 +0000"
+        },
+        {
+          "title": "Wisconsin Gubernatorial Democratic Primary",
+          "link": "https://votehub.com/2026_wi_gov_dem_primary",
+          "publishedAt": "Tue, 11 Aug 2026 22:56:13 +0000"
+        },
+        {
+          "title": "Another Midwest Madhouse: Previewing the August 11 Primaries",
+          "link": "https://votehub.com/2026/08/11/another-midwest-madhouse-previewing-the-august-11-primaries/",
+          "publishedAt": "Tue, 11 Aug 2026 18:23:08 +0000"
+        },
+        {
+          "title": "Weekly Polling Rundown: Missing in Michigan, Internals Uncertainty, and the National Democratic Rally",
+          "link": "https://votehub.com/2026/08/07/weekly-polling-rundown-missing-in-michigan-internals-uncertainty-and-the-national-democratic-rally/",
+          "publishedAt": "Fri, 07 Aug 2026 17:21:38 +0000"
+        },
+        {
+          "title": "The Michigan Marquee: August 4th Primary Previews",
+          "link": "https://votehub.com/2026/08/04/the-michigan-marquee-august-4th-primary-previews/",
+          "publishedAt": "Tue, 04 Aug 2026 18:34:50 +0000"
+        },
+        {
+          "title": "Michigan U.S. Senator Democratic Primary",
+          "link": "https://votehub.com/2026_mi_sen_dem_primary",
+          "publishedAt": "Mon, 03 Aug 2026 17:11:32 +0000"
+        }
+      ]
+    },
+    {
+      "name": "Decision Desk HQ",
+      "family": "election-analysis",
+      "factor": "momentum",
+      "url": "https://decisiondeskhq.com/feed/",
+      "status": "unavailable",
+      "retrievedAt": "2026-08-19T04:16:18.786Z",
+      "error": "HTTP 404"
+    }
+  ],
+  "factors": {
+    "polling": {
+      "label": "Polling",
+      "weight": 18,
+      "status": "evidence-collected",
+      "sourceCount": 1,
+      "score": null,
+      "note": "Evidence collected for review. No automatic inference was made."
+    },
+    "bettingMarkets": {
+      "label": "Betting market odds",
+      "weight": 12,
+      "status": "evidence-collected",
+      "sourceCount": 1,
+      "score": null,
+      "note": "Evidence collected for review. No automatic inference was made."
+    },
+    "campaignFundamentals": {
+      "label": "Campaign fundamentals",
+      "weight": 12,
+      "status": "missing",
+      "sourceCount": 0,
+      "score": null,
+      "note": "No reliable free structured source is configured yet."
+    },
+    "candidateQuality": {
+      "label": "Candidate quality",
+      "weight": 10,
+      "status": "missing",
+      "sourceCount": 0,
+      "score": null,
+      "note": "No reliable free structured source is configured yet."
+    },
+    "coalitionStrength": {
+      "label": "Coalition strength",
+      "weight": 12,
+      "status": "missing",
+      "sourceCount": 0,
+      "score": null,
+      "note": "No reliable free structured source is configured yet."
+    },
+    "socialSentiment": {
+      "label": "Social sentiment",
+      "weight": 6,
+      "status": "missing",
+      "sourceCount": 0,
+      "score": null,
+      "note": "No reliable free structured source is configured yet."
+    },
+    "momentum": {
+      "label": "Momentum",
+      "weight": 10,
+      "status": "missing",
+      "sourceCount": 0,
+      "score": null,
+      "note": "Evidence collected for review. No automatic inference was made."
+    },
+    "economicBackdrop": {
+      "label": "Economic backdrop",
+      "weight": 14,
+      "status": "evidence-collected",
+      "sourceCount": 1,
+      "score": null,
+      "note": "Evidence collected for review. No automatic inference was made."
+    },
+    "fragility": {
+      "label": "Fragility and insurgency",
+      "weight": 6,
+      "status": "missing",
+      "sourceCount": 0,
+      "score": null,
+      "note": "No reliable free structured source is configured yet."
+    }
+  }
+}

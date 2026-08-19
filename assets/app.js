@@ -67,8 +67,8 @@ function renderForecast(data) {
   const rating = abs < 5 ? 'Toss-up' : abs < 15 ? `Leans ${leader}` : `Favors ${leader}`;
   const dems = [...data.field.democratic].sort((a, b) => b.oddsNum - a.oddsNum);
   const reps = [...data.field.republican].sort((a, b) => b.oddsNum - a.oddsNum);
-  const watchName = data.powerRanking?.candidateName || data.powerRanking?.name;
-  const watch = findCandidate(data, watchName);
+  const demCall = (data.calls || []).find(item => /Democratic nomination/i.test(item.question));
+  const repCall = (data.calls || []).find(item => /Republican nomination/i.test(item.question));
 
   $('#dem-pct').textContent = fmt(dem);
   $('#rep-pct').textContent = fmt(rep);
@@ -78,7 +78,7 @@ function renderForecast(data) {
   $('#bell-direction').textContent = margin >= 0 ? 'Swinging toward Democrats' : 'Swinging toward Republicans';
   $('.bell-visual').classList.toggle('lead-dem', margin >= 0);
   $('.bell-visual').classList.toggle('lead-rep', margin < 0);
-  $('#bell-reading').textContent = `${abs.toFixed(1)}-point market edge`;
+  $('#bell-reading').textContent = `${abs.toFixed(1)}-point Bell edge`;
   $('#swing-arm').style.transform = `rotate(${Math.max(-24, Math.min(24, margin * 1.2))}deg)`;
   $('#updated').textContent = updated(data.modelUpdatedAt || data.lastUpdated);
   $('#forecast-summary').textContent = call?.whyShort || 'The market has a favorite. The race does not have a winner.';
@@ -87,19 +87,22 @@ function renderForecast(data) {
   $('#market-read').innerHTML = `The party market favors <strong>${partyPlural}</strong>. Both nomination fights are still open.`;
   $('#snapshot-party').textContent = margin >= 0 ? 'D' : 'R';
   $('#snapshot-party').className = margin >= 0 ? 'd' : 'r';
-  $('#snapshot-margin').textContent = `${margin >= 0 ? '+' : ''}${margin.toFixed(0)}`;
-  $('#snapshot-dem').style.width = dem + '%';
-  $('#snapshot-rep').style.width = rep + '%';
-  $('#snapshot-edge-copy').textContent = `${partyPlural} lead ${fmt(dem)} to ${fmt(rep)}.`;
-  $('#snapshot-leaders').innerHTML = `<div>${personName(dems[0])}<strong>${dems[0].odds}</strong><small>Democratic nomination</small></div><div>${personName(reps[0])}<strong>${reps[0].odds}</strong><small>Republican nomination</small></div>`;
-  $('#snapshot-watch-person').innerHTML = watch ? `<img src="${watch.photo}" alt="${watch.name}"><span>${watch.name}</span>` : `<span>${watchName || 'No material move'}</span>`;
-  $('#snapshot-watch-odds').textContent = watch?.odds ? `${watch.odds} nomination odds` : 'Watching movement';
-  $('#snapshot-watch-copy').textContent = watch?.pulse || data.powerRanking?.reason || 'No meaningful change in the latest run.';
+  $('#snapshot-president-rating').textContent = rating;
+  $('#snapshot-president-call').textContent = call?.ourCall || `${partyPlural} have the edge`;
+  $('#snapshot-president-copy').textContent = call?.whyShort || `${partyPlural} lead the current Bell model.`;
+  const demPick = findCandidate(data, demCall?.pickName) || dems[0];
+  const repPick = findCandidate(data, repCall?.pickName) || reps[0];
+  $('#snapshot-dem-call').innerHTML = personName(demPick);
+  $('#snapshot-rep-call').innerHTML = personName(repPick);
+  $('#snapshot-dem-rating').textContent = demCall?.ourCall || demPick.name;
+  $('#snapshot-rep-rating').textContent = repCall?.ourCall || repPick.name;
+  $('#snapshot-dem-copy').textContent = demCall?.whyShort || 'The Democratic nomination remains open.';
+  $('#snapshot-rep-copy').textContent = repCall?.whyShort || 'The Republican nomination remains open.';
 }
 
 function candidateCard(candidate, index, party) {
   const [label, cls] = movement(candidate);
-  return `<article class="candidate-card compact-candidate"><div class="candidate-photo"><img src="${candidate.photo || ''}" alt="${candidate.name}" loading="lazy"><span class="standing">#${index + 1}</span></div><div class="candidate-body"><div class="candidate-name-row"><h2>${candidate.name}</h2>${partyBadge(party)}</div><div class="role">${candidate.role || ''}</div><p class="candidate-bio">${candidate.vibe || `${candidate.name} is a potential 2028 presidential contender.`}</p><div class="candidate-metrics"><div class="candidate-metric"><strong>${candidate.odds || 'N/A'}</strong><span>Market</span></div><div class="candidate-metric"><strong>${candidate.pollAvg != null ? candidate.pollAvg.toFixed(1) + '%' : 'N/A'}</strong><span>Polling</span></div><div class="candidate-metric"><strong class="pulse ${cls}">${label}</strong><span>Move</span></div></div><div class="candidate-read"><span>The Bell</span><p>${candidate.ourTake || 'No current assessment.'}</p></div></div></article>`;
+  return `<article class="candidate-card compact-candidate"><div class="candidate-photo"><img src="${candidate.photo || ''}" alt="${candidate.name}" loading="lazy"><span class="standing">#${index + 1}</span></div><div class="candidate-body"><div class="candidate-name-row"><h2>${candidate.name}</h2>${partyBadge(party)}</div><div class="role">${candidate.role || ''}</div><p class="candidate-bio">${candidate.vibe || `${candidate.name} is a potential 2028 presidential contender.`}</p><div class="candidate-metrics"><div class="candidate-metric"><strong>${candidate.odds || 'N/A'}</strong><span>Market</span></div><div class="candidate-metric"><strong>${candidate.pollAvg != null ? candidate.pollAvg.toFixed(1) + '%' : 'N/A'}</strong><span>Polling</span></div><div class="candidate-metric"><strong class="pulse ${cls}">${label}</strong><span>Move</span></div></div></div></article>`;
 }
 
 function renderCandidates(data) {
