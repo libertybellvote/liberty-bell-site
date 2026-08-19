@@ -49,6 +49,17 @@ function findCandidate(data, name) {
   return allCandidates(data).find(candidate => clean(candidate.name) === target || clean(candidate.name).includes(target) || target.includes(clean(candidate.name)));
 }
 
+const CLASSIFICATIONS = {
+  'Alexandria Ocasio-Cortez': 'DSA / democratic socialist', 'Gavin Newsom': 'Liberal establishment',
+  'Jon Ossoff': 'Center-left', 'Pete Buttigieg': 'Center-left', 'Kamala Harris': 'Liberal establishment',
+  'Josh Shapiro': 'Center-left', 'Andy Beshear': 'Moderate', 'JB Pritzker': 'Liberal establishment',
+  'Cory Booker': 'Liberal', 'Wes Moore': 'Center-left', 'Ro Khanna': 'Progressive', 'Mark Kelly': 'Moderate',
+  'Rahm Emanuel': 'Centrist establishment', 'Gretchen Whitmer': 'Center-left', 'Stephen A. Smith': 'Moderate outsider',
+  'JD Vance': 'National conservative', 'Marco Rubio': 'Conservative', 'Robert F. Kennedy Jr.': 'Populist outsider',
+  'Ted Cruz': 'Movement conservative', 'Ron DeSantis': 'MAGA conservative', 'Nikki Haley': 'Establishment conservative',
+  'Donald Trump': 'MAGA populist', 'Tucker Carlson': 'Right populist', 'Jill Stein': 'Green left'
+};
+
 function personName(candidate, className = '') {
   return `<span class="person-name ${className}"><img src="${candidate.photo || ''}" alt="" loading="lazy"><span>${candidate.name}</span></span>`;
 }
@@ -82,7 +93,37 @@ function renderForecast(data) {
   $('.bell-visual').classList.toggle('lead-dem', margin >= 0);
   $('.bell-visual').classList.toggle('lead-rep', margin < 0);
   const swingAngle = Math.sign(margin) * Math.min(42, abs * 2);
-  $('#swing-arm').style.transform = `rotate(${swingAngle.toFixed(1)}deg)`;
+  const arm = $('#swing-arm');
+  const stage = $('.swing-stage');
+  arm.style.transform = `rotate(${swingAngle.toFixed(1)}deg)`;
+  arm.title = 'Drag the Bell to preview a different race. Release to return to the model.';
+  const restoreForecast = () => {
+    arm.classList.remove('dragging');
+    arm.style.transform = `rotate(${swingAngle.toFixed(1)}deg)`;
+    $('#dem-pct').textContent = fmt(dem); $('#rep-pct').textContent = fmt(rep);
+    $('#dem-bar').style.width = dem + '%'; $('#rep-bar').style.width = rep + '%';
+    $('#rating').textContent = rating;
+    $('#bell-direction').textContent = margin >= 0 ? 'Swinging toward Democrats' : 'Swinging toward Republicans';
+  };
+  arm.onpointerdown = event => {
+    if (event.button !== 0) return;
+    arm.classList.add('dragging'); arm.setPointerCapture(event.pointerId);
+  };
+  arm.onpointermove = event => {
+    if (!arm.classList.contains('dragging')) return;
+    const rect = stage.getBoundingClientRect();
+    const previewAngle = Math.max(-42, Math.min(42, (rect.left + rect.width / 2 - event.clientX) / (rect.width / 2) * 50));
+    const previewDem = Math.max(0, Math.min(100, 50 + previewAngle / 4));
+    const previewRep = 100 - previewDem;
+    arm.style.transform = `rotate(${previewAngle.toFixed(1)}deg)`;
+    $('#dem-pct').textContent = fmt(previewDem); $('#rep-pct').textContent = fmt(previewRep);
+    $('#dem-bar').style.width = previewDem + '%'; $('#rep-bar').style.width = previewRep + '%';
+    const previewMargin = Math.abs(previewDem - previewRep);
+    $('#rating').textContent = previewMargin < 5 ? 'Toss-up preview' : `Preview: ${previewDem >= previewRep ? 'Democratic' : 'Republican'} edge`;
+    $('#bell-direction').textContent = 'Release to return to The Bell';
+  };
+  arm.onpointerup = restoreForecast;
+  arm.onpointercancel = restoreForecast;
   $('#updated').textContent = updated(data.marketMeta?.retrievedAt || data.marketUpdatedAt || data.modelUpdatedAt || data.lastUpdated);
   $('#forecast-summary').textContent = call?.whyShort || 'The market has a favorite. The race does not have a winner.';
   $('#dem-mini').innerHTML = miniField(dems);
@@ -108,7 +149,7 @@ function renderForecast(data) {
 
 function candidateCard(candidate, index, party) {
   const [label, cls] = movement(candidate);
-  return `<article class="candidate-card compact-candidate"><div class="candidate-photo"><img src="${candidate.photo || ''}" alt="${candidate.name}" loading="lazy"><span class="standing">#${index + 1}</span></div><div class="candidate-body"><div class="candidate-name-row"><h2>${candidate.name}</h2>${partyBadge(party)}</div><div class="role">${candidate.role || ''}</div><p class="candidate-bio">${candidate.vibe || `${candidate.name} is a potential 2028 presidential contender.`}</p><div class="candidate-metrics"><div class="candidate-metric"><strong>${candidate.odds || 'N/A'}</strong><span>Market</span></div><div class="candidate-metric"><strong>${candidate.pollAvg != null ? candidate.pollAvg.toFixed(1) + '%' : 'N/A'}</strong><span>Polling</span></div><div class="candidate-metric"><strong class="pulse ${cls}">${label}</strong><span>Move</span></div></div><div class="candidate-brief"><div><span>Lane</span><p>${candidate.lane || 'Still defining a national lane.'}</p></div><div><span>Watch</span><p>${candidate.fragility || candidate.weakness || 'The campaign case is still developing.'}</p></div></div></div></article>`;
+  return `<article class="candidate-card compact-candidate"><div class="candidate-photo"><img src="${candidate.photo || ''}" alt="${candidate.name}" loading="lazy"><span class="standing">#${index + 1}</span></div><div class="candidate-body"><div class="candidate-name-row"><h2>${candidate.name}</h2>${partyBadge(party)}</div><div class="role">${candidate.role || ''}</div><p class="candidate-bio">${candidate.vibe || `${candidate.name} is a potential 2028 presidential contender.`}</p><div class="candidate-metrics"><div class="candidate-metric"><strong>${candidate.odds || 'N/A'}</strong><span>Market</span></div><div class="candidate-metric"><strong>${candidate.pollAvg != null ? candidate.pollAvg.toFixed(1) + '%' : 'N/A'}</strong><span>Polling</span></div><div class="candidate-metric"><strong class="pulse ${cls}">${label}</strong><span>Move</span></div></div><div class="candidate-brief"><div><span>Classification</span><p>${CLASSIFICATIONS[candidate.name] || 'Unclassified'}</p></div><div><span>Watch</span><p>${candidate.fragility || candidate.weakness || 'The campaign case is still developing.'}</p></div></div></div></article>`;
 }
 
 function renderCandidates(data) {
