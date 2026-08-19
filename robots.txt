@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://libertybell.vote/sitemap.xml
+Sitemap: https://thebell.vote/sitemap.xml

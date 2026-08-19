@@ -36,7 +36,7 @@ function parseAggregation(html) {
 }
 
 async function fetchParty(party, page) {
-  const response = await fetch(`https://en.wikipedia.org/api/rest_v1/page/html/${page}`, { headers: { 'user-agent': 'TheBell/3.0 (+https://libertybell.vote)' } });
+  const response = await fetch(`https://en.wikipedia.org/api/rest_v1/page/html/${page}`, { headers: { 'user-agent': 'TheBell/3.0 (+https://thebell.vote)' } });
   if (!response.ok) throw new Error(`${party}: HTTP ${response.status}`);
   return { ...parseAggregation(await response.text()), url: `https://en.wikipedia.org/wiki/${page}`, retrievedAt: new Date().toISOString() };
 }

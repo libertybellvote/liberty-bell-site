@@ -13,7 +13,7 @@ const now = new Date().toISOString();
 async function request(url, options = {}) {
   const response = await fetch(url, {
     ...options,
-    headers: { 'user-agent': 'LibertyBellVote/2.0 (+https://libertybell.vote)', ...(options.headers || {}) }
+    headers: { 'user-agent': 'TheBell/3.0 (+https://thebell.vote)', ...(options.headers || {}) }
   });
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
   return response;
