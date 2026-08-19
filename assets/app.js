@@ -241,3 +241,39 @@ if (page === 'ledger') {
     if (error) error.textContent = 'The latest dataset could not be loaded. The published forecast is frozen.';
   });
 }
+
+function initModelSignals() {
+  const core = document.querySelector('.model-core');
+  if (!core) return;
+  const label = core.querySelector('.model-core-copy small');
+  const title = core.querySelector('.model-core-copy strong');
+  const description = core.querySelector('.model-core-copy p');
+  const nodes = [...document.querySelectorAll('.signal-node')];
+  const original = {label: label.textContent, title: title.textContent, description: description.textContent};
+
+  const show = node => {
+    nodes.forEach(item => item.classList.toggle('is-active', item === node));
+    core.classList.add('is-reading');
+    label.textContent = `Signal ${node.dataset.number} / ${node.dataset.weight}`;
+    title.textContent = node.dataset.title;
+    description.textContent = node.dataset.description;
+  };
+
+  const reset = () => {
+    nodes.forEach(item => item.classList.remove('is-active'));
+    core.classList.remove('is-reading');
+    label.textContent = original.label;
+    title.textContent = original.title;
+    description.textContent = original.description;
+  };
+
+  nodes.forEach(node => {
+    node.addEventListener('mouseenter', () => show(node));
+    node.addEventListener('mouseleave', () => { if (document.activeElement !== node) reset(); });
+    node.addEventListener('focus', () => show(node));
+    node.addEventListener('blur', reset);
+    node.addEventListener('click', () => show(node));
+  });
+}
+
+initModelSignals();
