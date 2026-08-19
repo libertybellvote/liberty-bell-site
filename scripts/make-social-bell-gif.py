@@ -16,6 +16,7 @@ BG, SURFACE, INK = "#F4F0E7", "#FFFDF8", "#1D1D1A"
 MUTED, LINE = "#6F6B62", "#CBC5B7"
 BLUE, RED, GOLD = "#376B9F", "#A94339", "#AA8430"
 DISPLAY = "/System/Library/Fonts/SFNS.ttf"
+DISPLAY_BOLD = "/System/Library/Fonts/Supplemental/Arial Bold.ttf"
 MONO = "/System/Library/Fonts/SFNSMono.ttf"
 
 
@@ -35,7 +36,7 @@ def exact_bell_body():
                 alpha = 0
             pixels[x, y] = (170, 132, 48, alpha)
     body = mark.crop(mark.getbbox())
-    target_h = s(225)
+    target_h = s(285)
     target_w = round(body.width * target_h / body.height)
     return body.resize((target_w, target_h), Image.Resampling.LANCZOS)
 
@@ -56,48 +57,29 @@ def centered(draw, x, y, text, face, fill, tracking=0):
 def make_frame(body, index):
     phase = sin(2 * pi * index / FRAMES)
     angle = 18 * phase
-    democratic = round(50 - phase * 22)
-    republican = 100 - democratic
     canvas = Image.new("RGBA", (W, W), BG)
     draw = ImageDraw.Draw(canvas)
 
     draw.rectangle((s(18), s(18), s(750), s(750)), fill=SURFACE, outline=INK, width=s(2))
     draw.rectangle((s(18), s(18), s(750), s(29)), fill=BLUE)
-    centered(draw, W / 2, s(58), "WHICH WAY WILL THE BELL SWING?", font(MONO, 17), GOLD, 1.5)
-    centered(draw, W / 2, s(111), "TOSS-UP", font(MONO, 15), MUTED, 1.2)
-    draw.text((s(62), s(112)), "D", font=font(DISPLAY, 29), fill="#D7D6CF")
-    rbox = draw.textbbox((0, 0), "R", font=font(DISPLAY, 29))
-    draw.text((s(706) - (rbox[2] - rbox[0]), s(112)), "R", font=font(DISPLAY, 29), fill="#D7D6CF")
+    centered(draw, W / 2, s(60), "THE BELL", font(DISPLAY_BOLD, 54), INK)
+    centered(draw, W / 2, s(127), "WHICH WAY WILL THE BELL SWING?", font(MONO, 14), GOLD, 1.4)
 
-    pivot_x, pivot_y = s(384), s(155)
-    draw.line((pivot_x, pivot_y, pivot_x, s(535)), fill=LINE, width=s(1))
+    pivot_x, pivot_y = s(384), s(170)
     layer = Image.new("RGBA", (s(520), s(520)), (0, 0, 0, 0))
     layer_draw = ImageDraw.Draw(layer)
     local_pivot = (s(260), s(45))
     body_x = local_pivot[0] - body.width // 2
-    body_y = s(153)
+    body_y = s(132)
     layer_draw.line((local_pivot[0], local_pivot[1], local_pivot[0], body_y + s(5)), fill=GOLD, width=s(4))
     layer.alpha_composite(body, (body_x, body_y))
     moved = layer.rotate(angle, resample=Image.Resampling.BICUBIC, center=local_pivot, expand=False)
     canvas.alpha_composite(moved, (pivot_x - local_pivot[0], pivot_y - local_pivot[1]))
 
-    axis_left, axis_right, axis_y = s(60), s(708), s(647)
-    middle = (axis_left + axis_right) // 2
-    draw.line((axis_left, axis_y, middle - s(2), axis_y), fill=BLUE, width=s(3))
-    draw.line((middle + s(2), axis_y, axis_right, axis_y), fill=RED, width=s(3))
-    for fraction in (0, .25, .5, .75, 1):
-        x = axis_left + (axis_right - axis_left) * fraction
-        color, height = (INK, 15) if fraction == .5 else (LINE, 10)
-        draw.line((x, axis_y - s(height / 2), x, axis_y + s(height / 2)), fill=color, width=s(1))
-    marker_x = axis_left + (axis_right - axis_left) * (republican / 100)
-    marker_r = s(10)
-    draw.ellipse((marker_x-marker_r, axis_y-marker_r, marker_x+marker_r, axis_y+marker_r), fill=SURFACE, outline=INK, width=s(2))
-    draw.ellipse((marker_x-s(6), axis_y-s(6), marker_x+s(6), axis_y+s(6)), fill=GOLD)
-    leader = "50-50" if democratic == 50 else f"{max(democratic, republican)}% {'D' if democratic > republican else 'R'}"
-    centered(draw, marker_x, s(609), leader, font(MONO, 12), INK)
-    for x, label in ((60,"D 100"),(222,"75"),(384,"50-50"),(546,"75"),(708,"R 100")):
-        centered(draw, s(x), s(672), label, font(MONO, 10), INK if x == 384 else MUTED)
-    centered(draw, W / 2, s(716), "THE BELL  /  THEBELL.VOTE", font(MONO, 10), GOLD, 1.1)
+    draw.line((s(310), s(674), s(458), s(674)), fill=LINE, width=s(1))
+    dot_x = s(384 + phase * 70)
+    draw.ellipse((dot_x-s(4), s(670), dot_x+s(4), s(678)), fill=GOLD)
+    centered(draw, W / 2, s(700), "THEBELL.VOTE", font(MONO, 11), MUTED, 1.7)
     return canvas.resize((SIZE, SIZE), Image.Resampling.LANCZOS)
 
 
