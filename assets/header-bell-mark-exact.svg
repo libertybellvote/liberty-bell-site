@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37 37" role="img" aria-label="The Bell header mark">
+  <circle cx="18.5" cy="18.5" r="17.75" fill="#171714" stroke="#D0AA55" stroke-width="1.5"/>
+  <path fill="#D0AA55" d="M14.25 9h8.5l2.21 10.2L27 22.2V24H10v-1.8l2.04-3L14.25 9Z"/>
+  <circle cx="19.5" cy="25.5" r="2.5" fill="#D0AA55"/>
+  <path d="M19 11v13" fill="none" stroke="#171714" stroke-width="1" transform="rotate(-10 19 17.5)"/>
+</svg>
