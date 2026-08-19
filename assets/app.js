@@ -118,7 +118,7 @@ function renderForecast(data) {
   $('#bell-direction').textContent = margin >= 0 ? 'Swinging toward Democrats' : 'Swinging toward Republicans';
   $('.bell-visual').classList.toggle('lead-dem', margin >= 0);
   $('.bell-visual').classList.toggle('lead-rep', margin < 0);
-  const swingAngle = Math.max(-42, Math.min(42, -margin * .42));
+  const swingAngle = Math.max(-42, Math.min(42, margin * .42));
   const arm = $('#swing-arm');
   const stage = $('.swing-stage');
   const axisMarker = $('#bell-axis-marker');
@@ -148,8 +148,8 @@ function renderForecast(data) {
   arm.onpointermove = event => {
     if (!arm.classList.contains('dragging')) return;
     const rect = stage.getBoundingClientRect();
-    const previewAngle = Math.max(-42, Math.min(42, (event.clientX - (rect.left + rect.width / 2)) / (rect.width / 2) * 42));
-    const previewDem = Math.max(0, Math.min(100, 50 - previewAngle * (50 / 42)));
+    const previewAngle = Math.max(-42, Math.min(42, (rect.left + rect.width / 2 - event.clientX) / (rect.width / 2) * 42));
+    const previewDem = Math.max(0, Math.min(100, 50 + previewAngle * (50 / 42)));
     const previewRep = 100 - previewDem;
     arm.style.transform = `rotate(${previewAngle.toFixed(1)}deg)`;
     $('#dem-pct').textContent = fmt(previewDem); $('#rep-pct').textContent = fmt(previewRep);
