@@ -87,7 +87,7 @@ function renderForecast(data) {
   $('#wire-dem').style.width = dem + '%';
   $('#wire-rep').style.width = rep + '%';
   $('#wire-party-score').textContent = `${fmt(dem)} to ${fmt(rep)}`;
-  $('#wire-field-visual').innerHTML = `<div>${personName(dems[0], 'wire-person')}<small>${dems[0].odds}</small></div><b>vs.</b><div>${personName(reps[0], 'wire-person')}<small>${reps[0].odds}</small></div>`;
+  $('#wire-field-visual').innerHTML = `<div>${personName(dems[0], 'wire-person')}<strong>${dems[0].odds}</strong><small>Democratic nomination odds</small></div><b>vs.</b><div>${personName(reps[0], 'wire-person')}<strong>${reps[0].odds}</strong><small>Republican nomination odds</small></div>`;
   $('#market-read').innerHTML = `The party market favors ${partyBadge(leader)} <strong>${partyPlural}</strong>. Both nomination fights are still open.`;
   $('#wire-watch-visual').innerHTML = watch ? `<img src="${watch.photo}" alt="${watch.name}"><span>↗</span>` : '';
   $('#mover-name').textContent = watch?.name || watchName || 'No material move';
@@ -96,7 +96,7 @@ function renderForecast(data) {
 
 function candidateCard(candidate, index, party) {
   const [label, cls] = movement(candidate);
-  return `<article class="candidate-card compact-candidate"><div class="candidate-photo"><img src="${candidate.photo || ''}" alt="${candidate.name}" loading="lazy"><span class="standing">#${index + 1}</span></div><div class="candidate-body"><div class="candidate-name-row"><h2>${candidate.name}</h2>${partyBadge(party)}</div><div class="role">${candidate.role || ''}</div><div class="candidate-metrics"><div class="candidate-metric"><strong>${candidate.odds || 'N/A'}</strong><span>Market</span></div><div class="candidate-metric"><strong>${candidate.pollAvg != null ? candidate.pollAvg.toFixed(1) + '%' : 'N/A'}</strong><span>Polling</span></div><div class="candidate-metric"><strong class="pulse ${cls}">${label}</strong><span>Move</span></div></div><p class="candidate-take">${candidate.ourTake || ''}</p><details class="candidate-details"><summary>The case and the catch</summary><p><strong>Base:</strong> ${candidate.audience || 'Not yet assessed.'}</p><p><strong>Read:</strong> ${candidate.pulse || 'No material change.'}</p><p><strong>Risk:</strong> ${candidate.fragility || candidate.weakness || 'Not yet assessed.'}</p></details></div></article>`;
+  return `<article class="candidate-card compact-candidate"><div class="candidate-photo"><img src="${candidate.photo || ''}" alt="${candidate.name}" loading="lazy"><span class="standing">#${index + 1}</span></div><div class="candidate-body"><div class="candidate-name-row"><h2>${candidate.name}</h2>${partyBadge(party)}</div><div class="role">${candidate.role || ''}</div><p class="candidate-bio">${candidate.vibe || `${candidate.name} is a potential 2028 presidential contender.`}</p><div class="candidate-metrics"><div class="candidate-metric"><strong>${candidate.odds || 'N/A'}</strong><span>Market</span></div><div class="candidate-metric"><strong>${candidate.pollAvg != null ? candidate.pollAvg.toFixed(1) + '%' : 'N/A'}</strong><span>Polling</span></div><div class="candidate-metric"><strong class="pulse ${cls}">${label}</strong><span>Move</span></div></div><div class="candidate-read"><span>The Bell</span><p>${candidate.ourTake || 'No current assessment.'}</p></div></div></article>`;
 }
 
 function renderCandidates(data) {
@@ -115,8 +115,10 @@ function renderMarkets(data) {
   $('#market-list').innerHTML = (data.calls || []).map(call => {
     const outcomes = [...(call.outcomes || [])].sort((a, b) => b.probability - a.probability);
     const max = Math.max(...outcomes.map(outcome => outcome.probability), 1);
-    const marketLabel = /party|presidency/i.test(call.question) ? 'Party market' : /Republican/i.test(call.question) ? 'Republican nomination' : 'Democratic nomination';
-    return `<article class="market-card"><div><div class="eyebrow">${marketLabel}</div><h2>${call.question}</h2><p class="our-call"><strong>${call.ourCall}</strong><br>${call.whyShort || ''}</p></div><div>${outcomes.map((outcome, index) => {const candidate = findCandidate(data, outcome.label); const seal = outcome.label === 'Democratic' || outcome.label === 'Republican' ? partyBadge(outcome.label) : ''; return `<div class="outcome ${index === 0 ? 'leader' : ''}"><span>${seal}${candidate ? personName(candidate, 'outcome-person') : outcome.label}</span><span class="outcome-bar"><span class="outcome-fill" style="width:${outcome.probability / max * 100}%"></span></span><span class="outcome-value">${fmt(outcome.probability)}</span></div>`;}).join('')}</div></article>`;
+    const isParty = /party|presidency/i.test(call.question);
+    const marketLabel = isParty ? 'Party market' : /Republican/i.test(call.question) ? 'Republican nomination' : 'Democratic nomination';
+    const art = isParty ? `<div class="market-art party-art"><span class="d">D</span><i></i><span class="r">R</span></div>` : `<div class="market-art field-art">${outcomes.slice(0, 3).map(outcome => {const candidate = findCandidate(data, outcome.label); return candidate ? `<img src="${candidate.photo}" alt="${candidate.name}">` : '';}).join('')}</div>`;
+    return `<article class="market-card"><div class="market-story">${art}<div class="eyebrow">${marketLabel}</div><h2>${call.question}</h2><p class="our-call"><strong>${call.ourCall}</strong><br>${call.whyShort || ''}</p></div><div>${outcomes.map((outcome, index) => {const candidate = findCandidate(data, outcome.label); const seal = outcome.label === 'Democratic' || outcome.label === 'Republican' ? partyBadge(outcome.label) : ''; return `<div class="outcome ${index === 0 ? 'leader' : ''}"><span>${seal}${candidate ? personName(candidate, 'outcome-person') : outcome.label}</span><span class="outcome-bar"><span class="outcome-fill" style="width:${outcome.probability / max * 100}%"></span></span><span class="outcome-value">${fmt(outcome.probability)}</span></div>`;}).join('')}</div></article>`;
   }).join('');
 }
 
