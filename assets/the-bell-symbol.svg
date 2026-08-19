@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
   <title id="title">The Bell symbol</title>
   <desc id="desc">The official slim gold bell inside a gold circle.</desc>
-  <circle cx="256" cy="256" r="226" fill="none" stroke="#D0AA55" stroke-width="18"/>
-  <path fill="#D0AA55" d="M211 145h90l16 122 49 75c8 13-1 29-16 29H162c-15 0-24-16-16-29l49-75 16-122Z"/>
-  <circle cx="256" cy="378" r="32" fill="#D0AA55"/>
+  <circle cx="256" cy="256" r="226" fill="none" stroke="#D7B052" stroke-width="18"/>
+  <path fill="#D7B052" d="M211 145h90l16 122 49 75c8 13-1 29-16 29H162c-15 0-24-16-16-29l49-75 16-122Z"/>
+  <circle cx="256" cy="378" r="32" fill="#D7B052"/>
   <path d="M267 170c-8 46-4 88 18 128" fill="none" stroke="#171714" stroke-width="12" stroke-linecap="round"/>
 </svg>
