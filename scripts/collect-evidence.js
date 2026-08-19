@@ -71,6 +71,15 @@ async function collectFeed(url) {
   return items;
 }
 
+async function collectRcp() {
+  const url = 'https://www.realclearpolling.com/latest-polls/2028';
+  const html = await (await request(url)).text();
+  if (/enable JS|captcha-delivery|captcha/i.test(html)) throw new Error('RCP browser challenge blocked unattended retrieval');
+  const text = html.replace(/<script\b[\s\S]*?<\/script>/gi, ' ').replace(/<style\b[\s\S]*?<\/style>/gi, ' ').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  if (!/2028/.test(text)) throw new Error('No readable 2028 polling data');
+  return { pageTitle: 'Latest Polls: 2028', excerpt: text.slice(0, 800) };
+}
+
 function factorSummary(config, sources) {
   const factors = {};
   for (const [key, definition] of Object.entries(config.factors)) {
@@ -93,6 +102,7 @@ async function main() {
   const sources = await Promise.all([
     safeSource('Kalshi', 'prediction-markets', 'bettingMarkets', 'https://kalshi.com', collectKalshi),
     safeSource('U.S. Bureau of Labor Statistics', 'government-economic-data', 'economicBackdrop', 'https://www.bls.gov/developers/', collectBls),
+    safeSource('RealClearPolling', 'polling-aggregator', 'polling', 'https://www.realclearpolling.com/latest-polls/2028', collectRcp),
     safeSource('VoteHub', 'election-analysis', 'polling', 'https://votehub.com/feed/', () => collectFeed('https://votehub.com/feed/')),
     safeSource('Decision Desk HQ', 'election-analysis', 'momentum', 'https://decisiondeskhq.com/feed/', () => collectFeed('https://decisiondeskhq.com/feed/'))
   ]);

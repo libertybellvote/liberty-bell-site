@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-19T04:16:18.786Z",
+  "updatedAt": "2026-08-19T04:23:10.524Z",
   "modelVersion": "2.0",
   "callStatus": "frozen",
   "coverage": {
@@ -50,7 +50,7 @@
       "factor": "bettingMarkets",
       "url": "https://kalshi.com",
       "status": "unavailable",
-      "retrievedAt": "2026-08-19T04:16:18.786Z",
+      "retrievedAt": "2026-08-19T04:23:10.524Z",
       "error": "No open 2028 presidential market was returned"
     },
     {
@@ -59,7 +59,7 @@
       "factor": "economicBackdrop",
       "url": "https://www.bls.gov/developers/",
       "status": "current",
-      "retrievedAt": "2026-08-19T04:16:18.786Z",
+      "retrievedAt": "2026-08-19T04:23:10.524Z",
       "evidence": [
         {
           "seriesId": "CUUR0000SA0",
@@ -214,12 +214,21 @@
       ]
     },
     {
+      "name": "RealClearPolling",
+      "family": "polling-aggregator",
+      "factor": "polling",
+      "url": "https://www.realclearpolling.com/latest-polls/2028",
+      "status": "unavailable",
+      "retrievedAt": "2026-08-19T04:23:10.524Z",
+      "error": "HTTP 403"
+    },
+    {
       "name": "VoteHub",
       "family": "election-analysis",
       "factor": "polling",
       "url": "https://votehub.com/feed/",
       "status": "current",
-      "retrievedAt": "2026-08-19T04:16:18.786Z",
+      "retrievedAt": "2026-08-19T04:23:10.524Z",
       "evidence": [
         {
           "title": "Internal Florida Gov R Primary",
@@ -279,7 +288,7 @@
       "factor": "momentum",
       "url": "https://decisiondeskhq.com/feed/",
       "status": "unavailable",
-      "retrievedAt": "2026-08-19T04:16:18.786Z",
+      "retrievedAt": "2026-08-19T04:23:10.524Z",
       "error": "HTTP 404"
     }
   ],
