@@ -19,9 +19,9 @@
   <main class="page bell-page">
     <div class="shell">
       <header class="election-hero">
-        <div class="election-kicker"><span>Election 2028</span><span>President</span><span>United States</span></div>
         <div class="election-title-row">
           <div>
+            <div class="eyebrow">2028 U.S. presidential election</div>
             <h1>2028 Presidential<br>Election Tracker</h1>
             <p class="hero-hook">Which way will the Bell swing?</p>
           </div>
@@ -45,9 +45,9 @@
         <div class="bell-data">
           <div class="bell-call"><div><div class="eyebrow">The Bell today</div><h2 id="rating">Loading forecast</h2></div></div>
           <div class="probabilities">
-            <div class="party dem"><div class="party-num" id="dem-pct">...</div><div class="party-name">Democratic</div></div>
+            <div class="party dem"><div class="party-num" id="dem-pct">...</div><div class="party-name"><span class="party-badge d">D</span> Democratic</div></div>
             <span class="versus">versus</span>
-            <div class="party rep"><div class="party-num" id="rep-pct">...</div><div class="party-name">Republican</div></div>
+            <div class="party rep"><div class="party-num" id="rep-pct">...</div><div class="party-name"><span class="party-badge r">R</span> Republican</div></div>
           </div>
           <div class="forecast-bar"><span class="dem" id="dem-bar" style="width:50%"></span><span class="rep" id="rep-bar" style="width:50%"></span><i class="mid"></i></div>
           <p class="forecast-explain" id="forecast-summary">Loading the latest election read.</p>
@@ -56,15 +56,15 @@
       </section>
 
       <section class="race-wire">
-        <div class="section-label"><span>Race wire</span><strong>What matters now</strong></div>
-        <article><span class="wire-tag">Party</span><h2 id="party-headline">Democrats hold the early edge.</h2><p>A lead, not a lock.</p></article>
-        <article><span class="wire-tag">Field</span><h2 id="field-read">Loading the nomination leaders.</h2><p><a href="/candidates.html">See the full field</a></p></article>
-        <article><span class="wire-tag">Watch</span><h2 id="mover-name">Loading signals</h2><p id="mover-copy">Checking candidate movement.</p></article>
+        <div class="race-wire-head"><span class="eyebrow">Race wire</span><strong>Three things worth knowing</strong></div>
+        <article class="wire-party"><div class="wire-icon"><span class="party-badge d">D</span><span class="party-badge r">R</span></div><span class="wire-tag">Party edge</span><h2 id="party-headline">Democrats hold the early edge.</h2><p>A lead, not a lock.</p></article>
+        <article class="wire-field"><div class="wire-icon">2</div><span class="wire-tag">Nomination leaders</span><h2 id="field-read">Loading the field.</h2><p><a href="/candidates.html">See every name</a></p></article>
+        <article class="wire-watch"><div class="wire-icon">↗</div><span class="wire-tag">Watch</span><h2 id="mover-name">Loading signals</h2><p id="mover-copy">Checking candidate movement.</p></article>
       </section>
 
       <section class="field-boards">
-        <article class="board-panel"><div class="panel-head"><div><span class="eyebrow">Democratic nomination</span><h2>Current market board</h2></div><a href="/candidates.html">Full field</a></div><div id="dem-mini"></div></article>
-        <article class="board-panel"><div class="panel-head"><div><span class="eyebrow">Republican nomination</span><h2>Current market board</h2></div><a href="/candidates.html">Full field</a></div><div id="rep-mini"></div></article>
+        <article class="board-panel"><div class="panel-head"><div><span class="eyebrow"><span class="party-badge d">D</span> Democratic nomination</span><h2>Current market board</h2></div><a href="/candidates.html">Full field</a></div><div id="dem-mini"></div></article>
+        <article class="board-panel"><div class="panel-head"><div><span class="eyebrow"><span class="party-badge r">R</span> Republican nomination</span><h2>Current market board</h2></div><a href="/candidates.html">Full field</a></div><div id="rep-mini"></div></article>
       </section>
     </div>
   </main>
