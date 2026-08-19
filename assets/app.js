@@ -10,11 +10,11 @@ const NAV = [
 ];
 
 function header() {
-  return `<header class="masthead"><div class="shell masthead-main"><a class="brand" href="/"><span class="brand-mark"><i></i></span><span><span class="brand-name">The Bell</span><span class="brand-formal">By Liberty Bell Vote</span></span></a><div class="mast-actions"><a class="btn donate" href="https://ko-fi.com/libertybellvote" target="_blank" rel="noopener">Donate</a><button class="theme-toggle" id="theme-toggle" aria-label="Toggle night mode" title="Toggle night mode">◐</button></div></div></header><nav class="nav"><div class="shell">${NAV.map(([id, url, label]) => `<a class="${page === id ? 'active' : ''}" href="${url}">${label}</a>`).join('')}</div></nav>`;
+  return `<header class="masthead"><div class="shell masthead-main"><a class="brand" href="/"><span class="brand-mark"><i></i></span><span class="brand-name">The Bell</span></a><div class="mast-actions"><a class="btn donate" href="https://ko-fi.com/libertybellvote" target="_blank" rel="noopener">Donate</a><button class="nav-toggle" id="nav-toggle" aria-label="Open site navigation" aria-controls="site-nav" aria-expanded="false"><span></span><span></span></button><button class="theme-toggle" id="theme-toggle" aria-label="Toggle night mode" title="Toggle night mode">◐</button></div></div></header><nav class="nav" id="site-nav"><div class="shell">${NAV.map(([id, url, label]) => `<a class="${page === id ? 'active' : ''}" href="${url}">${label}</a>`).join('')}</div></nav>`;
 }
 
 function footer() {
-  return `<footer><div class="shell"><div class="footer-lead"><div class="footer-lockup"><span class="brand-mark light"><i></i></span><div><div class="footer-name">The Bell</div><p>Which way will The Bell swing?</p></div></div><div class="footer-support"><p>Independent coverage of the 2028 presidential election.</p><a class="btn donate" href="https://ko-fi.com/libertybellvote" target="_blank" rel="noopener">Support The Bell</a></div></div><div class="footer-grid"><div class="footer-col"><strong>Explore</strong><a href="/">Home</a><a href="/candidates.html">The Field</a><a href="/market-gap.html">Bell vs. Markets</a><a href="/map.html">Electoral Map</a></div><div class="footer-col"><strong>Accountability</strong><a href="/methodology.html">How It Works</a><a href="/ledger.html">Receipts</a><a href="mailto:libertybellvote@gmail.com?subject=Correction">Corrections</a></div><div class="footer-col"><strong>Connect</strong><a href="https://x.com/LibertyBellVote">X / Twitter</a><a href="https://instagram.com/LibertyBellVote">Instagram</a><a href="mailto:libertybellvote@gmail.com?subject=Sponsoring%20The%20Bell">Sponsor The Bell</a><a href="mailto:libertybellvote@gmail.com">Contact</a></div></div><div class="copyright">© 2026 Liberty Bell Vote · All rights reserved · Market probabilities are not polls, guarantees, or financial advice.</div></div></footer>`;
+  return `<footer><div class="shell"><div class="footer-lead"><div class="footer-lockup"><span class="brand-mark light"><i></i></span><div><div class="footer-name">The Bell</div><p>Which way will The Bell swing?</p></div></div><div class="footer-support"><p>Independent coverage of the 2028 presidential election.</p><a class="btn donate" href="https://ko-fi.com/libertybellvote" target="_blank" rel="noopener">Support The Bell</a></div></div><div class="footer-grid"><div class="footer-col"><strong>Explore</strong><a href="/">Home</a><a href="/candidates.html">The Field</a><a href="/market-gap.html">Bell vs. Markets</a><a href="/map.html">Electoral Map</a></div><div class="footer-col"><strong>Accountability</strong><a href="/methodology.html">How It Works</a><a href="/ledger.html">Receipts</a><a href="mailto:libertybellvote@gmail.com?subject=Correction">Corrections</a></div><div class="footer-col"><strong>Connect</strong><a href="https://x.com/LibertyBellVote">X / Twitter</a><a href="https://instagram.com/LibertyBellVote">Instagram</a><a href="mailto:libertybellvote@gmail.com?subject=Sponsoring%20The%20Bell">Sponsor The Bell</a><a href="mailto:libertybellvote@gmail.com">Contact</a></div></div><div class="copyright">© 2026 The Bell · All rights reserved · Market probabilities are not polls, guarantees, or financial advice.</div></div></footer>`;
 }
 
 $('#site-header').innerHTML = header();
@@ -28,6 +28,14 @@ function setTheme(dark) {
 
 setTheme(localStorage.getItem('lbv-theme') === 'dark' || (!localStorage.getItem('lbv-theme') && matchMedia('(prefers-color-scheme:dark)').matches));
 $('#theme-toggle').onclick = () => setTheme(!document.body.classList.contains('dark'));
+const navToggle = $('#nav-toggle');
+const siteNav = $('#site-nav');
+navToggle.onclick = () => {
+  const open = siteNav.classList.toggle('is-open');
+  navToggle.classList.toggle('is-open', open);
+  navToggle.setAttribute('aria-expanded', String(open));
+  navToggle.setAttribute('aria-label', open ? 'Close site navigation' : 'Open site navigation');
+};
 
 const fmt = number => Number(number || 0).toFixed(1) + '%';
 const clean = value => String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
