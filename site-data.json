@@ -1,6 +1,6 @@
 {
   "lastUpdated": "2026-08-19T02:30:45.655Z",
-  "modelUpdatedAt": "2026-08-19T07:10:14.345Z",
+  "modelUpdatedAt": "2026-08-19T14:53:24.539Z",
   "libertyBellIndex": {
     "democratic": 58,
     "republican": 42
@@ -10,8 +10,8 @@
       {
         "name": "Alexandria Ocasio-Cortez",
         "role": "U.S. Representative, NY-14",
-        "odds": "20%",
-        "oddsNum": 19.7,
+        "odds": "21%",
+        "oddsNum": 21.1,
         "pollAvg": 9.2,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Alexandria%20Ocasio-Cortez%20Official%20Portrait.jpg?width=300",
         "vibe": "The field’s best natural communicator with younger, online audiences. High energy, high name recognition.",
@@ -30,8 +30,8 @@
       {
         "name": "Gavin Newsom",
         "role": "Governor of California",
-        "odds": "16%",
-        "oddsNum": 15.7,
+        "odds": "15%",
+        "oddsNum": 15.4,
         "pollAvg": 16.7,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Governor%20of%20California%20Gavin%20Newsom,%202026%20Official%20Portrait%202.jpg?width=300",
         "vibe": "Polished and combative in interviews. Built a media profile sparring directly with conservative hosts.",
@@ -110,7 +110,7 @@
         "name": "Josh Shapiro",
         "role": "Governor of Pennsylvania",
         "odds": "5%",
-        "oddsNum": 5.1,
+        "oddsNum": 5,
         "pollAvg": 6.6,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Josh%20Shapiro%202021.jpg?width=300",
         "vibe": "Battle-tested in the single most important swing state on the map, with limited national-stage vetting so far.",
@@ -546,12 +546,12 @@
       "outcomes": [
         {
           "label": "Alexandria Ocasio-Cortez",
-          "probability": 19.7,
+          "probability": 21.1,
           "platform": "Polymarket"
         },
         {
           "label": "Gavin Newsom",
-          "probability": 15.7,
+          "probability": 15.4,
           "platform": "Polymarket"
         },
         {
@@ -616,28 +616,28 @@
   },
   "marketMeta": {
     "source": "Polymarket public market data",
-    "retrievedAt": "2026-08-19T07:08:53.302Z",
+    "retrievedAt": "2026-08-19T14:53:24.020Z",
     "partyIndex": {
       "democratic": 58.5,
       "republican": 41.5
     },
     "party": {
-      "volume": 2064342.368764,
-      "liquidity": 361219.3124
+      "volume": 2066601.0433389994,
+      "liquidity": 410634.4364
     },
     "democraticNomination": {
-      "volume": 1262262531.8519022,
-      "liquidity": 79711969.78194
+      "volume": 1262356162.7022932,
+      "liquidity": 80159171.82758
     },
     "republicanNomination": {
-      "volume": 689053857.3115801,
-      "liquidity": 56844308.6252
+      "volume": 689114659.2009761,
+      "liquidity": 56884676.81194
     }
   },
-  "marketUpdatedAt": "2026-08-19T07:08:53.302Z",
+  "marketUpdatedAt": "2026-08-19T14:53:24.020Z",
   "modelMeta": {
     "version": "3.0",
-    "updatedAt": "2026-08-19T07:10:14.345Z",
+    "updatedAt": "2026-08-19T14:53:24.539Z",
     "status": "scored",
     "signalCoverage": "9/9",
     "score": 32,
@@ -698,10 +698,10 @@
         },
         {
           "name": "Gavin Newsom",
-          "score": 40.1,
+          "score": 39.3,
           "factors": {
             "polling": 0.5818815331010453,
-            "bettingMarkets": 0.7969543147208121,
+            "bettingMarkets": 0.7298578199052133,
             "campaignFundamentals": 0.7,
             "candidateQuality": 0.6,
             "coalitionStrength": 0.35,
@@ -713,10 +713,10 @@
         },
         {
           "name": "Kamala Harris",
-          "score": 33.4,
+          "score": 33.1,
           "factors": {
             "polling": 1,
-            "bettingMarkets": 0.38578680203045684,
+            "bettingMarkets": 0.3601895734597156,
             "campaignFundamentals": 0.85,
             "candidateQuality": 0.35,
             "coalitionStrength": 0.55,
@@ -728,10 +728,10 @@
         },
         {
           "name": "Pete Buttigieg",
-          "score": 30.3,
+          "score": 30.1,
           "factors": {
             "polling": 0.3832752613240418,
-            "bettingMarkets": 0.26903553299492383,
+            "bettingMarkets": 0.25118483412322273,
             "campaignFundamentals": 0.55,
             "candidateQuality": 0.75,
             "coalitionStrength": 0.3,
@@ -743,10 +743,10 @@
         },
         {
           "name": "Jon Ossoff",
-          "score": 25.8,
+          "score": 25.2,
           "factors": {
             "polling": 0,
-            "bettingMarkets": 0.7005076142131981,
+            "bettingMarkets": 0.6540284360189573,
             "campaignFundamentals": 0.35,
             "candidateQuality": 0.55,
             "coalitionStrength": 0.5,
@@ -835,6 +835,6 @@
         }
       ]
     },
-    "evidenceUpdatedAt": "2026-08-19T07:10:13.882Z"
+    "evidenceUpdatedAt": "2026-08-19T14:53:24.063Z"
   }
 }
