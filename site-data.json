@@ -482,8 +482,8 @@
   "calls": [
     {
       "question": "Which party wins the presidency?",
-      "ourCall": "Leans Democratic, and getting more confident",
-      "whyShort": "Trump’s approval hit 33% today, the lowest of his presidency. Democrats now lead on the economy for the first time in about a decade.",
+      "ourCall": "Leans Democratic",
+      "whyShort": "Trump’s 33% approval and Democratic gains on the economy outweigh the market price alone.",
       "pickName": null,
       "pickParty": null,
       "partySeal": "d",
@@ -503,8 +503,8 @@
     },
     {
       "question": "Who wins the Republican nomination?",
-      "ourCall": "Vance leads, but this is now genuinely a two-man race",
-      "whyShort": "Rubio’s odds have roughly doubled since spring, driven by his Iran and ICC record, not vibes.",
+      "ourCall": "Vance, with Rubio closing",
+      "whyShort": "Vance leads. Rubio’s rise is real enough to make this a two-person race.",
       "pickName": "JD Vance",
       "pickParty": "r",
       "reasoning": "This field is now realistically about two names, not five. Vance still leads clearly at 39%, and his fragility (standing partly borrowed from Trump) hasn’t changed. But Rubio has built something real behind him: his handling of the Iran conflict and a hardline push to dismantle the ICC have made him genuinely popular with the MAGA base, not just older establishment voters, and his odds have climbed from the high teens into the high 20s over several months on the strength of that record specifically. RFK Jr., Cruz, and DeSantis are no longer where the real action is on the Republican side.",
@@ -539,7 +539,7 @@
     {
       "question": "Who wins the Democratic nomination?",
       "ourCall": "AOC, carefully",
-      "whyShort": "Polls still say Harris. Markets and momentum say AOC. This is the real split to watch.",
+      "whyShort": "Polls say Harris. Markets and momentum say AOC. That split defines the race.",
       "pickName": "Alexandria Ocasio-Cortez",
       "pickParty": "d",
       "reasoning": "This is the least settled call on the page, and we want to show the actual tension rather than hide it. National primary polling still shows Harris leading on name recognition. Betting markets have AOC as the clear leader at 20%, up from 9% in June, a sustained climb, not a spike, backed by a viral head-to-head poll putting her ahead of Vance. Her fragility is real (an unscripted-moment stumble has already happened once). But right now she’s the only candidate who is both genuinely insurgent-coded and has real current momentum, which matters given how bad the environment looks for the incumbent party. Ossoff’s case is more complicated than it was a few days ago: he explicitly and repeatedly denied any 2028 interest this week, and his own market odds cooled slightly in response. We are taking that denial seriously rather than assuming it’s theater, which is why he is no longer our clear hedge. Newsom is closer to that role now on pure market standing. Whitmer, Kelly, and Stephen A. Smith remain real names we track, none yet building an active campaign.",
@@ -612,7 +612,7 @@
   ],
   "powerRanking": {
     "candidateName": "Marco Rubio",
-    "reason": "His odds have nearly doubled since spring on the strength of his Iran and ICC record, and he’s now the field’s clearest riser while Ossoff’s own denial cools speculation on the other side."
+    "reason": "Rubio has the clearest sustained rise in either nomination field."
   },
   "marketMeta": {
     "source": "Polymarket public market data",

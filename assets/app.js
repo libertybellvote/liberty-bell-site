@@ -81,8 +81,8 @@ function renderForecast(data) {
   $('#bell-direction').textContent = margin >= 0 ? 'Swinging toward Democrats' : 'Swinging toward Republicans';
   $('.bell-visual').classList.toggle('lead-dem', margin >= 0);
   $('.bell-visual').classList.toggle('lead-rep', margin < 0);
-  $('#bell-reading').textContent = `${abs.toFixed(1)}-point Bell edge`;
-  $('#swing-arm').style.transform = `rotate(${Math.max(-24, Math.min(24, margin * 1.2))}deg)`;
+  const swingAngle = Math.sign(margin) * Math.min(42, abs * 2);
+  $('#swing-arm').style.transform = `rotate(${swingAngle.toFixed(1)}deg)`;
   $('#updated').textContent = updated(data.marketMeta?.retrievedAt || data.marketUpdatedAt || data.modelUpdatedAt || data.lastUpdated);
   $('#forecast-summary').textContent = call?.whyShort || 'The market has a favorite. The race does not have a winner.';
   $('#dem-mini').innerHTML = miniField(dems);
@@ -131,7 +131,9 @@ function renderMarkets(data) {
     const marketLabel = isParty ? 'Party market' : /Republican/i.test(call.question) ? 'Republican nomination' : 'Democratic nomination';
     const art = isParty ? `<div class="market-art party-art"><span class="d">D</span><i></i><span class="r">R</span></div>` : `<div class="market-art field-art">${outcomes.slice(0, 3).map(outcome => {const candidate = findCandidate(data, outcome.label); return candidate ? `<img src="${candidate.photo}" alt="${candidate.name}">` : '';}).join('')}</div>`;
     const sourceUrl = isParty ? 'https://polymarket.com/event/which-party-wins-2028-us-presidential-election' : /Republican/i.test(call.question) ? 'https://polymarket.com/event/republican-presidential-nominee-2028' : 'https://polymarket.com/event/democratic-presidential-nominee-2028';
-    return `<article class="market-card"><div class="market-story">${art}<div class="eyebrow">${marketLabel}</div><h2>${call.question}</h2><p class="our-call"><strong>${call.ourCall}</strong><br>${call.whyShort || ''}</p><a class="market-source" href="${sourceUrl}" target="_blank" rel="noopener">Odds source: Polymarket</a></div><div>${outcomes.map((outcome, index) => {const candidate = findCandidate(data, outcome.label); const seal = outcome.label === 'Democratic' || outcome.label === 'Republican' ? partyBadge(outcome.label) : ''; return `<div class="outcome ${index === 0 ? 'leader' : ''}"><span>${seal}${candidate ? personName(candidate, 'outcome-person') : outcome.label}</span><span class="outcome-bar"><span class="outcome-fill" style="width:${outcome.probability / max * 100}%"></span></span><span class="outcome-value">${fmt(outcome.probability)}</span></div>`;}).join('')}</div></article>`;
+    const marketLeader = outcomes[0];
+    const bellPick = call.pickName || (data.libertyBellIndex.democratic >= data.libertyBellIndex.republican ? 'Democratic edge' : 'Republican edge');
+    return `<article class="market-card"><div class="market-story">${art}<div class="eyebrow">The market versus The Bell</div><h2>${call.question}</h2><div class="signal-compare"><div><span>Market leader</span><strong>${marketLeader.label} · ${fmt(marketLeader.probability)}</strong></div><div><span>The Bell</span><strong>${bellPick}</strong></div></div><p class="our-call">${call.whyShort || ''}</p><a class="market-source" href="${sourceUrl}" target="_blank" rel="noopener">View the ${marketLabel.toLowerCase()} on Polymarket</a></div><div>${outcomes.map((outcome, index) => {const candidate = findCandidate(data, outcome.label); const seal = outcome.label === 'Democratic' || outcome.label === 'Republican' ? partyBadge(outcome.label) : ''; return `<div class="outcome ${index === 0 ? 'leader' : ''}"><span>${seal}${candidate ? personName(candidate, 'outcome-person') : outcome.label}</span><span class="outcome-bar"><span class="outcome-fill" style="width:${outcome.probability / max * 100}%"></span></span><span class="outcome-value">${fmt(outcome.probability)}</span></div>`;}).join('')}</div></article>`;
   }).join('');
 }
 

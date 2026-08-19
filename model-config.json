@@ -4,14 +4,14 @@
   "minimumSourceFamilies": 3,
   "maximumAgeHours": 168,
   "factors": {
-    "polling": { "weight": 18, "label": "Polling" },
+    "polling": { "weight": 18, "label": "Polling", "inputs": ["National and state polling averages", "Presidential job approval", "Issue approval"] },
     "bettingMarkets": { "weight": 12, "label": "Betting market odds" },
     "campaignFundamentals": { "weight": 12, "label": "Campaign fundamentals" },
     "candidateQuality": { "weight": 10, "label": "Candidate quality" },
     "coalitionStrength": { "weight": 12, "label": "Coalition strength" },
     "socialSentiment": { "weight": 6, "label": "Social sentiment" },
     "momentum": { "weight": 10, "label": "Momentum" },
-    "economicBackdrop": { "weight": 14, "label": "Economic backdrop" },
+    "economicBackdrop": { "weight": 14, "label": "Economic backdrop", "inputs": ["Inflation", "Unemployment", "Real income and consumer pressure", "Presidential approval response to economic conditions"] },
     "fragility": { "weight": 6, "label": "Fragility and insurgency" }
   },
   "rules": {
