@@ -1,6 +1,80 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Bell — A Visual Read on 2028</title><meta name="description" content="Which way will the Bell swing? A visual read on the 2028 election through prediction markets, candidate odds, and political context."><meta property="og:title" content="The Bell — A Visual Read on 2028"><meta property="og:description" content="Which way will the Bell swing?"><meta property="og:image" content="https://libertybell.vote/og-rebrand.png"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="/favicon-32.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="/assets/styles.css"></head><body data-page="forecast"><div id="site-header"></div><main class="page bell-page"><div class="shell">
-<header class="bell-intro"><div><div class="eyebrow">A visual read on the 2028 presidential election</div><h1>Which way will<br>the Bell swing?</h1></div><div class="bell-intro-copy"><p>Prediction markets move faster than polls. The Bell turns their prices into a clear read on who is gaining ground—and what the market may be missing.</p><p class="meta">Updated <span id="updated">loading</span></p></div></header>
-<section class="bell-dashboard"><div class="bell-visual"><div class="swing-label" id="bell-direction">Reading the market</div><div class="swing-stage"><div class="swing-scale"><span>D</span><span>TOSS-UP</span><span>R</span></div><div class="swing-arm" id="swing-arm"><div class="swing-rope"></div><div class="bell-shape"><i></i></div></div></div><div class="swing-reading"><strong id="bell-reading">Loading edge</strong><span>Which party wins the presidency?</span></div></div><div class="bell-data"><div class="bell-call"><div><div class="eyebrow">Today’s read</div><h2 id="rating">Loading forecast</h2></div></div><div class="probabilities"><div class="party dem"><div class="party-num" id="dem-pct">—</div><div class="party-name">Democratic</div></div><span class="versus">versus</span><div class="party rep"><div class="party-num" id="rep-pct">—</div><div class="party-name">Republican</div></div></div><div class="forecast-bar"><span class="dem" id="dem-bar" style="width:50%"></span><span class="rep" id="rep-bar" style="width:50%"></span><i class="mid"></i></div><p class="forecast-explain" id="forecast-summary">Loading the latest election read.</p><div class="market-interpretation" id="market-read">Reading the party and nomination boards together.</div></div></section>
-<section class="read-grid"><article class="read-card"><span class="eyebrow">The party picture</span><h2>A Democratic edge, not a settled election.</h2><p>The Bell is currently swinging toward Democrats. That means the market sees a better chance of a Democratic win—not that the race is decided.</p></article><article class="read-card"><span class="eyebrow">The field</span><h2>Both nominations remain open.</h2><p id="field-read">Loading the leading contenders and the distance between them.</p></article><article class="read-card"><span class="eyebrow">Candidate to watch</span><h2 id="mover-name">Loading signals</h2><p id="mover-copy">Checking the latest candidate movement.</p></article></section>
-<section class="field-boards"><article class="board-panel"><div class="panel-head"><div><span class="eyebrow">Democratic nomination</span><h2>Current market board</h2></div><a href="/candidates.html">Meet the field →</a></div><div id="dem-mini"></div></article><article class="board-panel"><div class="panel-head"><div><span class="eyebrow">Republican nomination</span><h2>Current market board</h2></div><a href="/candidates.html">Meet the field →</a></div><div id="rep-mini"></div></article></section>
-</div></main><div id="site-footer"></div><script src="/assets/app.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>The Bell | 2028 Presidential Election Tracker</title>
+  <meta name="description" content="Track the 2028 presidential election through prediction markets, candidate odds, and political context.">
+  <meta property="og:title" content="The Bell | 2028 Presidential Election Tracker">
+  <meta property="og:description" content="Which way is the 2028 presidential race moving?">
+  <meta property="og:image" content="https://libertybell.vote/og-rebrand.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/favicon-32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body data-page="forecast">
+  <div id="site-header"></div>
+  <main class="page bell-page">
+    <div class="shell">
+      <header class="election-hero">
+        <div class="election-kicker"><span>Election 2028</span><span>President</span><span>United States</span></div>
+        <div class="election-title-row">
+          <div>
+            <h1>2028 Presidential<br>Election Tracker</h1>
+            <p class="hero-hook">Which way will the Bell swing?</p>
+          </div>
+          <div class="hero-brief">
+            <strong>The live state of the race.</strong>
+            <p>Party odds, nomination fights, and the political signals worth watching.</p>
+            <p class="meta">Updated <span id="updated">loading</span></p>
+          </div>
+        </div>
+      </header>
+
+      <section class="desk-nav" aria-label="2028 election desk">
+        <a href="#bell"><span>01</span><strong>Who is favored?</strong><small>Live party odds</small></a>
+        <a href="/candidates.html"><span>02</span><strong>Who can win?</strong><small>The candidate field</small></a>
+        <a href="/market-gap.html"><span>03</span><strong>What is moving?</strong><small>Full market board</small></a>
+      </section>
+
+      <section class="bell-dashboard" id="bell">
+        <div class="bell-visual">
+          <div class="swing-label" id="bell-direction">Reading the 2028 race</div>
+          <div class="swing-stage">
+            <div class="swing-scale"><span>D</span><span>TOSS-UP</span><span>R</span></div>
+            <div class="swing-arm" id="swing-arm"><div class="swing-rope"></div><div class="bell-shape"><i></i></div></div>
+          </div>
+          <div class="swing-reading"><strong id="bell-reading">Loading edge</strong><span>2028 presidential winner by party</span></div>
+        </div>
+        <div class="bell-data">
+          <div class="bell-call"><div><div class="eyebrow">The Bell today</div><h2 id="rating">Loading forecast</h2></div></div>
+          <div class="probabilities">
+            <div class="party dem"><div class="party-num" id="dem-pct">...</div><div class="party-name">Democratic</div></div>
+            <span class="versus">versus</span>
+            <div class="party rep"><div class="party-num" id="rep-pct">...</div><div class="party-name">Republican</div></div>
+          </div>
+          <div class="forecast-bar"><span class="dem" id="dem-bar" style="width:50%"></span><span class="rep" id="rep-bar" style="width:50%"></span><i class="mid"></i></div>
+          <p class="forecast-explain" id="forecast-summary">Loading the latest election read.</p>
+          <div class="market-interpretation" id="market-read">Reading the party and nomination boards together.</div>
+        </div>
+      </section>
+
+      <section class="race-wire">
+        <div class="section-label"><span>Race wire</span><strong>What matters now</strong></div>
+        <article><span class="wire-tag">Party</span><h2 id="party-headline">Democrats hold the early edge.</h2><p>A lead, not a lock.</p></article>
+        <article><span class="wire-tag">Field</span><h2 id="field-read">Loading the nomination leaders.</h2><p><a href="/candidates.html">See the full field</a></p></article>
+        <article><span class="wire-tag">Watch</span><h2 id="mover-name">Loading signals</h2><p id="mover-copy">Checking candidate movement.</p></article>
+      </section>
+
+      <section class="field-boards">
+        <article class="board-panel"><div class="panel-head"><div><span class="eyebrow">Democratic nomination</span><h2>Current market board</h2></div><a href="/candidates.html">Full field</a></div><div id="dem-mini"></div></article>
+        <article class="board-panel"><div class="panel-head"><div><span class="eyebrow">Republican nomination</span><h2>Current market board</h2></div><a href="/candidates.html">Full field</a></div><div id="rep-mini"></div></article>
+      </section>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="/assets/app.js"></script>
+</body>
+</html>
