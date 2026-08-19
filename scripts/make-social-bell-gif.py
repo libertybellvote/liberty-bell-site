@@ -16,7 +16,6 @@ BG, SURFACE, INK = "#F4F0E7", "#FFFDF8", "#1D1D1A"
 MUTED, LINE = "#6F6B62", "#CBC5B7"
 BLUE, RED, GOLD = "#376B9F", "#A94339", "#AA8430"
 DISPLAY = "/System/Library/Fonts/SFNS.ttf"
-DISPLAY_BOLD = "/System/Library/Fonts/Supplemental/Arial Bold.ttf"
 MONO = "/System/Library/Fonts/SFNSMono.ttf"
 
 
@@ -36,7 +35,7 @@ def exact_bell_body():
                 alpha = 0
             pixels[x, y] = (170, 132, 48, alpha)
     body = mark.crop(mark.getbbox())
-    target_h = s(285)
+    target_h = s(385)
     target_w = round(body.width * target_h / body.height)
     return body.resize((target_w, target_h), Image.Resampling.LANCZOS)
 
@@ -60,26 +59,20 @@ def make_frame(body, index):
     canvas = Image.new("RGBA", (W, W), BG)
     draw = ImageDraw.Draw(canvas)
 
-    draw.rectangle((s(18), s(18), s(750), s(750)), fill=SURFACE, outline=INK, width=s(2))
-    draw.rectangle((s(18), s(18), s(750), s(29)), fill=BLUE)
-    centered(draw, W / 2, s(60), "THE BELL", font(DISPLAY_BOLD, 54), INK)
-    centered(draw, W / 2, s(127), "WHICH WAY WILL THE BELL SWING?", font(MONO, 14), GOLD, 1.4)
+    centered(draw, W / 2, s(56), "The Bell has swung.", font(DISPLAY, 54), INK)
 
-    pivot_x, pivot_y = s(384), s(170)
+    pivot_x, pivot_y = s(384), s(158)
     layer = Image.new("RGBA", (s(520), s(520)), (0, 0, 0, 0))
     layer_draw = ImageDraw.Draw(layer)
     local_pivot = (s(260), s(45))
     body_x = local_pivot[0] - body.width // 2
-    body_y = s(132)
+    body_y = s(104)
     layer_draw.line((local_pivot[0], local_pivot[1], local_pivot[0], body_y + s(5)), fill=GOLD, width=s(4))
     layer.alpha_composite(body, (body_x, body_y))
     moved = layer.rotate(angle, resample=Image.Resampling.BICUBIC, center=local_pivot, expand=False)
     canvas.alpha_composite(moved, (pivot_x - local_pivot[0], pivot_y - local_pivot[1]))
 
-    draw.line((s(310), s(674), s(458), s(674)), fill=LINE, width=s(1))
-    dot_x = s(384 + phase * 70)
-    draw.ellipse((dot_x-s(4), s(670), dot_x+s(4), s(678)), fill=GOLD)
-    centered(draw, W / 2, s(700), "THEBELL.VOTE", font(MONO, 11), MUTED, 1.7)
+    centered(draw, W / 2, s(710), "THEBELL.VOTE", font(MONO, 11), MUTED, 1.7)
     return canvas.resize((SIZE, SIZE), Image.Resampling.LANCZOS)
 
 
