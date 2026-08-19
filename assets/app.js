@@ -14,7 +14,7 @@ function header() {
 }
 
 function footer() {
-  return `<footer><div class="shell"><div class="footer-lead"><div class="footer-lockup"><span class="brand-mark light"><i></i></span><div><div class="footer-name">The Bell</div><p>Which way will The Bell swing?</p></div></div><div class="footer-support"><p>Independent coverage of the 2028 presidential election.</p><a class="btn donate" href="https://ko-fi.com/libertybellvote" target="_blank" rel="noopener">Support The Bell</a></div></div><div class="footer-grid"><div class="footer-col"><strong>Explore</strong><a href="/">Home</a><a href="/candidates.html">The Field</a><a href="/market-gap.html">Bell vs. Markets</a><a href="/map.html">Electoral Map</a></div><div class="footer-col"><strong>Accountability</strong><a href="/methodology.html">How It Works</a><a href="/ledger.html">Receipts</a><a href="mailto:libertybellvote@gmail.com?subject=Correction">Corrections</a></div><div class="footer-col"><strong>Follow</strong><a href="https://x.com/LibertyBellVote">X / Twitter</a><a href="https://instagram.com/LibertyBellVote">Instagram</a><a href="mailto:libertybellvote@gmail.com">Contact</a></div></div><div class="copyright">© 2026 Liberty Bell Vote · Market probabilities are not polls, guarantees, or financial advice.</div></div></footer>`;
+  return `<footer><div class="shell"><div class="footer-lead"><div class="footer-lockup"><span class="brand-mark light"><i></i></span><div><div class="footer-name">The Bell</div><p>Which way will The Bell swing?</p></div></div><div class="footer-support"><p>Independent coverage of the 2028 presidential election.</p><a class="btn donate" href="https://ko-fi.com/libertybellvote" target="_blank" rel="noopener">Support The Bell</a></div></div><div class="footer-grid"><div class="footer-col"><strong>Explore</strong><a href="/">Home</a><a href="/candidates.html">The Field</a><a href="/market-gap.html">Bell vs. Markets</a><a href="/map.html">Electoral Map</a></div><div class="footer-col"><strong>Accountability</strong><a href="/methodology.html">How It Works</a><a href="/ledger.html">Receipts</a><a href="mailto:libertybellvote@gmail.com?subject=Correction">Corrections</a></div><div class="footer-col"><strong>Connect</strong><a href="https://x.com/LibertyBellVote">X / Twitter</a><a href="https://instagram.com/LibertyBellVote">Instagram</a><a href="mailto:libertybellvote@gmail.com?subject=Sponsoring%20The%20Bell">Sponsor The Bell</a><a href="mailto:libertybellvote@gmail.com">Contact</a></div></div><div class="copyright">© 2026 Liberty Bell Vote · All rights reserved · Market probabilities are not polls, guarantees, or financial advice.</div></div></footer>`;
 }
 
 $('#site-header').innerHTML = header();
@@ -113,7 +113,7 @@ function renderForecast(data) {
     if (!arm.classList.contains('dragging')) return;
     const rect = stage.getBoundingClientRect();
     const previewAngle = Math.max(-42, Math.min(42, (rect.left + rect.width / 2 - event.clientX) / (rect.width / 2) * 50));
-    const previewDem = Math.max(0, Math.min(100, 50 + previewAngle / 4));
+    const previewDem = Math.max(0, Math.min(100, 50 + previewAngle * (50 / 42)));
     const previewRep = 100 - previewDem;
     arm.style.transform = `rotate(${previewAngle.toFixed(1)}deg)`;
     $('#dem-pct').textContent = fmt(previewDem); $('#rep-pct').textContent = fmt(previewRep);

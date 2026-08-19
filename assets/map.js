@@ -27,7 +27,7 @@ function showDetail(state, pathNode) {
 
 async function drawMap() {
   try {
-    const response = await fetch('https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json');
+    const response = await fetch('https://cdn.jsdelivr.net/npm/us-atlas@3.0.1/states-10m.json');
     if (!response.ok) throw new Error('Map data unavailable');
     const atlas = await response.json();
     const features = topojson.feature(atlas, atlas.objects.states).features.filter(feature => stateByName.has(feature.properties.name));
