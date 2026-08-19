@@ -243,37 +243,54 @@ if (page === 'ledger') {
 }
 
 function initModelSignals() {
-  const core = document.querySelector('.model-core');
-  if (!core) return;
-  const label = core.querySelector('.model-core-copy small');
-  const title = core.querySelector('.model-core-copy strong');
-  const description = core.querySelector('.model-core-copy p');
+  const network = document.querySelector('.model-network');
+  if (!network) return;
   const nodes = [...document.querySelectorAll('.signal-node')];
-  const original = {label: label.textContent, title: title.textContent, description: description.textContent};
+  const popover = network.querySelector('.signal-popover');
+  const label = popover.querySelector('small');
+  const title = popover.querySelector('strong');
+  const description = popover.querySelector('p');
 
   const show = node => {
     nodes.forEach(item => item.classList.toggle('is-active', item === node));
-    core.classList.add('is-reading');
     label.textContent = `Signal ${node.dataset.number} / ${node.dataset.weight}`;
     title.textContent = node.dataset.title;
     description.textContent = node.dataset.description;
+    popover.hidden = false;
+
+    const networkBox = network.getBoundingClientRect();
+    const nodeBox = node.getBoundingClientRect();
+    const popoverBox = popover.getBoundingClientRect();
+    const nodeX = nodeBox.left + nodeBox.width / 2 - networkBox.left;
+    const nodeY = nodeBox.top + nodeBox.height / 2 - networkBox.top;
+    const centered = Math.abs(nodeX - networkBox.width / 2) < networkBox.width * .18;
+    let left;
+    let top;
+    if (centered) {
+      left = (networkBox.width - popoverBox.width) / 2;
+      top = nodeY < networkBox.height / 2 ? nodeBox.bottom - networkBox.top + 10 : nodeBox.top - networkBox.top - popoverBox.height - 10;
+    } else {
+      left = nodeX < networkBox.width / 2 ? nodeBox.right - networkBox.left + 10 : nodeBox.left - networkBox.left - popoverBox.width - 10;
+      top = nodeBox.top - networkBox.top;
+    }
+    popover.style.left = `${Math.max(12, Math.min(left, networkBox.width - popoverBox.width - 12))}px`;
+    popover.style.top = `${Math.max(52, Math.min(top, networkBox.height - popoverBox.height - 24))}px`;
   };
 
-  const reset = () => {
+  const hide = () => {
     nodes.forEach(item => item.classList.remove('is-active'));
-    core.classList.remove('is-reading');
-    label.textContent = original.label;
-    title.textContent = original.title;
-    description.textContent = original.description;
+    popover.hidden = true;
   };
 
   nodes.forEach(node => {
     node.addEventListener('mouseenter', () => show(node));
-    node.addEventListener('mouseleave', () => { if (document.activeElement !== node) reset(); });
+    node.addEventListener('mouseleave', () => { if (document.activeElement !== node) hide(); });
     node.addEventListener('focus', () => show(node));
-    node.addEventListener('blur', reset);
+    node.addEventListener('blur', hide);
     node.addEventListener('click', () => show(node));
   });
+  document.addEventListener('click', event => { if (!event.target.closest('.signal-node')) hide(); });
+  document.addEventListener('keydown', event => { if (event.key === 'Escape') hide(); });
 }
 
 initModelSignals();
