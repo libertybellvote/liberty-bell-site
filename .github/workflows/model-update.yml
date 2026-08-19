@@ -23,14 +23,12 @@ jobs:
           node-version: '20'
 
       - name: Run Liberty Bell model session
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node scripts/run-model-session.js
 
       - name: Commit and push if site-data.json changed
         run: |
           git config user.name "Liberty Bell Bot"
           git config user.email "actions@github.com"
-          git add site-data.json
+          git add site-data.json ledger.json
           git diff --staged --quiet || git commit -m "Automated model update $(date -u +'%Y-%m-%d %H:%M UTC')"
           git push
