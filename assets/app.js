@@ -3,7 +3,7 @@ const page = document.body.dataset.page || 'forecast';
 const NAV = [
   ['forecast', '/', 'Home'],
   ['candidates', '/candidates.html', 'The Field'],
-  ['markets', '/market-gap.html', 'Bell vs. Markets'],
+  ['markets', '/market-gap.html', 'Matchup Builder'],
   ['map', '/map.html', 'Electoral Map'],
   ['methodology', '/methodology.html', 'How It Works'],
   ['ledger', '/ledger.html', 'Receipts']
@@ -14,7 +14,7 @@ function header() {
 }
 
 function footer() {
-  return `<footer><div class="shell"><div class="footer-lead"><div class="footer-lockup"><span class="brand-mark light"><i></i></span><div><div class="footer-name">The Bell</div><p>Which way will The Bell swing?</p></div></div><div class="footer-support"><p>Independent coverage of the 2028 presidential election.</p><a class="btn donate" href="https://ko-fi.com/libertybellvote" target="_blank" rel="noopener">Support The Bell</a></div></div><div class="footer-grid"><div class="footer-col"><strong>Explore</strong><a href="/">Home</a><a href="/candidates.html">The Field</a><a href="/market-gap.html">Bell vs. Markets</a><a href="/map.html">Electoral Map</a></div><div class="footer-col"><strong>Accountability</strong><a href="/methodology.html">How It Works</a><a href="/ledger.html">Receipts</a><a href="mailto:libertybellvote@gmail.com?subject=Correction">Corrections</a></div><div class="footer-col"><strong>Connect</strong><a href="https://x.com/LibertyBellVote">X / Twitter</a><a href="https://instagram.com/LibertyBellVote">Instagram</a><a href="mailto:libertybellvote@gmail.com?subject=Sponsoring%20The%20Bell">Sponsor The Bell</a><a href="mailto:libertybellvote@gmail.com">Contact</a></div></div><div class="copyright">© 2026 The Bell · All rights reserved · Market probabilities are not polls, guarantees, or financial advice.</div></div></footer>`;
+  return `<footer><div class="shell"><div class="footer-lead"><div class="footer-lockup"><span class="brand-mark light"><i></i></span><div><div class="footer-name">The Bell</div><p>Which way will The Bell swing?</p></div></div><div class="footer-support"><p>Independent coverage of the 2028 presidential election.</p><a class="btn donate" href="https://ko-fi.com/libertybellvote" target="_blank" rel="noopener">Support The Bell</a></div></div><div class="footer-grid"><div class="footer-col"><strong>Explore</strong><a href="/">Home</a><a href="/candidates.html">The Field</a><a href="/market-gap.html">Matchup Builder</a><a href="/map.html">Electoral Map</a></div><div class="footer-col"><strong>Accountability</strong><a href="/methodology.html">How It Works</a><a href="/ledger.html">Receipts</a><a href="mailto:libertybellvote@gmail.com?subject=Correction">Corrections</a></div><div class="footer-col"><strong>Connect</strong><a href="https://x.com/LibertyBellVote">X / Twitter</a><a href="https://instagram.com/LibertyBellVote">Instagram</a><a href="mailto:libertybellvote@gmail.com?subject=Sponsoring%20The%20Bell">Sponsor The Bell</a><a href="mailto:libertybellvote@gmail.com">Contact</a></div></div><div class="copyright">© 2026 The Bell · All rights reserved · Model estimates are not polls, guarantees, or financial advice.</div></div></footer>`;
 }
 
 $('#site-header').innerHTML = header();
@@ -196,7 +196,8 @@ function renderForecast(data) {
 function candidateCard(candidate, index, party) {
   const [label, cls] = movement(candidate);
   const polling = candidate.pollAvg != null ? candidate.pollAvg.toFixed(1) + '%' : 'Not listed';
-  return `<article class="candidate-card compact-candidate"><div class="candidate-photo"><img src="${candidate.photo || ''}" alt="${candidate.name}" loading="lazy"><span class="standing">#${index + 1}</span></div><div class="candidate-body"><div class="candidate-name-row"><h2>${candidate.name}</h2>${partyBadge(party)}</div><div class="role">${candidate.role || ''}</div><div class="candidate-classification">${CLASSIFICATIONS[candidate.name] || 'Unclassified'}</div><div class="candidate-metrics"><div class="candidate-metric"><strong>${candidate.odds || 'N/A'}</strong><span>Market price</span></div><div class="candidate-metric"><strong class="${candidate.pollAvg == null ? 'metric-missing' : ''}">${polling}</strong><span>Polling</span></div><div class="candidate-metric"><strong class="pulse ${cls}">${label}</strong><span>Move</span></div></div><p class="candidate-watch"><span>In one sentence</span>${candidate.vibe || candidate.ourTake || 'The campaign case is still developing.'}</p></div></article>`;
+  const incumbent = candidate.name === 'Donald Trump' ? '<span class="incumbent-badge">Current president</span>' : '';
+  return `<article class="candidate-card compact-candidate"><div class="candidate-photo"><img src="${candidate.photo || ''}" alt="${candidate.name}" loading="lazy"><span class="standing">#${index + 1}</span>${incumbent}</div><div class="candidate-body"><div class="candidate-name-row"><h2>${candidate.name}</h2>${partyBadge(party)}</div><div class="role">${candidate.role || ''}</div><div class="candidate-classification">${CLASSIFICATIONS[candidate.name] || 'Unclassified'}</div><div class="candidate-metrics"><div class="candidate-metric"><strong>${candidate.odds || 'N/A'}</strong><span>Market price</span></div><div class="candidate-metric"><strong class="${candidate.pollAvg == null ? 'metric-missing' : ''}">${polling}</strong><span>Polling</span></div><div class="candidate-metric"><strong class="pulse ${cls}">${label}</strong><span>Move</span></div></div><p class="candidate-watch"><span>In one sentence</span>${candidate.vibe || candidate.ourTake || 'The campaign case is still developing.'}</p></div></article>`;
 }
 
 function renderCandidates(data) {
@@ -215,17 +216,89 @@ function renderCandidates(data) {
 
 function renderMarkets(data) {
   $('#market-updated').textContent = updated(data.marketMeta?.retrievedAt || data.marketUpdatedAt || data.lastUpdated);
-  $('#market-list').innerHTML = (data.calls || []).map(call => {
-    const outcomes = [...(call.outcomes || [])].sort((a, b) => b.probability - a.probability);
-    const max = Math.max(...outcomes.map(outcome => outcome.probability), 1);
-    const isParty = /party|presidency/i.test(call.question);
-    const marketLabel = isParty ? 'Party market' : /Republican/i.test(call.question) ? 'Republican nomination' : 'Democratic nomination';
-    const art = isParty ? `<div class="market-art party-art"><span class="d">D</span><i></i><span class="r">R</span></div>` : `<div class="market-art field-art">${outcomes.slice(0, 3).map(outcome => {const candidate = findCandidate(data, outcome.label); return candidate ? `<img src="${candidate.photo}" alt="${candidate.name}">` : '';}).join('')}</div>`;
-    const sourceUrl = isParty ? 'https://polymarket.com/event/which-party-wins-2028-us-presidential-election' : /Republican/i.test(call.question) ? 'https://polymarket.com/event/republican-presidential-nominee-2028' : 'https://polymarket.com/event/democratic-presidential-nominee-2028';
-    const marketLeader = outcomes[0];
-    const bellPick = call.pickName || (data.libertyBellIndex.democratic >= data.libertyBellIndex.republican ? 'Democratic edge' : 'Republican edge');
-    return `<article class="market-card"><div class="market-story">${art}<div class="eyebrow">The market versus The Bell</div><h2>${call.question}</h2><div class="signal-compare"><div><span>Market leader</span><strong>${marketLeader.label} · ${fmt(marketLeader.probability)}</strong></div><div><span>The Bell</span><strong>${bellPick}</strong></div></div><p class="our-call">${call.whyShort || ''}</p><a class="market-source" href="${sourceUrl}" target="_blank" rel="noopener">View the ${marketLabel.toLowerCase()} on Polymarket</a></div><div>${outcomes.map((outcome, index) => {const candidate = findCandidate(data, outcome.label); const seal = outcome.label === 'Democratic' || outcome.label === 'Republican' ? partyBadge(outcome.label) : ''; return `<div class="outcome ${index === 0 ? 'leader' : ''}"><span>${seal}${candidate ? personName(candidate, 'outcome-person') : outcome.label}</span><span class="outcome-bar"><span class="outcome-fill" style="width:${outcome.probability / max * 100}%"></span></span><span class="outcome-value">${fmt(outcome.probability)}</span></div>`;}).join('')}</div></article>`;
-  }).join('');
+  const calls = data.calls || [];
+  const dems = [...(data.field?.democratic || [])].sort((a, b) => b.oddsNum - a.oddsNum);
+  const reps = [...(data.field?.republican || [])].sort((a, b) => b.oddsNum - a.oddsNum);
+  const partyCall = calls.find(call => /party|wins the presidency/i.test(call.question)) || calls[0];
+  const demCall = calls.find(call => /Democratic/i.test(call.question));
+  const repCall = calls.find(call => /Republican/i.test(call.question));
+  const partyOutcomes = partyCall?.outcomes || [];
+  const demParty = partyOutcomes.find(outcome => /Democratic/i.test(outcome.label))?.probability || data.libertyBellIndex?.democratic || 50;
+  const repParty = partyOutcomes.find(outcome => /Republican/i.test(outcome.label))?.probability || data.libertyBellIndex?.republican || 50;
+  const rankings = data.modelMeta?.nominationRankings || {};
+  const modelRow = (candidate, party) => rankings[party]?.find(row => row.name === candidate.name);
+  const generalElectionWeights = {
+    campaignFundamentals: 12,
+    candidateQuality: 10,
+    coalitionStrength: 12,
+    socialSentiment: 6,
+    momentum: 10,
+    economicBackdrop: 14,
+    fragility: 6
+  };
+  const normalizedMetric = (candidate, list, field) => {
+    const max = Math.max(...list.map(item => Math.max(0, Number(item[field]) || 0)), 1);
+    return Math.max(0, Number(candidate[field]) || 0) / max;
+  };
+  const editorialStrength = row => {
+    if (!row?.factors) return null;
+    let weighted = 0;
+    let weight = 0;
+    Object.entries(generalElectionWeights).forEach(([key, factorWeight]) => {
+      const value = Number(row.factors[key]);
+      if (!Number.isFinite(value)) return;
+      weighted += value * factorWeight;
+      weight += factorWeight;
+    });
+    return weight ? weighted / weight : null;
+  };
+  const candidateStrength = (candidate, party) => {
+    const list = party === 'democratic' ? dems : reps;
+    const editorial = editorialStrength(modelRow(candidate, party));
+    const poll = normalizedMetric(candidate, list, 'pollAvg');
+    const market = normalizedMetric(candidate, list, 'oddsNum');
+    const momentum = Math.max(-1, Math.min(1, (Number(candidate.marketChange1w) || 0) / 5));
+    if (Number.isFinite(editorial)) return {value: Math.max(-1, Math.min(1, editorial * 0.70 + poll * 0.12 + market * 0.10 + momentum * 0.08)), coverage: 'Full Bell Model'};
+    return {value: Math.max(-1, Math.min(1, 0.45 + (poll - 0.5) * 0.20 + (market - 0.5) * 0.18 + momentum * 0.10)), coverage: 'Available polling, market, and momentum evidence'};
+  };
+  const matchupEstimate = (dem, rep) => {
+    const demStrength = candidateStrength(dem, 'democratic');
+    const repStrength = candidateStrength(rep, 'republican');
+    const environmentLean = ((data.libertyBellIndex?.democratic || 50) - 50) * 0.5;
+    const candidateContrast = (demStrength.value - repStrength.value) * 25;
+    const democratic = Math.max(25, Math.min(75, 50 + environmentLean + candidateContrast));
+    return {
+      democratic: Number(democratic.toFixed(1)),
+      republican: Number((100 - democratic).toFixed(1)),
+      environmentLean: Number(environmentLean.toFixed(1)),
+      candidateContrast: Number(candidateContrast.toFixed(1)),
+      coverage: demStrength.coverage === 'Full Bell Model' && repStrength.coverage === 'Full Bell Model' ? 'Full Bell Model' : 'Modeled from available polling, market, and momentum evidence'
+    };
+  };
+  const options = list => list.map((candidate, index) => `<option value="${index}">${candidate.name}</option>`).join('');
+  $('#market-list').innerHTML = `<section class="matchup-builder"><div class="builder-controls"><label><span>Choose a Democrat</span><select id="match-dem">${options(dems)}</select></label><span class="builder-versus">VS</span><label><span>Choose a Republican</span><select id="match-rep">${options(reps)}</select></label></div><div class="builder-stage"><article class="builder-candidate dem"><div class="builder-party">Democrat</div><img id="match-dem-photo" alt=""><h2 id="match-dem-name"></h2><div class="builder-price"><img src="/assets/polymarket-mark.svg" alt=""><span>2028 winner market</span><strong id="match-dem-price"></strong></div><small>Current Polymarket presidential winner price</small></article><div class="builder-center"><span>2028</span><strong>VS</strong><small>Your matchup</small></div><article class="builder-candidate rep"><div class="builder-party">Republican</div><img id="match-rep-photo" alt=""><h2 id="match-rep-name"></h2><div class="builder-price"><img src="/assets/polymarket-mark.svg" alt=""><span>2028 winner market</span><strong id="match-rep-price"></strong></div><small>Current Polymarket presidential winner price</small></article></div><div class="builder-score"><div class="score-brand"><img src="/assets/header-bell-mark-exact.svg" alt="The Bell"><div><span>The Bell matchup estimate</span><strong id="estimate-line"><b id="estimate-dem-name"></b> <em id="estimate-dem"></em><i>vs.</i><b id="estimate-rep-name"></b> <em id="estimate-rep"></em></strong></div></div><div class="party-score" id="estimate-bar"><i class="dem" id="estimate-dem-bar"></i><i class="rep" id="estimate-rep-bar"></i></div><p id="estimate-note">Model estimate, not a poll or betting price.</p><details class="estimate-method"><summary>How this is calculated</summary><p>The national environment supplies a modest starting lean. The Bell Model then compares the candidates using every current signal available. Fully tracked candidates receive the complete model. Other candidates are estimated from available polling, market position, and momentum until broader evidence is available.</p></details></div><div class="builder-bell"><div><span>National environment</span><strong>${partyCall?.ourCall || (demParty >= repParty ? 'Leans Democratic' : 'Leans Republican')}</strong><p>${partyCall?.whyShort || ''}</p></div><div class="bell-picks"><span>Current Democratic call <b>${demCall?.pickName || dems[0]?.name}</b></span><span>Current Republican call <b>${repCall?.pickName || reps[0]?.name}</b></span></div></div></section>`;
+  const updateMatchup = () => {
+    const dem = dems[Number($('#match-dem').value)] || dems[0];
+    const rep = reps[Number($('#match-rep').value)] || reps[0];
+    [['dem', dem], ['rep', rep]].forEach(([side, candidate]) => {
+      $(`#match-${side}-photo`).src = candidate.photo || '';
+      $(`#match-${side}-photo`).alt = candidate.name;
+      $(`#match-${side}-name`).textContent = candidate.name;
+      $(`#match-${side}-price`).textContent = candidate.winnerOdds || 'Not listed';
+    });
+    const estimate = matchupEstimate(dem, rep);
+    $('#estimate-dem-name').textContent = dem.name;
+    $('#estimate-rep-name').textContent = rep.name;
+    $('#estimate-dem').textContent = fmt(estimate.democratic);
+    $('#estimate-rep').textContent = fmt(estimate.republican);
+    $('#estimate-dem-bar').style.width = `${estimate.democratic}%`;
+    $('#estimate-rep-bar').style.width = `${estimate.republican}%`;
+    const leader = estimate.democratic >= estimate.republican ? dem.name : rep.name;
+    $('#estimate-note').textContent = `${leader} leads this model read. ${estimate.coverage}. National environment: ${estimate.environmentLean >= 0 ? '+' : ''}${estimate.environmentLean} D. Candidate contrast: ${estimate.candidateContrast >= 0 ? '+' : ''}${estimate.candidateContrast} D.`;
+  };
+  $('#match-dem').addEventListener('change', updateMatchup);
+  $('#match-rep').addEventListener('change', updateMatchup);
+  updateMatchup();
 }
 
 function renderLedger(entries) {
