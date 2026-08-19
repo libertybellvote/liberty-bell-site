@@ -32,6 +32,7 @@ $('#theme-toggle').onclick = () => setTheme(!document.body.classList.contains('d
 const fmt = number => Number(number || 0).toFixed(1) + '%';
 const clean = value => String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 const updated = iso => new Date(iso).toLocaleString('en-US', {month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: 'America/New_York'}) + ' ET';
+const shortDate = iso => new Date(iso).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric', timeZone: 'America/New_York'});
 const movement = candidate => candidate.pulseDir === 'up' ? ['▲ Rising', 'up'] : candidate.pulseDir === 'down' ? ['▼ Falling', 'down'] : ['Steady', 'flat'];
 
 function allCandidates(data) {
@@ -69,6 +70,8 @@ function renderForecast(data) {
   const reps = [...data.field.republican].sort((a, b) => b.oddsNum - a.oddsNum);
   const demCall = (data.calls || []).find(item => /Democratic nomination/i.test(item.question));
   const repCall = (data.calls || []).find(item => /Republican nomination/i.test(item.question));
+  const watchName = data.powerRanking?.candidateName || data.powerRanking?.name;
+  const watch = findCandidate(data, watchName);
 
   $('#dem-pct').textContent = fmt(dem);
   $('#rep-pct').textContent = fmt(rep);
@@ -85,7 +88,7 @@ function renderForecast(data) {
   $('#dem-mini').innerHTML = miniField(dems);
   $('#rep-mini').innerHTML = miniField(reps);
   $('#market-read').innerHTML = `The party market favors <strong>${partyPlural}</strong>. Both nomination fights are still open.`;
-  $('#snapshot-party').innerHTML = margin >= 0 ? '<span aria-label="Democratic Party">🫏</span>' : '<span aria-label="Republican Party">🐘</span>';
+  $('#snapshot-party').innerHTML = margin >= 0 ? '<img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/DemDonkey.svg" alt="Democratic Party donkey">' : '<img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Republican_Disc.svg" alt="Republican Party elephant">';
   $('#snapshot-party').className = margin >= 0 ? 'd' : 'r';
   $('#snapshot-president-rating').textContent = rating;
   $('#snapshot-president-call').textContent = call?.ourCall || `${partyPlural} have the edge`;
@@ -98,6 +101,9 @@ function renderForecast(data) {
   $('#snapshot-rep-rating').textContent = repCall?.ourCall || repPick.name;
   $('#snapshot-dem-copy').textContent = demCall?.whyShort || 'The Democratic nomination remains open.';
   $('#snapshot-rep-copy').textContent = repCall?.whyShort || 'The Republican nomination remains open.';
+  $('#snapshot-watch-call').innerHTML = watch ? personName(watch) : `<span>${watchName || 'No clear mover'}</span>`;
+  $('#snapshot-watch-rating').textContent = watch ? `${watch.name.split(' ').at(-1)} is the name to watch` : 'No breakout yet';
+  $('#snapshot-watch-copy').textContent = data.powerRanking?.reason || watch?.pulse || 'No candidate has separated from the field this week.';
 }
 
 function candidateCard(candidate, index, party) {
@@ -135,7 +141,7 @@ function renderLedger(entries) {
     host.innerHTML = '<div class="empty-state"><strong>No big move yet.</strong><span>The ledger starts when the Bell crosses its reporting threshold.</span></div>';
     return;
   }
-  host.innerHTML = `<div class="ledger-scroll"><table class="ledger-table"><thead><tr><th>Date</th><th>What changed</th><th>Previous</th><th>New call</th><th>Why it is here</th></tr></thead><tbody>${entries.slice().reverse().map(entry => `<tr><td>${updated(entry.timestamp)}</td><td><strong>${entry.label || 'Bell movement'}</strong></td><td>${entry.previous || (entry.previousDemocratic != null ? `D ${fmt(entry.previousDemocratic)}` : 'Not recorded')}</td><td>${entry.value || (entry.democratic != null ? `D ${fmt(entry.democratic)} / R ${fmt(entry.republican)}` : 'Not recorded')}</td><td>${entry.note || entry.source || ''}</td></tr>`).join('')}</tbody></table></div>`;
+  host.innerHTML = `<div class="ledger-scroll"><table class="ledger-table"><thead><tr><th>Date</th><th>What changed</th><th>Previous</th><th>New call</th><th>Why it is here</th></tr></thead><tbody>${entries.slice().reverse().map(entry => `<tr><td>${shortDate(entry.timestamp)}</td><td><strong>${entry.label || 'Bell movement'}</strong></td><td>${entry.previous || (entry.previousDemocratic != null ? `D ${fmt(entry.previousDemocratic)}` : 'Not recorded')}</td><td>${entry.value || (entry.democratic != null ? `D ${fmt(entry.democratic)} / R ${fmt(entry.republican)}` : 'Not recorded')}</td><td>${entry.note || entry.source || ''}</td></tr>`).join('')}</tbody></table></div>`;
 }
 
 if (page === 'ledger') {
