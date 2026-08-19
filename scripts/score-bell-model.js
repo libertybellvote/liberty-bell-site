@@ -170,15 +170,21 @@ function main() {
   demCard.pickName = demPick;
   repCard.pickName = repPick;
   demCard.ourCall = `${displayName(demPick)}, carefully`;
-  repCard.ourCall = repRank[1] ? `${displayName(repPick)}, with ${displayName(repRank[1].name)} closing` : displayName(repPick);
-  const strongestSignals = Object.entries(scores).sort((a, b) => Math.abs(b[1] * config.factors[b[0]].weight) - Math.abs(a[1] * config.factors[a[0]].weight)).slice(0, 3).map(([key]) => config.factors[key].label.toLowerCase());
-  presidentialCard.whyShort = `${strongestSignals.join(', ')} currently ${democratic >= 50 ? 'keep Democrats ahead' : 'keep Republicans ahead'}.`;
+  const repRunnerUp = repRank[1] ? data.field.republican.find(candidate => candidate.name === repRank[1].name) : null;
+  repCard.ourCall = repRunnerUp && Number(repRunnerUp.marketChange1w) > 0.5 ? `${displayName(repPick)}, with ${displayName(repRunnerUp.name)} gaining` : `${displayName(repPick)} is still the call`;
+  presidentialCard.whyShort = democratic >= 50
+    ? 'Low presidential approval and a softening Republican advantage on the economy give Democrats the better hand today. Better hand, not a lock.'
+    : 'The national mood, the economy, and the shape of the field give Republicans the better hand today. Better hand, not a lock.';
   const darkHorse = data.field.democratic.find(candidate => candidate.darkHorse);
   const demLeader = data.field.democratic.find(candidate => candidate.name === demPick);
   const repLeader = data.field.republican.find(candidate => candidate.name === repPick);
   const repSecond = repRank[1] ? data.field.republican.find(candidate => candidate.name === repRank[1].name) : null;
-  demCard.whyShort = darkHorse && darkHorse.name !== demPick ? `${displayName(demPick)} leads and is ${Number(demLeader?.marketChange1w) >= 0 ? 'up' : 'down'} ${Math.abs(Number(demLeader?.marketChange1w) || 0).toFixed(1)} points this week. ${darkHorse.name.split(' ').at(-1)} is the underpriced dark horse.` : `${displayName(demPick)} leads The Bell Model's weighted Democratic field.`;
-  repCard.whyShort = `${displayName(repPick)} leads and is ${Number(repLeader?.marketChange1w) >= 0 ? 'up' : 'down'} ${Math.abs(Number(repLeader?.marketChange1w) || 0).toFixed(1)} points this week.${repSecond ? ` ${displayName(repSecond.name)} is ${Number(repSecond.marketChange1w) >= 0 ? 'up' : 'down'} ${Math.abs(Number(repSecond.marketChange1w) || 0).toFixed(1)}.` : ''}`;
+  demCard.whyShort = darkHorse && darkHorse.name !== demPick
+    ? `${displayName(demPick)} has the best mix of message, coalition, and momentum right now. ${displayName(darkHorse.name)} has the clearest route to scrambling that call.`
+    : `${displayName(demPick)} has the strongest all-around case in The Bell Model today.`;
+  repCard.whyShort = repSecond
+    ? `${displayName(repPick)} has the clearest path to inheriting Trump’s coalition. ${displayName(repSecond.name)} is the real threat, but still needs a reason for voters to switch.`
+    : `${displayName(repPick)} has the clearest path to inheriting Trump’s coalition. No rival has built a convincing alternative.`;
   data.powerRanking = watchCandidate(data, inputs, history, timestamp);
   data.modelUpdatedAt = timestamp;
   data.modelMeta = {

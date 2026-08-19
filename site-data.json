@@ -94,7 +94,7 @@
         "pulseDir": "flat",
         "rankChange": 0,
         "pulse": "No reliable short-term market change is available.",
-        "ourTake": "The Bell’s Democratic dark horse. His 2020 early-state performance, current strength in New Hampshire and Michigan, and market-to-polling gap give him a more credible primary path than his price suggests.",
+        "ourTake": "Buttigieg is easy to underrate in a national snapshot. He has won early states before, speaks fluent cable news and podcast, and has a plausible route through New Hampshire and Michigan.",
         "pick": false,
         "fragility": "Never won a swing-state race; thin executive record to run on nationally.",
         "lane": "Institutional-adjacent.",
@@ -584,7 +584,7 @@
     {
       "question": "Which party wins the presidency?",
       "ourCall": "Leans Democratic",
-      "whyShort": "economic backdrop, polling, momentum currently keep Democrats ahead.",
+      "whyShort": "Low presidential approval and a softening Republican advantage on the economy give Democrats the better hand today. Better hand, not a lock.",
       "pickName": null,
       "pickParty": null,
       "partySeal": "d",
@@ -604,8 +604,8 @@
     },
     {
       "question": "Who wins the Republican nomination?",
-      "ourCall": "Vance, with Rubio closing",
-      "whyShort": "Vance leads and is up 3.2 points this week. Rubio is down 0.5.",
+      "ourCall": "Vance is still the call",
+      "whyShort": "Vance has the clearest path to inheriting Trump’s coalition. Rubio is the real threat, but still needs a reason for voters to switch.",
       "pickName": "JD Vance",
       "pickParty": "r",
       "reasoning": "This field is now realistically about two names, not five. Vance still leads clearly at 39%, and his fragility (standing partly borrowed from Trump) hasn’t changed. But Rubio has built something real behind him: his handling of the Iran conflict and a hardline push to dismantle the ICC have made him genuinely popular with the MAGA base, not just older establishment voters, and his odds have climbed from the high teens into the high 20s over several months on the strength of that record specifically. RFK Jr., Cruz, and DeSantis are no longer where the real action is on the Republican side.",
@@ -640,7 +640,7 @@
     {
       "question": "Who wins the Democratic nomination?",
       "ourCall": "AOC, carefully",
-      "whyShort": "AOC leads and is up 3.0 points this week. Buttigieg is the underpriced dark horse.",
+      "whyShort": "AOC has the best mix of message, coalition, and momentum right now. Buttigieg has the clearest route to scrambling that call.",
       "pickName": "Alexandria Ocasio-Cortez",
       "pickParty": "d",
       "reasoning": "This is the least settled call on the page, and we want to show the actual tension rather than hide it. National primary polling still shows Harris leading on name recognition. Betting markets have AOC as the clear leader at 20%, up from 9% in June, a sustained climb, not a spike, backed by a viral head-to-head poll putting her ahead of Vance. Her fragility is real (an unscripted-moment stumble has already happened once). But right now she’s the only candidate who is both genuinely insurgent-coded and has real current momentum, which matters given how bad the environment looks for the incumbent party. Ossoff’s case is more complicated than it was a few days ago: he explicitly and repeatedly denied any 2028 interest this week, and his own market odds cooled slightly in response. We are taking that denial seriously rather than assuming it’s theater, which is why he is no longer our clear hedge. Newsom is closer to that role now on pure market standing. Whitmer, Kelly, and Stephen A. Smith remain real names we track, none yet building an active campaign.",
@@ -715,7 +715,7 @@
     "candidateName": "Pete Buttigieg",
     "label": "Democratic dark horse",
     "headline": "Buttigieg has a real primary path",
-    "reason": "The Bell’s Democratic dark horse. His 2020 early-state performance, current strength in New Hampshire and Michigan, and market-to-polling gap give him a more credible primary path than his price suggests."
+    "reason": "Buttigieg is easy to underrate in a national snapshot. He has won early states before, speaks fluent cable news and podcast, and has a plausible route through New Hampshire and Michigan."
   },
   "marketMeta": {
     "source": "Polymarket public market data",
