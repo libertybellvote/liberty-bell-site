@@ -165,7 +165,7 @@ function renderForecast(data) {
   $('#forecast-summary').textContent = call?.whyShort || 'The market has a favorite. The race does not have a winner.';
   $('#dem-mini').innerHTML = miniField(dems);
   $('#rep-mini').innerHTML = miniField(reps);
-  $('#market-read').innerHTML = `The party market favors <strong>${partyPlural}</strong>. Both nomination fights are still open.`;
+  $('#market-read').innerHTML = `The Bell currently gives <strong>${partyPlural}</strong> the edge in the 2028 presidential race. Both nomination contests remain open.`;
   $('#snapshot-party').innerHTML = margin >= 0 ? '<img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/DemDonkey.svg" alt="Democratic Party donkey">' : '<img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Republican_Disc.svg" alt="Republican Party elephant">';
   $('#snapshot-party').className = margin >= 0 ? 'd' : 'r';
   $('#snapshot-president-rating').textContent = rating;
