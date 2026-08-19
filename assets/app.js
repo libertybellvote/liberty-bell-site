@@ -3,7 +3,7 @@ const page = document.body.dataset.page || 'forecast';
 const NAV = [
   ['forecast', '/', 'Home'],
   ['candidates', '/candidates.html', 'The Field'],
-  ['markets', '/market-gap.html', 'Market Board'],
+  ['markets', '/market-gap.html', 'Odds & Signals'],
   ['map', '/map.html', 'Electoral Map'],
   ['methodology', '/methodology.html', 'How It Works'],
   ['ledger', '/ledger.html', 'Receipts']
@@ -14,7 +14,7 @@ function header() {
 }
 
 function footer() {
-  return `<footer><div class="shell"><div class="footer-lead"><div class="footer-lockup"><span class="brand-mark light"><i></i></span><div><div class="footer-name">The Bell</div><p>Which way will the Bell swing?</p></div></div><div class="footer-support"><p>Independent coverage of the 2028 presidential election.</p><a class="btn donate" href="https://ko-fi.com/libertybellvote" target="_blank" rel="noopener">Support The Bell</a></div></div><div class="footer-grid"><div class="footer-col"><strong>Explore</strong><a href="/">Home</a><a href="/candidates.html">The Field</a><a href="/market-gap.html">Market Board</a><a href="/map.html">Electoral Map</a></div><div class="footer-col"><strong>Accountability</strong><a href="/methodology.html">How It Works</a><a href="/ledger.html">Receipts</a><a href="mailto:libertybellvote@gmail.com?subject=Correction">Corrections</a></div><div class="footer-col"><strong>Follow</strong><a href="https://x.com/LibertyBellVote">X / Twitter</a><a href="https://instagram.com/LibertyBellVote">Instagram</a><a href="mailto:libertybellvote@gmail.com">Contact</a></div></div><div class="copyright">© 2026 Liberty Bell Vote · Market probabilities are not polls, guarantees, or financial advice.</div></div></footer>`;
+  return `<footer><div class="shell"><div class="footer-lead"><div class="footer-lockup"><span class="brand-mark light"><i></i></span><div><div class="footer-name">The Bell</div><p>Which way will the Bell swing?</p></div></div><div class="footer-support"><p>Independent coverage of the 2028 presidential election.</p><a class="btn donate" href="https://ko-fi.com/libertybellvote" target="_blank" rel="noopener">Support The Bell</a></div></div><div class="footer-grid"><div class="footer-col"><strong>Explore</strong><a href="/">Home</a><a href="/candidates.html">The Field</a><a href="/market-gap.html">Odds & Signals</a><a href="/map.html">Electoral Map</a></div><div class="footer-col"><strong>Accountability</strong><a href="/methodology.html">How It Works</a><a href="/ledger.html">Receipts</a><a href="mailto:libertybellvote@gmail.com?subject=Correction">Corrections</a></div><div class="footer-col"><strong>Follow</strong><a href="https://x.com/LibertyBellVote">X / Twitter</a><a href="https://instagram.com/LibertyBellVote">Instagram</a><a href="mailto:libertybellvote@gmail.com">Contact</a></div></div><div class="copyright">© 2026 Liberty Bell Vote · Market probabilities are not polls, guarantees, or financial advice.</div></div></footer>`;
 }
 
 $('#site-header').innerHTML = header();
@@ -81,18 +81,20 @@ function renderForecast(data) {
   $('#bell-reading').textContent = `${abs.toFixed(1)}-point market edge`;
   $('#swing-arm').style.transform = `rotate(${Math.max(-24, Math.min(24, margin * 1.2))}deg)`;
   $('#updated').textContent = updated(data.lastUpdated);
-  $('#party-headline').textContent = `${partyPlural} hold the early edge.`;
   $('#forecast-summary').textContent = call?.whyShort || 'The market has a favorite. The race does not have a winner.';
   $('#dem-mini').innerHTML = miniField(dems);
   $('#rep-mini').innerHTML = miniField(reps);
-  $('#wire-dem').style.width = dem + '%';
-  $('#wire-rep').style.width = rep + '%';
-  $('#wire-party-score').textContent = `${fmt(dem)} to ${fmt(rep)}`;
-  $('#wire-field-visual').innerHTML = `<div>${personName(dems[0], 'wire-person')}<strong>${dems[0].odds}</strong><small>Democratic nomination odds</small></div><b>vs.</b><div>${personName(reps[0], 'wire-person')}<strong>${reps[0].odds}</strong><small>Republican nomination odds</small></div>`;
-  $('#market-read').innerHTML = `The party market favors ${partyBadge(leader)} <strong>${partyPlural}</strong>. Both nomination fights are still open.`;
-  $('#wire-watch-visual').innerHTML = watch ? `<img src="${watch.photo}" alt="${watch.name}"><span>↗</span>` : '';
-  $('#mover-name').textContent = watch?.name || watchName || 'No material move';
-  $('#mover-copy').textContent = data.powerRanking?.reason || 'No meaningful change in the latest run.';
+  $('#market-read').innerHTML = `The party market favors <strong>${partyPlural}</strong>. Both nomination fights are still open.`;
+  $('#snapshot-party').textContent = margin >= 0 ? 'D' : 'R';
+  $('#snapshot-party').className = margin >= 0 ? 'd' : 'r';
+  $('#snapshot-margin').textContent = `${margin >= 0 ? '+' : ''}${margin.toFixed(0)}`;
+  $('#snapshot-dem').style.width = dem + '%';
+  $('#snapshot-rep').style.width = rep + '%';
+  $('#snapshot-edge-copy').textContent = `${partyPlural} lead ${fmt(dem)} to ${fmt(rep)}.`;
+  $('#snapshot-leaders').innerHTML = `<div>${personName(dems[0])}<strong>${dems[0].odds}</strong><small>Democratic nomination</small></div><div>${personName(reps[0])}<strong>${reps[0].odds}</strong><small>Republican nomination</small></div>`;
+  $('#snapshot-watch-person').innerHTML = watch ? `<img src="${watch.photo}" alt="${watch.name}"><span>${watch.name}</span>` : `<span>${watchName || 'No material move'}</span>`;
+  $('#snapshot-watch-odds').textContent = watch?.odds ? `${watch.odds} nomination odds` : 'Watching movement';
+  $('#snapshot-watch-copy').textContent = watch?.pulse || data.powerRanking?.reason || 'No meaningful change in the latest run.';
 }
 
 function candidateCard(candidate, index, party) {
