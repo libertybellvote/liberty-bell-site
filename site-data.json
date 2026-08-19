@@ -1,6 +1,6 @@
 {
   "lastUpdated": "2026-08-19T02:30:45.655Z",
-  "modelUpdatedAt": "2026-08-19T15:43:46.145Z",
+  "modelUpdatedAt": "2026-08-19T17:54:47.299Z",
   "libertyBellIndex": {
     "democratic": 58,
     "republican": 42
@@ -11,7 +11,7 @@
         "name": "Alexandria Ocasio-Cortez",
         "role": "U.S. Representative, NY-14",
         "odds": "21%",
-        "oddsNum": 21.1,
+        "oddsNum": 21.2,
         "pollAvg": 10.1,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Alexandria%20Ocasio-Cortez%20Official%20Portrait.jpg?width=300",
         "vibe": "The field’s best natural communicator with younger, online audiences. High energy, high name recognition.",
@@ -20,16 +20,16 @@
         "audience": "Young progressives, social-media-native voters.",
         "pulseDir": "up",
         "rankChange": 3,
-        "pulse": "+3.0 points in the last week on Polymarket.",
+        "pulse": "+2.6 points in the last week on Polymarket.",
         "ourTake": "Our pick. She's the clearest insurgent brand in either party, and the momentum is real: rising odds, a viral head-to-head lead over Vance, right as the economic backdrop starts favoring an outsider message.",
         "pick": true,
         "fragility": "Her authenticity cuts both ways. The same unscripted style that built her following also produced a real stumble on Taiwan policy.",
         "lane": "Insurgent. The clearest outsider brand in either party.",
         "laneClass": "insurgent",
         "pollingStatus": "listed",
-        "marketChange1d": 2.5,
-        "marketChange1w": 3,
-        "marketChange1m": 6.6
+        "marketChange1d": 2.6,
+        "marketChange1w": 2.6,
+        "marketChange1m": 6.7
       },
       {
         "name": "Gavin Newsom",
@@ -67,7 +67,7 @@
         "audience": "Swing-state moderates, small-dollar donors, Georgia’s Democratic coalition.",
         "pulseDir": "down",
         "rankChange": 2,
-        "pulse": "-2.1 points in the last week on Polymarket.",
+        "pulse": "-2.0 points in the last week on Polymarket.",
         "ourTake": "We take this denial more seriously than the earlier speculation. He has now said “zero interest” on the record, twice, unprompted about the Kelly ticket specifically. That’s a real signal, not boilerplate deflection, even if candidates in his position have reversed course before.",
         "pick": false,
         "fragility": "Has explicitly and repeatedly denied any 2028 interest this week, tying his full focus to the 2026 midterms. Worth taking at face value for now, while watching whether that holds after November.",
@@ -75,9 +75,9 @@
         "laneClass": "institutional",
         "pollAvg": null,
         "pollingStatus": "not-listed",
-        "marketChange1d": -0.3,
-        "marketChange1w": -2.1,
-        "marketChange1m": -0.7
+        "marketChange1d": -0.2,
+        "marketChange1w": -2,
+        "marketChange1m": -0.6
       },
       {
         "name": "Pete Buttigieg",
@@ -126,7 +126,7 @@
         "pollingStatus": "listed",
         "marketChange1d": -0.3,
         "marketChange1w": null,
-        "marketChange1m": 0.9
+        "marketChange1m": 0.8
       },
       {
         "name": "Josh Shapiro",
@@ -276,7 +276,7 @@
         "name": "Mark Kelly",
         "role": "U.S. Senator, Arizona",
         "odds": "3%",
-        "oddsNum": 2.9,
+        "oddsNum": 3,
         "pollAvg": 4.8,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Mark%20Kelly%2C%20Official%20Portrait%20117th.jpg?width=300",
         "vibe": "A former astronaut and Navy combat veteran whose low-drama Senate record just collided with a real national profile.",
@@ -285,16 +285,16 @@
         "audience": "Swing-state moderates, veterans, independents. Now with real national anti-Trump visibility layered on top.",
         "pulseDir": "flat",
         "rankChange": null,
-        "pulse": "-0.4 points in the last week on Polymarket.",
+        "pulse": "-0.2 points in the last week on Polymarket.",
         "ourTake": "No longer just an \"on paper\" general-election profile. The fundraising and the ticket speculation are both real, current developments, not hypotheticals. Worth tracking closely, not dismissing as background noise anymore.",
         "pick": false,
         "fragility": "Says he’ll decide after the 2026 midterms, not before. Anyone reading more into the fundraising pace right now is speculating, including us.",
         "lane": "Institutional record, but an increasingly insurgent-coded profile given the direct fight with the administration.",
         "laneClass": "mixed",
         "pollingStatus": "listed",
-        "marketChange1d": null,
-        "marketChange1w": -0.4,
-        "marketChange1m": 1.9
+        "marketChange1d": 0.2,
+        "marketChange1w": -0.2,
+        "marketChange1m": 2.1
       },
       {
         "name": "Rahm Emanuel",
@@ -392,7 +392,7 @@
         "pollingStatus": "listed",
         "marketChange1d": null,
         "marketChange1w": 3.2,
-        "marketChange1m": 5.9
+        "marketChange1m": 5.7
       },
       {
         "name": "Marco Rubio",
@@ -647,7 +647,7 @@
       "outcomes": [
         {
           "label": "Alexandria Ocasio-Cortez",
-          "probability": 21.1,
+          "probability": 21.2,
           "platform": "Polymarket"
         },
         {
@@ -719,28 +719,28 @@
   },
   "marketMeta": {
     "source": "Polymarket public market data",
-    "retrievedAt": "2026-08-19T15:43:02.191Z",
+    "retrievedAt": "2026-08-19T17:54:46.334Z",
     "partyIndex": {
       "democratic": 58.5,
       "republican": 41.5
     },
     "party": {
-      "volume": 2066696.2814330007,
-      "liquidity": 408421.8795
+      "volume": 2066704.7514330011,
+      "liquidity": 409092.5578
     },
     "democraticNomination": {
-      "volume": 1262360578.2522833,
-      "liquidity": 80231865.63452
+      "volume": 1262562869.941806,
+      "liquidity": 81076399.53882
     },
     "republicanNomination": {
-      "volume": 689120115.8499501,
-      "liquidity": 57458639.19386
+      "volume": 689138119.2311641,
+      "liquidity": 57673903.13314
     }
   },
-  "marketUpdatedAt": "2026-08-19T15:43:02.191Z",
+  "marketUpdatedAt": "2026-08-19T17:54:46.334Z",
   "modelMeta": {
     "version": "3.0",
-    "updatedAt": "2026-08-19T15:43:46.145Z",
+    "updatedAt": "2026-08-19T17:54:47.299Z",
     "status": "scored",
     "signalCoverage": "9/9",
     "score": 32,
@@ -802,11 +802,11 @@
         },
         {
           "name": "Gavin Newsom",
-          "score": 39.5,
+          "score": 39.4,
           "primaryPath": 0.45,
           "factors": {
             "polling": 0.5738831615120275,
-            "bettingMarkets": 0.7203791469194312,
+            "bettingMarkets": 0.7169811320754716,
             "campaignFundamentals": 0.6375,
             "candidateQuality": 0.6,
             "coalitionStrength": 0.37499999999999994,
@@ -822,7 +822,7 @@
           "primaryPath": 0.85,
           "factors": {
             "polling": 0.43298969072164945,
-            "bettingMarkets": 0.25118483412322273,
+            "bettingMarkets": 0.25,
             "campaignFundamentals": 0.625,
             "candidateQuality": 0.75,
             "coalitionStrength": 0.4375,
@@ -838,7 +838,7 @@
           "primaryPath": 0.75,
           "factors": {
             "polling": 1,
-            "bettingMarkets": 0.3601895734597156,
+            "bettingMarkets": 0.3584905660377358,
             "campaignFundamentals": 0.825,
             "candidateQuality": 0.35,
             "coalitionStrength": 0.6000000000000001,
@@ -854,7 +854,7 @@
           "primaryPath": 0.25,
           "factors": {
             "polling": 0,
-            "bettingMarkets": 0.6492890995260663,
+            "bettingMarkets": 0.6462264150943396,
             "campaignFundamentals": 0.32499999999999996,
             "candidateQuality": 0.55,
             "coalitionStrength": 0.4375,
@@ -948,15 +948,15 @@
         }
       ]
     },
-    "evidenceUpdatedAt": "2026-08-19T15:16:37.627Z"
+    "evidenceUpdatedAt": "2026-08-19T17:54:46.819Z"
   },
   "pollingMeta": {
     "source": "Wikipedia national polling aggregation",
-    "retrievedAt": "2026-08-19T15:08:24.455Z",
+    "retrievedAt": "2026-08-19T17:54:46.776Z",
     "parties": {
       "democratic": {
         "url": "https://en.wikipedia.org/wiki/Nationwide_opinion_polling_for_the_2028_Democratic_Party_presidential_primaries",
-        "retrievedAt": "2026-08-19T15:08:24.100Z",
+        "retrievedAt": "2026-08-19T17:54:46.776Z",
         "underlyingAggregators": [
           "270toWin",
           "Real Clear Polling",
@@ -977,7 +977,7 @@
       },
       "republican": {
         "url": "https://en.wikipedia.org/wiki/Nationwide_opinion_polling_for_the_2028_Republican_Party_presidential_primaries",
-        "retrievedAt": "2026-08-19T15:08:24.455Z",
+        "retrievedAt": "2026-08-19T17:54:46.619Z",
         "underlyingAggregators": [
           "270toWin",
           "Race to the WH",
