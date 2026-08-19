@@ -180,7 +180,8 @@ function renderForecast(data) {
   $('#snapshot-dem-copy').textContent = demCall?.whyShort || 'The Democratic nomination remains open.';
   $('#snapshot-rep-copy').textContent = repCall?.whyShort || 'The Republican nomination remains open.';
   $('#snapshot-watch-call').innerHTML = watch ? personName(watch) : `<span>${watchName || 'No clear mover'}</span>`;
-  $('#snapshot-watch-rating').textContent = watch ? `${watch.name.split(' ').at(-1)} is the name to watch` : 'No breakout yet';
+  $('#snapshot-watch-label').textContent = data.powerRanking?.label || 'Watch';
+  $('#snapshot-watch-rating').textContent = data.powerRanking?.headline || (watch ? `${watch.name.split(' ').at(-1)} is the name to watch` : 'No breakout yet');
   $('#snapshot-watch-copy').textContent = data.powerRanking?.reason || watch?.pulse || 'No candidate has separated from the field this week.';
 }
 

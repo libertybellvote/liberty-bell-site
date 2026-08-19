@@ -646,8 +646,10 @@
     }
   ],
   "powerRanking": {
-    "candidateName": "Marco Rubio",
-    "reason": "Rubio has the clearest sustained rise in either nomination field."
+    "candidateName": "Pete Buttigieg",
+    "label": "Democratic dark horse",
+    "headline": "Pete has a real primary path",
+    "reason": "His early-state polling and communication strength look stronger than his market price. The Bell sees a credible path through New Hampshire and Michigan."
   },
   "marketMeta": {
     "source": "Polymarket public market data",
