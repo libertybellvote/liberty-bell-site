@@ -12,6 +12,7 @@ const INPUTS_PATH = path.join(ROOT, 'model-inputs.json');
 const EVIDENCE_PATH = path.join(ROOT, 'evidence-ledger.json');
 const LEDGER_PATH = path.join(ROOT, 'ledger.json');
 const STATE_PATH = path.join(ROOT, 'model-state.json');
+const HISTORY_PATH = path.join(ROOT, 'race-history.json');
 
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 const round = (value, places = 1) => Number(value.toFixed(places));
@@ -89,6 +90,43 @@ function findCall(data, pattern) {
   return data.calls.find(call => pattern.test(call.question));
 }
 
+function priorSnapshot(history, timestamp, minimumHours = 18) {
+  const cutoff = new Date(timestamp).getTime() - minimumHours * 36e5;
+  return history.slice().reverse().find(entry => new Date(entry.timestamp).getTime() <= cutoff) || history[0] || null;
+}
+
+function watchCandidate(data, inputs, history, timestamp) {
+  const prior = priorSnapshot(history, timestamp);
+  const priorByName = new Map((prior?.candidates || []).map(candidate => [clean(candidate.name), candidate]));
+  const currentPicks = new Set(data.calls.filter(call => /nomination/i.test(call.question)).map(call => clean(call.pickName)));
+  const candidates = [...data.field.democratic, ...data.field.republican].filter(candidate => !currentPicks.has(clean(candidate.name))).map(candidate => {
+    const editorial = inputs.candidates?.[candidate.name] || {};
+    const old = priorByName.get(clean(candidate.name));
+    const pollingChange = old && Number.isFinite(Number(candidate.pollAvg)) && Number.isFinite(Number(old.pollAvg)) ? Number(candidate.pollAvg) - Number(old.pollAvg) : 0;
+    const week = Number(candidate.marketChange1w) || 0;
+    const month = Number(candidate.marketChange1m) || 0;
+    const momentum = Number(editorial.momentum) || 0;
+    const score = week * 5 + month * 1.5 + pollingChange * 4 + momentum * 8;
+    return { candidate, score, week, month, pollingChange };
+  }).sort((a, b) => b.score - a.score);
+  const leader = candidates[0];
+  const darkHorse = data.field.democratic.find(candidate => candidate.darkHorse) || null;
+  if (!leader || leader.week < 1) return darkHorse ? { candidateName: darkHorse.name, label: 'Democratic dark horse', headline: `${darkHorse.name.split(' ').at(-1)} has a real primary path`, reason: darkHorse.ourTake } : null;
+  const establishedLeader = Number(leader.candidate.oddsNum) >= 35;
+  return {
+    candidateName: leader.candidate.name,
+    label: establishedLeader ? 'Momentum leader' : 'Breakout watch',
+    headline: `${leader.candidate.name.split(' ').at(-1)} is gaining now`,
+    reason: `${leader.candidate.name} is up ${leader.week.toFixed(1)} points this week${leader.month ? ` and ${leader.month.toFixed(1)} points this month` : ''} in the nomination market.`
+  };
+}
+
+function appendHistory(history, data, timestamp) {
+  const candidates = [...data.field.democratic, ...data.field.republican].map(candidate => ({ name: candidate.name, oddsNum: candidate.oddsNum ?? null, pollAvg: candidate.pollAvg ?? null }));
+  history.push({ timestamp, libertyBellIndex: data.libertyBellIndex, calls: { presidential: findCall(data, /which party wins/i)?.ourCall, democratic: findCall(data, /Democratic nomination/i)?.pickName, republican: findCall(data, /Republican nomination/i)?.pickName }, candidates });
+  return history.slice(-540);
+}
+
 function appendChange(ledger, timestamp, type, label, previous, value, note, factors) {
   ledger.push({ timestamp, modelVersion: '3.0', type, label, previous, value, source: 'The Bell Model', note, factors });
 }
@@ -100,6 +138,8 @@ function main() {
   const evidence = readJson(EVIDENCE_PATH);
   const previous = readJson(STATE_PATH);
   const ledger = readJson(LEDGER_PATH);
+  let history = [];
+  try { history = readJson(HISTORY_PATH); } catch {}
   const timestamp = new Date().toISOString();
 
   const scores = presidentialScores(data, config, inputs);
@@ -131,9 +171,15 @@ function main() {
   repCard.pickName = repPick;
   demCard.ourCall = `${displayName(demPick)}, carefully`;
   repCard.ourCall = repRank[1] ? `${displayName(repPick)}, with ${displayName(repRank[1].name)} closing` : displayName(repPick);
-  if (previous.presidentialCall !== presidentialCall) presidentialCard.whyShort = `The full nine-signal score now puts the race at D ${democratic}% and R ${republican}%.`;
-  if (previous.democraticPick !== demPick) demCard.whyShort = `${demPick} moved to the top of The Bell Model's weighted Democratic field.`;
-  if (previous.republicanPick !== repPick) repCard.whyShort = `${repPick} moved to the top of The Bell Model's weighted Republican field.`;
+  const strongestSignals = Object.entries(scores).sort((a, b) => Math.abs(b[1] * config.factors[b[0]].weight) - Math.abs(a[1] * config.factors[a[0]].weight)).slice(0, 3).map(([key]) => config.factors[key].label.toLowerCase());
+  presidentialCard.whyShort = `${strongestSignals.join(', ')} currently ${democratic >= 50 ? 'keep Democrats ahead' : 'keep Republicans ahead'}.`;
+  const darkHorse = data.field.democratic.find(candidate => candidate.darkHorse);
+  const demLeader = data.field.democratic.find(candidate => candidate.name === demPick);
+  const repLeader = data.field.republican.find(candidate => candidate.name === repPick);
+  const repSecond = repRank[1] ? data.field.republican.find(candidate => candidate.name === repRank[1].name) : null;
+  demCard.whyShort = darkHorse && darkHorse.name !== demPick ? `${displayName(demPick)} leads and is ${Number(demLeader?.marketChange1w) >= 0 ? 'up' : 'down'} ${Math.abs(Number(demLeader?.marketChange1w) || 0).toFixed(1)} points this week. ${darkHorse.name.split(' ').at(-1)} is the underpriced dark horse.` : `${displayName(demPick)} leads The Bell Model's weighted Democratic field.`;
+  repCard.whyShort = `${displayName(repPick)} leads and is ${Number(repLeader?.marketChange1w) >= 0 ? 'up' : 'down'} ${Math.abs(Number(repLeader?.marketChange1w) || 0).toFixed(1)} points this week.${repSecond ? ` ${displayName(repSecond.name)} is ${Number(repSecond.marketChange1w) >= 0 ? 'up' : 'down'} ${Math.abs(Number(repSecond.marketChange1w) || 0).toFixed(1)}.` : ''}`;
+  data.powerRanking = watchCandidate(data, inputs, history, timestamp);
   data.modelUpdatedAt = timestamp;
   data.modelMeta = {
     version: '3.0',
@@ -169,6 +215,7 @@ function main() {
   fs.writeFileSync(EVIDENCE_PATH, JSON.stringify(evidence, null, 2) + '\n');
   fs.writeFileSync(LEDGER_PATH, JSON.stringify(ledger.slice(-500), null, 2) + '\n');
   fs.writeFileSync(STATE_PATH, JSON.stringify({ libertyBellIndex: data.libertyBellIndex, presidentialCall, democraticPick: demPick, republicanPick: repPick, modelUpdatedAt: timestamp }, null, 2) + '\n');
+  fs.writeFileSync(HISTORY_PATH, JSON.stringify(appendHistory(history, data, timestamp), null, 2) + '\n');
   console.log(`The Bell Model scored D ${democratic}% / R ${republican}%; picks: ${demPick} and ${repPick}.`);
 }
 
