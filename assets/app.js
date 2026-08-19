@@ -14,7 +14,7 @@ function header() {
 }
 
 function footer() {
-  return `<footer><div class="shell"><div class="footer-lead"><div class="footer-lockup"><span class="brand-mark light"><i></i></span><div><div class="footer-name">The Bell</div><p>Which way will the Bell swing?</p></div></div><div class="footer-support"><p>Independent coverage of the 2028 presidential election.</p><a class="btn donate" href="https://ko-fi.com/libertybellvote" target="_blank" rel="noopener">Support The Bell</a></div></div><div class="footer-grid"><div class="footer-col"><strong>Explore</strong><a href="/">Home</a><a href="/candidates.html">The Field</a><a href="/market-gap.html">Odds & Signals</a><a href="/map.html">Electoral Map</a></div><div class="footer-col"><strong>Accountability</strong><a href="/methodology.html">How It Works</a><a href="/ledger.html">Receipts</a><a href="mailto:libertybellvote@gmail.com?subject=Correction">Corrections</a></div><div class="footer-col"><strong>Follow</strong><a href="https://x.com/LibertyBellVote">X / Twitter</a><a href="https://instagram.com/LibertyBellVote">Instagram</a><a href="mailto:libertybellvote@gmail.com">Contact</a></div></div><div class="copyright">© 2026 Liberty Bell Vote · Market probabilities are not polls, guarantees, or financial advice.</div></div></footer>`;
+  return `<footer><div class="shell"><div class="footer-lead"><div class="footer-lockup"><span class="brand-mark light"><i></i></span><div><div class="footer-name">The Bell</div><p>Which way will The Bell swing?</p></div></div><div class="footer-support"><p>Independent coverage of the 2028 presidential election.</p><a class="btn donate" href="https://ko-fi.com/libertybellvote" target="_blank" rel="noopener">Support The Bell</a></div></div><div class="footer-grid"><div class="footer-col"><strong>Explore</strong><a href="/">Home</a><a href="/candidates.html">The Field</a><a href="/market-gap.html">Odds & Signals</a><a href="/map.html">Electoral Map</a></div><div class="footer-col"><strong>Accountability</strong><a href="/methodology.html">How It Works</a><a href="/ledger.html">Receipts</a><a href="mailto:libertybellvote@gmail.com?subject=Correction">Corrections</a></div><div class="footer-col"><strong>Follow</strong><a href="https://x.com/LibertyBellVote">X / Twitter</a><a href="https://instagram.com/LibertyBellVote">Instagram</a><a href="mailto:libertybellvote@gmail.com">Contact</a></div></div><div class="copyright">© 2026 Liberty Bell Vote · Market probabilities are not polls, guarantees, or financial advice.</div></div></footer>`;
 }
 
 $('#site-header').innerHTML = header();
@@ -80,12 +80,12 @@ function renderForecast(data) {
   $('.bell-visual').classList.toggle('lead-rep', margin < 0);
   $('#bell-reading').textContent = `${abs.toFixed(1)}-point Bell edge`;
   $('#swing-arm').style.transform = `rotate(${Math.max(-24, Math.min(24, margin * 1.2))}deg)`;
-  $('#updated').textContent = updated(data.modelUpdatedAt || data.lastUpdated);
+  $('#updated').textContent = updated(data.marketMeta?.retrievedAt || data.marketUpdatedAt || data.modelUpdatedAt || data.lastUpdated);
   $('#forecast-summary').textContent = call?.whyShort || 'The market has a favorite. The race does not have a winner.';
   $('#dem-mini').innerHTML = miniField(dems);
   $('#rep-mini').innerHTML = miniField(reps);
   $('#market-read').innerHTML = `The party market favors <strong>${partyPlural}</strong>. Both nomination fights are still open.`;
-  $('#snapshot-party').textContent = margin >= 0 ? 'D' : 'R';
+  $('#snapshot-party').innerHTML = margin >= 0 ? '<span aria-label="Democratic Party">🫏</span>' : '<span aria-label="Republican Party">🐘</span>';
   $('#snapshot-party').className = margin >= 0 ? 'd' : 'r';
   $('#snapshot-president-rating').textContent = rating;
   $('#snapshot-president-call').textContent = call?.ourCall || `${partyPlural} have the edge`;
