@@ -80,7 +80,7 @@ function renderForecast(data) {
   $('.bell-visual').classList.toggle('lead-rep', margin < 0);
   $('#bell-reading').textContent = `${abs.toFixed(1)}-point market edge`;
   $('#swing-arm').style.transform = `rotate(${Math.max(-24, Math.min(24, margin * 1.2))}deg)`;
-  $('#updated').textContent = updated(data.lastUpdated);
+  $('#updated').textContent = updated(data.modelUpdatedAt || data.lastUpdated);
   $('#forecast-summary').textContent = call?.whyShort || 'The market has a favorite. The race does not have a winner.';
   $('#dem-mini').innerHTML = miniField(dems);
   $('#rep-mini').innerHTML = miniField(reps);
@@ -110,11 +110,11 @@ function renderCandidates(data) {
   };
   document.querySelectorAll('.party-switch button').forEach(button => button.onclick = () => draw(button.dataset.party));
   draw('democratic');
-  $('#candidate-updated').textContent = updated(data.lastUpdated);
+  $('#candidate-updated').textContent = updated(data.marketMeta?.retrievedAt || data.marketUpdatedAt || data.lastUpdated);
 }
 
 function renderMarkets(data) {
-  $('#market-updated').textContent = updated(data.lastUpdated);
+  $('#market-updated').textContent = updated(data.marketMeta?.retrievedAt || data.marketUpdatedAt || data.lastUpdated);
   $('#market-list').innerHTML = (data.calls || []).map(call => {
     const outcomes = [...(call.outcomes || [])].sort((a, b) => b.probability - a.probability);
     const max = Math.max(...outcomes.map(outcome => outcome.probability), 1);

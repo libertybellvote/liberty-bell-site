@@ -1,5 +1,6 @@
 {
   "lastUpdated": "2026-08-19T02:30:45.655Z",
+  "modelUpdatedAt": "2026-08-19T02:30:45.655Z",
   "libertyBellIndex": {
     "democratic": 58,
     "republican": 42
@@ -186,7 +187,7 @@
         "name": "Wes Moore",
         "role": "Governor of Maryland",
         "odds": "2%",
-        "oddsNum": 1.9,
+        "oddsNum": 2.1,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Wes%20Moore%20Official%20Governor%20Portrait.jpg?width=300",
         "vibe": "A first-term governor, Army veteran, and author building a compelling personal-story campaign before he’s even run one.",
         "strength": "A rare combination of military, business, and executive credentials, plus a strong personal biography.",
@@ -490,12 +491,12 @@
       "outcomes": [
         {
           "label": "Democratic",
-          "probability": 58,
+          "probability": 58.5,
           "platform": "Polymarket"
         },
         {
           "label": "Republican",
-          "probability": 42,
+          "probability": 41.5,
           "platform": "Polymarket"
         }
       ]
@@ -615,18 +616,23 @@
   },
   "marketMeta": {
     "source": "Polymarket public market data",
-    "retrievedAt": "2026-08-19T02:30:45.654Z",
+    "retrievedAt": "2026-08-19T04:04:15.848Z",
+    "partyIndex": {
+      "democratic": 58.5,
+      "republican": 41.5
+    },
     "party": {
-      "volume": 2064342.3687640002,
-      "liquidity": 360792.1211
+      "volume": 2064342.3687639995,
+      "liquidity": 360752.1121
     },
     "democraticNomination": {
-      "volume": 1262034536.5403523,
-      "liquidity": 79838480.10123
+      "volume": 1262047861.606785,
+      "liquidity": 79808523.06687
     },
     "republicanNomination": {
-      "volume": 689009968.7238451,
-      "liquidity": 57064825.06403
+      "volume": 689013588.7314961,
+      "liquidity": 57096940.70826
     }
-  }
+  },
+  "marketUpdatedAt": "2026-08-19T04:04:15.848Z"
 }
