@@ -161,7 +161,7 @@ function renderForecast(data) {
   };
   arm.onpointerup = () => { restoreForecast(); playBellGong(); };
   arm.onpointercancel = restoreForecast;
-  $('#updated').textContent = updated(data.marketMeta?.retrievedAt || data.marketUpdatedAt || data.modelUpdatedAt || data.lastUpdated);
+  $('#updated').textContent = updated(data.modelUpdatedAt || data.modelMeta?.updatedAt || data.marketMeta?.retrievedAt || data.marketUpdatedAt || data.lastUpdated);
   $('#forecast-summary').textContent = call?.whyShort || 'The market has a favorite. The race does not have a winner.';
   $('#dem-mini').innerHTML = miniField(dems);
   $('#rep-mini').innerHTML = miniField(reps);

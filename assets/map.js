@@ -5,8 +5,16 @@ const STATES = [
 const mapHost = document.querySelector('#state-map');
 const detail = document.querySelector('#state-detail');
 const detailContent = document.querySelector('#detail-content');
+const statePicker = document.querySelector('#state-picker');
 const stateByName = new Map(STATES.map(state => [state[1], state]));
 document.querySelector('#detail-close').onclick = () => detail.classList.remove('open');
+
+STATES.slice().sort((a, b) => a[1].localeCompare(b[1])).forEach(state => {
+  const option = document.createElement('option');
+  option.value = state[0];
+  option.textContent = `${state[1]} · ${state[2]} EV`;
+  statePicker.append(option);
+});
 
 function detailCopy(state) {
   const [abbr, name, ev, winner] = state;
@@ -18,12 +26,20 @@ function detailCopy(state) {
 
 function showDetail(state, pathNode) {
   document.querySelectorAll('.state-shape.active').forEach(shape => shape.classList.remove('active'));
-  pathNode.classList.add('active');
+  if (pathNode) pathNode.classList.add('active');
   const [abbr, name, ev] = state;
   const info = detailCopy(state);
   detailContent.innerHTML = `<span class="eyebrow">${abbr} · ${ev} electoral votes</span><h2>${name}</h2><strong>${info.winner}</strong><p>${info.copy}</p>`;
   detail.classList.add('open');
+  statePicker.value = abbr;
 }
+
+statePicker.onchange = () => {
+  const state = STATES.find(item => item[0] === statePicker.value);
+  if (!state) return;
+  const pathNode = document.querySelector(`.state-shape[data-state="${state[0]}"]`);
+  showDetail(state, pathNode);
+};
 
 async function drawMap() {
   try {
@@ -48,6 +64,7 @@ async function drawMap() {
         const state = stateByName.get(feature.properties.name);
         return `state-shape ${state[3] === 'D' ? 'dem' : state[3] === 'R' ? 'rep' : 'split'}`;
       })
+      .attr('data-state', feature => stateByName.get(feature.properties.name)[0])
       .attr('tabindex', '0')
       .attr('aria-label', feature => {
         const state = stateByName.get(feature.properties.name);
