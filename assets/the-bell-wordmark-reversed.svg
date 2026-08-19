@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3000 900" role="img" aria-labelledby="title desc">
+  <title id="title">The Bell reversed wordmark</title>
+  <desc id="desc">The Bell circular Liberty Bell symbol with light text for dark backgrounds.</desc>
+  <g transform="translate(70 92) scale(.68)">
+    <circle cx="512" cy="512" r="466" fill="#171714" stroke="#D0AA55" stroke-width="24"/>
+    <path fill="#D0AA55" d="M455 220h114l15 55c93 29 154 111 160 214l9 130 83 105c12 15 1 38-18 38H206c-19 0-30-23-18-38l83-105 9-130c6-103 67-185 160-214l15-55Zm-61 572h236c-8 61-57 108-118 108s-110-47-118-108Z"/>
+    <path fill="#171714" d="M535 365h35l-18 116 54 5-66 105 48 7-104 143 42-116-52-8 65-103-43-7 39-142Z"/>
+    <circle cx="512" cy="776" r="43" fill="#D0AA55"/>
+  </g>
+  <text x="880" y="450" fill="#F4F0E7" font-family="Inter, Arial, sans-serif" font-size="315" font-weight="700" letter-spacing="-14">The Bell</text>
+  <text x="900" y="600" fill="#D0AA55" font-family="IBM Plex Mono, Menlo, monospace" font-size="64" font-weight="600" letter-spacing="11">BY LIBERTY BELL VOTE</text>
+  <text x="900" y="718" fill="#AAA79E" font-family="Inter, Arial, sans-serif" font-size="62" font-weight="500">Which way will The Bell swing?</text>
+</svg>

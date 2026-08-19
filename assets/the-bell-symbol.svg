@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">The Bell symbol</title>
+  <desc id="desc">A gold Liberty Bell with a visible crack inside a dark circular seal.</desc>
+  <circle cx="512" cy="512" r="466" fill="#171714" stroke="#D0AA55" stroke-width="24"/>
+  <path fill="#D0AA55" d="M455 220h114l15 55c93 29 154 111 160 214l9 130 83 105c12 15 1 38-18 38H206c-19 0-30-23-18-38l83-105 9-130c6-103 67-185 160-214l15-55Zm-61 572h236c-8 61-57 108-118 108s-110-47-118-108Z"/>
+  <path fill="#171714" d="M535 365h35l-18 116 54 5-66 105 48 7-104 143 42-116-52-8 65-103-43-7 39-142Z"/>
+  <circle cx="512" cy="776" r="43" fill="#D0AA55"/>
+</svg>
