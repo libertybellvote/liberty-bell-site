@@ -11,7 +11,7 @@
         "name": "Alexandria Ocasio-Cortez",
         "role": "U.S. Representative, NY-14",
         "odds": "20%",
-        "oddsNum": 19.6,
+        "oddsNum": 19.8,
         "pollAvg": 9.2,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Alexandria%20Ocasio-Cortez%20Official%20Portrait.jpg?width=300",
         "vibe": "The field’s best natural communicator with younger, online audiences. High energy, high name recognition.",
@@ -187,7 +187,7 @@
         "name": "Wes Moore",
         "role": "Governor of Maryland",
         "odds": "2%",
-        "oddsNum": 2.1,
+        "oddsNum": 1.8,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Wes%20Moore%20Official%20Governor%20Portrait.jpg?width=300",
         "vibe": "A first-term governor, Army veteran, and author building a compelling personal-story campaign before he’s even run one.",
         "strength": "A rare combination of military, business, and executive credentials, plus a strong personal biography.",
@@ -546,7 +546,7 @@
       "outcomes": [
         {
           "label": "Alexandria Ocasio-Cortez",
-          "probability": 19.6,
+          "probability": 19.8,
           "platform": "Polymarket"
         },
         {
@@ -616,23 +616,23 @@
   },
   "marketMeta": {
     "source": "Polymarket public market data",
-    "retrievedAt": "2026-08-19T04:04:15.848Z",
+    "retrievedAt": "2026-08-19T07:00:42.669Z",
     "partyIndex": {
       "democratic": 58.5,
       "republican": 41.5
     },
     "party": {
-      "volume": 2064342.3687639995,
-      "liquidity": 360752.1121
+      "volume": 2064342.3687640005,
+      "liquidity": 361224.0514
     },
     "democraticNomination": {
-      "volume": 1262047861.606785,
-      "liquidity": 79808523.06687
+      "volume": 1262261796.5377772,
+      "liquidity": 79709807.36249
     },
     "republicanNomination": {
-      "volume": 689013588.7314961,
-      "liquidity": 57096940.70826
+      "volume": 689025087.8997471,
+      "liquidity": 56821398.29166
     }
   },
-  "marketUpdatedAt": "2026-08-19T04:04:15.848Z"
+  "marketUpdatedAt": "2026-08-19T07:00:42.669Z"
 }
