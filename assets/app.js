@@ -3,7 +3,7 @@ const page = document.body.dataset.page || 'forecast';
 const NAV = [
   ['forecast', '/', 'Home'],
   ['candidates', '/candidates.html', 'The Field'],
-  ['markets', '/market-gap.html', 'Odds & Signals'],
+  ['markets', '/market-gap.html', 'Bell vs. Markets'],
   ['map', '/map.html', 'Electoral Map'],
   ['methodology', '/methodology.html', 'How It Works'],
   ['ledger', '/ledger.html', 'Receipts']
@@ -14,7 +14,7 @@ function header() {
 }
 
 function footer() {
-  return `<footer><div class="shell"><div class="footer-lead"><div class="footer-lockup"><span class="brand-mark light"><i></i></span><div><div class="footer-name">The Bell</div><p>Which way will The Bell swing?</p></div></div><div class="footer-support"><p>Independent coverage of the 2028 presidential election.</p><a class="btn donate" href="https://ko-fi.com/libertybellvote" target="_blank" rel="noopener">Support The Bell</a></div></div><div class="footer-grid"><div class="footer-col"><strong>Explore</strong><a href="/">Home</a><a href="/candidates.html">The Field</a><a href="/market-gap.html">Odds & Signals</a><a href="/map.html">Electoral Map</a></div><div class="footer-col"><strong>Accountability</strong><a href="/methodology.html">How It Works</a><a href="/ledger.html">Receipts</a><a href="mailto:libertybellvote@gmail.com?subject=Correction">Corrections</a></div><div class="footer-col"><strong>Follow</strong><a href="https://x.com/LibertyBellVote">X / Twitter</a><a href="https://instagram.com/LibertyBellVote">Instagram</a><a href="mailto:libertybellvote@gmail.com">Contact</a></div></div><div class="copyright">© 2026 Liberty Bell Vote · Market probabilities are not polls, guarantees, or financial advice.</div></div></footer>`;
+  return `<footer><div class="shell"><div class="footer-lead"><div class="footer-lockup"><span class="brand-mark light"><i></i></span><div><div class="footer-name">The Bell</div><p>Which way will The Bell swing?</p></div></div><div class="footer-support"><p>Independent coverage of the 2028 presidential election.</p><a class="btn donate" href="https://ko-fi.com/libertybellvote" target="_blank" rel="noopener">Support The Bell</a></div></div><div class="footer-grid"><div class="footer-col"><strong>Explore</strong><a href="/">Home</a><a href="/candidates.html">The Field</a><a href="/market-gap.html">Bell vs. Markets</a><a href="/map.html">Electoral Map</a></div><div class="footer-col"><strong>Accountability</strong><a href="/methodology.html">How It Works</a><a href="/ledger.html">Receipts</a><a href="mailto:libertybellvote@gmail.com?subject=Correction">Corrections</a></div><div class="footer-col"><strong>Follow</strong><a href="https://x.com/LibertyBellVote">X / Twitter</a><a href="https://instagram.com/LibertyBellVote">Instagram</a><a href="mailto:libertybellvote@gmail.com">Contact</a></div></div><div class="copyright">© 2026 Liberty Bell Vote · Market probabilities are not polls, guarantees, or financial advice.</div></div></footer>`;
 }
 
 $('#site-header').innerHTML = header();
@@ -108,7 +108,7 @@ function renderForecast(data) {
 
 function candidateCard(candidate, index, party) {
   const [label, cls] = movement(candidate);
-  return `<article class="candidate-card compact-candidate"><div class="candidate-photo"><img src="${candidate.photo || ''}" alt="${candidate.name}" loading="lazy"><span class="standing">#${index + 1}</span></div><div class="candidate-body"><div class="candidate-name-row"><h2>${candidate.name}</h2>${partyBadge(party)}</div><div class="role">${candidate.role || ''}</div><p class="candidate-bio">${candidate.vibe || `${candidate.name} is a potential 2028 presidential contender.`}</p><div class="candidate-metrics"><div class="candidate-metric"><strong>${candidate.odds || 'N/A'}</strong><span>Market</span></div><div class="candidate-metric"><strong>${candidate.pollAvg != null ? candidate.pollAvg.toFixed(1) + '%' : 'N/A'}</strong><span>Polling</span></div><div class="candidate-metric"><strong class="pulse ${cls}">${label}</strong><span>Move</span></div></div></div></article>`;
+  return `<article class="candidate-card compact-candidate"><div class="candidate-photo"><img src="${candidate.photo || ''}" alt="${candidate.name}" loading="lazy"><span class="standing">#${index + 1}</span></div><div class="candidate-body"><div class="candidate-name-row"><h2>${candidate.name}</h2>${partyBadge(party)}</div><div class="role">${candidate.role || ''}</div><p class="candidate-bio">${candidate.vibe || `${candidate.name} is a potential 2028 presidential contender.`}</p><div class="candidate-metrics"><div class="candidate-metric"><strong>${candidate.odds || 'N/A'}</strong><span>Market</span></div><div class="candidate-metric"><strong>${candidate.pollAvg != null ? candidate.pollAvg.toFixed(1) + '%' : 'N/A'}</strong><span>Polling</span></div><div class="candidate-metric"><strong class="pulse ${cls}">${label}</strong><span>Move</span></div></div><div class="candidate-brief"><div><span>Lane</span><p>${candidate.lane || 'Still defining a national lane.'}</p></div><div><span>Watch</span><p>${candidate.fragility || candidate.weakness || 'The campaign case is still developing.'}</p></div></div></div></article>`;
 }
 
 function renderCandidates(data) {
