@@ -6,19 +6,20 @@
   "factors": {
     "polling": { "weight": 18, "label": "Polling", "inputs": ["National and state polling averages", "Presidential job approval", "Issue approval"] },
     "bettingMarkets": { "weight": 12, "label": "Betting market odds" },
-    "campaignFundamentals": { "weight": 12, "label": "Campaign fundamentals" },
+    "campaignFundamentals": { "weight": 12, "label": "Campaign fundamentals", "inputs": ["Fundraising and organization", "Endorsements", "Primary schedule and early-state path"] },
     "candidateQuality": { "weight": 10, "label": "Candidate quality" },
     "coalitionStrength": { "weight": 12, "label": "Coalition strength" },
     "socialSentiment": { "weight": 6, "label": "Social sentiment" },
     "momentum": { "weight": 10, "label": "Momentum" },
     "economicBackdrop": { "weight": 14, "label": "Economic backdrop", "inputs": ["Inflation", "Unemployment", "Real income and consumer pressure", "Presidential approval response to economic conditions"] },
-    "fragility": { "weight": 6, "label": "Fragility and insurgency" }
+    "fragility": { "weight": 6, "label": "Fragility and insurgency", "inputs": ["Single point of failure", "Institutional or outsider position", "Primary path resilience"] }
   },
   "rules": {
     "missingEvidence": "missing",
     "marketsAreOneFactor": true,
     "attentionIsNotSupport": true,
     "freezeBelowCoverageThreshold": true,
-    "platformsMustRemainSeparate": true
+    "platformsMustRemainSeparate": true,
+    "primaryPathIsCandidateSubscore": true
   }
 }

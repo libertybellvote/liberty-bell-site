@@ -67,19 +67,21 @@ function scoreCandidates(list, config, inputs) {
   return list.map(candidate => {
     const editorial = inputs.candidates?.[candidate.name];
     if (!editorial) return null;
+    const primaryPath = Number(editorial.primaryPath);
+    const blendPath = (score, share) => Number.isFinite(primaryPath) ? score * (1 - share) + primaryPath * share : score;
     const scores = {
       polling: polling.get(clean(candidate.name)) || 0,
       bettingMarkets: market.get(clean(candidate.name)) || 0,
-      campaignFundamentals: editorial.campaignFundamentals,
+      campaignFundamentals: blendPath(editorial.campaignFundamentals, 0.25),
       candidateQuality: editorial.candidateQuality,
-      coalitionStrength: editorial.coalitionStrength,
+      coalitionStrength: blendPath(editorial.coalitionStrength, 0.25),
       socialSentiment: editorial.socialSentiment,
       momentum: editorial.momentum,
       economicBackdrop: editorial.economicBackdrop,
-      fragility: editorial.fragility
+      fragility: blendPath(editorial.fragility, 0.20)
     };
     const result = weightedScore(scores, config);
-    return { name: candidate.name, score: round(result.value * 100, 1), factors: scores };
+    return { name: candidate.name, score: round(result.value * 100, 1), primaryPath: Number.isFinite(primaryPath) ? primaryPath : null, factors: scores };
   }).filter(Boolean).sort((a, b) => b.score - a.score);
 }
 

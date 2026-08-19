@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-19T07:00:00.000Z",
+  "updatedAt": "2026-08-19T15:35:34.000Z",
   "incumbentParty": "republican",
   "presidential": {
     "polling": { "score": 0.45, "source": "Published polling and presidential approval", "note": "Democratic advantage after accounting for presidential approval and issue polling." },
@@ -12,15 +12,15 @@
     "fragility": { "score": 0.20, "source": "Single-point-of-failure review", "note": "The Republican side currently carries greater incumbent-party fragility." }
   },
   "candidates": {
-    "Alexandria Ocasio-Cortez": { "campaignFundamentals": 0.25, "candidateQuality": 0.80, "coalitionStrength": 0.45, "socialSentiment": 0.90, "momentum": 0.85, "economicBackdrop": 0.60, "fragility": -0.30 },
-    "Gavin Newsom": { "campaignFundamentals": 0.70, "candidateQuality": 0.60, "coalitionStrength": 0.35, "socialSentiment": 0.45, "momentum": -0.25, "economicBackdrop": 0.20, "fragility": -0.25 },
-    "Jon Ossoff": { "campaignFundamentals": 0.35, "candidateQuality": 0.55, "coalitionStrength": 0.50, "socialSentiment": 0.35, "momentum": -0.35, "economicBackdrop": 0.35, "fragility": -0.30 },
-    "Kamala Harris": { "campaignFundamentals": 0.85, "candidateQuality": 0.35, "coalitionStrength": 0.55, "socialSentiment": 0.10, "momentum": -0.45, "economicBackdrop": -0.25, "fragility": -0.35 },
-    "Pete Buttigieg": { "campaignFundamentals": 0.55, "candidateQuality": 0.75, "coalitionStrength": 0.30, "socialSentiment": 0.30, "momentum": 0.05, "economicBackdrop": 0.10, "fragility": -0.20 },
-    "JD Vance": { "campaignFundamentals": 0.85, "candidateQuality": 0.55, "coalitionStrength": 0.80, "socialSentiment": 0.65, "momentum": 0.45, "economicBackdrop": -0.20, "fragility": -0.35 },
-    "Marco Rubio": { "campaignFundamentals": 0.75, "candidateQuality": 0.70, "coalitionStrength": 0.65, "socialSentiment": 0.55, "momentum": 0.85, "economicBackdrop": -0.10, "fragility": -0.20 },
-    "Ron DeSantis": { "campaignFundamentals": 0.65, "candidateQuality": 0.35, "coalitionStrength": 0.55, "socialSentiment": 0.25, "momentum": -0.30, "economicBackdrop": -0.15, "fragility": -0.40 },
-    "Ted Cruz": { "campaignFundamentals": 0.55, "candidateQuality": 0.50, "coalitionStrength": 0.50, "socialSentiment": 0.20, "momentum": -0.25, "economicBackdrop": -0.15, "fragility": -0.35 },
-    "Robert F. Kennedy Jr.": { "campaignFundamentals": 0.30, "candidateQuality": 0.25, "coalitionStrength": 0.35, "socialSentiment": 0.35, "momentum": -0.45, "economicBackdrop": -0.10, "fragility": -0.65 }
+    "Alexandria Ocasio-Cortez": { "campaignFundamentals": 0.25, "candidateQuality": 0.80, "coalitionStrength": 0.45, "socialSentiment": 0.90, "momentum": 0.85, "economicBackdrop": 0.60, "fragility": -0.30, "primaryPath": 0.45 },
+    "Gavin Newsom": { "campaignFundamentals": 0.70, "candidateQuality": 0.60, "coalitionStrength": 0.35, "socialSentiment": 0.45, "momentum": -0.25, "economicBackdrop": 0.20, "fragility": -0.25, "primaryPath": 0.45 },
+    "Jon Ossoff": { "campaignFundamentals": 0.35, "candidateQuality": 0.55, "coalitionStrength": 0.50, "socialSentiment": 0.35, "momentum": -0.35, "economicBackdrop": 0.35, "fragility": -0.30, "primaryPath": 0.25 },
+    "Kamala Harris": { "campaignFundamentals": 0.85, "candidateQuality": 0.35, "coalitionStrength": 0.55, "socialSentiment": 0.10, "momentum": -0.45, "economicBackdrop": -0.25, "fragility": -0.35, "primaryPath": 0.75 },
+    "Pete Buttigieg": { "campaignFundamentals": 0.55, "candidateQuality": 0.75, "coalitionStrength": 0.30, "socialSentiment": 0.30, "momentum": 0.05, "economicBackdrop": 0.10, "fragility": -0.20, "primaryPath": 0.85 },
+    "JD Vance": { "campaignFundamentals": 0.85, "candidateQuality": 0.55, "coalitionStrength": 0.80, "socialSentiment": 0.65, "momentum": 0.45, "economicBackdrop": -0.20, "fragility": -0.35, "primaryPath": 0.80 },
+    "Marco Rubio": { "campaignFundamentals": 0.75, "candidateQuality": 0.70, "coalitionStrength": 0.65, "socialSentiment": 0.55, "momentum": 0.85, "economicBackdrop": -0.10, "fragility": -0.20, "primaryPath": 0.65 },
+    "Ron DeSantis": { "campaignFundamentals": 0.65, "candidateQuality": 0.35, "coalitionStrength": 0.55, "socialSentiment": 0.25, "momentum": -0.30, "economicBackdrop": -0.15, "fragility": -0.40, "primaryPath": 0.45 },
+    "Ted Cruz": { "campaignFundamentals": 0.55, "candidateQuality": 0.50, "coalitionStrength": 0.50, "socialSentiment": 0.20, "momentum": -0.25, "economicBackdrop": -0.15, "fragility": -0.35, "primaryPath": 0.40 },
+    "Robert F. Kennedy Jr.": { "campaignFundamentals": 0.30, "candidateQuality": 0.25, "coalitionStrength": 0.35, "socialSentiment": 0.35, "momentum": -0.45, "economicBackdrop": -0.10, "fragility": -0.65, "primaryPath": 0.25 }
   }
 }
