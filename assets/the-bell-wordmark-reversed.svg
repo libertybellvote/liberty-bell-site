@@ -1,13 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3000 900" role="img" aria-labelledby="title desc">
-  <title id="title">The Bell reversed wordmark</title>
-  <desc id="desc">The Bell circular Liberty Bell symbol with light text for dark backgrounds.</desc>
-  <g transform="translate(70 92) scale(.68)">
-    <circle cx="512" cy="512" r="466" fill="#171714" stroke="#D0AA55" stroke-width="24"/>
-    <path fill="#D0AA55" d="M455 220h114l15 55c93 29 154 111 160 214l9 130 83 105c12 15 1 38-18 38H206c-19 0-30-23-18-38l83-105 9-130c6-103 67-185 160-214l15-55Zm-61 572h236c-8 61-57 108-118 108s-110-47-118-108Z"/>
-    <path fill="#171714" d="M535 365h35l-18 116 54 5-66 105 48 7-104 143 42-116-52-8 65-103-43-7 39-142Z"/>
-    <circle cx="512" cy="776" r="43" fill="#D0AA55"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 520" role="img" aria-labelledby="title desc">
+  <title id="title">The Bell official reversed wordmark</title>
+  <desc id="desc">The official Bell symbol with light lettering for dark backgrounds.</desc>
+  <g transform="translate(40 40) scale(.86)">
+    <circle cx="256" cy="256" r="226" fill="none" stroke="#D0AA55" stroke-width="18"/>
+    <path fill="#D0AA55" d="M211 145h90l16 122 49 75c8 13-1 29-16 29H162c-15 0-24-16-16-29l49-75 16-122Z"/>
+    <circle cx="256" cy="378" r="32" fill="#D0AA55"/>
+    <path d="M267 170c-8 46-4 88 18 128" fill="none" stroke="#171714" stroke-width="12" stroke-linecap="round"/>
   </g>
-  <text x="880" y="450" fill="#F4F0E7" font-family="Inter, Arial, sans-serif" font-size="315" font-weight="700" letter-spacing="-14">The Bell</text>
-  <text x="900" y="600" fill="#D0AA55" font-family="IBM Plex Mono, Menlo, monospace" font-size="64" font-weight="600" letter-spacing="11">BY LIBERTY BELL VOTE</text>
-  <text x="900" y="718" fill="#AAA79E" font-family="Inter, Arial, sans-serif" font-size="62" font-weight="500">Which way will The Bell swing?</text>
+  <text x="550" y="260" fill="#F4F0E7" font-family="Inter, Arial, sans-serif" font-size="210" font-weight="650" letter-spacing="-8">The Bell</text>
+  <text x="562" y="380" fill="#AAA79E" font-family="IBM Plex Mono, Menlo, monospace" font-size="55" font-weight="500" letter-spacing="14">BY LIBERTY BELL VOTE</text>
 </svg>
