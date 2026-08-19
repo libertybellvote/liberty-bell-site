@@ -118,28 +118,38 @@ function renderForecast(data) {
   $('#bell-direction').textContent = margin >= 0 ? 'Swinging toward Democrats' : 'Swinging toward Republicans';
   $('.bell-visual').classList.toggle('lead-dem', margin >= 0);
   $('.bell-visual').classList.toggle('lead-rep', margin < 0);
-  const swingAngle = Math.sign(margin) * Math.min(42, abs * 2);
+  const swingAngle = Math.max(-42, Math.min(42, -margin * .42));
   const arm = $('#swing-arm');
   const stage = $('.swing-stage');
+  const axisMarker = $('#bell-axis-marker');
+  const axisValue = $('#bell-axis-value');
+  const setAxis = (demValue, repValue) => {
+    axisMarker.style.left = `${repValue}%`;
+    axisValue.textContent = demValue === repValue ? '50–50' : `${Math.round(Math.max(demValue, repValue))}% ${demValue > repValue ? 'D' : 'R'}`;
+  };
   arm.style.transform = `rotate(${swingAngle.toFixed(1)}deg)`;
+  setAxis(dem, rep);
   arm.title = 'Drag the Bell to preview a different race. Release to return to the model.';
   const restoreForecast = () => {
     arm.classList.remove('dragging');
+    axisMarker.style.transition = '';
     arm.style.transform = `rotate(${swingAngle.toFixed(1)}deg)`;
     $('#dem-pct').textContent = fmt(dem); $('#rep-pct').textContent = fmt(rep);
     $('#dem-bar').style.width = dem + '%'; $('#rep-bar').style.width = rep + '%';
     $('#rating').textContent = rating;
     $('#bell-direction').textContent = margin >= 0 ? 'Swinging toward Democrats' : 'Swinging toward Republicans';
+    setAxis(dem, rep);
   };
   arm.onpointerdown = event => {
     if (event.button !== 0) return;
     arm.classList.add('dragging'); arm.setPointerCapture(event.pointerId);
+    axisMarker.style.transition = 'none';
   };
   arm.onpointermove = event => {
     if (!arm.classList.contains('dragging')) return;
     const rect = stage.getBoundingClientRect();
-    const previewAngle = Math.max(-42, Math.min(42, (rect.left + rect.width / 2 - event.clientX) / (rect.width / 2) * 50));
-    const previewDem = Math.max(0, Math.min(100, 50 + previewAngle * (50 / 42)));
+    const previewAngle = Math.max(-42, Math.min(42, (event.clientX - (rect.left + rect.width / 2)) / (rect.width / 2) * 42));
+    const previewDem = Math.max(0, Math.min(100, 50 - previewAngle * (50 / 42)));
     const previewRep = 100 - previewDem;
     arm.style.transform = `rotate(${previewAngle.toFixed(1)}deg)`;
     $('#dem-pct').textContent = fmt(previewDem); $('#rep-pct').textContent = fmt(previewRep);
@@ -147,6 +157,7 @@ function renderForecast(data) {
     const previewMargin = Math.abs(previewDem - previewRep);
     $('#rating').textContent = previewMargin < 5 ? 'Toss-up preview' : `Preview: ${previewDem >= previewRep ? 'Democratic' : 'Republican'} edge`;
     $('#bell-direction').textContent = 'Release to return to The Bell';
+    setAxis(previewDem, previewRep);
   };
   arm.onpointerup = () => { restoreForecast(); playBellGong(); };
   arm.onpointercancel = restoreForecast;
