@@ -32,6 +32,6 @@ jobs:
         run: |
           git config user.name "Liberty Bell Bot"
           git config user.email "actions@github.com"
-          git add site-data.json ledger.json evidence-ledger.json
+          git add site-data.json ledger.json evidence-ledger.json model-state.json
           git diff --staged --quiet || git commit -m "Automated model update $(date -u +'%Y-%m-%d %H:%M UTC')"
           git push

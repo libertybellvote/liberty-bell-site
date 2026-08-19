@@ -74,7 +74,7 @@
         "pollAvg": 11,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Pete%20Buttigieg%20official%20photo%20(cropped).jpg?width=300",
         "vibe": "Widely regarded as the field’s strongest live communicator. Sharp and unflappable in hostile interviews.",
-        "strength": "Led an Emerson poll of the actual field outright, ahead of both Newsom and Ocasio-Cortez.",
+        "strength": "Led an Emerson poll of the actual field outright, ahead of both Newsom and AOC.",
         "weakness": "Never won statewide office; his market price has actually fallen even as his polling improved.",
         "audience": "Younger, college-educated, moderate-to-progressive voters.",
         "pulseDir": "flat",
@@ -538,11 +538,11 @@
     },
     {
       "question": "Who wins the Democratic nomination?",
-      "ourCall": "Ocasio-Cortez, carefully",
-      "whyShort": "Polls still say Harris. Markets and momentum say Ocasio-Cortez. This is the real split to watch.",
+      "ourCall": "AOC, carefully",
+      "whyShort": "Polls still say Harris. Markets and momentum say AOC. This is the real split to watch.",
       "pickName": "Alexandria Ocasio-Cortez",
       "pickParty": "d",
-      "reasoning": "This is the least settled call on the page, and we want to show the actual tension rather than hide it. National primary polling still shows Harris leading on name recognition. Betting markets have Ocasio-Cortez as the clear leader at 20%, up from 9% in June, a sustained climb, not a spike, backed by a viral head-to-head poll putting her ahead of Vance. Her fragility is real (an unscripted-moment stumble has already happened once). But right now she’s the only candidate who is both genuinely insurgent-coded and has real current momentum, which matters given how bad the environment looks for the incumbent party. Ossoff’s case is more complicated than it was a few days ago: he explicitly and repeatedly denied any 2028 interest this week, and his own market odds cooled slightly in response. We are taking that denial seriously rather than assuming it’s theater, which is why he is no longer our clear hedge. Newsom is closer to that role now on pure market standing. Whitmer, Kelly, and Stephen A. Smith remain real names we track, none yet building an active campaign.",
+      "reasoning": "This is the least settled call on the page, and we want to show the actual tension rather than hide it. National primary polling still shows Harris leading on name recognition. Betting markets have AOC as the clear leader at 20%, up from 9% in June, a sustained climb, not a spike, backed by a viral head-to-head poll putting her ahead of Vance. Her fragility is real (an unscripted-moment stumble has already happened once). But right now she’s the only candidate who is both genuinely insurgent-coded and has real current momentum, which matters given how bad the environment looks for the incumbent party. Ossoff’s case is more complicated than it was a few days ago: he explicitly and repeatedly denied any 2028 interest this week, and his own market odds cooled slightly in response. We are taking that denial seriously rather than assuming it’s theater, which is why he is no longer our clear hedge. Newsom is closer to that role now on pure market standing. Whitmer, Kelly, and Stephen A. Smith remain real names we track, none yet building an active campaign.",
       "outcomes": [
         {
           "label": "Alexandria Ocasio-Cortez",

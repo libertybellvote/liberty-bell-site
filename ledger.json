@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "timestamp": "2026-08-19T04:28:00.000Z",
+    "modelVersion": "2.0",
+    "type": "bell-index",
+    "label": "Bell direction",
+    "previous": "Opening record",
+    "value": "D 58% / R 42%",
+    "source": "The Bell nine-signal model",
+    "note": "Initial published reading for the new receipts ledger."
+  },
+  {
+    "timestamp": "2026-08-19T04:28:00.000Z",
+    "modelVersion": "2.0",
+    "type": "presidential-call",
+    "label": "Presidential call",
+    "previous": "Opening record",
+    "value": "Leans Democratic, and getting more confident",
+    "source": "The Bell nine-signal model",
+    "note": "Initial published presidential call."
+  },
+  {
+    "timestamp": "2026-08-19T04:28:00.000Z",
+    "modelVersion": "2.0",
+    "type": "democratic-nominee",
+    "label": "Democratic nominee pick",
+    "previous": "Opening record",
+    "value": "Alexandria Ocasio-Cortez",
+    "source": "The Bell nine-signal model",
+    "note": "Initial published Democratic nominee pick."
+  },
+  {
+    "timestamp": "2026-08-19T04:28:00.000Z",
+    "modelVersion": "2.0",
+    "type": "republican-nominee",
+    "label": "Republican nominee pick",
+    "previous": "Opening record",
+    "value": "JD Vance",
+    "source": "The Bell nine-signal model",
+    "note": "Initial published Republican nominee pick."
+  }
+]

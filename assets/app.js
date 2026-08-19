@@ -135,7 +135,7 @@ function renderLedger(entries) {
     host.innerHTML = '<div class="empty-state"><strong>No big move yet.</strong><span>The ledger starts when the Bell crosses its reporting threshold.</span></div>';
     return;
   }
-  host.innerHTML = `<table class="ledger-table"><thead><tr><th>Timestamp</th><th>Model</th><th>Dem.</th><th>Rep.</th><th>Change</th><th>Source</th></tr></thead><tbody>${entries.slice().reverse().map(entry => `<tr><td>${updated(entry.timestamp)}</td><td>${entry.modelVersion}</td><td>${fmt(entry.democratic)}</td><td>${fmt(entry.republican)}</td><td>${entry.change > 0 ? '+' : ''}${entry.change}</td><td>${entry.source}</td></tr>`).join('')}</tbody></table>`;
+  host.innerHTML = `<div class="ledger-scroll"><table class="ledger-table"><thead><tr><th>Date</th><th>What changed</th><th>Previous</th><th>New call</th><th>Why it is here</th></tr></thead><tbody>${entries.slice().reverse().map(entry => `<tr><td>${updated(entry.timestamp)}</td><td><strong>${entry.label || 'Bell movement'}</strong></td><td>${entry.previous || (entry.previousDemocratic != null ? `D ${fmt(entry.previousDemocratic)}` : 'Not recorded')}</td><td>${entry.value || (entry.democratic != null ? `D ${fmt(entry.democratic)} / R ${fmt(entry.republican)}` : 'Not recorded')}</td><td>${entry.note || entry.source || ''}</td></tr>`).join('')}</tbody></table></div>`;
 }
 
 if (page === 'ledger') {
