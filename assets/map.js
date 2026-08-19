@@ -60,7 +60,7 @@ async function drawMap() {
       .attr('transform', feature => {
         const [x, y] = path.centroid(feature);
         const state = stateByName.get(feature.properties.name)[0];
-        return state === 'FL' ? `translate(${x - 38},${y - 34})` : `translate(${x},${y})`;
+        return state === 'FL' ? `translate(${x + 20},${y + 4})` : `translate(${x},${y})`;
       })
       .text(feature => stateByName.get(feature.properties.name)[0]);
   } catch (error) {

@@ -34,6 +34,32 @@ const clean = value => String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, 
 const updated = iso => new Date(iso).toLocaleString('en-US', {month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: 'America/New_York'}) + ' ET';
 const shortDate = iso => new Date(iso).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric', timeZone: 'America/New_York'});
 const movement = candidate => candidate.pulseDir === 'up' ? ['▲ Rising', 'up'] : candidate.pulseDir === 'down' ? ['▼ Falling', 'down'] : ['Steady', 'flat'];
+let bellAudioContext;
+
+function playBellGong() {
+  const AudioEngine = window.AudioContext || window.webkitAudioContext;
+  if (!AudioEngine) return;
+  bellAudioContext ||= new AudioEngine();
+  const context = bellAudioContext;
+  if (context.state === 'suspended') context.resume();
+  const start = context.currentTime;
+  const master = context.createGain();
+  master.gain.setValueAtTime(.0001, start);
+  master.gain.exponentialRampToValueAtTime(.14, start + .018);
+  master.gain.exponentialRampToValueAtTime(.0001, start + 2.8);
+  master.connect(context.destination);
+  [196, 247, 313, 392, 523].forEach((frequency, index) => {
+    const oscillator = context.createOscillator();
+    const partial = context.createGain();
+    oscillator.type = index < 2 ? 'sine' : 'triangle';
+    oscillator.frequency.setValueAtTime(frequency, start);
+    oscillator.detune.setValueAtTime(index % 2 ? 5 : -4, start);
+    partial.gain.setValueAtTime(1 / (index + 1.25), start);
+    partial.gain.exponentialRampToValueAtTime(.0001, start + 1.5 + index * .22);
+    oscillator.connect(partial); partial.connect(master);
+    oscillator.start(start); oscillator.stop(start + 2.9);
+  });
+}
 
 function allCandidates(data) {
   return [...(data.field?.democratic || []), ...(data.field?.republican || []), ...(data.thirdParty || [])];
@@ -122,7 +148,7 @@ function renderForecast(data) {
     $('#rating').textContent = previewMargin < 5 ? 'Toss-up preview' : `Preview: ${previewDem >= previewRep ? 'Democratic' : 'Republican'} edge`;
     $('#bell-direction').textContent = 'Release to return to The Bell';
   };
-  arm.onpointerup = restoreForecast;
+  arm.onpointerup = () => { restoreForecast(); playBellGong(); };
   arm.onpointercancel = restoreForecast;
   $('#updated').textContent = updated(data.marketMeta?.retrievedAt || data.marketUpdatedAt || data.modelUpdatedAt || data.lastUpdated);
   $('#forecast-summary').textContent = call?.whyShort || 'The market has a favorite. The race does not have a winner.';
