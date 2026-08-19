@@ -110,13 +110,12 @@ async function main() {
   // Polymarket is updated by run-model-session.js and remains separately labeled.
   factors.bettingMarkets.status = data.marketMeta?.retrievedAt ? 'evidence-collected' : factors.bettingMarkets.status;
   factors.bettingMarkets.sourceCount += data.marketMeta?.retrievedAt ? 1 : 0;
-  const currentFactors = Object.values(factors).filter(factor => factor.status === 'scored').length;
+  const currentFactors = Object.values(factors).filter(factor => factor.status === 'evidence-collected').length;
   const sourceFamilies = new Set(sources.filter(source => source.status === 'current').map(source => source.family)).size + (data.marketMeta?.retrievedAt ? 1 : 0);
-  const eligible = currentFactors >= config.minimumCurrentFactors && sourceFamilies >= config.minimumSourceFamilies;
   const output = {
     updatedAt: now,
     modelVersion: config.version,
-    callStatus: eligible ? 'eligible-for-update' : 'frozen',
+    callStatus: 'awaiting-model-score',
     coverage: { currentFactors, requiredFactors: config.minimumCurrentFactors, sourceFamilies, requiredSourceFamilies: config.minimumSourceFamilies },
     safeguards: config.rules,
     sources: [
@@ -126,7 +125,7 @@ async function main() {
     factors
   };
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(output, null, 2) + '\n');
-  console.log(`Evidence collected from ${output.sources.filter(source => source.status === 'current').length} sources. Bell call ${output.callStatus}.`);
+  console.log(`Evidence collected from ${output.sources.filter(source => source.status === 'current').length} sources. Awaiting Bell Model score.`);
 }
 
 main().catch(error => { console.error('Evidence collection failed:', error.message); process.exit(1); });

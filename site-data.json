@@ -1,6 +1,6 @@
 {
   "lastUpdated": "2026-08-19T02:30:45.655Z",
-  "modelUpdatedAt": "2026-08-19T02:30:45.655Z",
+  "modelUpdatedAt": "2026-08-19T07:10:14.345Z",
   "libertyBellIndex": {
     "democratic": 58,
     "republican": 42
@@ -11,7 +11,7 @@
         "name": "Alexandria Ocasio-Cortez",
         "role": "U.S. Representative, NY-14",
         "odds": "20%",
-        "oddsNum": 19.8,
+        "oddsNum": 19.7,
         "pollAvg": 9.2,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Alexandria%20Ocasio-Cortez%20Official%20Portrait.jpg?width=300",
         "vibe": "The field’s best natural communicator with younger, online audiences. High energy, high name recognition.",
@@ -546,7 +546,7 @@
       "outcomes": [
         {
           "label": "Alexandria Ocasio-Cortez",
-          "probability": 19.8,
+          "probability": 19.7,
           "platform": "Polymarket"
         },
         {
@@ -616,23 +616,225 @@
   },
   "marketMeta": {
     "source": "Polymarket public market data",
-    "retrievedAt": "2026-08-19T07:00:42.669Z",
+    "retrievedAt": "2026-08-19T07:08:53.302Z",
     "partyIndex": {
       "democratic": 58.5,
       "republican": 41.5
     },
     "party": {
-      "volume": 2064342.3687640005,
-      "liquidity": 361224.0514
+      "volume": 2064342.368764,
+      "liquidity": 361219.3124
     },
     "democraticNomination": {
-      "volume": 1262261796.5377772,
-      "liquidity": 79709807.36249
+      "volume": 1262262531.8519022,
+      "liquidity": 79711969.78194
     },
     "republicanNomination": {
-      "volume": 689025087.8997471,
-      "liquidity": 56821398.29166
+      "volume": 689053857.3115801,
+      "liquidity": 56844308.6252
     }
   },
-  "marketUpdatedAt": "2026-08-19T07:00:42.669Z"
+  "marketUpdatedAt": "2026-08-19T07:08:53.302Z",
+  "modelMeta": {
+    "version": "3.0",
+    "updatedAt": "2026-08-19T07:10:14.345Z",
+    "status": "scored",
+    "signalCoverage": "9/9",
+    "score": 32,
+    "factors": {
+      "polling": {
+        "score": 0.45,
+        "weight": 18
+      },
+      "bettingMarkets": {
+        "score": 0.17,
+        "weight": 12
+      },
+      "campaignFundamentals": {
+        "score": 0.1,
+        "weight": 12
+      },
+      "candidateQuality": {
+        "score": 0.2,
+        "weight": 10
+      },
+      "coalitionStrength": {
+        "score": 0.3,
+        "weight": 12
+      },
+      "socialSentiment": {
+        "score": 0.25,
+        "weight": 6
+      },
+      "momentum": {
+        "score": 0.4,
+        "weight": 10
+      },
+      "economicBackdrop": {
+        "score": 0.6,
+        "weight": 14
+      },
+      "fragility": {
+        "score": 0.2,
+        "weight": 6
+      }
+    },
+    "nominationRankings": {
+      "democratic": [
+        {
+          "name": "Alexandria Ocasio-Cortez",
+          "score": 54.7,
+          "factors": {
+            "polling": 0.3205574912891986,
+            "bettingMarkets": 1,
+            "campaignFundamentals": 0.25,
+            "candidateQuality": 0.8,
+            "coalitionStrength": 0.45,
+            "socialSentiment": 0.9,
+            "momentum": 0.85,
+            "economicBackdrop": 0.6,
+            "fragility": -0.3
+          }
+        },
+        {
+          "name": "Gavin Newsom",
+          "score": 40.1,
+          "factors": {
+            "polling": 0.5818815331010453,
+            "bettingMarkets": 0.7969543147208121,
+            "campaignFundamentals": 0.7,
+            "candidateQuality": 0.6,
+            "coalitionStrength": 0.35,
+            "socialSentiment": 0.45,
+            "momentum": -0.25,
+            "economicBackdrop": 0.2,
+            "fragility": -0.25
+          }
+        },
+        {
+          "name": "Kamala Harris",
+          "score": 33.4,
+          "factors": {
+            "polling": 1,
+            "bettingMarkets": 0.38578680203045684,
+            "campaignFundamentals": 0.85,
+            "candidateQuality": 0.35,
+            "coalitionStrength": 0.55,
+            "socialSentiment": 0.1,
+            "momentum": -0.45,
+            "economicBackdrop": -0.25,
+            "fragility": -0.35
+          }
+        },
+        {
+          "name": "Pete Buttigieg",
+          "score": 30.3,
+          "factors": {
+            "polling": 0.3832752613240418,
+            "bettingMarkets": 0.26903553299492383,
+            "campaignFundamentals": 0.55,
+            "candidateQuality": 0.75,
+            "coalitionStrength": 0.3,
+            "socialSentiment": 0.3,
+            "momentum": 0.05,
+            "economicBackdrop": 0.1,
+            "fragility": -0.2
+          }
+        },
+        {
+          "name": "Jon Ossoff",
+          "score": 25.8,
+          "factors": {
+            "polling": 0,
+            "bettingMarkets": 0.7005076142131981,
+            "campaignFundamentals": 0.35,
+            "candidateQuality": 0.55,
+            "coalitionStrength": 0.5,
+            "socialSentiment": 0.35,
+            "momentum": -0.35,
+            "economicBackdrop": 0.35,
+            "fragility": -0.3
+          }
+        }
+      ],
+      "republican": [
+        {
+          "name": "JD Vance",
+          "score": 58.8,
+          "factors": {
+            "polling": 1,
+            "bettingMarkets": 1,
+            "campaignFundamentals": 0.85,
+            "candidateQuality": 0.55,
+            "coalitionStrength": 0.8,
+            "socialSentiment": 0.65,
+            "momentum": 0.45,
+            "economicBackdrop": -0.2,
+            "fragility": -0.35
+          }
+        },
+        {
+          "name": "Marco Rubio",
+          "score": 49.6,
+          "factors": {
+            "polling": 0.5427135678391961,
+            "bettingMarkets": 0.5725,
+            "campaignFundamentals": 0.75,
+            "candidateQuality": 0.7,
+            "coalitionStrength": 0.65,
+            "socialSentiment": 0.55,
+            "momentum": 0.85,
+            "economicBackdrop": -0.1,
+            "fragility": -0.2
+          }
+        },
+        {
+          "name": "Ron DeSantis",
+          "score": 16,
+          "factors": {
+            "polling": 0.17839195979899497,
+            "bettingMarkets": 0.0725,
+            "campaignFundamentals": 0.65,
+            "candidateQuality": 0.35,
+            "coalitionStrength": 0.55,
+            "socialSentiment": 0.25,
+            "momentum": -0.3,
+            "economicBackdrop": -0.15,
+            "fragility": -0.4
+          }
+        },
+        {
+          "name": "Ted Cruz",
+          "score": 12.4,
+          "factors": {
+            "polling": 0,
+            "bettingMarkets": 0.025,
+            "campaignFundamentals": 0.55,
+            "candidateQuality": 0.5,
+            "coalitionStrength": 0.5,
+            "socialSentiment": 0.2,
+            "momentum": -0.25,
+            "economicBackdrop": -0.15,
+            "fragility": -0.35
+          }
+        },
+        {
+          "name": "Robert F. Kennedy Jr.",
+          "score": 4.5,
+          "factors": {
+            "polling": 0.09547738693467336,
+            "bettingMarkets": 0.0125,
+            "campaignFundamentals": 0.3,
+            "candidateQuality": 0.25,
+            "coalitionStrength": 0.35,
+            "socialSentiment": 0.35,
+            "momentum": -0.45,
+            "economicBackdrop": -0.1,
+            "fragility": -0.65
+          }
+        }
+      ]
+    },
+    "evidenceUpdatedAt": "2026-08-19T07:10:13.882Z"
+  }
 }

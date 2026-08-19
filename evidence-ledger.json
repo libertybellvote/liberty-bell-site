@@ -1,9 +1,9 @@
 {
-  "updatedAt": "2026-08-19T07:02:43.630Z",
-  "modelVersion": "2.0",
-  "callStatus": "frozen",
+  "updatedAt": "2026-08-19T07:10:13.882Z",
+  "modelVersion": "3.0",
+  "callStatus": "scored",
   "coverage": {
-    "currentFactors": 0,
+    "currentFactors": 9,
     "requiredFactors": 6,
     "sourceFamilies": 3,
     "requiredSourceFamilies": 3
@@ -22,25 +22,25 @@
       "factor": "bettingMarkets",
       "url": "https://polymarket.com",
       "status": "current",
-      "retrievedAt": "2026-08-19T07:00:42.669Z",
+      "retrievedAt": "2026-08-19T07:08:53.302Z",
       "evidence": {
         "source": "Polymarket public market data",
-        "retrievedAt": "2026-08-19T07:00:42.669Z",
+        "retrievedAt": "2026-08-19T07:08:53.302Z",
         "partyIndex": {
           "democratic": 58.5,
           "republican": 41.5
         },
         "party": {
-          "volume": 2064342.3687640005,
-          "liquidity": 361224.0514
+          "volume": 2064342.368764,
+          "liquidity": 361219.3124
         },
         "democraticNomination": {
-          "volume": 1262261796.5377772,
-          "liquidity": 79709807.36249
+          "volume": 1262262531.8519022,
+          "liquidity": 79711969.78194
         },
         "republicanNomination": {
-          "volume": 689025087.8997471,
-          "liquidity": 56821398.29166
+          "volume": 689053857.3115801,
+          "liquidity": 56844308.6252
         }
       }
     },
@@ -50,7 +50,7 @@
       "factor": "bettingMarkets",
       "url": "https://kalshi.com",
       "status": "unavailable",
-      "retrievedAt": "2026-08-19T07:02:43.630Z",
+      "retrievedAt": "2026-08-19T07:10:13.882Z",
       "error": "No open 2028 presidential market was returned"
     },
     {
@@ -59,7 +59,7 @@
       "factor": "economicBackdrop",
       "url": "https://www.bls.gov/developers/",
       "status": "current",
-      "retrievedAt": "2026-08-19T07:02:43.630Z",
+      "retrievedAt": "2026-08-19T07:10:13.882Z",
       "evidence": [
         {
           "seriesId": "CUUR0000SA0",
@@ -219,7 +219,7 @@
       "factor": "polling",
       "url": "https://www.realclearpolling.com/latest-polls/2028",
       "status": "unavailable",
-      "retrievedAt": "2026-08-19T07:02:43.630Z",
+      "retrievedAt": "2026-08-19T07:10:13.882Z",
       "error": "HTTP 403"
     },
     {
@@ -228,7 +228,7 @@
       "factor": "polling",
       "url": "https://votehub.com/feed/",
       "status": "current",
-      "retrievedAt": "2026-08-19T07:02:43.630Z",
+      "retrievedAt": "2026-08-19T07:10:13.882Z",
       "evidence": [
         {
           "title": "2026 Florida Republican Gubernatorial Primary",
@@ -288,7 +288,7 @@
       "factor": "momentum",
       "url": "https://decisiondeskhq.com/feed/",
       "status": "unavailable",
-      "retrievedAt": "2026-08-19T07:02:43.630Z",
+      "retrievedAt": "2026-08-19T07:10:13.882Z",
       "error": "HTTP 404"
     }
   ],
@@ -296,74 +296,74 @@
     "polling": {
       "label": "Polling",
       "weight": 18,
-      "status": "evidence-collected",
+      "status": "scored",
       "sourceCount": 1,
-      "score": null,
-      "note": "Evidence collected for review. No automatic inference was made."
+      "score": 0.45,
+      "note": "Scored from the current reviewed Bell Model input."
     },
     "bettingMarkets": {
       "label": "Betting market odds",
       "weight": 12,
-      "status": "evidence-collected",
+      "status": "scored",
       "sourceCount": 1,
-      "score": null,
-      "note": "Evidence collected for review. No automatic inference was made."
+      "score": 0.17,
+      "note": "Calculated from current separately labeled market prices."
     },
     "campaignFundamentals": {
       "label": "Campaign fundamentals",
       "weight": 12,
-      "status": "missing",
+      "status": "scored",
       "sourceCount": 0,
-      "score": null,
-      "note": "No reliable free structured source is configured yet."
+      "score": 0.1,
+      "note": "Scored from the current reviewed Bell Model input."
     },
     "candidateQuality": {
       "label": "Candidate quality",
       "weight": 10,
-      "status": "missing",
+      "status": "scored",
       "sourceCount": 0,
-      "score": null,
-      "note": "No reliable free structured source is configured yet."
+      "score": 0.2,
+      "note": "Scored from the current reviewed Bell Model input."
     },
     "coalitionStrength": {
       "label": "Coalition strength",
       "weight": 12,
-      "status": "missing",
+      "status": "scored",
       "sourceCount": 0,
-      "score": null,
-      "note": "No reliable free structured source is configured yet."
+      "score": 0.3,
+      "note": "Scored from the current reviewed Bell Model input."
     },
     "socialSentiment": {
       "label": "Social sentiment",
       "weight": 6,
-      "status": "missing",
+      "status": "scored",
       "sourceCount": 0,
-      "score": null,
-      "note": "No reliable free structured source is configured yet."
+      "score": 0.25,
+      "note": "Scored from the current reviewed Bell Model input."
     },
     "momentum": {
       "label": "Momentum",
       "weight": 10,
-      "status": "missing",
+      "status": "scored",
       "sourceCount": 0,
-      "score": null,
-      "note": "Evidence collected for review. No automatic inference was made."
+      "score": 0.4,
+      "note": "Scored from the current reviewed Bell Model input."
     },
     "economicBackdrop": {
       "label": "Economic backdrop",
       "weight": 14,
-      "status": "evidence-collected",
+      "status": "scored",
       "sourceCount": 1,
-      "score": null,
-      "note": "Evidence collected for review. No automatic inference was made."
+      "score": 0.6,
+      "note": "Scored from the current reviewed Bell Model input."
     },
     "fragility": {
       "label": "Fragility and insurgency",
       "weight": 6,
-      "status": "missing",
+      "status": "scored",
       "sourceCount": 0,
-      "score": null,
-      "note": "No reliable free structured source is configured yet."
+      "score": 0.2,
+      "note": "Scored from the current reviewed Bell Model input."
     }
   }
 }
