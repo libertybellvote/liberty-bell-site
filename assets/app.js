@@ -186,13 +186,18 @@ function renderForecast(data) {
 
 function candidateCard(candidate, index, party) {
   const [label, cls] = movement(candidate);
-  return `<article class="candidate-card compact-candidate"><div class="candidate-photo"><img src="${candidate.photo || ''}" alt="${candidate.name}" loading="lazy"><span class="standing">#${index + 1}</span></div><div class="candidate-body"><div class="candidate-name-row"><h2>${candidate.name}</h2>${partyBadge(party)}</div><div class="role">${candidate.role || ''}</div><p class="candidate-bio">${candidate.vibe || `${candidate.name} is a potential 2028 presidential contender.`}</p><div class="candidate-metrics"><div class="candidate-metric"><strong>${candidate.odds || 'N/A'}</strong><span>Market</span></div><div class="candidate-metric"><strong>${candidate.pollAvg != null ? candidate.pollAvg.toFixed(1) + '%' : 'N/A'}</strong><span>Polling</span></div><div class="candidate-metric"><strong class="pulse ${cls}">${label}</strong><span>Move</span></div></div><div class="candidate-brief"><div><span>Classification</span><p>${CLASSIFICATIONS[candidate.name] || 'Unclassified'}</p></div><div><span>Watch</span><p>${candidate.fragility || candidate.weakness || 'The campaign case is still developing.'}</p></div></div></div></article>`;
+  const polling = candidate.pollAvg != null ? candidate.pollAvg.toFixed(1) + '%' : 'Not listed';
+  return `<article class="candidate-card compact-candidate"><div class="candidate-photo"><img src="${candidate.photo || ''}" alt="${candidate.name}" loading="lazy"><span class="standing">#${index + 1}</span></div><div class="candidate-body"><div class="candidate-name-row"><h2>${candidate.name}</h2>${partyBadge(party)}</div><div class="role">${candidate.role || ''}</div><p class="candidate-bio">${candidate.vibe || `${candidate.name} is a potential 2028 presidential contender.`}</p><div class="candidate-metrics"><div class="candidate-metric"><strong>${candidate.odds || 'N/A'}</strong><span>Market</span></div><div class="candidate-metric"><strong class="${candidate.pollAvg == null ? 'metric-missing' : ''}">${polling}</strong><span>Polling avg.</span></div><div class="candidate-metric"><strong class="pulse ${cls}">${label}</strong><span>Move</span></div></div><div class="candidate-brief"><div><span>Classification</span><p>${CLASSIFICATIONS[candidate.name] || 'Unclassified'}</p></div><div><span>Watch</span><p>${candidate.fragility || candidate.weakness || 'The campaign case is still developing.'}</p></div></div></div></article>`;
 }
 
 function renderCandidates(data) {
   const draw = party => {
     const list = [...(party === 'democratic' ? data.field.democratic : party === 'republican' ? data.field.republican : data.thirdParty || [])].sort((a, b) => b.oddsNum - a.oddsNum);
     $('#candidate-grid').innerHTML = list.map((candidate, index) => candidateCard(candidate, index, party)).join('');
+    const pollMeta = data.pollingMeta?.parties?.[party];
+    const source = $('#polling-source');
+    const aggregators = (pollMeta?.underlyingAggregators || []).join(', ');
+    if (source) source.innerHTML = pollMeta ? `Polling averages from the <a href="${pollMeta.url}" target="_blank" rel="noopener">national polling aggregation</a>${aggregators ? `, combining ${aggregators}` : ''}. Candidates not included by the aggregators are marked “Not listed.”` : party === 'independent' ? 'No comparable national primary polling average exists for outside-party candidates.' : 'Polling aggregation is temporarily unavailable.';
     document.querySelectorAll('.party-switch button').forEach(button => button.classList.toggle('active', button.dataset.party === party));
   };
   document.querySelectorAll('.party-switch button').forEach(button => button.onclick = () => draw(button.dataset.party));

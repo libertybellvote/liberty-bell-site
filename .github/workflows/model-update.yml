@@ -31,6 +31,11 @@ jobs:
         continue-on-error: true
         run: node scripts/run-model-session.js
 
+      - name: Refresh national primary polling
+        id: polling_update
+        continue-on-error: true
+        run: node scripts/refresh-polling.js
+
       - name: Collect free nine-signal evidence
         run: node scripts/collect-evidence.js
 

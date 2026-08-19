@@ -1,6 +1,6 @@
 {
   "lastUpdated": "2026-08-19T02:30:45.655Z",
-  "modelUpdatedAt": "2026-08-19T14:53:24.539Z",
+  "modelUpdatedAt": "2026-08-19T15:08:45.490Z",
   "libertyBellIndex": {
     "democratic": 58,
     "republican": 42
@@ -12,7 +12,7 @@
         "role": "U.S. Representative, NY-14",
         "odds": "21%",
         "oddsNum": 21.1,
-        "pollAvg": 9.2,
+        "pollAvg": 10.1,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Alexandria%20Ocasio-Cortez%20Official%20Portrait.jpg?width=300",
         "vibe": "The field’s best natural communicator with younger, online audiences. High energy, high name recognition.",
         "strength": "Unmatched enthusiasm from the party’s progressive wing; took the market lead after Vance himself named her a threat. Actively touring nationally with Bernie Sanders on a \"Fighting Oligarchy\" tour, real organizing activity, not just online buzz.",
@@ -25,7 +25,8 @@
         "pick": true,
         "fragility": "Her authenticity cuts both ways. The same unscripted style that built her following also produced a real stumble on Taiwan policy.",
         "lane": "Insurgent. The clearest outsider brand in either party.",
-        "laneClass": "insurgent"
+        "laneClass": "insurgent",
+        "pollingStatus": "listed"
       },
       {
         "name": "Gavin Newsom",
@@ -45,7 +46,8 @@
         "pick": false,
         "fragility": "An active DOJ tax investigation into him and his wife is unresolved, not just a headline that faded.",
         "lane": "Institutional.",
-        "laneClass": "institutional"
+        "laneClass": "institutional",
+        "pollingStatus": "listed"
       },
       {
         "name": "Jon Ossoff",
@@ -64,14 +66,16 @@
         "pick": false,
         "fragility": "Has explicitly and repeatedly denied any 2028 interest this week, tying his full focus to the 2026 midterms. Worth taking at face value for now, while watching whether that holds after November.",
         "lane": "Institutional, actively distancing from the insurgent 2028 narrative built around him.",
-        "laneClass": "institutional"
+        "laneClass": "institutional",
+        "pollAvg": null,
+        "pollingStatus": "not-listed"
       },
       {
         "name": "Pete Buttigieg",
         "role": "Former Secretary of Transportation",
         "odds": "5%",
         "oddsNum": 5.3,
-        "pollAvg": 11,
+        "pollAvg": 12.6,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Pete%20Buttigieg%20official%20photo%20(cropped).jpg?width=300",
         "vibe": "Widely regarded as the field’s strongest live communicator. Sharp and unflappable in hostile interviews.",
         "strength": "Led an Emerson poll of the actual field outright, ahead of both Newsom and AOC.",
@@ -84,14 +88,15 @@
         "pick": false,
         "fragility": "Never won a swing-state race; thin executive record to run on nationally.",
         "lane": "Institutional-adjacent.",
-        "laneClass": "institutional"
+        "laneClass": "institutional",
+        "pollingStatus": "listed"
       },
       {
         "name": "Kamala Harris",
         "role": "Former Vice President",
         "odds": "8%",
         "oddsNum": 7.6,
-        "pollAvg": 28.7,
+        "pollAvg": 29.1,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Kamala%20Harris%20Vice%20Presidential%20Portrait%20(cropped).jpg?width=300",
         "vibe": "Highest name recognition in the field, but 2024 leaves a mixed record to run on.",
         "strength": "Executive-branch experience, strong standing with core Democratic base voters, still leads some head-to-head polls.",
@@ -104,14 +109,15 @@
         "pick": false,
         "fragility": "Her entire polling lead is basically 2024 residue, name recognition more than anything else. That's historically the most brittle kind of number once actual voting starts.",
         "lane": "Institutional.",
-        "laneClass": "institutional"
+        "laneClass": "institutional",
+        "pollingStatus": "listed"
       },
       {
         "name": "Josh Shapiro",
         "role": "Governor of Pennsylvania",
         "odds": "5%",
         "oddsNum": 5,
-        "pollAvg": 6.6,
+        "pollAvg": 6.75,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Josh%20Shapiro%202021.jpg?width=300",
         "vibe": "Battle-tested in the single most important swing state on the map, with limited national-stage vetting so far.",
         "strength": "Pennsylvania is the state the whole election could hinge on; strong home-state fundraising and approval.",
@@ -124,7 +130,8 @@
         "pick": false,
         "fragility": "A call for aggressive Supreme Court reform already showed real message-discipline risk.",
         "lane": "Institutional.",
-        "laneClass": "institutional"
+        "laneClass": "institutional",
+        "pollingStatus": "listed"
       },
       {
         "name": "Andy Beshear",
@@ -143,7 +150,9 @@
         "pick": false,
         "fragility": "Delaying his own decision for DGA obligations, which is ceding time to faster-moving rivals.",
         "lane": "Institutional messaging, but insurgent-coded results (wins deep Trump country).",
-        "laneClass": "mixed"
+        "laneClass": "mixed",
+        "pollAvg": 3.5,
+        "pollingStatus": "listed"
       },
       {
         "name": "JB Pritzker",
@@ -162,7 +171,9 @@
         "pick": false,
         "fragility": "A billionaire-governor profile cuts directly against the party's own populist economic message.",
         "lane": "Institutional.",
-        "laneClass": "institutional"
+        "laneClass": "institutional",
+        "pollAvg": 3.4,
+        "pollingStatus": "listed"
       },
       {
         "name": "Cory Booker",
@@ -181,7 +192,9 @@
         "pick": false,
         "fragility": "The same top-of-ticket doubts from his 2020 flame-out remain unresolved.",
         "lane": "Institutional.",
-        "laneClass": "institutional"
+        "laneClass": "institutional",
+        "pollAvg": 4,
+        "pollingStatus": "listed"
       },
       {
         "name": "Wes Moore",
@@ -200,7 +213,9 @@
         "pick": false,
         "fragility": "Thin national record. Untested at this level of scrutiny.",
         "lane": "Newer to politics. Mildly insurgent by biography, institutional by temperament.",
-        "laneClass": "mixed"
+        "laneClass": "mixed",
+        "pollAvg": null,
+        "pollingStatus": "not-listed"
       },
       {
         "name": "Ro Khanna",
@@ -219,14 +234,16 @@
         "pick": false,
         "fragility": "Low name recognition outside political-media and online-progressive circles.",
         "lane": "Institutional-progressive hybrid.",
-        "laneClass": "mixed"
+        "laneClass": "mixed",
+        "pollAvg": null,
+        "pollingStatus": "not-listed"
       },
       {
         "name": "Mark Kelly",
         "role": "U.S. Senator, Arizona",
         "odds": "3%",
         "oddsNum": 2.9,
-        "pollAvg": 5.8,
+        "pollAvg": 4.8,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Mark%20Kelly%2C%20Official%20Portrait%20117th.jpg?width=300",
         "vibe": "A former astronaut and Navy combat veteran whose low-drama Senate record just collided with a real national profile.",
         "strength": "Represents Arizona, a genuine swing state. A public legal fight with the Trump administration over an \"illegal orders\" video has raised his national visibility sharply, and he’s been raising serious money, over $1 million recently, well beyond what a senator not eyeing something bigger typically raises.",
@@ -239,7 +256,8 @@
         "pick": false,
         "fragility": "Says he’ll decide after the 2026 midterms, not before. Anyone reading more into the fundraising pace right now is speculating, including us.",
         "lane": "Institutional record, but an increasingly insurgent-coded profile given the direct fight with the administration.",
-        "laneClass": "mixed"
+        "laneClass": "mixed",
+        "pollingStatus": "listed"
       },
       {
         "name": "Rahm Emanuel",
@@ -258,7 +276,9 @@
         "pick": false,
         "fragility": "His combative Chicago-machine reputation is exactly what a “change” message would have to explain away.",
         "lane": "Deeply institutional.",
-        "laneClass": "institutional"
+        "laneClass": "institutional",
+        "pollAvg": null,
+        "pollingStatus": "not-listed"
       },
       {
         "name": "Gretchen Whitmer",
@@ -277,7 +297,9 @@
         "pick": false,
         "fragility": "Out of statewide office for two years before the election is unusual positioning for a frontrunner, and she has shown no urgency to change that.",
         "lane": "Institutional, Michigan-rooted.",
-        "laneClass": "institutional"
+        "laneClass": "institutional",
+        "pollAvg": null,
+        "pollingStatus": "not-listed"
       },
       {
         "name": "Stephen A. Smith",
@@ -296,7 +318,9 @@
         "pick": false,
         "fragility": "No governing record at all is the single biggest question a real campaign would have to answer immediately.",
         "lane": "Pure outsider, untested.",
-        "laneClass": "insurgent"
+        "laneClass": "insurgent",
+        "pollAvg": null,
+        "pollingStatus": "not-listed"
       }
     ],
     "republican": [
@@ -305,7 +329,7 @@
         "role": "Vice President",
         "odds": "40%",
         "oddsNum": 40,
-        "pollAvg": 39.8,
+        "pollAvg": 39.6,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/JD%20Vance%20official%20portrait%20(cropped%20headshot).jpg?width=300",
         "vibe": "Combative, online-native style that plays well with the base; described by allies as “the closest thing to Trump.”",
         "strength": "Sitting VP with the sitting president’s implicit backing; commanding lead in actual GOP primary polling, not just markets.",
@@ -318,14 +342,15 @@
         "pick": true,
         "fragility": "His standing is partly borrowed from Trump. That's a ceiling that isn't fully his if that support shifts.",
         "lane": "Was insurgent in spirit; now institutional as the sitting VP.",
-        "laneClass": "institutional"
+        "laneClass": "institutional",
+        "pollingStatus": "listed"
       },
       {
         "name": "Marco Rubio",
         "role": "Secretary of State",
         "odds": "23%",
         "oddsNum": 22.9,
-        "pollAvg": 21.6,
+        "pollAvg": 21.1,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Official%20portrait%20of%20Secretary%20Marco%20Rubio.jpg?width=300",
         "vibe": "No longer running as the safe establishment alternative. A hardline foreign policy record, built through the Iran conflict and a public push to dismantle the ICC, is what’s actually driving his rise now.",
         "strength": "Leadership through the Iran military action and an aggressive stance against the ICC have made him genuinely popular with the MAGA base, not just older primary voters. His odds have roughly doubled over the past several months on the strength of that record.",
@@ -338,14 +363,15 @@
         "pick": false,
         "fragility": "Already lost once to an insurgent candidate, Trump, back in 2016. The open question is whether a foreign-policy-driven surge holds up once actual voting starts.",
         "lane": "Institutional record, insurgent-coded momentum right now.",
-        "laneClass": "mixed"
+        "laneClass": "mixed",
+        "pollingStatus": "listed"
       },
       {
         "name": "Robert F. Kennedy Jr.",
         "role": "Secretary of Health and Human Services",
         "odds": "1%",
         "oddsNum": 0.5,
-        "pollAvg": 3.8,
+        "pollAvg": 3,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Robert%20F.%20Kennedy%20Jr.%2C%20official%20portrait%20(2025).jpg?width=300",
         "vibe": "A cabinet-level platform and a following that doesn’t map neatly onto either party’s usual base.",
         "strength": "Built-in name recognition and an independent, health-and-wellness-driven coalition Vance can’t easily match.",
@@ -358,7 +384,8 @@
         "pick": false,
         "fragility": "No history winning a competitive Republican primary; unclear his coalition shows up as actual GOP primary voters.",
         "lane": "Genuinely insurgent. The closest thing to a wildcard in either party.",
-        "laneClass": "insurgent"
+        "laneClass": "insurgent",
+        "pollingStatus": "listed"
       },
       {
         "name": "Ted Cruz",
@@ -377,14 +404,16 @@
         "pick": false,
         "fragility": "No clear lane while Vance dominates the base he'd need.",
         "lane": "Was insurgent in 2016; now reads as a fixture.",
-        "laneClass": "institutional"
+        "laneClass": "institutional",
+        "pollAvg": 3,
+        "pollingStatus": "listed"
       },
       {
         "name": "Ron DeSantis",
         "role": "Governor of Florida",
         "odds": "3%",
         "oddsNum": 2.9,
-        "pollAvg": 7.1,
+        "pollAvg": 7.7,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Ron%20DeSantis%20official%20photo%20(cropped).jpg?width=300",
         "vibe": "Widely panned for a stiff, unpersuasive interview and debate style during his 2024 run. The opposite of a natural retail politician.",
         "strength": "Real executive experience, prior national campaign infrastructure, strong fundraising base.",
@@ -397,7 +426,8 @@
         "pick": false,
         "fragility": "Hasn't rebuilt the coalition that fractured after his 2024 defeat.",
         "lane": "Institutional, diminished.",
-        "laneClass": "institutional"
+        "laneClass": "institutional",
+        "pollingStatus": "listed"
       },
       {
         "name": "Nikki Haley",
@@ -416,7 +446,9 @@
         "pick": false,
         "fragility": "The moderate, anti-Trump lane she needs barely exists in today’s Republican Party.",
         "lane": "Institutional, sidelined.",
-        "laneClass": "institutional"
+        "laneClass": "institutional",
+        "pollAvg": null,
+        "pollingStatus": "not-listed"
       },
       {
         "name": "Donald Trump",
@@ -435,7 +467,9 @@
         "pick": false,
         "fragility": "Constitutionally ineligible, and now says so himself. There is no real path here.",
         "lane": "Not a real candidacy.",
-        "laneClass": "institutional"
+        "laneClass": "institutional",
+        "pollAvg": null,
+        "pollingStatus": "not-listed"
       }
     ]
   },
@@ -637,7 +671,7 @@
   "marketUpdatedAt": "2026-08-19T14:53:24.020Z",
   "modelMeta": {
     "version": "3.0",
-    "updatedAt": "2026-08-19T14:53:24.539Z",
+    "updatedAt": "2026-08-19T15:08:45.490Z",
     "status": "scored",
     "signalCoverage": "9/9",
     "score": 32,
@@ -683,9 +717,9 @@
       "democratic": [
         {
           "name": "Alexandria Ocasio-Cortez",
-          "score": 54.7,
+          "score": 55.1,
           "factors": {
-            "polling": 0.3205574912891986,
+            "polling": 0.3470790378006873,
             "bettingMarkets": 1,
             "campaignFundamentals": 0.25,
             "candidateQuality": 0.8,
@@ -698,9 +732,9 @@
         },
         {
           "name": "Gavin Newsom",
-          "score": 39.3,
+          "score": 39.2,
           "factors": {
-            "polling": 0.5818815331010453,
+            "polling": 0.5738831615120275,
             "bettingMarkets": 0.7298578199052133,
             "campaignFundamentals": 0.7,
             "candidateQuality": 0.6,
@@ -728,9 +762,9 @@
         },
         {
           "name": "Pete Buttigieg",
-          "score": 30.1,
+          "score": 31,
           "factors": {
-            "polling": 0.3832752613240418,
+            "polling": 0.43298969072164945,
             "bettingMarkets": 0.25118483412322273,
             "campaignFundamentals": 0.55,
             "candidateQuality": 0.75,
@@ -775,9 +809,9 @@
         },
         {
           "name": "Marco Rubio",
-          "score": 49.6,
+          "score": 49.5,
           "factors": {
-            "polling": 0.5427135678391961,
+            "polling": 0.5328282828282829,
             "bettingMarkets": 0.5725,
             "campaignFundamentals": 0.75,
             "candidateQuality": 0.7,
@@ -790,9 +824,9 @@
         },
         {
           "name": "Ron DeSantis",
-          "score": 16,
+          "score": 16.3,
           "factors": {
-            "polling": 0.17839195979899497,
+            "polling": 0.19444444444444445,
             "bettingMarkets": 0.0725,
             "campaignFundamentals": 0.65,
             "candidateQuality": 0.35,
@@ -805,9 +839,9 @@
         },
         {
           "name": "Ted Cruz",
-          "score": 12.4,
+          "score": 13.8,
           "factors": {
-            "polling": 0,
+            "polling": 0.07575757575757576,
             "bettingMarkets": 0.025,
             "campaignFundamentals": 0.55,
             "candidateQuality": 0.5,
@@ -820,9 +854,9 @@
         },
         {
           "name": "Robert F. Kennedy Jr.",
-          "score": 4.5,
+          "score": 4.1,
           "factors": {
-            "polling": 0.09547738693467336,
+            "polling": 0.07575757575757576,
             "bettingMarkets": 0.0125,
             "campaignFundamentals": 0.3,
             "candidateQuality": 0.25,
@@ -836,5 +870,49 @@
       ]
     },
     "evidenceUpdatedAt": "2026-08-19T14:53:24.063Z"
+  },
+  "pollingMeta": {
+    "source": "Wikipedia national polling aggregation",
+    "retrievedAt": "2026-08-19T15:08:24.455Z",
+    "parties": {
+      "democratic": {
+        "url": "https://en.wikipedia.org/wiki/Nationwide_opinion_polling_for_the_2028_Democratic_Party_presidential_primaries",
+        "retrievedAt": "2026-08-19T15:08:24.100Z",
+        "underlyingAggregators": [
+          "270toWin",
+          "Real Clear Polling",
+          "Race to the WH",
+          "VoteHub"
+        ],
+        "averages": {
+          "Kamala Harris": 29.1,
+          "Gavin Newsom": 16.7,
+          "Pete Buttigieg": 12.6,
+          "Alexandria Ocasio-Cortez": 10.1,
+          "Josh Shapiro": 6.75,
+          "Mark Kelly": 4.8,
+          "Cory Booker": 4,
+          "Andy Beshear": 3.5,
+          "JB Pritzker": 3.4
+        }
+      },
+      "republican": {
+        "url": "https://en.wikipedia.org/wiki/Nationwide_opinion_polling_for_the_2028_Republican_Party_presidential_primaries",
+        "retrievedAt": "2026-08-19T15:08:24.455Z",
+        "underlyingAggregators": [
+          "270toWin",
+          "Race to the WH",
+          "Real Clear Polling"
+        ],
+        "averages": {
+          "Ted Cruz": 3,
+          "Ron DeSantis": 7.7,
+          "Robert F. Kennedy Jr.": 3,
+          "Marco Rubio": 21.1,
+          "Donald Trump Jr.": 11.1,
+          "JD Vance": 39.6
+        }
+      }
+    }
   }
 }
