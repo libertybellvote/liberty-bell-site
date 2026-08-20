@@ -1,6 +1,6 @@
 {
   "lastUpdated": "2026-08-19T02:30:45.655Z",
-  "modelUpdatedAt": "2026-08-20T16:00:11.763Z",
+  "modelUpdatedAt": "2026-08-20T18:00:37.464Z",
   "libertyBellIndex": {
     "democratic": 58,
     "republican": 42
@@ -20,15 +20,15 @@
         "audience": "Young progressives, social-media-native voters.",
         "pulseDir": "flat",
         "rankChange": 3,
-        "pulse": "-0.9 points in the last week on Polymarket.",
+        "pulse": "-0.7 points in the last week on Polymarket.",
         "ourTake": "Our pick. She's the clearest insurgent brand in either party, and the momentum is real: rising odds, a viral head-to-head lead over Vance, right as the economic backdrop starts favoring an outsider message.",
         "pick": true,
         "fragility": "Her authenticity cuts both ways. The same unscripted style that built her following also produced a real stumble on Taiwan policy.",
         "lane": "Insurgent. The clearest outsider brand in either party.",
         "laneClass": "insurgent",
         "pollingStatus": "listed",
-        "marketChange1d": -2.9,
-        "marketChange1w": -0.9,
+        "marketChange1d": -3,
+        "marketChange1w": -0.7,
         "marketChange1m": 3.7,
         "winnerOddsNum": 12.7,
         "winnerOdds": "13%"
@@ -37,7 +37,7 @@
         "name": "Gavin Newsom",
         "role": "Governor of California",
         "odds": "15%",
-        "oddsNum": 15.3,
+        "oddsNum": 15.1,
         "pollAvg": 15,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Governor%20of%20California%20Gavin%20Newsom,%202026%20Official%20Portrait%202.jpg?width=300",
         "vibe": "Polished and combative in interviews. Built a media profile sparring directly with conservative hosts.",
@@ -46,17 +46,17 @@
         "audience": "National Democratic donors, media-savvy suburban voters.",
         "pulseDir": "down",
         "rankChange": -1,
-        "pulse": "-1.7 points in the last week on Polymarket.",
+        "pulse": "-1.9 points in the last week on Polymarket.",
         "ourTake": "Was the presumed favorite two months ago. That’s no longer true, and it happened fast.",
         "pick": false,
         "fragility": "An active DOJ tax investigation into him and his wife is unresolved, not just a headline that faded.",
         "lane": "Institutional.",
         "laneClass": "institutional",
         "pollingStatus": "listed",
-        "marketChange1d": 0.1,
-        "marketChange1w": -1.7,
-        "marketChange1m": -4.6,
-        "winnerOddsNum": 8.8,
+        "marketChange1d": -0.1,
+        "marketChange1w": -1.9,
+        "marketChange1m": -4.8,
+        "winnerOddsNum": 8.6,
         "winnerOdds": "9%"
       },
       {
@@ -160,7 +160,7 @@
         "pollingStatus": "listed",
         "marketChange1d": 0,
         "marketChange1w": 0.1,
-        "marketChange1m": 0,
+        "marketChange1m": 0.1,
         "winnerOddsNum": 2.6,
         "winnerOdds": "3%"
       },
@@ -254,7 +254,7 @@
         "audience": "Younger Democrats, voters looking for a next-generation face.",
         "pulseDir": "flat",
         "rankChange": 1,
-        "pulse": "No reliable short-term market change is available.",
+        "pulse": "-0.1 points in the last week on Polymarket.",
         "ourTake": "The most talked-about first-term governor in the party. Untested at this level, but the ceiling is real.",
         "pick": false,
         "fragility": "Thin national record. Untested at this level of scrutiny.",
@@ -263,7 +263,7 @@
         "pollAvg": 1,
         "pollingStatus": "listed",
         "marketChange1d": -0.2,
-        "marketChange1w": null,
+        "marketChange1w": -0.1,
         "marketChange1m": 0.4,
         "winnerOddsNum": 0.8,
         "winnerOdds": "0.8%"
@@ -314,7 +314,7 @@
         "lane": "Institutional record, but an increasingly insurgent-coded profile given the direct fight with the administration.",
         "laneClass": "mixed",
         "pollingStatus": "listed",
-        "marketChange1d": 0.1,
+        "marketChange1d": 0,
         "marketChange1w": -0.1,
         "marketChange1m": 1,
         "winnerOddsNum": 1.3,
@@ -413,7 +413,7 @@
         "audience": "Core MAGA base, younger Republican voters.",
         "pulseDir": "up",
         "rankChange": 0,
-        "pulse": "+4.2 points in the last week on Polymarket.",
+        "pulse": "+2.3 points in the last week on Polymarket.",
         "ourTake": "Our pick, and we're agreeing with the market this time. His fragility is real (his standing is partly borrowed from Trump), but nothing currently threatens it. Rubio's the hedge if that ever breaks.",
         "pick": true,
         "fragility": "His standing is partly borrowed from Trump. That's a ceiling that isn't fully his if that support shifts.",
@@ -421,7 +421,7 @@
         "laneClass": "institutional",
         "pollingStatus": "listed",
         "marketChange1d": null,
-        "marketChange1w": 4.2,
+        "marketChange1w": 2.3,
         "marketChange1m": 5.7,
         "winnerOddsNum": 20.5,
         "winnerOdds": "21%"
@@ -439,17 +439,17 @@
         "audience": "A wider coalition than before: older, establishment-leaning Republicans, plus MAGA-base voters won over by his foreign policy record specifically.",
         "pulseDir": "down",
         "rankChange": 3,
-        "pulse": "-1.6 points in the last week on Polymarket.",
+        "pulse": "-1.5 points in the last week on Polymarket.",
         "ourTake": "Still the hedge, not the pick. Vance leads by a real 11 points. But he’s no longer a distant afterthought if Vance stumbles: he’s built real, independent standing with the same base Vance is supposed to own.",
         "pick": false,
         "fragility": "Already lost once to an insurgent candidate, Trump, back in 2016. The open question is whether a foreign-policy-driven surge holds up once actual voting starts.",
         "lane": "Institutional record, insurgent-coded momentum right now.",
         "laneClass": "mixed",
         "pollingStatus": "listed",
-        "marketChange1d": -1.4,
-        "marketChange1w": -1.6,
-        "marketChange1m": -6.5,
-        "winnerOddsNum": 11.9,
+        "marketChange1d": -1.3,
+        "marketChange1w": -1.5,
+        "marketChange1m": -6.4,
+        "winnerOddsNum": 11.8,
         "winnerOdds": "12%"
       },
       {
@@ -696,7 +696,7 @@
         },
         {
           "label": "Gavin Newsom",
-          "probability": 15.3,
+          "probability": 15.1,
           "platform": "Polymarket"
         },
         {
@@ -763,32 +763,32 @@
   },
   "marketMeta": {
     "source": "Polymarket public market data",
-    "retrievedAt": "2026-08-20T16:00:10.496Z",
+    "retrievedAt": "2026-08-20T18:00:36.110Z",
     "partyIndex": {
       "democratic": 58.5,
       "republican": 41.5
     },
     "party": {
-      "volume": 2072713.8414330005,
-      "liquidity": 438403.3307
+      "volume": 2072885.508098,
+      "liquidity": 763237.2742
     },
     "democraticNomination": {
-      "volume": 1262895938.1269913,
-      "liquidity": 81167782.85346
+      "volume": 1262906836.0227473,
+      "liquidity": 81251614.81394
     },
     "republicanNomination": {
-      "volume": 689242704.4413182,
-      "liquidity": 57510603.25395
+      "volume": 689262260.3054382,
+      "liquidity": 57612665.63357
     },
     "presidentialWinner": {
-      "volume": 689890181.7657921,
-      "liquidity": 63210495.53803
+      "volume": 689929022.508155,
+      "liquidity": 63300988.14113
     }
   },
-  "marketUpdatedAt": "2026-08-20T16:00:10.496Z",
+  "marketUpdatedAt": "2026-08-20T18:00:36.110Z",
   "modelMeta": {
     "version": "3.0",
-    "updatedAt": "2026-08-20T16:00:11.763Z",
+    "updatedAt": "2026-08-20T18:00:37.464Z",
     "status": "scored",
     "signalCoverage": "9/9",
     "score": 32,
@@ -850,11 +850,11 @@
         },
         {
           "name": "Gavin Newsom",
-          "score": 44.2,
+          "score": 44,
           "primaryPath": 0.45,
           "factors": {
             "polling": 0.7552464788732394,
-            "bettingMarkets": 0.8406593406593408,
+            "bettingMarkets": 0.8296703296703297,
             "campaignFundamentals": 0.6375,
             "candidateQuality": 0.6,
             "coalitionStrength": 0.37499999999999994,
@@ -996,16 +996,16 @@
         }
       ]
     },
-    "evidenceUpdatedAt": "2026-08-20T16:00:11.148Z",
+    "evidenceUpdatedAt": "2026-08-20T18:00:36.927Z",
     "structuralInputsReviewedAt": "2026-08-19T15:35:34.000Z"
   },
   "pollingMeta": {
     "source": "270toWin polling averages",
-    "retrievedAt": "2026-08-20T16:00:10.544Z",
+    "retrievedAt": "2026-08-20T18:00:36.172Z",
     "parties": {
       "democratic": {
         "url": "https://www.270towin.com/2028-democratic-nomination/",
-        "retrievedAt": "2026-08-20T16:00:10.544Z",
+        "retrievedAt": "2026-08-20T18:00:36.172Z",
         "averages": {
           "Harris": 21.3,
           "Newsom": 15,
@@ -1031,7 +1031,7 @@
       },
       "republican": {
         "url": "https://www.270towin.com/2028-republican-nomination/",
-        "retrievedAt": "2026-08-20T16:00:10.544Z",
+        "retrievedAt": "2026-08-20T18:00:36.172Z",
         "averages": {
           "Vance": 39.8,
           "Rubio": 22.2,
@@ -1064,7 +1064,7 @@
     "source": "Emerson College Polling",
     "url": "https://emersoncollegepolling.com/august-2026-national-poll/",
     "fielded": "Aug. 16-17, 2026",
-    "retrievedAt": "2026-08-20T16:00:10.544Z",
+    "retrievedAt": "2026-08-20T18:00:36.172Z",
     "trumpApproval": 40,
     "trumpDisapproval": 56,
     "genericBallotDemocratic": 51,
@@ -1075,7 +1075,7 @@
     "url": "https://emersoncollegepolling.com/august-2026-national-poll/",
     "fielded": "Aug. 16-17, 2026",
     "sample": "1,000 likely voters",
-    "retrievedAt": "2026-08-20T16:00:10.544Z",
+    "retrievedAt": "2026-08-20T18:00:36.172Z",
     "matchups": [
       {
         "democrat": "Pete Buttigieg",
