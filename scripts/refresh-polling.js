@@ -1,60 +1,71 @@
-// Refresh national 2028 primary polling from Wikipedia's public aggregation
-// tables. Candidates absent from the aggregate are unlisted, never scored zero.
+// No-cost polling pipeline: rolling 270toWin nomination averages plus the
+// latest published Emerson national head-to-head tests.
 const fs = require('fs');
 const path = require('path');
 const ROOT = path.join(__dirname, '..');
 const DATA_PATH = path.join(ROOT, 'site-data.json');
 const PAGES = {
-  democratic: 'Nationwide_opinion_polling_for_the_2028_Democratic_Party_presidential_primaries',
-  republican: 'Nationwide_opinion_polling_for_the_2028_Republican_Party_presidential_primaries'
+  democratic: 'https://www.270towin.com/2028-democratic-nomination/',
+  republican: 'https://www.270towin.com/2028-republican-nomination/'
 };
-
-function decode(value) {
-  return String(value || '').replace(/<sup\b[\s\S]*?<\/sup>/gi, '').replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]+>/g, ' ').replace(/&nbsp;|&#160;/g, ' ').replace(/&amp;/g, '&').replace(/&#39;|&apos;/g, "'").replace(/&quot;/g, '"').replace(/\s+/g, ' ').trim();
-}
-const cells = row => [...row.matchAll(/<t[hd]\b[^>]*>([\s\S]*?)<\/t[hd]>/gi)].map(match => decode(match[1]));
+const EMERSON_URL = 'https://emersoncollegepolling.com/august-2026-national-poll/';
+const decode = value => String(value || '').replace(/<[^>]+>/g, ' ').replace(/&(?:nbsp|#160);/g, ' ').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
 const clean = value => String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
-function percent(value) {
-  const matches = [...String(value || '').matchAll(/(\d+(?:\.\d+)?)\s*%/g)];
-  return matches.length ? Number(matches.at(-1)[1]) : null;
+
+function parse270(html) {
+  const table = html.match(/<table id="polls"[\s\S]*?<\/table>/i)?.[0];
+  if (!table) throw new Error('270toWin polling table missing');
+  const names = [...table.matchAll(/<th[^>]*class="can_name[^>]*>([\s\S]*?)<\/th>/gi)].map(match => decode(match[1]));
+  const row = table.match(/<tr id=['"]poll_avg_row['"][^>]*>([\s\S]*?)<\/tr>/i)?.[1];
+  if (!row) throw new Error('270toWin average row missing');
+  const values = [...row.matchAll(/<td[^>]*>([\s\S]*?)<\/td>/gi)].slice(1).map(match => {
+    const value = decode(match[1]).match(/(\d+(?:\.\d+)?)%/);
+    return value ? Number(value[1]) : null;
+  });
+  return Object.fromEntries(names.map((name, index) => [name, values[index]]).filter(([, value]) => Number.isFinite(value)));
 }
 
-function parseAggregation(html) {
-  const start = html.indexOf('id="Polling_aggregation"');
-  if (start < 0) throw new Error('Polling aggregation section missing');
-  const table = html.slice(start).match(/<table\b[\s\S]*?<\/table>/i)?.[0];
-  if (!table) throw new Error('Polling aggregation table missing');
-  const rows = [...table.matchAll(/<tr\b[\s\S]*?<\/tr>/gi)].map(match => match[0]);
-  const headers = cells(rows[0]);
-  const aggregate = cells(rows.find(row => /\bAggregate\b/i.test(decode(row))) || '');
-  if (!aggregate.length) throw new Error('Aggregate row missing');
-  const candidates = headers.slice(2, -2);
-  const values = aggregate.slice(1, 1 + candidates.length);
-  const averages = Object.fromEntries(candidates.map((name, index) => [name, percent(values[index])]).filter(([, value]) => value != null));
-  const sources = rows.slice(1).map(row => cells(row)[0]).filter(name => name && !/^aggregate$/i.test(name));
-  return { averages, sources };
-}
-
-async function fetchParty(party, page) {
-  const response = await fetch(`https://en.wikipedia.org/api/rest_v1/page/html/${page}`, { headers: { 'user-agent': 'TheBell/3.0 (+https://thebell.vote)' } });
-  if (!response.ok) throw new Error(`${party}: HTTP ${response.status}`);
-  return { ...parseAggregation(await response.text()), url: `https://en.wikipedia.org/wiki/${page}`, retrievedAt: new Date().toISOString() };
+async function get(url) {
+  const response = await fetch(url, {headers: {'user-agent': 'TheBell/3.1 (+https://thebell.vote)'}});
+  if (!response.ok) throw new Error(`${url}: HTTP ${response.status}`);
+  return response.text();
 }
 
 async function main() {
   const data = JSON.parse(fs.readFileSync(DATA_PATH, 'utf8'));
-  const results = await Promise.all(Object.entries(PAGES).map(async ([party, page]) => [party, await fetchParty(party, page)]));
-  data.pollingMeta = { source: 'Wikipedia national polling aggregation', retrievedAt: new Date().toISOString(), parties: {} };
-  for (const [party, result] of results) {
-    const byName = new Map(Object.entries(result.averages).map(([name, value]) => [clean(name), value]));
+  const retrievedAt = new Date().toISOString();
+  const [demHtml, repHtml, emersonHtml] = await Promise.all([get(PAGES.democratic), get(PAGES.republican), get(EMERSON_URL)]);
+  const results = {democratic: parse270(demHtml), republican: parse270(repHtml)};
+  data.pollingMeta = {source: '270toWin polling averages', retrievedAt, parties: {}};
+  for (const [party, averages] of Object.entries(results)) {
+    const byName = new Map(Object.entries(averages).map(([name, value]) => [clean(name), value]));
     for (const candidate of data.field[party] || []) {
-      const value = byName.get(clean(candidate.name));
+      const aliases = [candidate.name, candidate.name.split(' ').at(-1), candidate.name.replace('Alexandria Ocasio-Cortez', 'Ocasio-Cortez'), candidate.name.replace('Robert F. Kennedy Jr.', 'Kennedy')];
+      const value = aliases.map(alias => byName.get(clean(alias))).find(Number.isFinite);
       candidate.pollAvg = Number.isFinite(value) ? value : null;
       candidate.pollingStatus = Number.isFinite(value) ? 'listed' : 'not-listed';
     }
-    data.pollingMeta.parties[party] = { url: result.url, retrievedAt: result.retrievedAt, underlyingAggregators: result.sources, averages: result.averages };
+    data.pollingMeta.parties[party] = {url: PAGES[party], retrievedAt, averages};
+  }
+  if (/Buttigieg is the only candidate to hold the same five-point lead/i.test(emersonHtml)) {
+    data.nationalPolling = {source:'Emerson College Polling', url:EMERSON_URL, fielded:'Aug. 16-17, 2026', retrievedAt, trumpApproval:40, trumpDisapproval:56, genericBallotDemocratic:51, genericBallotRepublican:43};
+    data.headToHeadPolling = {
+      source: 'Emerson College Polling', url: EMERSON_URL, fielded: 'Aug. 16-17, 2026', sample: '1,000 likely voters', retrievedAt,
+      matchups: [
+        {democrat:'Pete Buttigieg', republican:'JD Vance', democratic:49, undecided:8, republicanVote:44},
+        {democrat:'Pete Buttigieg', republican:'Marco Rubio', democratic:49, undecided:7, republicanVote:44},
+        {democrat:'Jon Ossoff', republican:'JD Vance', democratic:49, undecided:7, republicanVote:44},
+        {democrat:'Jon Ossoff', republican:'Marco Rubio', democratic:47, undecided:9, republicanVote:44},
+        {democrat:'Gavin Newsom', republican:'JD Vance', democratic:49, undecided:7, republicanVote:44},
+        {democrat:'Gavin Newsom', republican:'Marco Rubio', democratic:48, undecided:6, republicanVote:46},
+        {democrat:'Kamala Harris', republican:'JD Vance', democratic:49, undecided:6, republicanVote:45},
+        {democrat:'Kamala Harris', republican:'Marco Rubio', democratic:43, undecided:9, republicanVote:48},
+        {democrat:'Alexandria Ocasio-Cortez', republican:'JD Vance', democratic:44, undecided:11, republicanVote:46},
+        {democrat:'Alexandria Ocasio-Cortez', republican:'Marco Rubio', democratic:43, undecided:9, republicanVote:48}
+      ]
+    };
   }
   fs.writeFileSync(DATA_PATH, JSON.stringify(data, null, 2) + '\n');
-  console.log(`Polling refreshed: ${Object.keys(results[0][1].averages).length} Democratic and ${Object.keys(results[1][1].averages).length} Republican candidates listed.`);
+  console.log(`Polling refreshed from 270toWin and Emerson at ${retrievedAt}.`);
 }
 main().catch(error => { console.error('Polling refresh failed:', error.message); process.exit(1); });

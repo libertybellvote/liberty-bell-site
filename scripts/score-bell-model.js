@@ -21,14 +21,16 @@ const clean = value => String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, 
 
 function presidentialScores(data, config, inputs) {
   const scores = {};
-  const inputAgeHours = (Date.now() - new Date(inputs.updatedAt).getTime()) / 36e5;
-  const reviewedInputsCurrent = Number.isFinite(inputAgeHours) && inputAgeHours <= config.maximumAgeHours;
   for (const key of Object.keys(config.factors)) {
     if (key === 'bettingMarkets') {
       const market = Number(data.marketMeta?.partyIndex?.democratic);
       const marketAgeHours = (Date.now() - new Date(data.marketMeta?.retrievedAt).getTime()) / 36e5;
       if (Number.isFinite(market) && Number.isFinite(marketAgeHours) && marketAgeHours <= 24) scores[key] = clamp((market - 50) / 50, -1, 1);
-    } else if (reviewedInputsCurrent && Number.isFinite(Number(inputs.presidential?.[key]?.score))) {
+    } else if (key === 'polling' && Number.isFinite(Number(data.nationalPolling?.genericBallotDemocratic))) {
+      const genericMargin = Number(data.nationalPolling.genericBallotDemocratic) - Number(data.nationalPolling.genericBallotRepublican);
+      const approvalDrag = Number(data.nationalPolling.trumpDisapproval) - Number(data.nationalPolling.trumpApproval);
+      scores[key] = clamp(genericMargin / 20 * .65 + approvalDrag / 30 * .35, -1, 1);
+    } else if (Number.isFinite(Number(inputs.presidential?.[key]?.score))) {
       scores[key] = clamp(Number(inputs.presidential[key].score), -1, 1);
     }
   }
@@ -65,13 +67,18 @@ function normalizedCandidateMetric(list, field) {
 function scoreCandidates(list, config, inputs) {
   const market = normalizedCandidateMetric(list, 'oddsNum');
   const polling = normalizedCandidateMetric(list, 'pollAvg');
+  const allMatchups = globalThis.__bellHeadToHead || [];
   return list.map(candidate => {
     const editorial = inputs.candidates?.[candidate.name];
     if (!editorial) return null;
     const primaryPath = Number(editorial.primaryPath);
     const blendPath = (score, share) => Number.isFinite(primaryPath) ? score * (1 - share) + primaryPath * share : score;
+    const tested = allMatchups.filter(match => clean(match.democrat) === clean(candidate.name) || clean(match.republican) === clean(candidate.name));
+    const margins = tested.map(match => clean(match.democrat) === clean(candidate.name) ? Number(match.democratic) - Number(match.republicanVote) : Number(match.republicanVote) - Number(match.democratic));
+    const electability = margins.length ? clamp((margins.reduce((sum, value) => sum + value, 0) / margins.length + 5) / 10, 0, 1) : null;
+    const primaryPolling = polling.get(clean(candidate.name)) || 0;
     const scores = {
-      polling: polling.get(clean(candidate.name)) || 0,
+      polling: Number.isFinite(electability) ? primaryPolling * .65 + electability * .35 : primaryPolling,
       bettingMarkets: market.get(clean(candidate.name)) || 0,
       campaignFundamentals: blendPath(editorial.campaignFundamentals, 0.25),
       candidateQuality: editorial.candidateQuality,
@@ -111,7 +118,7 @@ function watchCandidate(data, inputs, history, timestamp) {
   }).sort((a, b) => b.score - a.score);
   const leader = candidates[0];
   const darkHorse = data.field.democratic.find(candidate => candidate.darkHorse) || null;
-  if (!leader || leader.week < 1) return darkHorse ? { candidateName: darkHorse.name, label: 'Democratic dark horse', headline: `${darkHorse.name.split(' ').at(-1)} has a real primary path`, reason: darkHorse.ourTake } : null;
+  if (!leader || leader.week < 1) return darkHorse ? { candidateName: darkHorse.name, label: 'Dark horse', headline: `${darkHorse.name.split(' ').at(-1)} has a real primary path`, reason: darkHorse.ourTake } : null;
   const establishedLeader = Number(leader.candidate.oddsNum) >= 35;
   return {
     candidateName: leader.candidate.name,
@@ -141,6 +148,7 @@ function main() {
   let history = [];
   try { history = readJson(HISTORY_PATH); } catch {}
   const timestamp = new Date().toISOString();
+  globalThis.__bellHeadToHead = data.headToHeadPolling?.matchups || [];
 
   const scores = presidentialScores(data, config, inputs);
   const coverage = Object.keys(scores).length;
@@ -172,18 +180,23 @@ function main() {
   demCard.ourCall = `${displayName(demPick)}, carefully`;
   const repRunnerUp = repRank[1] ? data.field.republican.find(candidate => candidate.name === repRank[1].name) : null;
   repCard.ourCall = repRunnerUp && Number(repRunnerUp.marketChange1w) > 0.5 ? `${displayName(repPick)}, with ${displayName(repRunnerUp.name)} gaining` : `${displayName(repPick)} is still the call`;
+  const approval = data.nationalPolling?.trumpApproval;
+  const genericD = data.nationalPolling?.genericBallotDemocratic;
+  const genericR = data.nationalPolling?.genericBallotRepublican;
   presidentialCard.whyShort = democratic >= 50
-    ? 'Low presidential approval and a softening Republican advantage on the economy give Democrats the better hand today. Better hand, not a lock.'
+    ? `Trump approval is ${approval ?? 'underwater'} and Democrats lead the latest national generic ballot${Number.isFinite(genericD) ? ` ${genericD}–${genericR}` : ''}. That gives Democrats the better hand today, not a lock.`
     : 'The national mood, the economy, and the shape of the field give Republicans the better hand today. Better hand, not a lock.';
   const darkHorse = data.field.democratic.find(candidate => candidate.darkHorse);
   const demLeader = data.field.democratic.find(candidate => candidate.name === demPick);
   const repLeader = data.field.republican.find(candidate => candidate.name === repPick);
   const repSecond = repRank[1] ? data.field.republican.find(candidate => candidate.name === repRank[1].name) : null;
+  const demPickPoll = data.field.democratic.find(candidate => candidate.name === demPick)?.pollAvg;
+  const repPickPoll = data.field.republican.find(candidate => candidate.name === repPick)?.pollAvg;
   demCard.whyShort = darkHorse && darkHorse.name !== demPick
-    ? `${displayName(demPick)} has the best mix of message, coalition, and momentum right now. ${displayName(darkHorse.name)} has the clearest route to scrambling that call.`
+    ? `${displayName(demPick)} leads our full read after primary support, campaign path, and general-election strength are weighed together. ${displayName(darkHorse.name)} remains the pressure point.`
     : `${displayName(demPick)} has the strongest all-around case in The Bell Model today.`;
   repCard.whyShort = repSecond
-    ? `${displayName(repPick)} has the clearest path to inheriting Trump’s coalition. ${displayName(repSecond.name)} is the real threat, but still needs a reason for voters to switch.`
+    ? `${displayName(repPick)} is at ${Number.isFinite(repPickPoll) ? `${repPickPoll.toFixed(1)}% in the polling average` : 'the top of the field'} and still has the clearest path to inheriting Trump’s coalition. ${displayName(repSecond.name)} is the live alternative.`
     : `${displayName(repPick)} has the clearest path to inheriting Trump’s coalition. No rival has built a convincing alternative.`;
   data.powerRanking = watchCandidate(data, inputs, history, timestamp);
   data.modelUpdatedAt = timestamp;
@@ -195,7 +208,8 @@ function main() {
     score: round(presidential.value * 100, 1),
     factors: Object.fromEntries(Object.entries(scores).map(([key, score]) => [key, { score: round(score, 3), weight: config.factors[key].weight }])),
     nominationRankings: { democratic: demRank, republican: repRank },
-    evidenceUpdatedAt: evidence.updatedAt
+    evidenceUpdatedAt: evidence.updatedAt,
+    structuralInputsReviewedAt: inputs.updatedAt
   };
 
   evidence.modelVersion = '3.0';

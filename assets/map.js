@@ -71,8 +71,11 @@ async function drawMap() {
         return `${state[1]}, ${state[2]} electoral votes`;
       })
       .on('click', function(event, feature) { showDetail(stateByName.get(feature.properties.name), this); })
+      .on('mouseenter', function(event, feature) {
+        if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) showDetail(stateByName.get(feature.properties.name), this);
+      })
       .on('keydown', function(event, feature) { if (event.key === 'Enter' || event.key === ' ') showDetail(stateByName.get(feature.properties.name), this); });
-    svg.selectAll('text').data(features.filter(feature => path.area(feature) > 260)).join('text')
+    svg.selectAll('text').data(features.filter(feature => path.area(feature) > 120)).join('text')
       .attr('class', 'state-label')
       .attr('transform', feature => {
         const [x, y] = path.centroid(feature);

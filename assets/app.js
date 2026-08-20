@@ -262,21 +262,25 @@ function renderMarkets(data) {
     return {value: Math.max(-1, Math.min(1, 0.45 + (poll - 0.5) * 0.20 + (market - 0.5) * 0.18 + momentum * 0.10)), coverage: 'Available polling, market, and momentum evidence'};
   };
   const matchupEstimate = (dem, rep) => {
+    const polled = (data.headToHeadPolling?.matchups || []).find(match => match.democrat === dem.name && match.republican === rep.name);
     const demStrength = candidateStrength(dem, 'democratic');
     const repStrength = candidateStrength(rep, 'republican');
-    const environmentLean = ((data.libertyBellIndex?.democratic || 50) - 50) * 0.5;
-    const candidateContrast = (demStrength.value - repStrength.value) * 25;
-    const democratic = Math.max(25, Math.min(75, 50 + environmentLean + candidateContrast));
+    const environment = Number(data.libertyBellIndex?.democratic || 50);
+    const candidateRead = Math.max(25, Math.min(75, 50 + (demStrength.value - repStrength.value) * 25));
+    const pollTwoWay = polled ? Number(polled.democratic) / (Number(polled.democratic) + Number(polled.republicanVote)) * 100 : null;
+    const democratic = polled
+      ? Math.max(25, Math.min(75, pollTwoWay * 0.55 + environment * 0.20 + candidateRead * 0.25))
+      : Math.max(25, Math.min(75, environment * 0.35 + candidateRead * 0.65));
     return {
       democratic: Number(democratic.toFixed(1)),
       republican: Number((100 - democratic).toFixed(1)),
-      environmentLean: Number(environmentLean.toFixed(1)),
-      candidateContrast: Number(candidateContrast.toFixed(1)),
-      coverage: demStrength.coverage === 'Full Bell Model' && repStrength.coverage === 'Full Bell Model' ? 'Full Bell Model' : 'Modeled from available polling, market, and momentum evidence'
+      pollTwoWay: Number.isFinite(pollTwoWay) ? Number(pollTwoWay.toFixed(1)) : null,
+      coverage: polled ? `${data.headToHeadPolling.source}, ${data.headToHeadPolling.fielded}` : null,
+      isPoll: Boolean(polled)
     };
   };
   const options = list => list.map((candidate, index) => `<option value="${index}">${candidate.name}</option>`).join('');
-  $('#market-list').innerHTML = `<section class="matchup-builder"><div class="builder-controls"><label><span>Choose a Democrat</span><select id="match-dem">${options(dems)}</select></label><span class="builder-versus">VS</span><label><span>Choose a Republican</span><select id="match-rep">${options(reps)}</select></label></div><div class="builder-stage"><article class="builder-candidate dem"><div class="builder-party">Democrat</div><img id="match-dem-photo" alt=""><h2 id="match-dem-name"></h2><div class="builder-price"><img src="/assets/polymarket-mark.svg" alt=""><span>2028 winner market</span><strong id="match-dem-price"></strong></div><small>Current Polymarket presidential winner price</small></article><div class="builder-center"><span>2028</span><strong>VS</strong><small>Your matchup</small></div><article class="builder-candidate rep"><div class="builder-party">Republican</div><img id="match-rep-photo" alt=""><h2 id="match-rep-name"></h2><div class="builder-price"><img src="/assets/polymarket-mark.svg" alt=""><span>2028 winner market</span><strong id="match-rep-price"></strong></div><small>Current Polymarket presidential winner price</small></article></div><div class="builder-score"><div class="score-brand"><img src="/assets/the-bell-brand-mark-v4.png" alt="The Bell"><div><span>The Bell matchup estimate</span><strong id="estimate-line"><b id="estimate-dem-name"></b> <em id="estimate-dem"></em><i>vs.</i><b id="estimate-rep-name"></b> <em id="estimate-rep"></em></strong></div></div><div class="party-score" id="estimate-bar"><i class="dem" id="estimate-dem-bar"></i><i class="rep" id="estimate-rep-bar"></i></div><p id="estimate-note">Model estimate, not a poll or betting price.</p><details class="estimate-method"><summary>How this is calculated</summary><p>The national environment supplies a modest starting lean. The Bell Model then compares the candidates using every current signal available. Fully tracked candidates receive the complete model. Other candidates are estimated from available polling, market position, and momentum until broader evidence is available.</p></details></div><div class="builder-bell"><div><span>National environment</span><strong>${partyCall?.ourCall || (demParty >= repParty ? 'Leans Democratic' : 'Leans Republican')}</strong><p>${partyCall?.whyShort || ''}</p></div><div class="bell-picks"><span>Current Democratic call <b>${demCall?.pickName || dems[0]?.name}</b></span><span>Current Republican call <b>${repCall?.pickName || reps[0]?.name}</b></span></div></div></section>`;
+  $('#market-list').innerHTML = `<section class="matchup-builder"><div class="builder-controls"><label><span>Choose a Democrat</span><select id="match-dem">${options(dems)}</select></label><span class="builder-versus">VS</span><label><span>Choose a Republican</span><select id="match-rep">${options(reps)}</select></label></div><div class="builder-stage"><article class="builder-candidate dem"><div class="builder-party">Democrat</div><img id="match-dem-photo" alt=""><h2 id="match-dem-name"></h2></article><div class="builder-center"><span>2028</span><strong>VS</strong><small>Your matchup</small></div><article class="builder-candidate rep"><div class="builder-party">Republican</div><img id="match-rep-photo" alt=""><h2 id="match-rep-name"></h2></article></div><div class="builder-score builder-score-hero"><div class="score-brand"><img src="/assets/the-bell-brand-mark-v4.png" alt="The Bell"><div><span id="estimate-label">The Bell matchup projection</span><strong id="estimate-line"><b id="estimate-dem-name"></b> <em id="estimate-dem"></em><i>vs.</i><b id="estimate-rep-name"></b> <em id="estimate-rep"></em></strong></div></div><div class="party-score" id="estimate-bar"><i class="dem" id="estimate-dem-bar"></i><i class="rep" id="estimate-rep-bar"></i></div><p id="estimate-note"></p><details class="estimate-method"><summary>What moves this projection</summary><p>A current head-to-head poll anchors 55% of a tested matchup. The national environment contributes 20%. Candidate strength contributes 25% through polling, campaign path, quality, coalition, sentiment, momentum, the economy, fragility, and separately tracked market evidence. Without a direct poll, the environment contributes 35% and candidate strength 65%.</p></details></div><div class="builder-bell"><div><span>National environment</span><strong>${partyCall?.ourCall || (demParty >= repParty ? 'Leans Democratic' : 'Leans Republican')}</strong><p>${partyCall?.whyShort || ''}</p></div><div class="bell-picks"><span>Current Democratic call <b>${demCall?.pickName || dems[0]?.name}</b></span><span>Current Republican call <b>${repCall?.pickName || reps[0]?.name}</b></span></div></div></section>`;
   const updateMatchup = () => {
     const dem = dems[Number($('#match-dem').value)] || dems[0];
     const rep = reps[Number($('#match-rep').value)] || reps[0];
@@ -284,7 +288,6 @@ function renderMarkets(data) {
       $(`#match-${side}-photo`).src = candidate.photo || '';
       $(`#match-${side}-photo`).alt = candidate.name;
       $(`#match-${side}-name`).textContent = candidate.name;
-      $(`#match-${side}-price`).textContent = candidate.winnerOdds || 'Not listed';
     });
     const estimate = matchupEstimate(dem, rep);
     $('#estimate-dem-name').textContent = dem.name;
@@ -294,7 +297,10 @@ function renderMarkets(data) {
     $('#estimate-dem-bar').style.width = `${estimate.democratic}%`;
     $('#estimate-rep-bar').style.width = `${estimate.republican}%`;
     const leader = estimate.democratic >= estimate.republican ? dem.name : rep.name;
-    $('#estimate-note').textContent = `${leader} leads this model read. ${estimate.coverage}. National environment: ${estimate.environmentLean >= 0 ? '+' : ''}${estimate.environmentLean} D. Candidate contrast: ${estimate.candidateContrast >= 0 ? '+' : ''}${estimate.candidateContrast} D.`;
+    $('#estimate-label').textContent = 'The Bell matchup projection';
+    $('#estimate-note').textContent = estimate.isPoll
+      ? `${leader} leads the composite projection. Its polling anchor is ${estimate.pollTwoWay}% Democratic after undecided voters are removed. ${estimate.coverage}.`
+      : `${leader} leads the composite projection using the national environment and current candidate evidence.`;
   };
   $('#match-dem').addEventListener('change', updateMatchup);
   $('#match-rep').addEventListener('change', updateMatchup);
@@ -327,51 +333,27 @@ function initModelSignals() {
   const network = document.querySelector('.model-network');
   if (!network) return;
   const nodes = [...document.querySelectorAll('.signal-node')];
-  const popover = network.querySelector('.signal-popover');
-  const label = popover.querySelector('small');
-  const title = popover.querySelector('strong');
-  const description = popover.querySelector('p');
-
-  const show = node => {
-    nodes.forEach(item => item.classList.toggle('is-active', item === node));
-    label.textContent = `Signal ${node.dataset.number} / ${node.dataset.weight}`;
-    title.textContent = node.dataset.title;
-    description.textContent = node.dataset.description;
-    popover.hidden = false;
-
-    const networkBox = network.getBoundingClientRect();
-    const nodeBox = node.getBoundingClientRect();
-    const popoverBox = popover.getBoundingClientRect();
-    const nodeX = nodeBox.left + nodeBox.width / 2 - networkBox.left;
-    const nodeY = nodeBox.top + nodeBox.height / 2 - networkBox.top;
-    const centered = Math.abs(nodeX - networkBox.width / 2) < networkBox.width * .18;
-    let left;
-    let top;
-    if (centered) {
-      left = (networkBox.width - popoverBox.width) / 2;
-      top = nodeY < networkBox.height / 2 ? nodeBox.bottom - networkBox.top + 10 : nodeBox.top - networkBox.top - popoverBox.height - 10;
-    } else {
-      left = nodeX < networkBox.width / 2 ? nodeBox.right - networkBox.left + 10 : nodeBox.left - networkBox.left - popoverBox.width - 10;
-      top = nodeBox.top - networkBox.top;
-    }
-    popover.style.left = `${Math.max(12, Math.min(left, networkBox.width - popoverBox.width - 12))}px`;
-    popover.style.top = `${Math.max(52, Math.min(top, networkBox.height - popoverBox.height - 24))}px`;
-  };
-
-  const hide = () => {
-    nodes.forEach(item => item.classList.remove('is-active'));
-    popover.hidden = true;
-  };
-
   nodes.forEach(node => {
-    node.addEventListener('mouseenter', () => show(node));
-    node.addEventListener('mouseleave', () => { if (document.activeElement !== node) hide(); });
-    node.addEventListener('focus', () => show(node));
-    node.addEventListener('blur', hide);
-    node.addEventListener('click', () => show(node));
+    const explanation = document.createElement('span');
+    explanation.className = 'signal-description';
+    explanation.textContent = node.dataset.description;
+    node.append(explanation);
+    node.setAttribute('aria-expanded', 'false');
+    const setActive = active => {
+      nodes.forEach(item => {
+        const selected = active && item === node;
+        item.classList.toggle('is-active', selected);
+        item.setAttribute('aria-expanded', String(selected));
+      });
+    };
+    node.addEventListener('mouseenter', () => setActive(true));
+    node.addEventListener('mouseleave', () => { if (document.activeElement !== node) setActive(false); });
+    node.addEventListener('focus', () => setActive(true));
+    node.addEventListener('blur', () => setActive(false));
+    node.addEventListener('click', event => { event.stopPropagation(); setActive(!node.classList.contains('is-active')); });
   });
-  document.addEventListener('click', event => { if (!event.target.closest('.signal-node')) hide(); });
-  document.addEventListener('keydown', event => { if (event.key === 'Escape') hide(); });
+  document.addEventListener('click', () => nodes.forEach(node => node.classList.remove('is-active')));
+  document.addEventListener('keydown', event => { if (event.key === 'Escape') nodes.forEach(node => node.classList.remove('is-active')); });
 }
 
 initModelSignals();
