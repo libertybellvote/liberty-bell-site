@@ -1,6 +1,6 @@
 {
   "lastUpdated": "2026-08-19T02:30:45.655Z",
-  "modelUpdatedAt": "2026-08-20T15:26:09.801Z",
+  "modelUpdatedAt": "2026-08-20T16:00:11.763Z",
   "libertyBellIndex": {
     "democratic": 58,
     "republican": 42
@@ -79,7 +79,7 @@
         "laneClass": "institutional",
         "pollAvg": 7.3,
         "pollingStatus": "listed",
-        "marketChange1d": null,
+        "marketChange1d": 0.1,
         "marketChange1w": -1.7,
         "marketChange1m": -0.6,
         "winnerOddsNum": 9.8,
@@ -87,7 +87,7 @@
       },
       {
         "name": "Pete Buttigieg",
-        "darkHorse": "The Bell’s dark horse",
+        "darkHorse": "The Bell’s Democratic dark horse",
         "role": "Former Secretary of Transportation",
         "odds": "5%",
         "oddsNum": 5.3,
@@ -158,7 +158,7 @@
         "lane": "Institutional.",
         "laneClass": "institutional",
         "pollingStatus": "listed",
-        "marketChange1d": null,
+        "marketChange1d": 0,
         "marketChange1w": 0.1,
         "marketChange1m": 0,
         "winnerOddsNum": 2.6,
@@ -262,7 +262,7 @@
         "laneClass": "mixed",
         "pollAvg": 1,
         "pollingStatus": "listed",
-        "marketChange1d": -0.3,
+        "marketChange1d": -0.2,
         "marketChange1w": null,
         "marketChange1m": 0.4,
         "winnerOddsNum": 0.8,
@@ -430,7 +430,7 @@
         "name": "Marco Rubio",
         "role": "Secretary of State",
         "odds": "22%",
-        "oddsNum": 21.6,
+        "oddsNum": 21.5,
         "pollAvg": 22.2,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Official%20portrait%20of%20Secretary%20Marco%20Rubio.jpg?width=300",
         "vibe": "No longer running as the safe establishment alternative. A hardline foreign policy record, built through the Iran conflict and a public push to dismantle the ICC, is what’s actually driving his rise now.",
@@ -439,16 +439,16 @@
         "audience": "A wider coalition than before: older, establishment-leaning Republicans, plus MAGA-base voters won over by his foreign policy record specifically.",
         "pulseDir": "down",
         "rankChange": 3,
-        "pulse": "-1.4 points in the last week on Polymarket.",
+        "pulse": "-1.6 points in the last week on Polymarket.",
         "ourTake": "Still the hedge, not the pick. Vance leads by a real 11 points. But he’s no longer a distant afterthought if Vance stumbles: he’s built real, independent standing with the same base Vance is supposed to own.",
         "pick": false,
         "fragility": "Already lost once to an insurgent candidate, Trump, back in 2016. The open question is whether a foreign-policy-driven surge holds up once actual voting starts.",
         "lane": "Institutional record, insurgent-coded momentum right now.",
         "laneClass": "mixed",
         "pollingStatus": "listed",
-        "marketChange1d": -1.2,
-        "marketChange1w": -1.4,
-        "marketChange1m": -6.3,
+        "marketChange1d": -1.4,
+        "marketChange1w": -1.6,
+        "marketChange1m": -6.5,
         "winnerOddsNum": 11.9,
         "winnerOdds": "12%"
       },
@@ -661,7 +661,7 @@
         },
         {
           "label": "Marco Rubio",
-          "probability": 21.6,
+          "probability": 21.5,
           "platform": "Polymarket"
         },
         {
@@ -763,32 +763,32 @@
   },
   "marketMeta": {
     "source": "Polymarket public market data",
-    "retrievedAt": "2026-08-20T15:26:08.506Z",
+    "retrievedAt": "2026-08-20T16:00:10.496Z",
     "partyIndex": {
       "democratic": 58.5,
       "republican": 41.5
     },
     "party": {
-      "volume": 2072713.8414330003,
-      "liquidity": 438179.0172
+      "volume": 2072713.8414330005,
+      "liquidity": 438403.3307
     },
     "democraticNomination": {
-      "volume": 1262895137.4341571,
-      "liquidity": 81153862.62892
+      "volume": 1262895938.1269913,
+      "liquidity": 81167782.85346
     },
     "republicanNomination": {
-      "volume": 689241925.0069741,
-      "liquidity": 57507549.46812
+      "volume": 689242704.4413182,
+      "liquidity": 57510603.25395
     },
     "presidentialWinner": {
-      "volume": 689874814.9813501,
-      "liquidity": 63237596.0254
+      "volume": 689890181.7657921,
+      "liquidity": 63210495.53803
     }
   },
-  "marketUpdatedAt": "2026-08-20T15:26:08.506Z",
+  "marketUpdatedAt": "2026-08-20T16:00:10.496Z",
   "modelMeta": {
     "version": "3.0",
-    "updatedAt": "2026-08-20T15:26:09.801Z",
+    "updatedAt": "2026-08-20T16:00:11.763Z",
     "status": "scored",
     "signalCoverage": "9/9",
     "score": 32,
@@ -932,11 +932,11 @@
         },
         {
           "name": "Marco Rubio",
-          "score": 48.9,
+          "score": 48.8,
           "primaryPath": 0.65,
           "factors": {
             "polling": 0.5375628140703517,
-            "bettingMarkets": 0.4556962025316456,
+            "bettingMarkets": 0.45358649789029537,
             "campaignFundamentals": 0.725,
             "candidateQuality": 0.7,
             "coalitionStrength": 0.65,
@@ -996,16 +996,16 @@
         }
       ]
     },
-    "evidenceUpdatedAt": "2026-08-20T15:26:09.313Z",
+    "evidenceUpdatedAt": "2026-08-20T16:00:11.148Z",
     "structuralInputsReviewedAt": "2026-08-19T15:35:34.000Z"
   },
   "pollingMeta": {
     "source": "270toWin polling averages",
-    "retrievedAt": "2026-08-20T15:26:08.559Z",
+    "retrievedAt": "2026-08-20T16:00:10.544Z",
     "parties": {
       "democratic": {
         "url": "https://www.270towin.com/2028-democratic-nomination/",
-        "retrievedAt": "2026-08-20T15:26:08.559Z",
+        "retrievedAt": "2026-08-20T16:00:10.544Z",
         "averages": {
           "Harris": 21.3,
           "Newsom": 15,
@@ -1031,7 +1031,7 @@
       },
       "republican": {
         "url": "https://www.270towin.com/2028-republican-nomination/",
-        "retrievedAt": "2026-08-20T15:26:08.559Z",
+        "retrievedAt": "2026-08-20T16:00:10.544Z",
         "averages": {
           "Vance": 39.8,
           "Rubio": 22.2,
@@ -1064,7 +1064,7 @@
     "source": "Emerson College Polling",
     "url": "https://emersoncollegepolling.com/august-2026-national-poll/",
     "fielded": "Aug. 16-17, 2026",
-    "retrievedAt": "2026-08-20T15:26:08.559Z",
+    "retrievedAt": "2026-08-20T16:00:10.544Z",
     "trumpApproval": 40,
     "trumpDisapproval": 56,
     "genericBallotDemocratic": 51,
@@ -1075,7 +1075,7 @@
     "url": "https://emersoncollegepolling.com/august-2026-national-poll/",
     "fielded": "Aug. 16-17, 2026",
     "sample": "1,000 likely voters",
-    "retrievedAt": "2026-08-20T15:26:08.559Z",
+    "retrievedAt": "2026-08-20T16:00:10.544Z",
     "matchups": [
       {
         "democrat": "Pete Buttigieg",

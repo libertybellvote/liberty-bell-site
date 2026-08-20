@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-20T15:26:09.313Z",
+  "updatedAt": "2026-08-20T16:00:11.148Z",
   "modelVersion": "3.0",
   "callStatus": "scored",
   "coverage": {
@@ -23,29 +23,29 @@
       "factor": "bettingMarkets",
       "url": "https://polymarket.com",
       "status": "current",
-      "retrievedAt": "2026-08-20T15:26:08.506Z",
+      "retrievedAt": "2026-08-20T16:00:10.496Z",
       "evidence": {
         "source": "Polymarket public market data",
-        "retrievedAt": "2026-08-20T15:26:08.506Z",
+        "retrievedAt": "2026-08-20T16:00:10.496Z",
         "partyIndex": {
           "democratic": 58.5,
           "republican": 41.5
         },
         "party": {
-          "volume": 2072713.8414330003,
-          "liquidity": 438179.0172
+          "volume": 2072713.8414330005,
+          "liquidity": 438403.3307
         },
         "democraticNomination": {
-          "volume": 1262895137.4341571,
-          "liquidity": 81153862.62892
+          "volume": 1262895938.1269913,
+          "liquidity": 81167782.85346
         },
         "republicanNomination": {
-          "volume": 689241925.0069741,
-          "liquidity": 57507549.46812
+          "volume": 689242704.4413182,
+          "liquidity": 57510603.25395
         },
         "presidentialWinner": {
-          "volume": 689874814.9813501,
-          "liquidity": 63237596.0254
+          "volume": 689890181.7657921,
+          "liquidity": 63210495.53803
         }
       }
     },
@@ -55,7 +55,7 @@
       "factor": "bettingMarkets",
       "url": "https://kalshi.com",
       "status": "unavailable",
-      "retrievedAt": "2026-08-20T15:26:09.313Z",
+      "retrievedAt": "2026-08-20T16:00:11.148Z",
       "error": "No open 2028 presidential market was returned"
     },
     {
@@ -64,7 +64,7 @@
       "factor": "economicBackdrop",
       "url": "https://www.bls.gov/developers/",
       "status": "current",
-      "retrievedAt": "2026-08-20T15:26:09.313Z",
+      "retrievedAt": "2026-08-20T16:00:11.148Z",
       "evidence": [
         {
           "seriesId": "CUUR0000SA0",
@@ -224,7 +224,7 @@
       "factor": "polling",
       "url": "https://www.realclearpolling.com/latest-polls/2028",
       "status": "unavailable",
-      "retrievedAt": "2026-08-20T15:26:09.313Z",
+      "retrievedAt": "2026-08-20T16:00:11.148Z",
       "error": "HTTP 403"
     },
     {
@@ -233,7 +233,7 @@
       "factor": "polling",
       "url": "https://votehub.com/feed/",
       "status": "current",
-      "retrievedAt": "2026-08-20T15:26:09.313Z",
+      "retrievedAt": "2026-08-20T16:00:11.148Z",
       "evidence": [
         {
           "title": "Ideological Contests and a Special: Recapping the August 17 Elections",
@@ -293,7 +293,7 @@
       "factor": "momentum",
       "url": "https://decisiondeskhq.com/feed/",
       "status": "unavailable",
-      "retrievedAt": "2026-08-20T15:26:09.313Z",
+      "retrievedAt": "2026-08-20T16:00:11.148Z",
       "error": "HTTP 404"
     }
   ],
