@@ -191,6 +191,18 @@ function renderForecast(data) {
   $('#snapshot-watch-label').textContent = data.powerRanking?.label || 'Watch';
   $('#snapshot-watch-rating').textContent = data.powerRanking?.headline || (watch ? `${watch.name.split(' ').at(-1)} is the name to watch` : 'No breakout yet');
   $('#snapshot-watch-copy').textContent = data.powerRanking?.reason || watch?.pulse || 'No candidate has separated from the field this week.';
+  const video = data.latestVideo;
+  if (video?.videoId) {
+    const videoTitle = $('#latest-video-title');
+    const videoLink = $('#latest-video-link');
+    const videoFrame = $('#latest-video-frame');
+    if (videoTitle) videoTitle.textContent = video.title || 'The latest from The Bell';
+    if (videoLink) videoLink.href = video.url || `https://www.youtube.com/watch?v=${video.videoId}`;
+    if (videoFrame) {
+      videoFrame.src = video.embedUrl || `https://www.youtube-nocookie.com/embed/${video.videoId}`;
+      videoFrame.title = video.title || 'Latest video from The Bell';
+    }
+  }
 }
 
 function candidateCard(candidate, index, party) {

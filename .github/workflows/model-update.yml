@@ -36,6 +36,11 @@ jobs:
         continue-on-error: true
         run: node scripts/refresh-polling.js
 
+      - name: Refresh latest YouTube upload
+        id: youtube_update
+        continue-on-error: true
+        run: node scripts/refresh-youtube.js
+
       - name: Collect free nine-signal evidence
         run: node scripts/collect-evidence.js
 
