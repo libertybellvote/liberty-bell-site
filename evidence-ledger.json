@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-19T17:54:46.819Z",
+  "updatedAt": "2026-08-20T03:12:50.878Z",
   "modelVersion": "3.0",
   "callStatus": "scored",
   "coverage": {
@@ -23,25 +23,29 @@
       "factor": "bettingMarkets",
       "url": "https://polymarket.com",
       "status": "current",
-      "retrievedAt": "2026-08-19T17:54:46.334Z",
+      "retrievedAt": "2026-08-20T03:12:50.586Z",
       "evidence": {
         "source": "Polymarket public market data",
-        "retrievedAt": "2026-08-19T17:54:46.334Z",
+        "retrievedAt": "2026-08-20T03:12:50.586Z",
         "partyIndex": {
           "democratic": 58.5,
           "republican": 41.5
         },
         "party": {
-          "volume": 2066704.7514330011,
-          "liquidity": 409092.5578
+          "volume": 2068954.9514330006,
+          "liquidity": 440353.8796
         },
         "democraticNomination": {
-          "volume": 1262562869.941806,
-          "liquidity": 81076399.53882
+          "volume": 1262605079.524539,
+          "liquidity": 81111041.90171
         },
         "republicanNomination": {
-          "volume": 689138119.2311641,
-          "liquidity": 57673903.13314
+          "volume": 689172019.724166,
+          "liquidity": 57575994.89171
+        },
+        "presidentialWinner": {
+          "volume": 689617275.53924,
+          "liquidity": 62473895.32582
         }
       }
     },
@@ -51,7 +55,7 @@
       "factor": "bettingMarkets",
       "url": "https://kalshi.com",
       "status": "unavailable",
-      "retrievedAt": "2026-08-19T17:54:46.819Z",
+      "retrievedAt": "2026-08-20T03:12:50.878Z",
       "error": "No open 2028 presidential market was returned"
     },
     {
@@ -60,7 +64,7 @@
       "factor": "economicBackdrop",
       "url": "https://www.bls.gov/developers/",
       "status": "current",
-      "retrievedAt": "2026-08-19T17:54:46.819Z",
+      "retrievedAt": "2026-08-20T03:12:50.878Z",
       "evidence": [
         {
           "seriesId": "CUUR0000SA0",
@@ -220,7 +224,7 @@
       "factor": "polling",
       "url": "https://www.realclearpolling.com/latest-polls/2028",
       "status": "unavailable",
-      "retrievedAt": "2026-08-19T17:54:46.819Z",
+      "retrievedAt": "2026-08-20T03:12:50.878Z",
       "error": "HTTP 403"
     },
     {
@@ -229,8 +233,13 @@
       "factor": "polling",
       "url": "https://votehub.com/feed/",
       "status": "current",
-      "retrievedAt": "2026-08-19T17:54:46.819Z",
+      "retrievedAt": "2026-08-20T03:12:50.878Z",
       "evidence": [
+        {
+          "title": "Ideological Contests and a Special: Recapping the August 17 Elections",
+          "link": "https://votehub.com/2026/08/19/ideological-contests-and-a-special-recapping-the-august-17-elections/",
+          "publishedAt": "Wed, 19 Aug 2026 21:13:29 +0000"
+        },
         {
           "title": "2026 Florida Republican Gubernatorial Primary",
           "link": "https://votehub.com/2026_fl_gov_rep_primary_49122341_internal",
@@ -275,11 +284,6 @@
           "title": "The Michigan Marquee: August 4th Primary Previews",
           "link": "https://votehub.com/2026/08/04/the-michigan-marquee-august-4th-primary-previews/",
           "publishedAt": "Tue, 04 Aug 2026 18:34:50 +0000"
-        },
-        {
-          "title": "Michigan U.S. Senator Democratic Primary",
-          "link": "https://votehub.com/2026_mi_sen_dem_primary",
-          "publishedAt": "Mon, 03 Aug 2026 17:11:32 +0000"
         }
       ]
     },
@@ -289,7 +293,7 @@
       "factor": "momentum",
       "url": "https://decisiondeskhq.com/feed/",
       "status": "unavailable",
-      "retrievedAt": "2026-08-19T17:54:46.819Z",
+      "retrievedAt": "2026-08-20T03:12:50.878Z",
       "error": "HTTP 404"
     }
   ],
