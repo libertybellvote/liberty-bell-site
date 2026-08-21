@@ -213,7 +213,8 @@ function candidateCard(candidate, index, party, rankLabel = '') {
   const [label, cls] = movement(candidate);
   const polling = candidate.pollAvg != null ? candidate.pollAvg.toFixed(1) + '%' : 'N/A';
   const marketPrice = candidate.status === 'Ineligible for 2028' || !candidate.odds || candidate.odds === 'Not listed' || candidate.odds === 'Not running' ? 'N/A' : candidate.odds;
-  return `<article class="candidate-card compact-candidate"><div class="candidate-photo"><img src="${candidate.photo || ''}" alt="${candidate.name}" loading="lazy"></div><div class="candidate-body"><div class="candidate-name-row"><h2>${candidate.name}</h2>${partyBadge(party)}</div><div class="role">${candidate.role || ''}</div><div class="candidate-classification">${CLASSIFICATIONS[candidate.name] || 'Unclassified'}</div><div class="candidate-metrics"><div class="candidate-metric"><strong>${marketPrice}</strong><span>Market price</span></div><div class="candidate-metric"><strong class="${candidate.pollAvg == null ? 'metric-missing' : ''}">${polling}</strong><span>Polling</span></div><div class="candidate-metric"><strong class="pulse ${cls}">${label}</strong><span>Race status</span></div></div><p class="candidate-watch"><span>In one sentence</span>${candidate.vibe || candidate.ourTake || 'The campaign case is still developing.'}</p></div></article>`;
+  const rank = rankLabel ? `<div class="candidate-rank"><span>The Bell rank</span><strong>${rankLabel}</strong></div>` : '';
+  return `<article class="candidate-card compact-candidate"><div class="candidate-photo"><img src="${candidate.photo || ''}" alt="${candidate.name}" loading="lazy"></div><div class="candidate-body">${rank}<div class="candidate-name-row"><h2>${candidate.name}</h2>${partyBadge(party)}</div><div class="role">${candidate.role || ''}</div><div class="candidate-classification">${CLASSIFICATIONS[candidate.name] || 'Unclassified'}</div><div class="candidate-metrics"><div class="candidate-metric"><strong>${marketPrice}</strong><span>Market price</span></div><div class="candidate-metric"><strong class="${candidate.pollAvg == null ? 'metric-missing' : ''}">${polling}</strong><span>Polling</span></div><div class="candidate-metric"><strong class="pulse ${cls}">${label}</strong><span>Race status</span></div></div><p class="candidate-watch"><span>In one sentence</span>${candidate.vibe || candidate.ourTake || 'The campaign case is still developing.'}</p></div></article>`;
 }
 
 function renderCandidates(data) {
@@ -240,23 +241,24 @@ function renderCandidates(data) {
     const rankMap = new Map(rankings.map((row, index) => [row.name.toLowerCase(), { position: index + 1, score: Number(row.score) || 0 }]));
     const ranked = candidate => rankMap.get(candidate.name.toLowerCase());
 
-    list.sort((a, b) => {
-      if (currentSort === 'alpha') return alphabetic(a, b);
-      if (currentSort === 'polling') return descending(a, b, 'pollAvg') || descending(a, b, 'oddsNum') || alphabetic(a, b);
-      if (currentSort === 'market') return descending(a, b, 'oddsNum') || descending(a, b, 'pollAvg') || alphabetic(a, b);
+    const bellOrder = (a, b) => {
       const ar = ranked(a);
       const br = ranked(b);
       if (ar && br) return br.score - ar.score || ar.position - br.position;
       if (ar) return -1;
       if (br) return 1;
       return descending(a, b, 'pollAvg') || descending(a, b, 'oddsNum') || alphabetic(a, b);
+    };
+    const bellRank = new Map([...list].sort(bellOrder).map((candidate, index) => [candidate.name.toLowerCase(), index + 1]));
+
+    list.sort((a, b) => {
+      if (currentSort === 'alpha') return alphabetic(a, b);
+      if (currentSort === 'polling') return descending(a, b, 'pollAvg') || descending(a, b, 'oddsNum') || alphabetic(a, b);
+      if (currentSort === 'market') return descending(a, b, 'oddsNum') || descending(a, b, 'pollAvg') || alphabetic(a, b);
+      return bellOrder(a, b);
     });
 
-    $('#candidate-grid').innerHTML = list.map((candidate, index) => {
-      const modelRank = ranked(candidate);
-      const label = currentSort === 'bell' ? (modelRank ? `Bell #${modelRank.position}` : 'Tracking') : `#${index + 1}`;
-      return candidateCard(candidate, index, party, label);
-    }).join('');
+    $('#candidate-grid').innerHTML = list.map((candidate, index) => candidateCard(candidate, index, party, String(bellRank.get(candidate.name.toLowerCase())).padStart(2, '0'))).join('');
     const referenceSection = $('#reference-field');
     const referenceGrid = $('#reference-grid');
     if (referenceSection && referenceGrid) {
