@@ -300,6 +300,14 @@ body.dark .matchup-builder .builder-score-hero{background:#1b1c19;color:#f1efe7}
 .state-map{min-width:0!important;width:100%!important}
 .state-map svg{display:block;width:100%;height:auto}
 .state-shape.dem{fill:var(--blue)!important}.state-shape.rep{fill:var(--red)!important}.state-shape.split{fill:url(#split-state)!important}
+.state-shape.tossup{fill:var(--gold)!important}.map-legend .tossup{background:var(--gold)}.score-track i.tossup{background:var(--gold)}.score-track b em{display:block;margin-top:5px;color:var(--gold);font:600 7px/1 var(--mono);font-style:normal}
 .state-detail{display:block!important;position:static!important;inset:auto!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;width:auto!important;min-width:0!important;max-width:none!important;min-height:100%!important;max-height:none!important;margin:0!important;transform:none!important;overflow:visible!important;padding:24px!important;background:var(--surface)!important;border:1px solid var(--line)!important;border-top:4px solid var(--gold)!important;box-shadow:none!important}
 .state-detail button{display:none!important}.state-detail #detail-content{padding-right:0!important}.state-detail h2{font-size:27px;margin:10px 0}.state-detail p{font-size:11px;line-height:1.55}
+.state-population{display:block;margin-top:13px;color:var(--muted);font:600 8px/1.3 var(--mono);letter-spacing:.07em;text-transform:uppercase}
 @media(max-width:900px){.map-shell{grid-template-columns:1fr!important}.state-detail{min-height:150px!important;padding:18px!important}.state-detail h2{font-size:23px}}
+
+/* Symmetrical Electoral College score cards. */
+.ev-score .score-candidate{display:flex;align-items:center;gap:12px;min-width:150px}.ev-score .score-person-copy{display:grid;gap:5px;align-content:center}.ev-score .score-person-copy span,.ev-score .score-person-copy strong{display:block;margin:0}.ev-score .score-candidate.rep{justify-content:flex-end;text-align:right}.ev-score .score-candidate img{flex:0 0 auto;width:48px;height:48px}
+.ev-score .score-candidate.rep .score-person-copy span{order:-1}
+.score-party-thumb{display:grid;place-items:center;flex:0 0 48px;width:48px;height:48px;border-radius:50%;color:#fff;font:700 18px/1 var(--mono)}.score-party-thumb.dem{background:var(--blue)}.score-party-thumb.rep{background:var(--red)}.score-party-thumb[hidden]{display:none}
+@media(max-width:700px){.ev-score .score-candidate{display:flex;min-width:0;gap:8px}.ev-score .score-candidate.rep{display:flex}.ev-score .score-candidate.rep img{order:2}.ev-score .score-person-copy{display:grid}.ev-score .score-person-copy span,.ev-score .score-person-copy strong{grid-column:auto;grid-row:auto}.ev-score .score-candidate img{width:38px;height:38px}.score-party-thumb{flex-basis:38px;width:38px;height:38px;font-size:14px}}

@@ -19,21 +19,33 @@ const round = (value, places = 1) => Number(value.toFixed(places));
 const readJson = file => JSON.parse(fs.readFileSync(file, 'utf8'));
 const clean = value => String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 const ELECTORAL_BASELINE = {
-  AZ:{ev:11,winner:'R',margin:-5.5}, GA:{ev:16,winner:'R',margin:-2.2}, MI:{ev:15,winner:'R',margin:-1.4},
-  NV:{ev:6,winner:'R',margin:-3.1}, NC:{ev:16,winner:'R',margin:-3.2}, PA:{ev:19,winner:'R',margin:-1.7}, WI:{ev:10,winner:'R',margin:-0.9}
+  AZ:{ev:11,winner:'R',margin:-5.5,stateFit:-0.6}, GA:{ev:16,winner:'R',margin:-2.2,stateFit:0.2}, MI:{ev:15,winner:'R',margin:-1.4,stateFit:0.6},
+  NV:{ev:6,winner:'R',margin:-3.1,stateFit:-0.2}, NC:{ev:16,winner:'R',margin:-3.2,stateFit:0.1}, PA:{ev:19,winner:'R',margin:-1.7,stateFit:0.3}, WI:{ev:10,winner:'R',margin:-0.9,stateFit:0.4}
 };
 
 function electoralProjection(democratic, timestamp) {
-  // Convert the national model edge into a cautious uniform swing from 2024.
-  // This only moves named battlegrounds; every other state retains its 2024 column.
-  const nationalShift = round((democratic - 50) / 4, 1);
+  // Translate only a capped share of the national nine-signal environment into
+  // battleground movement. State baselines and coalition fit remain independent,
+  // preventing one national poll or one market from mechanically coloring the map.
+  const nationalAdjustment = round(clamp((democratic - 50) * 0.35,-3,3),2);
   const stateWinners = {};
+  const stateRatings = {};
+  const ratingFor = margin => {
+    const size = Math.abs(margin);
+    if (size < 1) return 'Tilt';
+    if (size < 3.5) return 'Lean';
+    if (size < 8) return 'Likely';
+    return 'Safe';
+  };
   for (const [state, baseline] of Object.entries(ELECTORAL_BASELINE)) {
-    stateWinners[state] = baseline.margin + nationalShift > 0 ? 'D' : 'R';
+    const projectedMargin = round(baseline.margin + nationalAdjustment + baseline.stateFit,1);
+    const winner = projectedMargin >= 0 ? 'D' : 'R';
+    stateWinners[state] = winner;
+    stateRatings[state] = {winner,rating:ratingFor(projectedMargin),projectedMargin,stateFit:baseline.stateFit,baseline2024:baseline.margin};
   }
-  const flippedToDem = Object.entries(stateWinners).filter(([state,winner]) => winner === 'D' && ELECTORAL_BASELINE[state].winner === 'R');
-  const democraticEV = 226 + flippedToDem.reduce((sum,[state]) => sum + ELECTORAL_BASELINE[state].ev,0);
-  return {updatedAt:timestamp,democraticEV,republicanEV:538-democraticEV,nationalShift,stateWinners,battlegrounds:Object.keys(ELECTORAL_BASELINE),method:'2024 result plus a cautious national Bell Model swing applied to the seven core battlegrounds'};
+  const democraticFlips = Object.entries(stateWinners).filter(([state,winner]) => winner === 'D' && ELECTORAL_BASELINE[state].winner === 'R');
+  const democraticEV = 226 + democraticFlips.reduce((sum,[state]) => sum + ELECTORAL_BASELINE[state].ev,0);
+  return {updatedAt:timestamp,democraticEV,republicanEV:538-democraticEV,tossupEV:0,nationalEnvironment:{democratic,republican:round(100-democratic)},nationalAdjustment,stateWinners,stateRatings,battlegrounds:Object.keys(ELECTORAL_BASELINE),method:'Capped national nine-signal environment plus 2024 state baseline and state-specific coalition fit; markets and individual polls cannot directly determine a state call'};
 }
 
 function pollQualityMultiplier(poll, config) {

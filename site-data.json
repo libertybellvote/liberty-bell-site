@@ -1,6 +1,6 @@
 {
   "lastUpdated": "2026-08-19T02:30:45.655Z",
-  "modelUpdatedAt": "2026-08-21T01:31:43.999Z",
+  "modelUpdatedAt": "2026-08-21T01:56:30.921Z",
   "latestVideo": {
     "videoId": "WihZVHeGeeY",
     "title": "A WOMAN PRESIDENT?! Can She Win in 2028?",
@@ -15,18 +15,74 @@
     "republican": 43.8
   },
   "electoralProjection": {
-    "updatedAt": "2026-08-21T01:31:43.999Z",
-    "democraticEV": 251,
-    "republicanEV": 287,
-    "nationalShift": 1.6,
+    "updatedAt": "2026-08-21T01:56:30.921Z",
+    "democraticEV": 286,
+    "republicanEV": 252,
+    "tossupEV": 0,
+    "nationalEnvironment": {
+      "democratic": 56.2,
+      "republican": 43.8
+    },
+    "nationalAdjustment": 2.17,
     "stateWinners": {
       "AZ": "R",
-      "GA": "R",
+      "GA": "D",
       "MI": "D",
       "NV": "R",
       "NC": "R",
-      "PA": "R",
+      "PA": "D",
       "WI": "D"
+    },
+    "stateRatings": {
+      "AZ": {
+        "winner": "R",
+        "rating": "Likely",
+        "projectedMargin": -3.9,
+        "stateFit": -0.6,
+        "baseline2024": -5.5
+      },
+      "GA": {
+        "winner": "D",
+        "rating": "Tilt",
+        "projectedMargin": 0.2,
+        "stateFit": 0.2,
+        "baseline2024": -2.2
+      },
+      "MI": {
+        "winner": "D",
+        "rating": "Lean",
+        "projectedMargin": 1.4,
+        "stateFit": 0.6,
+        "baseline2024": -1.4
+      },
+      "NV": {
+        "winner": "R",
+        "rating": "Lean",
+        "projectedMargin": -1.1,
+        "stateFit": -0.2,
+        "baseline2024": -3.1
+      },
+      "NC": {
+        "winner": "R",
+        "rating": "Tilt",
+        "projectedMargin": -0.9,
+        "stateFit": 0.1,
+        "baseline2024": -3.2
+      },
+      "PA": {
+        "winner": "D",
+        "rating": "Tilt",
+        "projectedMargin": 0.8,
+        "stateFit": 0.3,
+        "baseline2024": -1.7
+      },
+      "WI": {
+        "winner": "D",
+        "rating": "Lean",
+        "projectedMargin": 1.7,
+        "stateFit": 0.4,
+        "baseline2024": -0.9
+      }
     },
     "battlegrounds": [
       "AZ",
@@ -37,7 +93,7 @@
       "PA",
       "WI"
     ],
-    "method": "2024 result plus a cautious national Bell Model swing applied to the seven core battlegrounds"
+    "method": "Capped national nine-signal environment plus 2024 state baseline and state-specific coalition fit; markets and individual polls cannot directly determine a state call"
   },
   "field": {
     "democratic": [
@@ -823,7 +879,7 @@
   "marketUpdatedAt": "2026-08-20T18:00:36.110Z",
   "modelMeta": {
     "version": "3.0",
-    "updatedAt": "2026-08-21T01:31:43.999Z",
+    "updatedAt": "2026-08-21T01:56:30.921Z",
     "status": "scored",
     "signalCoverage": "9/9",
     "score": 24.7,
@@ -1199,7 +1255,7 @@
     ]
   },
   "modelSafeguards": {
-    "updatedAt": "2026-08-21T01:31:43.999Z",
+    "updatedAt": "2026-08-21T01:56:30.921Z",
     "status": "accepted",
     "rawDemocratic": 56.2,
     "publishedDemocratic": 56.2,
@@ -1224,5 +1280,11 @@
       "minimumIndependentSignalsForPartyChange": 3,
       "independentSignalsForShockOverride": 5
     }
+  },
+  "editorialRefresh": {
+    "evaluatedAt": "2026-08-21T01:56:30.921Z",
+    "headlineChangeWarranted": false,
+    "triggers": [],
+    "policy": "Headlines change for a meaningful evidence shift, not merely because the scheduled model ran."
   }
 }
