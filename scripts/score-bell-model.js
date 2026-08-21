@@ -182,20 +182,27 @@ function scoreCandidates(list, config, inputs) {
   }).filter(Boolean).sort((a, b) => b.score - a.score);
 }
 
-function applyCandidateRaceStatus(list, inputs) {
+function applyCandidateRaceStatus(list, inputs, history, timestamp) {
+  const numeric = value => value === null || value === '' || typeof value === 'undefined' ? NaN : Number(value);
+  const prior = priorSnapshot(history, timestamp);
+  const priorByName = new Map((prior?.candidates || []).map(candidate => [clean(candidate.name), candidate]));
   for (const candidate of list || []) {
     if (['Ineligible for 2028', 'Not expected to run'].includes(candidate.status)) {
       candidate.pulseDir = 'inactive';
       candidate.pulse = 'Not part of the active 2028 field.';
       continue;
     }
-    const editorial = Number(inputs.candidates?.[candidate.name]?.momentum);
-    const week = Number(candidate.marketChange1w);
-    const month = Number(candidate.marketChange1m);
+    const editorial = numeric(inputs.candidates?.[candidate.name]?.momentum);
+    const week = numeric(candidate.marketChange1w);
+    const month = numeric(candidate.marketChange1m);
+    const oldPolling = numeric(priorByName.get(clean(candidate.name))?.pollAvg);
+    const currentPolling = numeric(candidate.pollAvg);
+    const pollingChange = Number.isFinite(oldPolling) && Number.isFinite(currentPolling) ? currentPolling - oldPolling : NaN;
     const signals = [];
-    if (Number.isFinite(editorial)) signals.push({ value: clamp(editorial, -1, 1), weight: .25 });
-    if (Number.isFinite(week)) signals.push({ value: clamp(week / 3, -1, 1), weight: .40 });
-    if (Number.isFinite(month)) signals.push({ value: clamp(month / 8, -1, 1), weight: .35 });
+    if (Number.isFinite(editorial)) signals.push({ value: clamp(editorial, -1, 1), weight: .20 });
+    if (Number.isFinite(week)) signals.push({ value: clamp(week / 3, -1, 1), weight: .30 });
+    if (Number.isFinite(month)) signals.push({ value: clamp(month / 8, -1, 1), weight: .25 });
+    if (Number.isFinite(pollingChange)) signals.push({ value: clamp(pollingChange / 3, -1, 1), weight: .25 });
     if (!signals.length) {
       candidate.pulseDir = 'watch';
       candidate.pulse = 'Not enough current movement evidence for a directional label.';
@@ -285,8 +292,8 @@ function main() {
   const demRank = scoreCandidates(data.field.democratic, config, inputs);
   const repRank = scoreCandidates(data.field.republican, config, inputs);
   if (!demRank.length || !repRank.length) throw new Error('Candidate ratings are missing');
-  applyCandidateRaceStatus(data.field.democratic, inputs);
-  applyCandidateRaceStatus(data.field.republican, inputs);
+  applyCandidateRaceStatus(data.field.democratic, inputs, history, timestamp);
+  applyCandidateRaceStatus(data.field.republican, inputs, history, timestamp);
 
   const presidentialCard = findCall(data, /which party wins/i);
   const demCard = findCall(data, /Democratic nomination/i);

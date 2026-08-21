@@ -1,6 +1,6 @@
 {
   "lastUpdated": "2026-08-19T02:30:45.655Z",
-  "modelUpdatedAt": "2026-08-21T17:03:16.022Z",
+  "modelUpdatedAt": "2026-08-21T17:08:11.181Z",
   "latestVideo": {
     "videoId": "WihZVHeGeeY",
     "title": "A WOMAN PRESIDENT?! Can She Win in 2028?",
@@ -15,7 +15,7 @@
     "republican": 43.8
   },
   "electoralProjection": {
-    "updatedAt": "2026-08-21T17:03:16.022Z",
+    "updatedAt": "2026-08-21T17:08:11.181Z",
     "democraticEV": 286,
     "republicanEV": 252,
     "tossupEV": 0,
@@ -1051,7 +1051,7 @@
   "marketUpdatedAt": "2026-08-21T12:03:45.253Z",
   "modelMeta": {
     "version": "3.0",
-    "updatedAt": "2026-08-21T17:03:16.022Z",
+    "updatedAt": "2026-08-21T17:08:11.181Z",
     "status": "scored",
     "signalCoverage": "9/9",
     "score": 24.8,
@@ -1427,7 +1427,7 @@
     ]
   },
   "modelSafeguards": {
-    "updatedAt": "2026-08-21T17:03:16.022Z",
+    "updatedAt": "2026-08-21T17:08:11.181Z",
     "status": "accepted",
     "rawDemocratic": 56.2,
     "publishedDemocratic": 56.2,
@@ -1454,7 +1454,7 @@
     }
   },
   "editorialRefresh": {
-    "evaluatedAt": "2026-08-21T17:03:16.022Z",
+    "evaluatedAt": "2026-08-21T17:08:11.181Z",
     "headlineChangeWarranted": false,
     "triggers": [],
     "policy": "Headlines change for a meaningful evidence shift, not merely because the scheduled model ran."
