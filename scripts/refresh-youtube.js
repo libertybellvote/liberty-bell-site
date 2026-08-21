@@ -23,6 +23,29 @@ function readTag(xml, tagName) {
   return match ? decodeXml(match[1].trim()) : '';
 }
 
+function feedEntries(feed) {
+  return [...feed.matchAll(/<entry>([\s\S]*?)<\/entry>/g)].map(match => {
+    const xml = match[1];
+    const link = xml.match(/<link\s+rel="alternate"\s+href="([^"]+)"\s*\/>/i);
+    return {
+      videoId: readTag(xml, 'yt:videoId'),
+      title: readTag(xml, 'title'),
+      publishedAt: readTag(xml, 'published'),
+      url: link ? decodeXml(link[1]) : ''
+    };
+  }).filter(entry => entry.videoId && entry.title);
+}
+
+function latestFullLengthVideo(feed) {
+  const entries = feedEntries(feed);
+  // YouTube's own RSS feed identifies Shorts with a /shorts/ URL and standard
+  // uploads with a /watch URL. That is more reliable than guessing by title or
+  // duration, especially now that Shorts can run for up to three minutes.
+  const standardUpload = entries.find(entry => /youtube\.com\/watch\?/i.test(entry.url));
+  if (standardUpload) return standardUpload;
+  throw new Error('YouTube feed did not contain a full-length upload');
+}
+
 async function main() {
   const response = await fetch(feedUrl, {
     headers: { 'user-agent': 'The Bell website updater' }
@@ -30,13 +53,7 @@ async function main() {
   if (!response.ok) throw new Error(`YouTube feed returned ${response.status}`);
 
   const feed = await response.text();
-  const entry = feed.match(/<entry>([\s\S]*?)<\/entry>/)?.[1];
-  if (!entry) throw new Error('YouTube feed did not contain a video');
-
-  const videoId = readTag(entry, 'yt:videoId');
-  const title = readTag(entry, 'title');
-  const publishedAt = readTag(entry, 'published');
-  if (!videoId || !title) throw new Error('Latest YouTube entry was incomplete');
+  const { videoId, title, publishedAt } = latestFullLengthVideo(feed);
 
   const data = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
   const previousId = data.latestVideo?.videoId;
