@@ -1,6 +1,6 @@
 {
   "lastUpdated": "2026-08-19T02:30:45.655Z",
-  "modelUpdatedAt": "2026-08-21T17:08:11.181Z",
+  "modelUpdatedAt": "2026-08-21T17:15:51.327Z",
   "latestVideo": {
     "videoId": "WihZVHeGeeY",
     "title": "A WOMAN PRESIDENT?! Can She Win in 2028?",
@@ -15,7 +15,7 @@
     "republican": 43.8
   },
   "electoralProjection": {
-    "updatedAt": "2026-08-21T17:08:11.181Z",
+    "updatedAt": "2026-08-21T17:15:51.327Z",
     "democraticEV": 286,
     "republicanEV": 252,
     "tossupEV": 0,
@@ -159,9 +159,9 @@
         "strength": "Raised over $25 million for his own 2026 re-election, and leads his Republican challenger by roughly 8 points in Georgia, the best number of any battleground Senate candidate in either party.",
         "weakness": "Told MS NOW directly this week that he has “zero interest” in running in 2028, and dismissed a potential ticket with Mark Kelly when asked about it by name. Says the 2026 midterms are “the whole ballgame” right now, not 2028.",
         "audience": "Swing-state moderates, small-dollar donors, Georgia’s Democratic coalition.",
-        "pulseDir": "down",
+        "pulseDir": "up",
         "rankChange": 2,
-        "pulse": "The Bell’s combined momentum read is falling.",
+        "pulse": "The Bell’s combined momentum read is rising.",
         "ourTake": "We take this denial more seriously than the earlier speculation. He has now said “zero interest” on the record, twice, unprompted about the Kelly ticket specifically. That’s a real signal, not boilerplate deflection, even if candidates in his position have reversed course before.",
         "pick": false,
         "fragility": "Has explicitly and repeatedly denied any 2028 interest this week, tying his full focus to the 2026 midterms. Worth taking at face value for now, while watching whether that holds after November.",
@@ -187,9 +187,9 @@
         "strength": "Led an Emerson poll of the actual field outright, ahead of both Newsom and AOC.",
         "weakness": "Never won statewide office; his market price has actually fallen even as his polling improved.",
         "audience": "Younger, college-educated, moderate-to-progressive voters.",
-        "pulseDir": "flat",
+        "pulseDir": "up",
         "rankChange": 0,
-        "pulse": "The Bell’s combined momentum read is holding.",
+        "pulse": "The Bell’s combined momentum read is rising.",
         "ourTake": "Buttigieg is easy to underrate in a national snapshot. He has won early states before, speaks fluent cable news and podcast, and has a plausible route through New Hampshire and Michigan.",
         "pick": false,
         "fragility": "Never won a swing-state race; thin executive record to run on nationally.",
@@ -213,9 +213,9 @@
         "strength": "Executive-branch experience, strong standing with core Democratic base voters, still leads some head-to-head polls.",
         "weakness": "Some major donors and party figures remain skeptical of a second run after 2024.",
         "audience": "Longtime party base, especially Black voters.",
-        "pulseDir": "flat",
+        "pulseDir": "down",
         "rankChange": 0,
-        "pulse": "The Bell’s combined momentum read is holding.",
+        "pulse": "The Bell’s combined momentum read is falling.",
         "ourTake": "A known quantity in a party actively looking for something new. Hard to see the path back to the top.",
         "pick": false,
         "fragility": "Her entire polling lead is basically 2024 residue, name recognition more than anything else. That's historically the most brittle kind of number once actual voting starts.",
@@ -516,8 +516,8 @@
         "pollingStatus": "not-listed",
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Elissa%20Slotkin%202026%20Official%20Portrait%20(cropped1).jpg?width=500",
         "vibe": "A national-security Democrat from a decisive swing state with a pragmatic political brand.",
-        "pulseDir": "flat",
-        "pulse": "The Bell’s combined momentum read is holding.",
+        "pulseDir": "watch",
+        "pulse": "Not enough current movement evidence for a directional label.",
         "lane": "Center-left national-security Democrat.",
         "laneClass": "institutional",
         "winnerOddsNum": 0.2,
@@ -647,9 +647,9 @@
         "strength": "Built-in name recognition and an independent, health-and-wellness-driven coalition Vance can’t easily match.",
         "weakness": "No history of winning a competitive Republican primary; unclear his coalition actually shows up as GOP primary voters.",
         "audience": "Health-and-wellness independents, anti-establishment voters across the spectrum.",
-        "pulseDir": "flat",
+        "pulseDir": "down",
         "rankChange": 1,
-        "pulse": "The Bell’s combined momentum read is holding.",
+        "pulse": "The Bell’s combined momentum read is falling.",
         "ourTake": "A genuine wildcard with real name recognition, third in line behind two candidates with an actual path to the nomination.",
         "pick": false,
         "fragility": "No history winning a competitive Republican primary; unclear his coalition shows up as actual GOP primary voters.",
@@ -1051,7 +1051,7 @@
   "marketUpdatedAt": "2026-08-21T12:03:45.253Z",
   "modelMeta": {
     "version": "3.0",
-    "updatedAt": "2026-08-21T17:08:11.181Z",
+    "updatedAt": "2026-08-21T17:15:51.327Z",
     "status": "scored",
     "signalCoverage": "9/9",
     "score": 24.8,
@@ -1427,7 +1427,7 @@
     ]
   },
   "modelSafeguards": {
-    "updatedAt": "2026-08-21T17:08:11.181Z",
+    "updatedAt": "2026-08-21T17:15:51.327Z",
     "status": "accepted",
     "rawDemocratic": 56.2,
     "publishedDemocratic": 56.2,
@@ -1454,9 +1454,11 @@
     }
   },
   "editorialRefresh": {
-    "evaluatedAt": "2026-08-21T17:08:11.181Z",
-    "headlineChangeWarranted": false,
-    "triggers": [],
+    "evaluatedAt": "2026-08-21T17:15:51.327Z",
+    "headlineChangeWarranted": true,
+    "triggers": [
+      "Democratic pick changed"
+    ],
     "policy": "Headlines change for a meaningful evidence shift, not merely because the scheduled model ran."
   }
 }

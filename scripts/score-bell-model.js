@@ -192,16 +192,17 @@ function applyCandidateRaceStatus(list, inputs, history, timestamp) {
       candidate.pulse = 'Not part of the active 2028 field.';
       continue;
     }
-    const editorial = numeric(inputs.candidates?.[candidate.name]?.momentum);
+    const candidateInputs = inputs.candidates?.[candidate.name] || {};
+    const editorial = numeric(candidateInputs.raceMomentum ?? candidateInputs.momentum);
     const week = numeric(candidate.marketChange1w);
     const month = numeric(candidate.marketChange1m);
     const oldPolling = numeric(priorByName.get(clean(candidate.name))?.pollAvg);
     const currentPolling = numeric(candidate.pollAvg);
     const pollingChange = Number.isFinite(oldPolling) && Number.isFinite(currentPolling) ? currentPolling - oldPolling : NaN;
     const signals = [];
-    if (Number.isFinite(editorial)) signals.push({ value: clamp(editorial, -1, 1), weight: .20 });
-    if (Number.isFinite(week)) signals.push({ value: clamp(week / 3, -1, 1), weight: .30 });
-    if (Number.isFinite(month)) signals.push({ value: clamp(month / 8, -1, 1), weight: .25 });
+    if (Number.isFinite(editorial)) signals.push({ value: clamp(editorial, -1, 1), weight: .35 });
+    if (Number.isFinite(week)) signals.push({ value: clamp(week / 3, -1, 1), weight: .25 });
+    if (Number.isFinite(month)) signals.push({ value: clamp(month / 8, -1, 1), weight: .15 });
     if (Number.isFinite(pollingChange)) signals.push({ value: clamp(pollingChange / 3, -1, 1), weight: .25 });
     if (!signals.length) {
       candidate.pulseDir = 'watch';
