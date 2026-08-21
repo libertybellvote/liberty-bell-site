@@ -182,6 +182,36 @@ function scoreCandidates(list, config, inputs) {
   }).filter(Boolean).sort((a, b) => b.score - a.score);
 }
 
+function applyCandidateRaceStatus(list, inputs) {
+  for (const candidate of list || []) {
+    if (['Ineligible for 2028', 'Not expected to run'].includes(candidate.status)) {
+      candidate.pulseDir = 'inactive';
+      candidate.pulse = 'Not part of the active 2028 field.';
+      continue;
+    }
+    const editorial = Number(inputs.candidates?.[candidate.name]?.momentum);
+    const week = Number(candidate.marketChange1w);
+    const month = Number(candidate.marketChange1m);
+    const signals = [];
+    if (Number.isFinite(editorial)) signals.push({ value: clamp(editorial, -1, 1), weight: .25 });
+    if (Number.isFinite(week)) signals.push({ value: clamp(week / 3, -1, 1), weight: .40 });
+    if (Number.isFinite(month)) signals.push({ value: clamp(month / 8, -1, 1), weight: .35 });
+    if (!signals.length) {
+      candidate.pulseDir = 'watch';
+      candidate.pulse = 'Not enough current movement evidence for a directional label.';
+      continue;
+    }
+    const weight = signals.reduce((sum, signal) => sum + signal.weight, 0);
+    const trend = signals.reduce((sum, signal) => sum + signal.value * signal.weight, 0) / weight;
+    candidate.pulseDir = trend >= .15 ? 'up' : trend <= -.15 ? 'down' : 'flat';
+    candidate.pulse = candidate.pulseDir === 'up'
+      ? 'The Bell’s combined momentum read is rising.'
+      : candidate.pulseDir === 'down'
+        ? 'The Bell’s combined momentum read is falling.'
+        : 'The Bell’s combined momentum read is holding.';
+  }
+}
+
 function findCall(data, pattern) {
   return data.calls.find(call => pattern.test(call.question));
 }
@@ -255,6 +285,8 @@ function main() {
   const demRank = scoreCandidates(data.field.democratic, config, inputs);
   const repRank = scoreCandidates(data.field.republican, config, inputs);
   if (!demRank.length || !repRank.length) throw new Error('Candidate ratings are missing');
+  applyCandidateRaceStatus(data.field.democratic, inputs);
+  applyCandidateRaceStatus(data.field.republican, inputs);
 
   const presidentialCard = findCall(data, /which party wins/i);
   const demCard = findCall(data, /Democratic nomination/i);

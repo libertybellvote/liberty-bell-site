@@ -41,7 +41,7 @@ const fmt = number => Number(number || 0).toFixed(1) + '%';
 const clean = value => String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 const updated = iso => new Date(iso).toLocaleString('en-US', {month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: 'America/New_York'}) + ' ET';
 const shortDate = iso => new Date(iso).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric', timeZone: 'America/New_York'});
-const movement = candidate => ['Ineligible for 2028', 'Not expected to run'].includes(candidate.status) ? ['Inactive', 'flat'] : candidate.status === 'Possible third-party' ? ['Exploratory', 'flat'] : candidate.pulseDir === 'up' ? ['▲ Rising', 'up'] : candidate.pulseDir === 'down' ? ['▼ Falling', 'down'] : ['Watching', 'flat'];
+const movement = candidate => ['Ineligible for 2028', 'Not expected to run'].includes(candidate.status) ? ['Inactive', 'flat'] : candidate.status === 'Possible third-party' ? ['Exploratory', 'flat'] : candidate.pulseDir === 'up' ? ['▲ Rising', 'up'] : candidate.pulseDir === 'down' ? ['▼ Falling', 'down'] : candidate.pulseDir === 'watch' ? ['Watching', 'flat'] : ['Holding', 'flat'];
 let bellAudioContext;
 
 function playBellGong() {
