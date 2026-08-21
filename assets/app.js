@@ -41,7 +41,7 @@ const fmt = number => Number(number || 0).toFixed(1) + '%';
 const clean = value => String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 const updated = iso => new Date(iso).toLocaleString('en-US', {month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: 'America/New_York'}) + ' ET';
 const shortDate = iso => new Date(iso).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric', timeZone: 'America/New_York'});
-const movement = candidate => candidate.pulseDir === 'up' ? ['▲ Rising', 'up'] : candidate.pulseDir === 'down' ? ['▼ Falling', 'down'] : ['Steady', 'flat'];
+const movement = candidate => ['Ineligible for 2028', 'Not expected to run'].includes(candidate.status) ? ['Inactive', 'flat'] : candidate.status === 'Possible third-party' ? ['Exploratory', 'flat'] : candidate.pulseDir === 'up' ? ['▲ Rising', 'up'] : candidate.pulseDir === 'down' ? ['▼ Falling', 'down'] : ['Watching', 'flat'];
 let bellAudioContext;
 
 function playBellGong() {
@@ -89,8 +89,12 @@ const CLASSIFICATIONS = {
   'Josh Shapiro': 'Center-left', 'Andy Beshear': 'Moderate', 'JB Pritzker': 'Liberal establishment',
   'Cory Booker': 'Liberal', 'Wes Moore': 'Center-left', 'Ro Khanna': 'Progressive', 'Mark Kelly': 'Moderate',
   'Rahm Emanuel': 'Centrist establishment', 'Gretchen Whitmer': 'Center-left', 'Stephen A. Smith': 'Moderate outsider',
+  'Roy Cooper': 'Moderate', 'Elissa Slotkin': 'Center-left', 'Mark Cuban': 'Centrist outsider',
+  'Barack Obama': 'Liberal establishment', 'Joe Biden': 'Liberal establishment',
   'JD Vance': 'National conservative', 'Marco Rubio': 'Conservative', 'Robert F. Kennedy Jr.': 'Populist outsider',
   'Ted Cruz': 'Movement conservative', 'Ron DeSantis': 'MAGA conservative', 'Nikki Haley': 'Establishment conservative',
+  'Brian Kemp': 'Establishment conservative', 'Tim Scott': 'Conservative', 'Glenn Youngkin': 'Establishment conservative',
+  'Donald Trump Jr.': 'MAGA populist',
   'Donald Trump': 'MAGA populist', 'Tucker Carlson': 'Right populist', 'Jill Stein': 'Green left'
 };
 
@@ -205,23 +209,71 @@ function renderForecast(data) {
   }
 }
 
-function candidateCard(candidate, index, party) {
+function candidateCard(candidate, index, party, rankLabel = '') {
   const [label, cls] = movement(candidate);
-  const polling = candidate.pollAvg != null ? candidate.pollAvg.toFixed(1) + '%' : 'Not listed';
-  const incumbent = candidate.name === 'Donald Trump' ? '<span class="incumbent-badge">Current president</span>' : '';
-  return `<article class="candidate-card compact-candidate"><div class="candidate-photo"><img src="${candidate.photo || ''}" alt="${candidate.name}" loading="lazy"><span class="standing">#${index + 1}</span>${incumbent}</div><div class="candidate-body"><div class="candidate-name-row"><h2>${candidate.name}</h2>${partyBadge(party)}</div><div class="role">${candidate.role || ''}</div><div class="candidate-classification">${CLASSIFICATIONS[candidate.name] || 'Unclassified'}</div><div class="candidate-metrics"><div class="candidate-metric"><strong>${candidate.odds || 'N/A'}</strong><span>Market price</span></div><div class="candidate-metric"><strong class="${candidate.pollAvg == null ? 'metric-missing' : ''}">${polling}</strong><span>Polling</span></div><div class="candidate-metric"><strong class="pulse ${cls}">${label}</strong><span>Move</span></div></div><p class="candidate-watch"><span>In one sentence</span>${candidate.vibe || candidate.ourTake || 'The campaign case is still developing.'}</p></div></article>`;
+  const polling = candidate.pollAvg != null ? candidate.pollAvg.toFixed(1) + '%' : 'N/A';
+  const marketPrice = candidate.status === 'Ineligible for 2028' || !candidate.odds || candidate.odds === 'Not listed' || candidate.odds === 'Not running' ? 'N/A' : candidate.odds;
+  return `<article class="candidate-card compact-candidate"><div class="candidate-photo"><img src="${candidate.photo || ''}" alt="${candidate.name}" loading="lazy"></div><div class="candidate-body"><div class="candidate-name-row"><h2>${candidate.name}</h2>${partyBadge(party)}</div><div class="role">${candidate.role || ''}</div><div class="candidate-classification">${CLASSIFICATIONS[candidate.name] || 'Unclassified'}</div><div class="candidate-metrics"><div class="candidate-metric"><strong>${marketPrice}</strong><span>Market price</span></div><div class="candidate-metric"><strong class="${candidate.pollAvg == null ? 'metric-missing' : ''}">${polling}</strong><span>Polling</span></div><div class="candidate-metric"><strong class="pulse ${cls}">${label}</strong><span>Race status</span></div></div><p class="candidate-watch"><span>In one sentence</span>${candidate.vibe || candidate.ourTake || 'The campaign case is still developing.'}</p></div></article>`;
 }
 
 function renderCandidates(data) {
+  let currentParty = 'democratic';
+  let currentSort = 'bell';
+  const inactiveStatuses = new Set(['Ineligible for 2028', 'Not expected to run']);
+  const numeric = value => value == null || value === '' ? null : Number(value);
+  const descending = (a, b, key) => {
+    const av = numeric(a[key]);
+    const bv = numeric(b[key]);
+    if (av == null && bv == null) return 0;
+    if (av == null) return 1;
+    if (bv == null) return -1;
+    return bv - av;
+  };
+  const alphabetic = (a, b) => a.name.localeCompare(b.name);
+
   const draw = party => {
-    const list = [...(party === 'democratic' ? data.field.democratic : party === 'republican' ? data.field.republican : data.thirdParty || [])].sort((a, b) => b.oddsNum - a.oddsNum);
-    $('#candidate-grid').innerHTML = list.map((candidate, index) => candidateCard(candidate, index, party)).join('');
+    currentParty = party;
+    const all = [...(party === 'democratic' ? data.field.democratic : party === 'republican' ? data.field.republican : data.thirdParty || [])];
+    const list = all.filter(candidate => !inactiveStatuses.has(candidate.status));
+    const reference = all.filter(candidate => inactiveStatuses.has(candidate.status)).sort(alphabetic);
+    const rankings = data.modelMeta?.nominationRankings?.[party] || [];
+    const rankMap = new Map(rankings.map((row, index) => [row.name.toLowerCase(), { position: index + 1, score: Number(row.score) || 0 }]));
+    const ranked = candidate => rankMap.get(candidate.name.toLowerCase());
+
+    list.sort((a, b) => {
+      if (currentSort === 'alpha') return alphabetic(a, b);
+      if (currentSort === 'polling') return descending(a, b, 'pollAvg') || descending(a, b, 'oddsNum') || alphabetic(a, b);
+      if (currentSort === 'market') return descending(a, b, 'oddsNum') || descending(a, b, 'pollAvg') || alphabetic(a, b);
+      const ar = ranked(a);
+      const br = ranked(b);
+      if (ar && br) return br.score - ar.score || ar.position - br.position;
+      if (ar) return -1;
+      if (br) return 1;
+      return descending(a, b, 'pollAvg') || descending(a, b, 'oddsNum') || alphabetic(a, b);
+    });
+
+    $('#candidate-grid').innerHTML = list.map((candidate, index) => {
+      const modelRank = ranked(candidate);
+      const label = currentSort === 'bell' ? (modelRank ? `Bell #${modelRank.position}` : 'Tracking') : `#${index + 1}`;
+      return candidateCard(candidate, index, party, label);
+    }).join('');
+    const referenceSection = $('#reference-field');
+    const referenceGrid = $('#reference-grid');
+    if (referenceSection && referenceGrid) {
+      referenceSection.hidden = reference.length === 0;
+      referenceGrid.innerHTML = reference.map((candidate, index) => candidateCard(candidate, index, party)).join('');
+    }
     const pollMeta = data.pollingMeta?.parties?.[party];
     const source = $('#polling-source');
-    if (source) source.innerHTML = pollMeta ? `Polling: <a href="${pollMeta.url}" target="_blank" rel="noopener">national aggregation</a>. Candidates absent from the average are marked “Not listed.”` : party === 'independent' ? 'No comparable national primary polling average exists for outside-party candidates.' : 'Polling aggregation is temporarily unavailable.';
+    if (source) source.innerHTML = pollMeta ? `Polling: <a href="${pollMeta.url}" target="_blank" rel="noopener">national aggregation</a>. Candidates absent from the average are marked N/A.` : party === 'independent' ? 'No comparable national primary polling average exists for outside-party candidates.' : 'Polling aggregation is temporarily unavailable.';
     document.querySelectorAll('.party-switch button').forEach(button => button.classList.toggle('active', button.dataset.party === party));
+    document.querySelectorAll('#candidate-sort button').forEach(button => button.classList.toggle('active', button.dataset.sort === currentSort));
   };
   document.querySelectorAll('.party-switch button').forEach(button => button.onclick = () => draw(button.dataset.party));
+  document.querySelectorAll('#candidate-sort button').forEach(button => button.onclick = () => {
+    currentSort = button.dataset.sort;
+    draw(currentParty);
+  });
   draw('democratic');
   $('#candidate-updated').textContent = updated(data.marketMeta?.retrievedAt || data.marketUpdatedAt || data.lastUpdated);
 }
