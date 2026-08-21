@@ -80,6 +80,18 @@ async function collectRcp() {
   return { pageTitle: 'Latest Polls: 2028', excerpt: text.slice(0, 800) };
 }
 
+async function collectCookRatings() {
+  const url = 'https://www.cookpolitical.com/ratings';
+  const html = await (await request(url)).text();
+  const text = html.replace(/<script\b[\s\S]*?<\/script>/gi, ' ').replace(/<style\b[\s\S]*?<\/style>/gi, ' ').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  if (!/Race Ratings|Electoral Scorecard|House Ratings/i.test(text)) throw new Error('No readable public Cook ratings context');
+  return {
+    pageTitle: 'Cook Political Report Race Ratings',
+    excerpt: text.slice(0, 1000),
+    use: 'Public race ratings and Cook PVI are context for competitiveness and coalition geography. Subscriber analysis is not copied or bypassed.'
+  };
+}
+
 function factorSummary(config, sources) {
   const factors = {};
   for (const [key, definition] of Object.entries(config.factors)) {
@@ -104,7 +116,8 @@ async function main() {
     safeSource('U.S. Bureau of Labor Statistics', 'government-economic-data', 'economicBackdrop', 'https://www.bls.gov/developers/', collectBls),
     safeSource('RealClearPolling', 'polling-aggregator', 'polling', 'https://www.realclearpolling.com/latest-polls/2028', collectRcp),
     safeSource('VoteHub', 'election-analysis', 'polling', 'https://votehub.com/feed/', () => collectFeed('https://votehub.com/feed/')),
-    safeSource('Decision Desk HQ', 'election-analysis', 'momentum', 'https://decisiondeskhq.com/feed/', () => collectFeed('https://decisiondeskhq.com/feed/'))
+    safeSource('Decision Desk HQ', 'election-analysis', 'momentum', 'https://decisiondeskhq.com/feed/', () => collectFeed('https://decisiondeskhq.com/feed/')),
+    safeSource('Cook Political Report', 'election-analysis', 'campaignFundamentals', 'https://www.cookpolitical.com/ratings', collectCookRatings)
   ]);
   const factors = factorSummary(config, sources);
   // Polymarket is updated by run-model-session.js and remains separately labeled.

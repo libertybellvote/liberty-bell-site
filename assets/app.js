@@ -2,19 +2,20 @@ const $ = selector => document.querySelector(selector);
 const page = document.body.dataset.page || 'forecast';
 const NAV = [
   ['forecast', '/', 'Home'],
-  ['candidates', '/candidates.html', 'The Field'],
+  ['candidates', '/candidates.html', '2028 Field'],
   ['markets', '/market-gap.html', 'Matchup Builder'],
+  ['issues', '/issues.html', 'The Issues'],
   ['map', '/map.html', 'Electoral Map'],
   ['methodology', '/methodology.html', 'How It Works'],
   ['ledger', '/ledger.html', 'Receipts']
 ];
 
 function header() {
-  return `<header class="masthead"><div class="shell masthead-main"><a class="brand" href="/"><img class="brand-mark-image" src="/assets/the-bell-brand-mark-v4.png" alt=""><span class="brand-name">The Bell</span></a><div class="mast-actions"><a class="btn donate" href="https://ko-fi.com/libertybellvote" target="_blank" rel="noopener">Donate</a><button class="nav-toggle" id="nav-toggle" aria-label="Open site navigation" aria-controls="site-nav" aria-expanded="false"><span></span><span></span></button><button class="theme-toggle" id="theme-toggle" aria-label="Toggle night mode" title="Toggle night mode">◐</button></div></div></header><nav class="nav" id="site-nav"><div class="shell">${NAV.map(([id, url, label]) => `<a class="${page === id ? 'active' : ''}" href="${url}">${label}</a>`).join('')}</div></nav>`;
+  return `<header class="masthead"><div class="shell masthead-main"><a class="brand" href="/"><img class="brand-mark-image" src="/assets/the-bell-brand-mark-v4.png" alt=""><span class="brand-name">The Bell</span></a><div class="mast-actions"><a class="btn donate" href="https://ko-fi.com/libertybellvote" target="_blank" rel="noopener">Donate</a><button class="nav-toggle" id="nav-toggle" aria-label="Open site navigation" aria-controls="site-nav" aria-expanded="false"><span></span><span></span></button><button class="theme-toggle" id="theme-toggle" aria-label="Toggle night mode" title="Toggle night mode">◐</button></div></div></header><nav class="nav" id="site-nav"><div class="shell">${NAV.map(([id, url, label]) => `<a class="${page === id || (page === 'candidate' && id === 'candidates') ? 'active' : ''}" href="${url}">${label}</a>`).join('')}</div></nav>`;
 }
 
 function footer() {
-  return `<footer><div class="shell"><div class="footer-lead"><div class="footer-lockup"><img class="brand-mark-image" src="/assets/the-bell-brand-mark-v4.png" alt=""><div><div class="footer-name">The Bell</div><p>Which way will The Bell swing?</p></div></div><div class="footer-support"><p>Independent coverage of the 2028 presidential election.</p><a class="btn donate" href="https://ko-fi.com/libertybellvote" target="_blank" rel="noopener">Support The Bell</a></div></div><div class="footer-grid"><div class="footer-col"><strong>Explore</strong><a href="/">Home</a><a href="/candidates.html">The Field</a><a href="/market-gap.html">Matchup Builder</a><a href="/map.html">Electoral Map</a></div><div class="footer-col"><strong>Accountability</strong><a href="/methodology.html">How It Works</a><a href="/ledger.html">Receipts</a><a href="mailto:libertybellvote@gmail.com?subject=Correction">Corrections</a></div><div class="footer-col"><strong>Connect</strong><a href="https://x.com/LibertyBellVote">X / Twitter</a><a href="https://instagram.com/LibertyBellVote">Instagram</a><a href="mailto:libertybellvote@gmail.com?subject=Sponsoring%20The%20Bell">Sponsor The Bell</a><a href="mailto:libertybellvote@gmail.com">Contact</a></div></div><div class="copyright">© 2026 The Bell · All rights reserved · Model estimates are not polls, guarantees, or financial advice.</div></div></footer>`;
+  return `<footer><div class="shell"><div class="footer-lead"><div class="footer-lockup"><img class="brand-mark-image" src="/assets/the-bell-brand-mark-v4.png" alt=""><div><div class="footer-name">The Bell</div><p>Which way will The Bell swing?</p></div></div><div class="footer-support"><p>Independent coverage of the 2028 presidential election.</p><a class="btn donate" href="https://ko-fi.com/libertybellvote" target="_blank" rel="noopener">Support The Bell</a></div></div><div class="footer-grid"><div class="footer-col"><strong>Explore</strong><a href="/">Home</a><a href="/candidates.html">2028 Field</a><a href="/market-gap.html">Matchup Builder</a><a href="/issues.html">The Issues</a><a href="/map.html">Electoral Map</a></div><div class="footer-col"><strong>Accountability</strong><a href="/methodology.html">How It Works</a><a href="/ledger.html">Receipts</a><a href="mailto:libertybellvote@gmail.com?subject=Correction">Corrections</a></div><div class="footer-col"><strong>Connect</strong><a href="https://x.com/LibertyBellVote">X / Twitter</a><a href="https://instagram.com/LibertyBellVote">Instagram</a><a href="mailto:libertybellvote@gmail.com?subject=Sponsoring%20The%20Bell">Sponsor The Bell</a><a href="mailto:libertybellvote@gmail.com">Contact</a></div></div><div class="copyright">© 2026 The Bell · All rights reserved · Model estimates are not polls, guarantees, or financial advice.</div></div></footer>`;
 }
 
 $('#site-header').innerHTML = header();
@@ -42,6 +43,32 @@ const clean = value => String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, 
 const updated = iso => new Date(iso).toLocaleString('en-US', {month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: 'America/New_York'}) + ' ET';
 const shortDate = iso => new Date(iso).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric', timeZone: 'America/New_York'});
 const movement = candidate => ['Ineligible for 2028', 'Not expected to run'].includes(candidate.status) ? ['Inactive', 'flat'] : candidate.status === 'Possible third-party' ? ['Exploratory', 'flat'] : candidate.pulseDir === 'up' ? ['▲ Rising', 'up'] : candidate.pulseDir === 'down' ? ['▼ Falling', 'down'] : candidate.pulseDir === 'watch' ? ['Watching', 'flat'] : ['Holding', 'flat'];
+const BIO_LINKS = {
+  'Alexandria Ocasio-Cortez': 'https://ballotpedia.org/Alexandria_Ocasio-Cortez',
+  'Andy Beshear': 'https://ballotpedia.org/Andy_Beshear',
+  'Brian Kemp': 'https://ballotpedia.org/Brian_Kemp',
+  'Cory Booker': 'https://ballotpedia.org/Cory_Booker',
+  'Elissa Slotkin': 'https://ballotpedia.org/Elissa_Slotkin',
+  'Gavin Newsom': 'https://ballotpedia.org/Gavin_Newsom',
+  'Glenn Youngkin': 'https://ballotpedia.org/Glenn_Youngkin',
+  'Gretchen Whitmer': 'https://ballotpedia.org/Gretchen_Whitmer',
+  'Jon Ossoff': 'https://ballotpedia.org/Jon_Ossoff',
+  'Josh Shapiro': 'https://ballotpedia.org/Josh_Shapiro',
+  'Kamala Harris': 'https://ballotpedia.org/Kamala_Harris',
+  'Marco Rubio': 'https://ballotpedia.org/Marco_Rubio',
+  'Mark Kelly': 'https://ballotpedia.org/Mark_Kelly',
+  'Nikki Haley': 'https://ballotpedia.org/Nikki_Haley',
+  'Pete Buttigieg': 'https://ballotpedia.org/Pete_Buttigieg',
+  'Ro Khanna': 'https://ballotpedia.org/Ro_Khanna',
+  'Ron DeSantis': 'https://ballotpedia.org/Ron_DeSantis',
+  'Roy Cooper': 'https://ballotpedia.org/Roy_Cooper',
+  'Ted Cruz': 'https://ballotpedia.org/Ted_Cruz',
+  'Tim Scott': 'https://ballotpedia.org/Tim_Scott',
+  'Wes Moore': 'https://ballotpedia.org/Wes_Moore'
+};
+const candidateSlug = name => String(name || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const candidateProfileUrl = name => `/candidate.html?name=${encodeURIComponent(candidateSlug(name))}`;
+const candidateWikipediaUrl = name => `https://en.wikipedia.org/wiki/${encodeURIComponent(name.replace(/\s+/g, '_'))}`;
 let bellAudioContext;
 
 function playBellGong() {
@@ -214,7 +241,71 @@ function candidateCard(candidate, index, party, rankLabel = '') {
   const polling = candidate.pollAvg != null ? candidate.pollAvg.toFixed(1) + '%' : 'N/A';
   const marketPrice = candidate.status === 'Ineligible for 2028' || !candidate.odds || candidate.odds === 'Not listed' || candidate.odds === 'Not running' ? 'N/A' : candidate.odds;
   const rank = rankLabel ? `<div class="candidate-rank"><span>The Bell rank</span><strong>${rankLabel}</strong></div>` : '';
-  return `<article class="candidate-card compact-candidate"><div class="candidate-photo"><img src="${candidate.photo || ''}" alt="${candidate.name}" loading="lazy"></div><div class="candidate-body">${rank}<div class="candidate-name-row"><h2>${candidate.name}</h2>${partyBadge(party)}</div><div class="role">${candidate.role || ''}</div><div class="candidate-classification">${CLASSIFICATIONS[candidate.name] || 'Unclassified'}</div><div class="candidate-metrics"><div class="candidate-metric"><strong>${marketPrice}</strong><span>Market price</span></div><div class="candidate-metric"><strong class="${candidate.pollAvg == null ? 'metric-missing' : ''}">${polling}</strong><span>Polling</span></div><div class="candidate-metric"><strong class="pulse ${cls}">${label}</strong><span>Race status</span></div></div><p class="candidate-watch"><span>In one sentence</span>${candidate.vibe || candidate.ourTake || 'The campaign case is still developing.'}</p></div></article>`;
+  const profileUrl = candidateProfileUrl(candidate.name);
+  return `<article class="candidate-card compact-candidate"><a class="candidate-photo candidate-bio-link" href="${profileUrl}" aria-label="Open ${candidate.name}'s Bell profile" title="Open candidate profile"><img src="${candidate.photo || ''}" alt="${candidate.name}" loading="lazy"><span class="photo-profile-cue">View profile</span></a><div class="candidate-body">${rank}<div class="candidate-name-row"><h2><a href="${profileUrl}">${candidate.name}</a></h2>${partyBadge(party)}</div><div class="role">${candidate.role || ''}</div><div class="candidate-classification">${CLASSIFICATIONS[candidate.name] || 'Unclassified'}</div><div class="candidate-metrics"><div class="candidate-metric"><strong>${marketPrice}</strong><span>Market price</span></div><div class="candidate-metric"><strong class="${candidate.pollAvg == null ? 'metric-missing' : ''}">${polling}</strong><span>Polling</span></div><div class="candidate-metric"><strong class="pulse ${cls}">${label}</strong><span>Race status</span></div></div><p class="candidate-watch"><span>In one sentence</span>${candidate.vibe || candidate.ourTake || 'The campaign case is still developing.'}</p></div></article>`;
+}
+
+function renderCandidateProfile(data) {
+  const requested = new URLSearchParams(location.search).get('name') || '';
+  const candidate = allCandidates(data).find(item => candidateSlug(item.name) === candidateSlug(requested));
+  const host = $('#candidate-profile');
+  if (!candidate || !host) {
+    if (host) host.innerHTML = `<section class="profile-not-found"><span class="eyebrow">2028 Field</span><h1>Candidate not found.</h1><p>This profile may have moved.</p><a class="btn" href="/candidates.html">Return to the field</a></section>`;
+    return;
+  }
+  const party = (data.field?.democratic || []).includes(candidate) ? 'democratic' : (data.field?.republican || []).includes(candidate) ? 'republican' : 'independent';
+  const partyName = party === 'democratic' ? 'Democrat' : party === 'republican' ? 'Republican' : 'Outside party';
+  const activeField = (party === 'democratic' ? data.field.democratic : party === 'republican' ? data.field.republican : data.thirdParty || []).filter(item => !['Ineligible for 2028', 'Not expected to run'].includes(item.status));
+  const rankingRows = data.modelMeta?.nominationRankings?.[party] || [];
+  const ranking = rankingRows.findIndex(row => row.name === candidate.name);
+  const fallbackRank = [...activeField].sort((a, b) => (Number(b.pollAvg) || 0) - (Number(a.pollAvg) || 0) || (Number(b.oddsNum) || 0) - (Number(a.oddsNum) || 0)).findIndex(item => item.name === candidate.name);
+  const rank = ranking >= 0 ? ranking + 1 : fallbackRank >= 0 ? fallbackRank + 1 : null;
+  const [status, statusClass] = movement(candidate);
+  const marketPrice = candidate.status === 'Ineligible for 2028' || !candidate.odds || candidate.odds === 'Not listed' || candidate.odds === 'Not running' ? 'N/A' : candidate.odds;
+  const polling = candidate.pollAvg != null ? candidate.pollAvg.toFixed(1) + '%' : 'N/A';
+  const ballotpedia = BIO_LINKS[candidate.name];
+  const sources = [
+    ballotpedia ? `<a href="${ballotpedia}" target="_blank" rel="noopener">Ballotpedia profile</a>` : '',
+    `<a href="${candidateWikipediaUrl(candidate.name)}" target="_blank" rel="noopener">Background and references</a>`,
+    data.pollingMeta?.parties?.[party]?.url ? `<a href="${data.pollingMeta.parties[party].url}" target="_blank" rel="noopener">Polling aggregation</a>` : ''
+  ].filter(Boolean).map(link => `<li>${link}</li>`).join('');
+  const eligibility = candidate.status === 'Ineligible for 2028'
+    ? `${candidate.name} is included for political context but is constitutionally ineligible to be elected president in 2028.`
+    : candidate.status === 'Not expected to run'
+      ? `${candidate.name} is included as a reference point and is not currently part of the active 2028 field.`
+      : `${candidate.name} is included in The Bell’s current ${partyName.toLowerCase()} field. This is a live assessment, not a declaration of candidacy.`;
+  document.title = `${candidate.name}: 2028 Candidate Profile | The Bell`;
+  const description = `${candidate.name} 2028 profile, polling, market odds, Bell Rank, political background, and current race status.`;
+  const descriptionMeta = document.querySelector('meta[name="description"]');
+  if (descriptionMeta) descriptionMeta.content = description;
+  const canonicalUrl = `https://thebell.vote${candidateProfileUrl(candidate.name)}`;
+  let canonical = document.querySelector('link[rel="canonical"]');
+  if (!canonical) {
+    canonical = document.createElement('link');
+    canonical.rel = 'canonical';
+    document.head.appendChild(canonical);
+  }
+  canonical.href = canonicalUrl;
+  const socialMeta = {
+    'og:title': `${candidate.name}: 2028 Candidate Profile | The Bell`,
+    'og:description': description,
+    'og:url': canonicalUrl,
+    'og:image': candidate.photo || 'https://thebell.vote/assets/social-card.png',
+    'twitter:title': `${candidate.name}: 2028 Candidate Profile | The Bell`,
+    'twitter:description': description,
+    'twitter:image': candidate.photo || 'https://thebell.vote/assets/social-card.png'
+  };
+  Object.entries(socialMeta).forEach(([key, content]) => {
+    const attribute = key.startsWith('og:') ? 'property' : 'name';
+    let meta = document.querySelector(`meta[${attribute}="${key}"]`);
+    if (!meta) {
+      meta = document.createElement('meta');
+      meta.setAttribute(attribute, key);
+      document.head.appendChild(meta);
+    }
+    meta.content = content;
+  });
+  host.innerHTML = `<a class="profile-back" href="/candidates.html">← Back to the 2028 field</a><article class="candidate-profile-card"><div class="profile-portrait"><img src="${candidate.photo || ''}" alt="${candidate.name}"></div><div class="profile-lead"><div class="profile-kicker">${partyBadge(party)}<span>${partyName} · 2028 profile</span></div><h1>${candidate.name}</h1><p class="profile-role">${candidate.role || ''}</p><div class="candidate-classification">${CLASSIFICATIONS[candidate.name] || 'Unclassified'}</div><div class="profile-metrics"><div><span>Bell Rank</span><strong>${rank ? `#${rank}` : 'Reference'}</strong></div><div><span>Polling</span><strong>${polling}</strong></div><div><span>Market odds</span><strong>${marketPrice}</strong></div><div><span>Race status</span><strong class="pulse ${statusClass}">${status}</strong></div></div></div></article><section class="profile-story-grid"><article class="profile-read"><span class="eyebrow">The Bell’s read</span><h2>${candidate.vibe || candidate.ourTake || 'The campaign case is still developing.'}</h2><p>${eligibility}</p></article><aside class="profile-facts"><div><span>Current role</span><strong>${candidate.role || 'Not currently in office'}</strong></div><div><span>Political lane</span><strong>${CLASSIFICATIONS[candidate.name] || 'Unclassified'}</strong></div><div><span>Last data update</span><strong>${shortDate(data.marketMeta?.retrievedAt || data.marketUpdatedAt || data.lastUpdated)}</strong></div></aside></section><section class="profile-sources"><div><span class="eyebrow">Sources and further reading</span><h2>Read the record.</h2><p>The Bell writes its own assessment. External sources are provided for factual background, polling context, and further reading.</p></div><ul>${sources}</ul></section><div class="profile-disclosure">Biographical summaries are original Bell copy. Polling, market data, and Bell Rank may change as the race moves.</div>`;
 }
 
 function renderCandidates(data) {
@@ -258,7 +349,10 @@ function renderCandidates(data) {
       return bellOrder(a, b);
     });
 
-    $('#candidate-grid').innerHTML = list.map((candidate, index) => candidateCard(candidate, index, party, String(bellRank.get(candidate.name.toLowerCase())).padStart(2, '0'))).join('');
+    $('#candidate-grid').innerHTML = list.map((candidate, index) => {
+      const rankLabel = currentSort === 'bell' ? String(bellRank.get(candidate.name.toLowerCase())).padStart(2, '0') : '';
+      return candidateCard(candidate, index, party, rankLabel);
+    }).join('');
     const referenceSection = $('#reference-field');
     const referenceGrid = $('#reference-grid');
     if (referenceSection && referenceGrid) {
@@ -384,13 +478,62 @@ function renderLedger(entries) {
   host.innerHTML = `<div class="ledger-scroll"><table class="ledger-table"><thead><tr><th>Date</th><th>What changed</th><th>Previous</th><th>New call</th><th>Why it is here</th></tr></thead><tbody>${entries.slice().reverse().map(entry => `<tr><td>${shortDate(entry.timestamp)}</td><td><strong>${entry.label || 'Bell movement'}</strong></td><td>${entry.previous || (entry.previousDemocratic != null ? `D ${fmt(entry.previousDemocratic)}` : 'Not recorded')}</td><td>${entry.value || (entry.democratic != null ? `D ${fmt(entry.democratic)} / R ${fmt(entry.republican)}` : 'Not recorded')}</td><td>${entry.note || entry.source || ''}</td></tr>`).join('')}</tbody></table></div>`;
 }
 
+function renderIssues(data) {
+  const board = data.issueBoard || {};
+  const issues = Array.isArray(board.issues) ? board.issues : [];
+  const stamp = $('#issues-updated');
+  if (stamp) stamp.textContent = updated(board.updatedAt || data.modelUpdatedAt || data.lastUpdated);
+  if (!issues.length) return;
+
+  const issueLabels = {
+    'cost-of-living-economy': 'Affordability',
+    'healthcare-costs': 'Healthcare',
+    'trump-backlash': 'Trump',
+    housing: 'Housing',
+    'immigration-ice': 'Immigration & ICE',
+    'coalition-energy-ideology': 'Party enthusiasm',
+    'war-alliances-taxpayer': 'Israel, Palestine & U.S. policy',
+    'national-debt-spending': 'National debt',
+    'rights-culture': 'Abortion & civil rights',
+    'money-political-influence': 'Money in politics'
+  };
+  const tone = value => {
+    const text = String(value || '').toLowerCase();
+    if (text.includes('democrat') || text.includes('left')) return 'democratic';
+    if (text.includes('republican') || text.includes('right')) return 'republican';
+    return 'neutral';
+  };
+  const floor = Math.min(...issues.map(issue => Number(issue.score) || 0));
+  const ceiling = Math.max(...issues.map(issue => Number(issue.score) || 0));
+  $('#issues-board').innerHTML = issues.map(issue => {
+    const width = ceiling === floor ? 100 : 42 + (((Number(issue.score) || floor) - floor) / (ceiling - floor)) * 58;
+    const label = issueLabels[issue.id] || issue.title;
+    const currentRank = Number(issue.rank);
+    const previousRank = Number.isFinite(Number(issue.previousRank)) ? Number(issue.previousRank) : currentRank;
+    const rankChange = previousRank - currentRank;
+    const changeClass = rankChange > 0 ? 'up' : rankChange < 0 ? 'down' : 'flat';
+    const changeLabel = rankChange > 0
+      ? `▲ ${rankChange}`
+      : rankChange < 0
+        ? `▼ ${Math.abs(rankChange)}`
+        : '';
+    return `<article class="issue-visual-row issue-tone-${tone(issue.partyAdvantage)} ${issue.rank <= 3 ? 'issue-top-three' : ''}">
+      <div class="issue-visual-rank"><strong>${String(issue.rank).padStart(2, '0')}</strong>${changeLabel ? `<small class="${changeClass}" title="Previously ranked #${previousRank}">${changeLabel}</small>` : ''}</div>
+      <div class="issue-visual-copy"><span class="issue-plain-label">${label}</span><h3>${issue.title}</h3><p>${issue.whyNow}</p></div>
+      <div class="issue-visual-read"><span>${issue.movement}</span><strong>${issue.partyAdvantage}</strong><i style="--weight:${width}%"></i></div>
+    </article>`;
+  }).join('');
+}
+
 if (page === 'ledger') {
   fetch('/ledger.json', {cache: 'no-store'}).then(response => response.json()).then(renderLedger).catch(() => renderLedger([]));
 } else {
   fetch('/site-data.json', {cache: 'no-store'}).then(response => response.json()).then(data => {
     if (page === 'forecast') renderForecast(data);
     if (page === 'candidates') renderCandidates(data);
+    if (page === 'candidate') renderCandidateProfile(data);
     if (page === 'markets') renderMarkets(data);
+    if (page === 'issues') renderIssues(data);
   }).catch(() => {
     const error = $('#data-error');
     if (error) error.textContent = 'The latest dataset could not be loaded. The published forecast is frozen.';

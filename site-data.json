@@ -1,6 +1,6 @@
 {
   "lastUpdated": "2026-08-19T02:30:45.655Z",
-  "modelUpdatedAt": "2026-08-21T17:15:51.327Z",
+  "modelUpdatedAt": "2026-08-21T18:36:12.653Z",
   "latestVideo": {
     "videoId": "WihZVHeGeeY",
     "title": "A WOMAN PRESIDENT?! Can She Win in 2028?",
@@ -15,7 +15,7 @@
     "republican": 43.8
   },
   "electoralProjection": {
-    "updatedAt": "2026-08-21T17:15:51.327Z",
+    "updatedAt": "2026-08-21T18:36:12.653Z",
     "democraticEV": 286,
     "republicanEV": 252,
     "tossupEV": 0,
@@ -94,6 +94,328 @@
       "WI"
     ],
     "method": "Capped national nine-signal environment plus 2024 state baseline and state-specific coalition fit; markets and individual polls cannot directly determine a state call"
+  },
+  "issueBoard": {
+    "title": "The ten issues shaping the 2028 vote",
+    "method": "Weighted voter priority, breadth, intensity, momentum, and relevance to the existing nine signals. No single poll or viral moment can set the order.",
+    "cadence": "Updated weekly",
+    "nextReviewAt": "2026-08-28T18:36:12.653Z",
+    "issues": [
+      {
+        "id": "cost-of-living-economy",
+        "title": "Cost of living and the economy",
+        "category": "Pocketbook",
+        "movement": "Rising",
+        "partyAdvantage": "Incumbent test",
+        "whyNow": "Groceries, gas, wages, jobs, and whether a paycheck stretches remain the first test voters apply to the country.",
+        "linkedSignals": [
+          "Economic backdrop",
+          "Polling",
+          "Coalition strength"
+        ],
+        "metrics": {
+          "voterPriority": 98,
+          "breadth": 98,
+          "intensity": 92,
+          "momentum": 94,
+          "modelRelevance": 98
+        },
+        "sourceLinks": [
+          {
+            "label": "AP-NORC priorities",
+            "url": "https://apnorc.org/projects/2026-the-publics-priorities-and-expectations/"
+          },
+          {
+            "label": "Pew economy survey",
+            "url": "https://www.pewresearch.org/politics/2026/07/23/americans-evaluations-of-the-economy-remain-negative/"
+          }
+        ],
+        "score": 96.5,
+        "rank": 1
+      },
+      {
+        "id": "healthcare-costs",
+        "title": "Healthcare costs",
+        "category": "Pocketbook",
+        "movement": "Rising",
+        "partyAdvantage": "Democratic edge",
+        "whyNow": "Premiums, prescription prices, and the cost of getting sick have turned healthcare into a household-budget issue.",
+        "linkedSignals": [
+          "Economic backdrop",
+          "Polling",
+          "Coalition strength"
+        ],
+        "metrics": {
+          "voterPriority": 96,
+          "breadth": 95,
+          "intensity": 91,
+          "momentum": 88,
+          "modelRelevance": 94
+        },
+        "sourceLinks": [
+          {
+            "label": "KFF health costs poll",
+            "url": "https://www.kff.org/public-opinion/poll-costs-are-the-top-health-care-issue-for-voters-in-the-midterms-but-fraud-tops-republicans-list-as-trump-administration-pushes-crackdown/"
+          },
+          {
+            "label": "Pew national problems",
+            "url": "https://www.pewresearch.org/politics/2026/05/11/americans-see-health-care-costs-deficit-inflation-as-big-problems-facing-the-nation/"
+          }
+        ],
+        "score": 93.5,
+        "rank": 2
+      },
+      {
+        "id": "trump-backlash",
+        "title": "Trump backlash and presidential power",
+        "category": "Domestic",
+        "movement": "Rising",
+        "partyAdvantage": "Democratic edge",
+        "whyNow": "Trump is not background noise. His low approval and the intensity of voters organizing against him are shaping turnout, candidate choice, and the meaning of the next election.",
+        "linkedSignals": [
+          "Polling",
+          "Coalition strength",
+          "Momentum"
+        ],
+        "metrics": {
+          "voterPriority": 91,
+          "breadth": 92,
+          "intensity": 98,
+          "momentum": 94,
+          "modelRelevance": 96
+        },
+        "sourceLinks": [
+          {
+            "label": "Pew midterm and Trump survey",
+            "url": "https://www.pewresearch.org/politics/2026/07/23/as-the-2026-midterms-approach-economy-is-front-and-center/"
+          },
+          {
+            "label": "Pew Trump confidence survey",
+            "url": "https://www.pewresearch.org/politics/2026/01/29/confidence-in-trump-dips-and-fewer-now-say-they-support-his-policies-and-plans/"
+          }
+        ],
+        "score": 93.5,
+        "rank": 3
+      },
+      {
+        "id": "housing",
+        "title": "Housing affordability",
+        "category": "Pocketbook",
+        "movement": "Rising",
+        "partyAdvantage": "Contested",
+        "whyNow": "Rent, mortgage rates, and the shortage of attainable homes keep younger and middle-income voters stuck.",
+        "linkedSignals": [
+          "Economic backdrop",
+          "Coalition strength",
+          "Momentum"
+        ],
+        "metrics": {
+          "voterPriority": 91,
+          "breadth": 92,
+          "intensity": 82,
+          "momentum": 90,
+          "modelRelevance": 91
+        },
+        "sourceLinks": [
+          {
+            "label": "Pew economy survey",
+            "url": "https://www.pewresearch.org/politics/2026/07/23/americans-evaluations-of-the-economy-remain-negative/"
+          }
+        ],
+        "score": 89.8,
+        "rank": 4
+      },
+      {
+        "id": "immigration-ice",
+        "title": "Immigration and ICE",
+        "category": "Domestic",
+        "movement": "High intensity",
+        "partyAdvantage": "Republican edge",
+        "whyNow": "Border control, deportations, and enforcement tactics animate both parties for sharply different reasons.",
+        "linkedSignals": [
+          "Polling",
+          "Coalition strength",
+          "Social sentiment"
+        ],
+        "metrics": {
+          "voterPriority": 87,
+          "breadth": 86,
+          "intensity": 94,
+          "momentum": 78,
+          "modelRelevance": 90
+        },
+        "sourceLinks": [
+          {
+            "label": "Pew midterm issue advantages",
+            "url": "https://www.pewresearch.org/politics/2026/07/23/as-the-2026-midterms-approach-economy-is-front-and-center/"
+          },
+          {
+            "label": "Gallup top problem",
+            "url": "https://news.gallup.com/poll/702719/government-retains-high-mentions-nation-top-problem.aspx"
+          }
+        ],
+        "score": 86.9,
+        "rank": 5
+      },
+      {
+        "id": "coalition-energy-ideology",
+        "title": "Coalition energy and ideological fear",
+        "category": "Political climate",
+        "movement": "Rising",
+        "partyAdvantage": "Democratic momentum",
+        "whyNow": "Democratic engagement is running hotter while parts of the right look less energized. The fight over DSA-style progressivism, socialism, and fear of communism will test whether enthusiasm expands a coalition or narrows it.",
+        "linkedSignals": [
+          "Coalition strength",
+          "Social sentiment",
+          "Momentum"
+        ],
+        "metrics": {
+          "voterPriority": 78,
+          "breadth": 76,
+          "intensity": 93,
+          "momentum": 96,
+          "modelRelevance": 94
+        },
+        "sourceLinks": [
+          {
+            "label": "Pew voter engagement",
+            "url": "https://www.pewresearch.org/politics/2026/07/23/as-the-2026-midterms-approach-economy-is-front-and-center/"
+          },
+          {
+            "label": "Pew political typology",
+            "url": "https://www.pewresearch.org/politics/2026/07/23/how-political-typology-groups-feel-about-the-midterm-elections-and-trump/"
+          }
+        ],
+        "score": 84.8,
+        "rank": 6
+      },
+      {
+        "id": "war-alliances-taxpayer",
+        "title": "War, alliances, and the taxpayer",
+        "category": "World",
+        "movement": "High intensity",
+        "partyAdvantage": "Contested",
+        "whyNow": "Israel and Gaza, Iran, Russia and Ukraine now sit inside one larger voter question: what America is paying for abroad, whose interests drive policy, and where the limits are.",
+        "linkedSignals": [
+          "Candidate quality",
+          "Fragility",
+          "Coalition strength"
+        ],
+        "metrics": {
+          "voterPriority": 76,
+          "breadth": 74,
+          "intensity": 95,
+          "momentum": 88,
+          "modelRelevance": 83
+        },
+        "sourceLinks": [
+          {
+            "label": "Pew foreign policy divides",
+            "url": "https://www.pewresearch.org/politics/2026/06/10/how-foreign-policy-values-and-issues-cut-across-the-political-typology-groups/"
+          },
+          {
+            "label": "Pew views of Israel",
+            "url": "https://www.pewresearch.org/short-reads/2026/04/07/negative-views-of-israel-netanyahu-continue-to-rise-among-americans-especially-young-people/"
+          }
+        ],
+        "score": 81.2,
+        "rank": 7
+      },
+      {
+        "id": "national-debt-spending",
+        "title": "National debt and federal spending",
+        "category": "Pocketbook",
+        "movement": "Rising",
+        "partyAdvantage": "No clear owner",
+        "whyNow": "The gross federal debt is about $39 trillion. Interest costs and arguments over spending are turning an abstract number into a governing test for both parties.",
+        "linkedSignals": [
+          "Economic backdrop",
+          "Campaign fundamentals",
+          "Fragility"
+        ],
+        "metrics": {
+          "voterPriority": 72,
+          "breadth": 80,
+          "intensity": 76,
+          "momentum": 73,
+          "modelRelevance": 86
+        },
+        "sourceLinks": [
+          {
+            "label": "Pew national problems",
+            "url": "https://www.pewresearch.org/politics/2026/05/11/americans-see-health-care-costs-deficit-inflation-as-big-problems-facing-the-nation/"
+          },
+          {
+            "label": "U.S. Treasury debt report",
+            "url": "https://home.treasury.gov/system/files/206/July-2026-FX-Report.pdf"
+          }
+        ],
+        "score": 76.8,
+        "rank": 8
+      },
+      {
+        "id": "rights-culture",
+        "title": "Rights, abortion, and culture",
+        "category": "Domestic",
+        "movement": "High intensity",
+        "partyAdvantage": "Split advantage",
+        "whyNow": "Abortion, LGBTQ and transgender policy, education, religion, and parental authority remain potent coalition issues even when the economy leads the ballot.",
+        "linkedSignals": [
+          "Coalition strength",
+          "Polling",
+          "Social sentiment"
+        ],
+        "metrics": {
+          "voterPriority": 70,
+          "breadth": 76,
+          "intensity": 94,
+          "momentum": 68,
+          "modelRelevance": 81
+        },
+        "sourceLinks": [
+          {
+            "label": "Pew party issue advantages",
+            "url": "https://www.pewresearch.org/politics/2026/07/23/as-the-2026-midterms-approach-economy-is-front-and-center/"
+          }
+        ],
+        "score": 76.5,
+        "rank": 9
+      },
+      {
+        "id": "money-political-influence",
+        "title": "Money and political influence",
+        "category": "Political climate",
+        "movement": "Rising",
+        "partyAdvantage": "Contested",
+        "whyNow": "Billionaire donors and networks associated with figures such as Elon Musk, Peter Thiel, and George Soros make the ownership question impossible to ignore: who funds the candidate, and what do they expect back?",
+        "linkedSignals": [
+          "Campaign fundamentals",
+          "Coalition strength",
+          "Social sentiment"
+        ],
+        "metrics": {
+          "voterPriority": 68,
+          "breadth": 72,
+          "intensity": 86,
+          "momentum": 82,
+          "modelRelevance": 85
+        },
+        "sourceLinks": [
+          {
+            "label": "FEC campaign finance data",
+            "url": "https://www.fec.gov/finance/disclosure/disclosure_data_search.shtml"
+          },
+          {
+            "label": "FEC contribution limits",
+            "url": "https://www.fec.gov/documents/5661/contribution-limits-chart-2025-2026.pdf"
+          }
+        ],
+        "score": 76.3,
+        "rank": 10
+      }
+    ],
+    "updatedAt": "2026-08-21T18:36:12.653Z",
+    "modelVersion": "3.0"
   },
   "field": {
     "democratic": [
@@ -890,7 +1212,7 @@
     {
       "question": "Which party wins the presidency?",
       "ourCall": "Leans Democratic",
-      "whyShort": "Across all nine signals, the national environment currently gives Democrats the better hand. Polls and markets inform the read, but neither gets to make the call.",
+      "whyShort": "Democrats have the better hand today. It is an edge, not a permission slip to relax.",
       "pickName": null,
       "pickParty": null,
       "partySeal": "d",
@@ -911,7 +1233,7 @@
     {
       "question": "Who wins the Republican nomination?",
       "ourCall": "Vance is still the call",
-      "whyShort": "Vance is at 39.8% in the polling average and still has the clearest path to inheriting Trump’s coalition. Rubio is the live alternative.",
+      "whyShort": "Vance owns the inheritance. Rubio is the real pressure test.",
       "pickName": "JD Vance",
       "pickParty": "r",
       "reasoning": "This field is now realistically about two names, not five. Vance still leads clearly at 39%, and his fragility (standing partly borrowed from Trump) hasn’t changed. But Rubio has built something real behind him: his handling of the Iran conflict and a hardline push to dismantle the ICC have made him genuinely popular with the MAGA base, not just older establishment voters, and his odds have climbed from the high teens into the high 20s over several months on the strength of that record specifically. RFK Jr., Cruz, and DeSantis are no longer where the real action is on the Republican side.",
@@ -946,7 +1268,7 @@
     {
       "question": "Who wins the Democratic nomination?",
       "ourCall": "AOC, carefully",
-      "whyShort": "AOC leads our full read after primary support, campaign path, and general-election strength are weighed together. Buttigieg remains the pressure point.",
+      "whyShort": "AOC owns the energy. Buttigieg has the clearest route to making that call uncomfortable.",
       "pickName": "Alexandria Ocasio-Cortez",
       "pickParty": "d",
       "reasoning": "This is the least settled call on the page, and we want to show the actual tension rather than hide it. National primary polling still shows Harris leading on name recognition. Betting markets have AOC as the clear leader at 20%, up from 9% in June, a sustained climb, not a spike, backed by a viral head-to-head poll putting her ahead of Vance. Her fragility is real (an unscripted-moment stumble has already happened once). But right now she’s the only candidate who is both genuinely insurgent-coded and has real current momentum, which matters given how bad the environment looks for the incumbent party. Ossoff’s case is more complicated than it was a few days ago: he explicitly and repeatedly denied any 2028 interest this week, and his own market odds cooled slightly in response. We are taking that denial seriously rather than assuming it’s theater, which is why he is no longer our clear hedge. Newsom is closer to that role now on pure market standing. Whitmer, Kelly, and Stephen A. Smith remain real names we track, none yet building an active campaign.",
@@ -1051,7 +1373,7 @@
   "marketUpdatedAt": "2026-08-21T12:03:45.253Z",
   "modelMeta": {
     "version": "3.0",
-    "updatedAt": "2026-08-21T17:15:51.327Z",
+    "updatedAt": "2026-08-21T18:36:12.653Z",
     "status": "scored",
     "signalCoverage": "9/9",
     "score": 24.8,
@@ -1097,14 +1419,14 @@
       "democratic": [
         {
           "name": "Alexandria Ocasio-Cortez",
-          "score": 52.2,
+          "score": 51.4,
           "primaryPath": 0.45,
           "factors": {
             "polling": 0.36681924882629113,
             "bettingMarkets": 0.6,
             "campaignFundamentals": 0.3,
             "candidateQuality": 0.8,
-            "coalitionStrength": 0.45,
+            "coalitionStrength": 0.3825,
             "socialSentiment": 0.9,
             "momentum": 0.85,
             "economicBackdrop": 0.6,
@@ -1113,14 +1435,14 @@
         },
         {
           "name": "Gavin Newsom",
-          "score": 40.1,
+          "score": 41.4,
           "primaryPath": 0.45,
           "factors": {
             "polling": 0.7552464788732394,
             "bettingMarkets": 0.4978021978021978,
             "campaignFundamentals": 0.6375,
             "candidateQuality": 0.6,
-            "coalitionStrength": 0.37499999999999994,
+            "coalitionStrength": 0.4875,
             "socialSentiment": 0.45,
             "momentum": -0.25,
             "economicBackdrop": 0.2,
@@ -1129,14 +1451,14 @@
         },
         {
           "name": "Pete Buttigieg",
-          "score": 39.2,
+          "score": 41.1,
           "primaryPath": 0.85,
           "factors": {
             "polling": 0.7253521126760563,
             "bettingMarkets": 0.17472527472527474,
             "campaignFundamentals": 0.625,
             "candidateQuality": 0.75,
-            "coalitionStrength": 0.4375,
+            "coalitionStrength": 0.595,
             "socialSentiment": 0.3,
             "momentum": 0.05,
             "economicBackdrop": 0.1,
@@ -1145,14 +1467,14 @@
         },
         {
           "name": "Jon Ossoff",
-          "score": 32.3,
+          "score": 33.3,
           "primaryPath": 0.25,
           "factors": {
             "polling": 0.5377699530516432,
             "bettingMarkets": 0.46483516483516485,
             "campaignFundamentals": 0.32499999999999996,
             "candidateQuality": 0.55,
-            "coalitionStrength": 0.4375,
+            "coalitionStrength": 0.5275,
             "socialSentiment": 0.35,
             "momentum": -0.35,
             "economicBackdrop": 0.35,
@@ -1161,14 +1483,14 @@
         },
         {
           "name": "Kamala Harris",
-          "score": 29.9,
+          "score": 29.7,
           "primaryPath": 0.75,
           "factors": {
             "polling": 0.8075,
             "bettingMarkets": 0.24725274725274726,
             "campaignFundamentals": 0.825,
             "candidateQuality": 0.35,
-            "coalitionStrength": 0.6000000000000001,
+            "coalitionStrength": 0.5775,
             "socialSentiment": 0.1,
             "momentum": -0.45,
             "economicBackdrop": -0.25,
@@ -1179,14 +1501,14 @@
       "republican": [
         {
           "name": "JD Vance",
-          "score": 49.9,
+          "score": 48.2,
           "primaryPath": 0.8,
           "factors": {
             "polling": 0.706,
             "bettingMarkets": 0.6,
             "campaignFundamentals": 0.8374999999999999,
             "candidateQuality": 0.55,
-            "coalitionStrength": 0.8,
+            "coalitionStrength": 0.6559999999999999,
             "socialSentiment": 0.65,
             "momentum": 0.45,
             "economicBackdrop": -0.2,
@@ -1195,14 +1517,14 @@
         },
         {
           "name": "Marco Rubio",
-          "score": 46.6,
+          "score": 46.2,
           "primaryPath": 0.65,
           "factors": {
             "polling": 0.5375628140703517,
             "bettingMarkets": 0.26708860759493674,
             "campaignFundamentals": 0.725,
             "candidateQuality": 0.7,
-            "coalitionStrength": 0.65,
+            "coalitionStrength": 0.61625,
             "socialSentiment": 0.55,
             "momentum": 0.85,
             "economicBackdrop": -0.1,
@@ -1427,7 +1749,7 @@
     ]
   },
   "modelSafeguards": {
-    "updatedAt": "2026-08-21T17:15:51.327Z",
+    "updatedAt": "2026-08-21T18:36:12.653Z",
     "status": "accepted",
     "rawDemocratic": 56.2,
     "publishedDemocratic": 56.2,
@@ -1454,11 +1776,9 @@
     }
   },
   "editorialRefresh": {
-    "evaluatedAt": "2026-08-21T17:15:51.327Z",
-    "headlineChangeWarranted": true,
-    "triggers": [
-      "Democratic pick changed"
-    ],
+    "evaluatedAt": "2026-08-21T18:36:12.653Z",
+    "headlineChangeWarranted": false,
+    "triggers": [],
     "policy": "Headlines change for a meaningful evidence shift, not merely because the scheduled model ran."
   }
 }

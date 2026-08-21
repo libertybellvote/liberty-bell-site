@@ -66,6 +66,55 @@ function pollQualityMultiplier(poll, config) {
   return round(clamp(Math.max(floor,assessed),floor,1),2);
 }
 
+function scoreIssueBoard(data, config, timestamp) {
+  const issues = Array.isArray(data.issueBoard?.issues) ? data.issueBoard.issues : [];
+  const issueConfig = config.issueIndex || {};
+  const cadenceDays = Number(issueConfig.publishCadenceDays || 7);
+  const lastPublished = Date.parse(data.issueBoard?.updatedAt || '');
+  const now = Date.parse(timestamp);
+  const isPublishedBoard = issues.length === Number(issueConfig.publishedIssueCount || 10) && issues.every(issue => Number.isFinite(Number(issue.rank)));
+  if (isPublishedBoard && Number.isFinite(lastPublished) && Number.isFinite(now) && now - lastPublished < cadenceDays * 864e5) {
+    data.issueBoard = {
+      ...data.issueBoard,
+      cadence: 'Updated weekly',
+      nextReviewAt: new Date(lastPublished + cadenceDays * 864e5).toISOString()
+    };
+    return;
+  }
+  const weights = issueConfig.weights || {};
+  const priorRanks = new Map(issues.map(issue => [issue.id, Number(issue.rank)]));
+  const score = issue => {
+    let earned = 0;
+    let possible = 0;
+    for (const [metric, weight] of Object.entries(weights)) {
+      const value = Number(issue.metrics?.[metric]);
+      const numericWeight = Number(weight) || 0;
+      if (!Number.isFinite(value) || numericWeight <= 0) continue;
+      earned += clamp(value, 0, 100) * numericWeight;
+      possible += numericWeight;
+    }
+    return possible ? round(earned / possible, 1) : 0;
+  };
+  const ranked = issues
+    .map(issue => ({...issue, score: score(issue)}))
+    .sort((a, b) => b.score - a.score || a.title.localeCompare(b.title))
+    .slice(0, Number(issueConfig.publishedIssueCount || 10))
+    .map((issue, index) => ({
+      ...issue,
+      previousRank: Number.isFinite(priorRanks.get(issue.id)) ? priorRanks.get(issue.id) : index + 1,
+      rank: index + 1
+    }));
+  data.issueBoard = {
+    ...data.issueBoard,
+    updatedAt: timestamp,
+    cadence: 'Updated weekly',
+    nextReviewAt: new Date(now + cadenceDays * 864e5).toISOString(),
+    modelVersion: config.version,
+    method: 'Weighted voter priority, breadth, intensity, momentum, and relevance to the existing nine signals. No single poll or viral moment can set the order.',
+    issues: ranked
+  };
+}
+
 function presidentialScores(data, config, inputs) {
   const scores = {};
   const guard = config.robustness || {};
@@ -171,7 +220,14 @@ function scoreCandidates(list, config, inputs) {
       bettingMarkets: (market.get(clean(candidate.name)) || 0) * singlePlatformMarketDiscount,
       campaignFundamentals: blendPath(editorial.campaignFundamentals, 0.25),
       candidateQuality: editorial.candidateQuality,
-      coalitionStrength: blendPath(editorial.coalitionStrength, 0.25),
+      // Coalition strength is not just base enthusiasm. It also asks whether a
+      // candidate can hold the party together and reach beyond its ideological
+      // lane. Tested head-to-head performance supplies that breadth check when
+      // it exists, while primaryPath preserves the realities of winning a
+      // nomination before reaching a general election.
+      coalitionStrength: Number.isFinite(electability)
+        ? blendPath(editorial.coalitionStrength * .70 + electability * .30, 0.25)
+        : blendPath(editorial.coalitionStrength, 0.25),
       socialSentiment: editorial.socialSentiment,
       momentum: editorial.momentum,
       economicBackdrop: editorial.economicBackdrop,
@@ -335,20 +391,16 @@ function main() {
   const repRunnerUp = repRank[1] ? data.field.republican.find(candidate => candidate.name === repRank[1].name) : null;
   repCard.ourCall = repRunnerUp && Number(repRunnerUp.marketChange1w) > 0.5 ? `${displayName(repPick)}, with ${displayName(repRunnerUp.name)} gaining` : `${displayName(repPick)} is still the call`;
   presidentialCard.whyShort = democratic >= 50
-    ? 'Across all nine signals, the national environment currently gives Democrats the better hand. Polls and markets inform the read, but neither gets to make the call.'
-    : 'Across all nine signals, the national environment currently gives Republicans the better hand. Polls and markets inform the read, but neither gets to make the call.';
+    ? 'Democrats have the better hand today. It is an edge, not a permission slip to relax.'
+    : 'Republicans have the better hand today. It is an edge, not a victory lap.';
   const darkHorse = data.field.democratic.find(candidate => candidate.darkHorse);
-  const demLeader = data.field.democratic.find(candidate => candidate.name === demPick);
-  const repLeader = data.field.republican.find(candidate => candidate.name === repPick);
   const repSecond = repRank[1] ? data.field.republican.find(candidate => candidate.name === repRank[1].name) : null;
-  const demPickPoll = data.field.democratic.find(candidate => candidate.name === demPick)?.pollAvg;
-  const repPickPoll = data.field.republican.find(candidate => candidate.name === repPick)?.pollAvg;
   demCard.whyShort = darkHorse && darkHorse.name !== demPick
-    ? `${displayName(demPick)} leads our full read after primary support, campaign path, and general-election strength are weighed together. ${displayName(darkHorse.name)} remains the pressure point.`
-    : `${displayName(demPick)} has the strongest all-around case in The Bell Model today.`;
+    ? `${displayName(demPick)} owns the energy. ${displayName(darkHorse.name)} has the clearest route to making that call uncomfortable.`
+    : `${displayName(demPick)} has the strongest complete case today.`;
   repCard.whyShort = repSecond
-    ? `${displayName(repPick)} is at ${Number.isFinite(repPickPoll) ? `${repPickPoll.toFixed(1)}% in the polling average` : 'the top of the field'} and still has the clearest path to inheriting Trump’s coalition. ${displayName(repSecond.name)} is the live alternative.`
-    : `${displayName(repPick)} has the clearest path to inheriting Trump’s coalition. No rival has built a convincing alternative.`;
+    ? `${displayName(repPick)} owns the inheritance. ${displayName(repSecond.name)} is the real pressure test.`
+    : `${displayName(repPick)} owns the inheritance. No rival has built a convincing alternative.`;
   data.powerRanking = watchCandidate(data, inputs, history, timestamp);
   if (previousPowerRanking && data.powerRanking?.candidateName && previousPowerRanking !== data.powerRanking.candidateName) editorialTriggers.push('breakout watch changed');
   data.editorialRefresh = {
@@ -369,6 +421,7 @@ function main() {
     evidenceUpdatedAt: evidence.updatedAt,
     structuralInputsReviewedAt: inputs.updatedAt
   };
+  scoreIssueBoard(data, config, timestamp);
 
   evidence.modelVersion = '3.0';
   evidence.callStatus = 'scored';

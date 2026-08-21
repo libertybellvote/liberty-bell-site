@@ -27,6 +27,26 @@
     "partisanFundingRequiresDisclosure": true,
     "outliersRequireIndependentConfirmation": true
   },
+  "issueIndex": {
+    "weights": {
+      "voterPriority": 30,
+      "breadth": 25,
+      "intensity": 15,
+      "momentum": 15,
+      "modelRelevance": 15
+    },
+    "minimumSourceFamilies": 2,
+    "publishedIssueCount": 10,
+    "publishCadenceDays": 7,
+    "maximumMovementPerWeek": 3,
+    "rules": {
+      "singlePollCannotSetRank": true,
+      "attentionIsNotImportance": true,
+      "feedsExistingSignalsRatherThanAddingTenthSignal": true,
+      "namedPeopleRequireDocumentedPoliticalActivity": true,
+      "sentimentIsLabeledSeparatelyFromPolicy": true
+    }
+  },
   "editorial": {
     "voice": ["conversational", "politically literate", "skeptical of conventional wisdom", "clear about uncertainty", "willing to make a call"],
     "avoid": ["market movement presented as the whole story", "generic horse-race filler", "false certainty", "inside-baseball methodology copy on the homepage"],
@@ -43,7 +63,7 @@
     "bettingMarkets": { "weight": 12, "label": "Betting market odds" },
     "campaignFundamentals": { "weight": 12, "label": "Campaign fundamentals", "inputs": ["Fundraising and organization", "Endorsements", "Primary schedule and early-state path"] },
     "candidateQuality": { "weight": 10, "label": "Candidate quality" },
-    "coalitionStrength": { "weight": 12, "label": "Coalition strength" },
+    "coalitionStrength": { "weight": 12, "label": "Coalition strength", "inputs": ["Base intensity and durability", "Ideological fit in the primary", "Broad appeal and general-election reach", "Head-to-head performance when reliable tests exist"] },
     "socialSentiment": { "weight": 6, "label": "Social sentiment" },
     "momentum": { "weight": 10, "label": "Momentum" },
     "economicBackdrop": { "weight": 14, "label": "Economic backdrop", "inputs": ["Inflation", "Unemployment", "Real income and consumer pressure", "Presidential approval response to economic conditions"] },
@@ -59,6 +79,8 @@
     "callChangesRequireIndependentAgreement": true,
     "suddenMovementIsRateLimited": true,
     "pollQualityAdjustsInfluence": true,
-    "primaryPathIsCandidateSubscore": true
+    "primaryPathIsCandidateSubscore": true,
+    "coalitionBreadthBalancesBaseIntensity": true,
+    "cookRatingsAreContextNotVerdict": true
   }
 }
