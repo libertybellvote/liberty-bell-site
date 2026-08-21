@@ -281,8 +281,10 @@ function renderCandidates(data) {
 function renderMarkets(data) {
   $('#market-updated').textContent = updated(data.marketMeta?.retrievedAt || data.marketUpdatedAt || data.lastUpdated);
   const calls = data.calls || [];
-  const dems = [...(data.field?.democratic || [])].sort((a, b) => b.oddsNum - a.oddsNum);
-  const reps = [...(data.field?.republican || [])].sort((a, b) => b.oddsNum - a.oddsNum);
+  const eligibleForMatchup = candidate => !['Ineligible for 2028', 'Not expected to run'].includes(candidate.status);
+  const alphabetical = (a, b) => a.name.localeCompare(b.name);
+  const dems = [...(data.field?.democratic || [])].filter(eligibleForMatchup).sort(alphabetical);
+  const reps = [...(data.field?.republican || [])].filter(eligibleForMatchup).sort(alphabetical);
   const partyCall = calls.find(call => /party|wins the presidency/i.test(call.question)) || calls[0];
   const demCall = calls.find(call => /Democratic/i.test(call.question));
   const repCall = calls.find(call => /Republican/i.test(call.question));
@@ -344,7 +346,7 @@ function renderMarkets(data) {
     };
   };
   const options = list => list.map((candidate, index) => `<option value="${index}">${candidate.name}</option>`).join('');
-  $('#market-list').innerHTML = `<section class="matchup-builder"><div class="builder-controls"><label><span>Choose a Democrat</span><select id="match-dem">${options(dems)}</select></label><span class="builder-versus">VS</span><label><span>Choose a Republican</span><select id="match-rep">${options(reps)}</select></label></div><div class="builder-stage"><article class="builder-candidate dem"><div class="builder-party">Democrat</div><img id="match-dem-photo" alt=""><h2 id="match-dem-name"></h2></article><div class="builder-center"><span>2028</span><strong>VS</strong><small>Your matchup</small></div><article class="builder-candidate rep"><div class="builder-party">Republican</div><img id="match-rep-photo" alt=""><h2 id="match-rep-name"></h2></article></div><div class="builder-score builder-score-hero"><div class="score-brand"><img src="/assets/the-bell-brand-mark-v4.png" alt="The Bell"><div><span id="estimate-label">The Bell matchup projection</span><strong id="estimate-line"><b id="estimate-dem-name"></b> <em id="estimate-dem"></em><i>vs.</i><b id="estimate-rep-name"></b> <em id="estimate-rep"></em></strong></div></div><div class="party-score" id="estimate-bar"><i class="dem" id="estimate-dem-bar"></i><i class="rep" id="estimate-rep-bar"></i></div><p id="estimate-note"></p><details class="estimate-method"><summary>What moves this projection</summary><p>A current head-to-head poll anchors 55% of a tested matchup. The national environment contributes 20%. Candidate strength contributes 25% through polling, campaign path, quality, coalition, sentiment, momentum, the economy, fragility, and separately tracked market evidence. Without a direct poll, the environment contributes 35% and candidate strength 65%.</p></details></div><div class="builder-bell"><div><span>National environment</span><strong>${partyCall?.ourCall || (demParty >= repParty ? 'Leans Democratic' : 'Leans Republican')}</strong><p>${partyCall?.whyShort || ''}</p></div><div class="bell-picks"><span>Current Democratic call <b>${demCall?.pickName || dems[0]?.name}</b></span><span>Current Republican call <b>${repCall?.pickName || reps[0]?.name}</b></span></div></div></section>`;
+  $('#market-list').innerHTML = `<section class="matchup-builder"><div class="builder-controls"><label><span>Choose a Democrat</span><select id="match-dem">${options(dems)}</select></label><span class="builder-versus">VS</span><label><span>Choose a Republican</span><select id="match-rep">${options(reps)}</select></label></div><div class="builder-stage"><article class="builder-candidate dem"><div class="builder-party">Democrat</div><img id="match-dem-photo" alt=""><h2 id="match-dem-name"></h2></article><div class="builder-center"><span>2028</span><strong>VS</strong><small>Your matchup</small></div><article class="builder-candidate rep"><div class="builder-party">Republican</div><img id="match-rep-photo" alt=""><h2 id="match-rep-name"></h2></article></div><div class="builder-score builder-score-hero"><div class="score-brand"><img src="/assets/the-bell-brand-mark-v4.png" alt="The Bell"><div><span id="estimate-label">The Bell matchup projection</span><strong id="estimate-line"><b id="estimate-dem-name"></b> <em id="estimate-dem"></em><i>vs.</i><b id="estimate-rep-name"></b> <em id="estimate-rep"></em></strong></div></div><div class="party-score" id="estimate-bar"><i class="dem" id="estimate-dem-bar"></i><i class="rep" id="estimate-rep-bar"></i></div><details class="estimate-method"><summary>What moves this projection</summary><p>A current head-to-head poll anchors 55% of a tested matchup. The national environment contributes 20%. Candidate strength contributes 25% through polling, campaign path, quality, coalition, sentiment, momentum, the economy, fragility, and separately tracked market evidence. Without a direct poll, the environment contributes 35% and candidate strength 65%.</p></details></div><div class="builder-bell"><div><span>National environment</span><strong>${partyCall?.ourCall || (demParty >= repParty ? 'Leans Democratic' : 'Leans Republican')}</strong><p>${partyCall?.whyShort || ''}</p></div><div class="bell-picks"><span>Current Democratic call <b>${demCall?.pickName || dems[0]?.name}</b></span><span>Current Republican call <b>${repCall?.pickName || reps[0]?.name}</b></span></div></div></section>`;
   const updateMatchup = () => {
     const dem = dems[Number($('#match-dem').value)] || dems[0];
     const rep = reps[Number($('#match-rep').value)] || reps[0];
@@ -360,12 +362,12 @@ function renderMarkets(data) {
     $('#estimate-rep').textContent = fmt(estimate.republican);
     $('#estimate-dem-bar').style.width = `${estimate.democratic}%`;
     $('#estimate-rep-bar').style.width = `${estimate.republican}%`;
-    const leader = estimate.democratic >= estimate.republican ? dem.name : rep.name;
     $('#estimate-label').textContent = 'The Bell matchup projection';
-    $('#estimate-note').textContent = estimate.isPoll
-      ? `${leader} leads the composite projection. Its polling anchor is ${estimate.pollTwoWay}% Democratic after undecided voters are removed. ${estimate.coverage}.`
-      : `${leader} leads the composite projection using the national environment and current candidate evidence.`;
   };
+  const demDefault = dems.findIndex(candidate => candidate.name === demCall?.pickName);
+  const repDefault = reps.findIndex(candidate => candidate.name === repCall?.pickName);
+  $('#match-dem').value = String(demDefault >= 0 ? demDefault : 0);
+  $('#match-rep').value = String(repDefault >= 0 ? repDefault : 0);
   $('#match-dem').addEventListener('change', updateMatchup);
   $('#match-rep').addEventListener('change', updateMatchup);
   updateMatchup();
