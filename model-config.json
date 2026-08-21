@@ -3,6 +3,41 @@
   "minimumCurrentFactors": 6,
   "minimumSourceFamilies": 3,
   "maximumAgeHours": 168,
+  "robustness": {
+    "pollingSourcesForFullWeight": 3,
+    "marketPlatformsForFullWeight": 2,
+    "singlePollScoreCap": 0.55,
+    "singlePlatformMarketScoreCap": 0.35,
+    "maximumFactorScore": 0.75,
+    "maximumMovementPerRun": 2,
+    "minimumIndependentSignalsForPartyChange": 3,
+    "independentSignalsForShockOverride": 5
+  },
+  "pollQuality": {
+    "minimumProvisionalMultiplier": 0.5,
+    "dimensions": {
+      "historicalAccuracy": 25,
+      "methodologyTransparency": 20,
+      "sampleDesign": 15,
+      "questionTransparency": 10,
+      "sponsorTransparency": 15,
+      "fundingIndependence": 15
+    },
+    "unknownInformationReceivesCredit": false,
+    "partisanFundingRequiresDisclosure": true,
+    "outliersRequireIndependentConfirmation": true
+  },
+  "editorial": {
+    "voice": ["conversational", "politically literate", "skeptical of conventional wisdom", "clear about uncertainty", "willing to make a call"],
+    "avoid": ["market movement presented as the whole story", "generic horse-race filler", "false certainty", "inside-baseball methodology copy on the homepage"],
+    "headlineRefresh": {
+      "minimumBellMovement": 1,
+      "minimumIndependentSignals": 2,
+      "refreshOnPartyCallChange": true,
+      "refreshOnNomineePickChange": true,
+      "refreshOnBreakoutChange": true
+    }
+  },
   "factors": {
     "polling": { "weight": 18, "label": "Polling", "inputs": ["National and state polling averages", "Presidential job approval", "Issue approval"] },
     "bettingMarkets": { "weight": 12, "label": "Betting market odds" },
@@ -20,6 +55,10 @@
     "attentionIsNotSupport": true,
     "freezeBelowCoverageThreshold": true,
     "platformsMustRemainSeparate": true,
+    "singleSourceCannotMakeCall": true,
+    "callChangesRequireIndependentAgreement": true,
+    "suddenMovementIsRateLimited": true,
+    "pollQualityAdjustsInfluence": true,
     "primaryPathIsCandidateSubscore": true
   }
 }

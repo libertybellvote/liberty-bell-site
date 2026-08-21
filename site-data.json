@@ -1,6 +1,6 @@
 {
   "lastUpdated": "2026-08-19T02:30:45.655Z",
-  "modelUpdatedAt": "2026-08-20T18:00:37.464Z",
+  "modelUpdatedAt": "2026-08-21T01:31:43.999Z",
   "latestVideo": {
     "videoId": "WihZVHeGeeY",
     "title": "A WOMAN PRESIDENT?! Can She Win in 2028?",
@@ -11,8 +11,33 @@
     "channelUrl": "https://www.youtube.com/@TheBellVote"
   },
   "libertyBellIndex": {
-    "democratic": 58,
-    "republican": 42
+    "democratic": 56.2,
+    "republican": 43.8
+  },
+  "electoralProjection": {
+    "updatedAt": "2026-08-21T01:31:43.999Z",
+    "democraticEV": 251,
+    "republicanEV": 287,
+    "nationalShift": 1.6,
+    "stateWinners": {
+      "AZ": "R",
+      "GA": "R",
+      "MI": "D",
+      "NV": "R",
+      "NC": "R",
+      "PA": "R",
+      "WI": "D"
+    },
+    "battlegrounds": [
+      "AZ",
+      "GA",
+      "MI",
+      "NV",
+      "NC",
+      "PA",
+      "WI"
+    ],
+    "method": "2024 result plus a cautious national Bell Model swing applied to the seven core battlegrounds"
   },
   "field": {
     "democratic": [
@@ -637,7 +662,7 @@
     {
       "question": "Which party wins the presidency?",
       "ourCall": "Leans Democratic",
-      "whyShort": "Trump approval is 40 and Democrats lead the latest national generic ballot 51–43. That gives Democrats the better hand today, not a lock.",
+      "whyShort": "Across all nine signals, the national environment currently gives Democrats the better hand. Polls and markets inform the read, but neither gets to make the call.",
       "pickName": null,
       "pickParty": null,
       "partySeal": "d",
@@ -772,6 +797,7 @@
   },
   "marketMeta": {
     "source": "Polymarket public market data",
+    "platformCount": 1,
     "retrievedAt": "2026-08-20T18:00:36.110Z",
     "partyIndex": {
       "democratic": 58.5,
@@ -797,17 +823,17 @@
   "marketUpdatedAt": "2026-08-20T18:00:36.110Z",
   "modelMeta": {
     "version": "3.0",
-    "updatedAt": "2026-08-20T18:00:37.464Z",
+    "updatedAt": "2026-08-21T01:31:43.999Z",
     "status": "scored",
     "signalCoverage": "9/9",
-    "score": 32,
+    "score": 24.7,
     "factors": {
       "polling": {
-        "score": 0.447,
+        "score": 0.101,
         "weight": 18
       },
       "bettingMarkets": {
-        "score": 0.17,
+        "score": 0.085,
         "weight": 12
       },
       "campaignFundamentals": {
@@ -843,11 +869,11 @@
       "democratic": [
         {
           "name": "Alexandria Ocasio-Cortez",
-          "score": 57,
+          "score": 52.2,
           "primaryPath": 0.45,
           "factors": {
             "polling": 0.36681924882629113,
-            "bettingMarkets": 1,
+            "bettingMarkets": 0.6,
             "campaignFundamentals": 0.3,
             "candidateQuality": 0.8,
             "coalitionStrength": 0.45,
@@ -859,11 +885,11 @@
         },
         {
           "name": "Gavin Newsom",
-          "score": 44,
+          "score": 40.1,
           "primaryPath": 0.45,
           "factors": {
             "polling": 0.7552464788732394,
-            "bettingMarkets": 0.8296703296703297,
+            "bettingMarkets": 0.4978021978021978,
             "campaignFundamentals": 0.6375,
             "candidateQuality": 0.6,
             "coalitionStrength": 0.37499999999999994,
@@ -875,11 +901,11 @@
         },
         {
           "name": "Pete Buttigieg",
-          "score": 40.6,
+          "score": 39.2,
           "primaryPath": 0.85,
           "factors": {
             "polling": 0.7253521126760563,
-            "bettingMarkets": 0.29120879120879123,
+            "bettingMarkets": 0.17472527472527474,
             "campaignFundamentals": 0.625,
             "candidateQuality": 0.75,
             "coalitionStrength": 0.4375,
@@ -891,11 +917,11 @@
         },
         {
           "name": "Jon Ossoff",
-          "score": 35.8,
+          "score": 32.1,
           "primaryPath": 0.25,
           "factors": {
             "polling": 0.5377699530516432,
-            "bettingMarkets": 0.7582417582417583,
+            "bettingMarkets": 0.454945054945055,
             "campaignFundamentals": 0.32499999999999996,
             "candidateQuality": 0.55,
             "coalitionStrength": 0.4375,
@@ -907,11 +933,11 @@
         },
         {
           "name": "Kamala Harris",
-          "score": 31.9,
+          "score": 29.9,
           "primaryPath": 0.75,
           "factors": {
             "polling": 0.8075,
-            "bettingMarkets": 0.4120879120879121,
+            "bettingMarkets": 0.24725274725274726,
             "campaignFundamentals": 0.825,
             "candidateQuality": 0.35,
             "coalitionStrength": 0.6000000000000001,
@@ -925,11 +951,11 @@
       "republican": [
         {
           "name": "JD Vance",
-          "score": 54.7,
+          "score": 49.9,
           "primaryPath": 0.8,
           "factors": {
             "polling": 0.706,
-            "bettingMarkets": 1,
+            "bettingMarkets": 0.6,
             "campaignFundamentals": 0.8374999999999999,
             "candidateQuality": 0.55,
             "coalitionStrength": 0.8,
@@ -941,11 +967,11 @@
         },
         {
           "name": "Marco Rubio",
-          "score": 48.8,
+          "score": 46.7,
           "primaryPath": 0.65,
           "factors": {
             "polling": 0.5375628140703517,
-            "bettingMarkets": 0.45358649789029537,
+            "bettingMarkets": 0.2721518987341772,
             "campaignFundamentals": 0.725,
             "candidateQuality": 0.7,
             "coalitionStrength": 0.65,
@@ -957,11 +983,11 @@
         },
         {
           "name": "Ron DeSantis",
-          "score": 16.4,
+          "score": 16.1,
           "primaryPath": 0.45,
           "factors": {
             "polling": 0.20603015075376885,
-            "bettingMarkets": 0.0569620253164557,
+            "bettingMarkets": 0.03417721518987342,
             "campaignFundamentals": 0.6000000000000001,
             "candidateQuality": 0.35,
             "coalitionStrength": 0.525,
@@ -973,11 +999,11 @@
         },
         {
           "name": "Ted Cruz",
-          "score": 13.5,
+          "score": 13.4,
           "primaryPath": 0.4,
           "factors": {
             "polling": 0.05778894472361809,
-            "bettingMarkets": 0.02109704641350211,
+            "bettingMarkets": 0.012658227848101266,
             "campaignFundamentals": 0.5125000000000001,
             "candidateQuality": 0.5,
             "coalitionStrength": 0.475,
@@ -989,11 +1015,11 @@
         },
         {
           "name": "Robert F. Kennedy Jr.",
-          "score": 5.2,
+          "score": 5.1,
           "primaryPath": 0.25,
           "factors": {
             "polling": 0.10050251256281408,
-            "bettingMarkets": 0.010548523206751054,
+            "bettingMarkets": 0.006329113924050633,
             "campaignFundamentals": 0.2875,
             "candidateQuality": 0.25,
             "coalitionStrength": 0.32499999999999996,
@@ -1071,13 +1097,27 @@
   },
   "nationalPolling": {
     "source": "Emerson College Polling",
+    "sourceCount": 1,
+    "aggregationStatus": "single-poll context",
     "url": "https://emersoncollegepolling.com/august-2026-national-poll/",
     "fielded": "Aug. 16-17, 2026",
     "retrievedAt": "2026-08-20T18:00:36.172Z",
     "trumpApproval": 40,
     "trumpDisapproval": 56,
     "genericBallotDemocratic": 51,
-    "genericBallotRepublican": 43
+    "genericBallotRepublican": 43,
+    "qualityReview": {
+      "status": "provisional",
+      "historicalAccuracy": null,
+      "methodologyTransparency": 0.75,
+      "sampleDesign": 0.7,
+      "questionTransparency": 0.5,
+      "sponsorTransparency": 0.5,
+      "fundingIndependence": 0.5,
+      "sponsor": "Emerson College Polling",
+      "externalFunder": "not established by the automated collector",
+      "note": "This poll remains discounted until its current historical record, questionnaire disclosure, sponsor, and original funding are independently reviewed."
+    }
   },
   "headToHeadPolling": {
     "source": "Emerson College Polling",
@@ -1157,5 +1197,32 @@
         "republicanVote": 48
       }
     ]
+  },
+  "modelSafeguards": {
+    "updatedAt": "2026-08-21T01:31:43.999Z",
+    "status": "accepted",
+    "rawDemocratic": 56.2,
+    "publishedDemocratic": 56.2,
+    "independentAgreement": [
+      "candidateQuality",
+      "coalitionStrength",
+      "socialSentiment",
+      "momentum",
+      "economicBackdrop",
+      "fragility"
+    ],
+    "pollingSourceCount": 1,
+    "pollingQualityMultiplier": 0.5,
+    "marketPlatformCount": 1,
+    "rules": {
+      "pollingSourcesForFullWeight": 3,
+      "marketPlatformsForFullWeight": 2,
+      "singlePollScoreCap": 0.55,
+      "singlePlatformMarketScoreCap": 0.35,
+      "maximumFactorScore": 0.75,
+      "maximumMovementPerRun": 2,
+      "minimumIndependentSignalsForPartyChange": 3,
+      "independentSignalsForShockOverride": 5
+    }
   }
 }

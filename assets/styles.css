@@ -291,3 +291,15 @@ body.dark .matchup-builder .builder-score-hero{background:#1b1c19;color:#f1efe7}
 .matchup-builder .builder-score-hero .estimate-method{margin-top:8px;border-color:var(--line)}
 body.dark .matchup-builder .builder-score-hero{background:#1b1c19;color:#f1efe7}
 @media(max-width:560px){.matchup-builder .builder-score-hero{padding:12px 14px}.matchup-builder .builder-score-hero #estimate-line{display:flex;flex-wrap:wrap;gap:4px 7px;font-size:18px}.matchup-builder .builder-score-hero #estimate-line i{display:inline}.matchup-builder .builder-score-hero .score-brand img{width:24px;height:24px}}
+/* 2028 projection switch and battleground treatment */
+.map-view-switch{display:inline-grid;grid-template-columns:1fr 1fr;margin:0 0 24px;border:1px solid var(--ink)}.map-view-switch button{padding:12px 18px;border:0;background:var(--surface);color:var(--muted);font:700 8px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;cursor:pointer}.map-view-switch button+button{border-left:1px solid var(--line)}.map-view-switch button.active{background:var(--ink);color:var(--surface);box-shadow:inset 0 -3px var(--gold)}.state-shape.battleground{stroke:var(--gold);stroke-width:2.5px;vector-effect:non-scaling-stroke}.map-view-note{margin-left:auto;color:var(--gold)}
+@media(max-width:560px){.map-view-switch{display:grid;width:100%}.map-view-switch button{padding:13px 8px}.map-view-note{width:100%;margin:7px 0 0}}
+
+/* Electoral map: persistent state reader, never a modal or floating popup. */
+.map-shell{display:grid!important;grid-template-columns:minmax(0,1fr) 290px!important;gap:18px!important;align-items:stretch!important;position:relative!important;overflow:visible!important}
+.state-map{min-width:0!important;width:100%!important}
+.state-map svg{display:block;width:100%;height:auto}
+.state-shape.dem{fill:var(--blue)!important}.state-shape.rep{fill:var(--red)!important}.state-shape.split{fill:url(#split-state)!important}
+.state-detail{display:block!important;position:static!important;inset:auto!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;width:auto!important;min-width:0!important;max-width:none!important;min-height:100%!important;max-height:none!important;margin:0!important;transform:none!important;overflow:visible!important;padding:24px!important;background:var(--surface)!important;border:1px solid var(--line)!important;border-top:4px solid var(--gold)!important;box-shadow:none!important}
+.state-detail button{display:none!important}.state-detail #detail-content{padding-right:0!important}.state-detail h2{font-size:27px;margin:10px 0}.state-detail p{font-size:11px;line-height:1.55}
+@media(max-width:900px){.map-shell{grid-template-columns:1fr!important}.state-detail{min-height:150px!important;padding:18px!important}.state-detail h2{font-size:23px}}

@@ -48,7 +48,17 @@ async function main() {
     data.pollingMeta.parties[party] = {url: PAGES[party], retrievedAt, averages};
   }
   if (/Buttigieg is the only candidate to hold the same five-point lead/i.test(emersonHtml)) {
-    data.nationalPolling = {source:'Emerson College Polling', url:EMERSON_URL, fielded:'Aug. 16-17, 2026', retrievedAt, trumpApproval:40, trumpDisapproval:56, genericBallotDemocratic:51, genericBallotRepublican:43};
+    data.nationalPolling = {
+      source:'Emerson College Polling', sourceCount:1, aggregationStatus:'single-poll context', url:EMERSON_URL,
+      fielded:'Aug. 16-17, 2026', retrievedAt, trumpApproval:40, trumpDisapproval:56,
+      genericBallotDemocratic:51, genericBallotRepublican:43,
+      qualityReview:{
+        status:'provisional', historicalAccuracy:null, methodologyTransparency:.75, sampleDesign:.7,
+        questionTransparency:.5, sponsorTransparency:.5, fundingIndependence:.5,
+        sponsor:'Emerson College Polling', externalFunder:'not established by the automated collector',
+        note:'This poll remains discounted until its current historical record, questionnaire disclosure, sponsor, and original funding are independently reviewed.'
+      }
+    };
     data.headToHeadPolling = {
       source: 'Emerson College Polling', url: EMERSON_URL, fielded: 'Aug. 16-17, 2026', sample: '1,000 likely voters', retrievedAt,
       matchups: [

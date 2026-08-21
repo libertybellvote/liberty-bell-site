@@ -303,7 +303,7 @@
       "weight": 18,
       "status": "scored",
       "sourceCount": 1,
-      "score": 0.447,
+      "score": 0.101,
       "note": "Scored from the current reviewed Bell Model input."
     },
     "bettingMarkets": {
@@ -311,7 +311,7 @@
       "weight": 12,
       "status": "scored",
       "sourceCount": 1,
-      "score": 0.17,
+      "score": 0.085,
       "note": "Calculated from current separately labeled market prices."
     },
     "campaignFundamentals": {

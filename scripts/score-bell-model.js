@@ -18,20 +18,72 @@ const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 const round = (value, places = 1) => Number(value.toFixed(places));
 const readJson = file => JSON.parse(fs.readFileSync(file, 'utf8'));
 const clean = value => String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+const ELECTORAL_BASELINE = {
+  AZ:{ev:11,winner:'R',margin:-5.5}, GA:{ev:16,winner:'R',margin:-2.2}, MI:{ev:15,winner:'R',margin:-1.4},
+  NV:{ev:6,winner:'R',margin:-3.1}, NC:{ev:16,winner:'R',margin:-3.2}, PA:{ev:19,winner:'R',margin:-1.7}, WI:{ev:10,winner:'R',margin:-0.9}
+};
+
+function electoralProjection(democratic, timestamp) {
+  // Convert the national model edge into a cautious uniform swing from 2024.
+  // This only moves named battlegrounds; every other state retains its 2024 column.
+  const nationalShift = round((democratic - 50) / 4, 1);
+  const stateWinners = {};
+  for (const [state, baseline] of Object.entries(ELECTORAL_BASELINE)) {
+    stateWinners[state] = baseline.margin + nationalShift > 0 ? 'D' : 'R';
+  }
+  const flippedToDem = Object.entries(stateWinners).filter(([state,winner]) => winner === 'D' && ELECTORAL_BASELINE[state].winner === 'R');
+  const democraticEV = 226 + flippedToDem.reduce((sum,[state]) => sum + ELECTORAL_BASELINE[state].ev,0);
+  return {updatedAt:timestamp,democraticEV,republicanEV:538-democraticEV,nationalShift,stateWinners,battlegrounds:Object.keys(ELECTORAL_BASELINE),method:'2024 result plus a cautious national Bell Model swing applied to the seven core battlegrounds'};
+}
+
+function pollQualityMultiplier(poll, config) {
+  const qualityConfig = config.pollQuality || {};
+  const dimensions = qualityConfig.dimensions || {};
+  const review = poll?.qualityReview || {};
+  let earned = 0;
+  let possible = 0;
+  for (const [dimension, weight] of Object.entries(dimensions)) {
+    const numericWeight = Number(weight) || 0;
+    possible += numericWeight;
+    const score = Number(review[dimension]);
+    // Unknown quality information earns no affirmative quality credit.
+    if (Number.isFinite(score)) earned += clamp(score,0,1) * numericWeight;
+  }
+  const assessed = possible ? earned / possible : 0;
+  const floor = Number(qualityConfig.minimumProvisionalMultiplier || .5);
+  return round(clamp(Math.max(floor,assessed),floor,1),2);
+}
 
 function presidentialScores(data, config, inputs) {
   const scores = {};
+  const guard = config.robustness || {};
+  const factorCap = Number(guard.maximumFactorScore || .75);
   for (const key of Object.keys(config.factors)) {
     if (key === 'bettingMarkets') {
       const market = Number(data.marketMeta?.partyIndex?.democratic);
       const marketAgeHours = (Date.now() - new Date(data.marketMeta?.retrievedAt).getTime()) / 36e5;
-      if (Number.isFinite(market) && Number.isFinite(marketAgeHours) && marketAgeHours <= 24) scores[key] = clamp((market - 50) / 50, -1, 1);
+      if (Number.isFinite(market) && Number.isFinite(marketAgeHours) && marketAgeHours <= 24) {
+        const rawMarketScore = clamp((market - 50) / 50, -1, 1);
+        const platformCount = Number(data.marketMeta?.platformCount || 1);
+        const requiredPlatforms = Number(guard.marketPlatformsForFullWeight || 2);
+        const confidence = clamp(platformCount / requiredPlatforms, .5, 1);
+        const cap = platformCount >= requiredPlatforms ? factorCap : Number(guard.singlePlatformMarketScoreCap || .35);
+        scores[key] = clamp(rawMarketScore * confidence, -cap, cap);
+      }
     } else if (key === 'polling' && Number.isFinite(Number(data.nationalPolling?.genericBallotDemocratic))) {
       const genericMargin = Number(data.nationalPolling.genericBallotDemocratic) - Number(data.nationalPolling.genericBallotRepublican);
       const approvalDrag = Number(data.nationalPolling.trumpDisapproval) - Number(data.nationalPolling.trumpApproval);
-      scores[key] = clamp(genericMargin / 20 * .65 + approvalDrag / 30 * .35, -1, 1);
+      const rawPollingScore = genericMargin / 20 * .65 + approvalDrag / 30 * .35;
+      const sourceCount = Number(data.nationalPolling?.sourceCount || 1);
+      // A single poll is useful context, not an average. Cap its authority inside
+      // the polling signal until the pipeline has several independent sources.
+      const requiredSources = Number(guard.pollingSourcesForFullWeight || 3);
+      const confidence = clamp(sourceCount / requiredSources, .45, 1);
+      const cap = sourceCount >= requiredSources ? factorCap : Number(guard.singlePollScoreCap || .55);
+      const quality = pollQualityMultiplier(data.nationalPolling,config);
+      scores[key] = clamp(rawPollingScore * confidence * quality, -cap, cap);
     } else if (Number.isFinite(Number(inputs.presidential?.[key]?.score))) {
-      scores[key] = clamp(Number(inputs.presidential[key].score), -1, 1);
+      scores[key] = clamp(Number(inputs.presidential[key].score), -factorCap, factorCap);
     }
   }
   return scores;
@@ -46,6 +98,30 @@ function weightedScore(scores, config) {
     weight += factorWeight;
   }
   return { value: weight ? weighted / weight : 0, weight };
+}
+
+function protectPresidentialMovement(rawDemocratic, scores, previous, config) {
+  const guard = config.robustness || {};
+  const prior = Number(previous?.libertyBellIndex?.democratic);
+  const direction = rawDemocratic >= 50 ? 1 : -1;
+  const independent = Object.entries(scores).filter(([key,value]) => !['polling','bettingMarkets'].includes(key) && Math.sign(value) === direction && Math.abs(value) >= .15);
+  const requiredForChange = Number(guard.minimumIndependentSignalsForPartyChange || 3);
+  const overrideCount = Number(guard.independentSignalsForShockOverride || 5);
+  const movementLimit = Number(guard.maximumMovementPerRun || 2);
+  let democratic = rawDemocratic;
+  let status = 'accepted';
+
+  if (Number.isFinite(prior)) {
+    const crossedParty = (prior >= 50 && rawDemocratic < 50) || (prior < 50 && rawDemocratic >= 50);
+    if (crossedParty && independent.length < requiredForChange) {
+      democratic = prior;
+      status = 'party-change-held-for-confirmation';
+    } else if (Math.abs(rawDemocratic - prior) > movementLimit && independent.length < overrideCount) {
+      democratic = prior + Math.sign(rawDemocratic - prior) * movementLimit;
+      status = 'movement-rate-limited';
+    }
+  }
+  return { democratic: round(clamp(democratic,0,100)), rawDemocratic: round(rawDemocratic), independentAgreement: independent.map(([key]) => key), status };
 }
 
 function callLabel(democratic) {
@@ -67,6 +143,7 @@ function normalizedCandidateMetric(list, field) {
 function scoreCandidates(list, config, inputs) {
   const market = normalizedCandidateMetric(list, 'oddsNum');
   const polling = normalizedCandidateMetric(list, 'pollAvg');
+  const singlePlatformMarketDiscount = .6;
   const allMatchups = globalThis.__bellHeadToHead || [];
   return list.map(candidate => {
     const editorial = inputs.candidates?.[candidate.name];
@@ -79,7 +156,7 @@ function scoreCandidates(list, config, inputs) {
     const primaryPolling = polling.get(clean(candidate.name)) || 0;
     const scores = {
       polling: Number.isFinite(electability) ? primaryPolling * .65 + electability * .35 : primaryPolling,
-      bettingMarkets: market.get(clean(candidate.name)) || 0,
+      bettingMarkets: (market.get(clean(candidate.name)) || 0) * singlePlatformMarketDiscount,
       campaignFundamentals: blendPath(editorial.campaignFundamentals, 0.25),
       candidateQuality: editorial.candidateQuality,
       coalitionStrength: blendPath(editorial.coalitionStrength, 0.25),
@@ -158,7 +235,9 @@ function main() {
   }
 
   const presidential = weightedScore(scores, config);
-  const democratic = round(clamp(50 + presidential.value * 25, 0, 100));
+  const rawDemocratic = round(clamp(50 + presidential.value * 25, 0, 100));
+  const protection = protectPresidentialMovement(rawDemocratic, scores, previous, config);
+  const democratic = protection.democratic;
   const republican = round(100 - democratic);
   const presidentialCall = callLabel(democratic);
   const demRank = scoreCandidates(data.field.democratic, config, inputs);
@@ -171,8 +250,31 @@ function main() {
   const demPick = demRank[0].name;
   const repPick = repRank[0].name;
   const displayName = name => name === 'Alexandria Ocasio-Cortez' ? 'AOC' : name.split(' ').at(-1);
+  const previousPowerRanking = data.powerRanking?.candidateName || null;
+  const editorialRules = config.editorial?.headlineRefresh || {};
+  const previousDemocratic = Number(previous.libertyBellIndex?.democratic);
+  const bellMovement = Number.isFinite(previousDemocratic) ? round(Math.abs(democratic - previousDemocratic), 1) : null;
+  const previousParty = Number.isFinite(previousDemocratic) ? (previousDemocratic >= 50 ? 'D' : 'R') : null;
+  const currentParty = democratic >= 50 ? 'D' : 'R';
+  const editorialTriggers = [];
+  if (previousParty && previousParty !== currentParty) editorialTriggers.push('party call changed');
+  if (previous.democraticPick && previous.democraticPick !== demPick) editorialTriggers.push('Democratic pick changed');
+  if (previous.republicanPick && previous.republicanPick !== repPick) editorialTriggers.push('Republican pick changed');
+  if (Number.isFinite(bellMovement) && bellMovement >= Number(editorialRules.minimumBellMovement || 1)) editorialTriggers.push(`Bell moved ${bellMovement.toFixed(1)} points`);
 
   data.libertyBellIndex = { democratic, republican };
+  data.modelSafeguards = {
+    updatedAt: timestamp,
+    status: protection.status,
+    rawDemocratic: protection.rawDemocratic,
+    publishedDemocratic: democratic,
+    independentAgreement: protection.independentAgreement,
+    pollingSourceCount: Number(data.nationalPolling?.sourceCount || 1),
+    pollingQualityMultiplier: pollQualityMultiplier(data.nationalPolling,config),
+    marketPlatformCount: Number(data.marketMeta?.platformCount || 1),
+    rules: config.robustness
+  };
+  data.electoralProjection = electoralProjection(democratic, timestamp);
   presidentialCard.ourCall = presidentialCall;
   presidentialCard.partySeal = democratic >= 50 ? 'd' : 'r';
   demCard.pickName = demPick;
@@ -180,12 +282,9 @@ function main() {
   demCard.ourCall = `${displayName(demPick)}, carefully`;
   const repRunnerUp = repRank[1] ? data.field.republican.find(candidate => candidate.name === repRank[1].name) : null;
   repCard.ourCall = repRunnerUp && Number(repRunnerUp.marketChange1w) > 0.5 ? `${displayName(repPick)}, with ${displayName(repRunnerUp.name)} gaining` : `${displayName(repPick)} is still the call`;
-  const approval = data.nationalPolling?.trumpApproval;
-  const genericD = data.nationalPolling?.genericBallotDemocratic;
-  const genericR = data.nationalPolling?.genericBallotRepublican;
   presidentialCard.whyShort = democratic >= 50
-    ? `Trump approval is ${approval ?? 'underwater'} and Democrats lead the latest national generic ballot${Number.isFinite(genericD) ? ` ${genericD}–${genericR}` : ''}. That gives Democrats the better hand today, not a lock.`
-    : 'The national mood, the economy, and the shape of the field give Republicans the better hand today. Better hand, not a lock.';
+    ? 'Across all nine signals, the national environment currently gives Democrats the better hand. Polls and markets inform the read, but neither gets to make the call.'
+    : 'Across all nine signals, the national environment currently gives Republicans the better hand. Polls and markets inform the read, but neither gets to make the call.';
   const darkHorse = data.field.democratic.find(candidate => candidate.darkHorse);
   const demLeader = data.field.democratic.find(candidate => candidate.name === demPick);
   const repLeader = data.field.republican.find(candidate => candidate.name === repPick);
@@ -199,6 +298,13 @@ function main() {
     ? `${displayName(repPick)} is at ${Number.isFinite(repPickPoll) ? `${repPickPoll.toFixed(1)}% in the polling average` : 'the top of the field'} and still has the clearest path to inheriting Trump’s coalition. ${displayName(repSecond.name)} is the live alternative.`
     : `${displayName(repPick)} has the clearest path to inheriting Trump’s coalition. No rival has built a convincing alternative.`;
   data.powerRanking = watchCandidate(data, inputs, history, timestamp);
+  if (previousPowerRanking && data.powerRanking?.candidateName && previousPowerRanking !== data.powerRanking.candidateName) editorialTriggers.push('breakout watch changed');
+  data.editorialRefresh = {
+    evaluatedAt: timestamp,
+    headlineChangeWarranted: editorialTriggers.length > 0,
+    triggers: editorialTriggers,
+    policy: 'Headlines change for a meaningful evidence shift, not merely because the scheduled model ran.'
+  };
   data.modelUpdatedAt = timestamp;
   data.modelMeta = {
     version: '3.0',

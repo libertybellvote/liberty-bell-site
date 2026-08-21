@@ -38,5 +38,47 @@
     "value": "JD Vance",
     "source": "The Bell nine-signal model",
     "note": "Initial published Republican nominee pick."
+  },
+  {
+    "timestamp": "2026-08-21T01:20:47.736Z",
+    "modelVersion": "3.0",
+    "type": "bell-index",
+    "label": "Bell direction",
+    "previous": "D 58% / R 42%",
+    "value": "D 57.1% / R 42.9%",
+    "source": "The Bell Model",
+    "note": "The weighted nine-signal score moved by at least half a point.",
+    "factors": {
+      "polling": 0.24566666666666667,
+      "bettingMarkets": 0.17,
+      "campaignFundamentals": 0.1,
+      "candidateQuality": 0.2,
+      "coalitionStrength": 0.3,
+      "socialSentiment": 0.25,
+      "momentum": 0.4,
+      "economicBackdrop": 0.6,
+      "fragility": 0.2
+    }
+  },
+  {
+    "timestamp": "2026-08-21T01:28:13.894Z",
+    "modelVersion": "3.0",
+    "type": "bell-index",
+    "label": "Bell direction",
+    "previous": "D 57.1% / R 42.9%",
+    "value": "D 56.6% / R 43.4%",
+    "source": "The Bell Model",
+    "note": "The weighted nine-signal score moved by at least half a point.",
+    "factors": {
+      "polling": 0.201,
+      "bettingMarkets": 0.085,
+      "campaignFundamentals": 0.1,
+      "candidateQuality": 0.2,
+      "coalitionStrength": 0.3,
+      "socialSentiment": 0.25,
+      "momentum": 0.4,
+      "economicBackdrop": 0.6,
+      "fragility": 0.2
+    }
   }
 ]
