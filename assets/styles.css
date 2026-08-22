@@ -1,4 +1,4 @@
-:root{--bg:#f4f0e7;--surface:#fffdf8;--ink:#1d1d1a;--muted:#6f6b62;--line:#cbc5b7;--soft:#e9e3d7;--red:#a94339;--blue:#376b9f;--gold:#d7b052;--green:#317653;--shadow:0 12px 35px rgba(34,31,24,.08);--serif:Georgia,"Times New Roman",serif;--sans:Inter,Arial,sans-serif;--mono:"IBM Plex Mono",monospace}
+:root{--bg:#f4f0e7;--surface:#fffdf8;--ink:#1d1d1a;--muted:#6f6b62;--line:#cbc5b7;--soft:#e9e3d7;--red:#a94339;--blue:#376b9f;--gold:#d7b052;--green:#317653;--bell-spectrum:linear-gradient(105deg,#078cff 0%,#4b3ee8 24%,#982bd5 43%,#ec197d 63%,#ff3d20 82%,#ffb51b 100%);--shadow:0 12px 35px rgba(34,31,24,.08);--serif:Georgia,"Times New Roman",serif;--sans:Inter,Arial,sans-serif;--mono:"IBM Plex Mono",monospace}
 body.dark{--bg:#111210;--surface:#191a18;--ink:#eeece4;--muted:#aaa79e;--line:#3d3e39;--soft:#252622;--red:#d36157;--blue:#72a0d1;--gold:#d7b052;--green:#69ad85;--shadow:none}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;transition:background .2s,color .2s}a{color:inherit}button,input{font:inherit}.shell{width:min(1120px,calc(100% - 44px));margin:auto}.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}.eyebrow{font:600 10px/1.2 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}.muted{color:var(--muted)}
 .utility{border-bottom:1px solid var(--line);font:500 9px/31px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}.utility .shell{display:flex;justify-content:space-between}.live{display:flex;align-items:center;gap:8px;color:var(--ink)}.live:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--red)}
@@ -179,6 +179,17 @@ body.dark .signal-description{background:color-mix(in srgb,var(--gold) 15%,#1f20
 .masthead-main{min-height:64px}.brand{gap:10px}.brand-mark{width:32px;height:32px}.brand-mark:before{left:8px;right:8px;top:7px}.brand-mark:after{left:14px;top:20px}.brand-mark i{left:15px;top:9px;height:11px}.brand-name{font-size:23px}.mast-actions .btn,.theme-toggle,.nav-toggle{height:34px}.nav a{padding:11px 20px}
 .snapshot-grid>.call-card{min-height:205px;padding:18px 20px}.call-card .snapshot-label{margin-bottom:10px}.call-card .call-party,.call-card .call-person{height:50px;min-height:50px;margin-bottom:10px}.call-party>strong{width:48px;height:48px}.call-party>strong img{width:31px;height:31px}.call-person .person-name img{width:46px;height:46px}.call-person .person-name>span{font-size:14px}.call-card h2{font-size:20px;line-height:1.08}.call-card p{font-size:10px;line-height:1.42;margin-top:6px;max-width:34ch}.call-footer{padding:12px 18px}
 .snapshot-grid .call-card p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;max-width:30ch}
+
+/* The social spectrum appears as a controlled brand accent, while the
+   editorial surfaces remain quiet and readable. */
+::selection{background:#8d2bd3;color:#fff}
+.nav a.active{border-bottom-color:transparent;background-image:var(--bell-spectrum);background-repeat:no-repeat;background-size:100% 3px;background-position:left bottom}
+.btn.donate{background:var(--bell-spectrum);border-color:transparent;color:#fff;text-shadow:0 1px 1px rgba(0,0,0,.22)}
+.btn.donate:hover{background:var(--ink);border-color:var(--ink);color:var(--surface)}
+.snapshot-grid{position:relative}
+.snapshot-grid:before{content:"";position:absolute;z-index:2;top:0;left:0;right:0;height:4px;background:var(--bell-spectrum);pointer-events:none}
+.snapshot-grid>.call-card{padding-top:22px}
+.snapshot-grid .call-card p{display:block;-webkit-box-orient:initial;-webkit-line-clamp:unset;overflow:visible;max-width:none}
 .forecast-challenge{margin-bottom:28px}.forecast-challenge article{min-height:124px;padding:17px 20px}.forecast-challenge strong{margin-top:17px;font-size:21px}.forecast-challenge p{margin-top:8px;line-height:1.4}.market-intro{margin-bottom:24px}
 .incumbent-badge{position:absolute;right:11px;top:11px;z-index:3;padding:7px 9px;border:1px solid color-mix(in srgb,var(--gold) 70%,var(--ink));background:var(--ink);color:var(--surface);font:700 7px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase}
 .candidate-status-badge{position:absolute;left:11px;top:11px;z-index:3;padding:8px 10px;border:1px solid var(--gold);background:var(--gold);color:#171714;font:700 7px/1 var(--mono);letter-spacing:.09em;text-transform:uppercase}
