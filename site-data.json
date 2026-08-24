@@ -1,6 +1,6 @@
 {
   "lastUpdated": "2026-08-19T02:30:45.655Z",
-  "modelUpdatedAt": "2026-08-23T17:53:33.934Z",
+  "modelUpdatedAt": "2026-08-24T03:38:34.933Z",
   "latestVideo": {
     "videoId": "WihZVHeGeeY",
     "title": "A WOMAN PRESIDENT?! Can AOC Win The Nomination?",
@@ -15,7 +15,7 @@
     "republican": 43.8
   },
   "electoralProjection": {
-    "updatedAt": "2026-08-23T17:53:33.934Z",
+    "updatedAt": "2026-08-24T03:38:34.933Z",
     "democraticEV": 286,
     "republicanEV": 252,
     "tossupEV": 0,
@@ -100,8 +100,8 @@
       {
         "name": "Alexandria Ocasio-Cortez",
         "role": "U.S. Representative, NY-14",
-        "odds": "22%",
-        "oddsNum": 22.2,
+        "odds": "23%",
+        "oddsNum": 22.6,
         "pollAvg": 10.3,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Alexandria%20Ocasio-Cortez%20Official%20Portrait.jpg?width=300",
         "vibe": "The field’s best natural communicator with younger, online audiences. High energy, high name recognition.",
@@ -117,19 +117,19 @@
         "lane": "Insurgent. The clearest outsider brand in either party.",
         "laneClass": "insurgent",
         "pollingStatus": "listed",
-        "marketChange1d": -1.4,
-        "marketChange1w": 1.3,
-        "marketChange1m": 7.8,
+        "marketChange1d": -0.3,
+        "marketChange1w": 2.1,
+        "marketChange1m": 8.1,
         "winnerOddsNum": 14.2,
         "winnerOdds": "14%",
         "marketPulseDir": "up",
-        "marketPulse": "+1.3 points in the last week on Polymarket."
+        "marketPulse": "+2.1 points in the last week on Polymarket."
       },
       {
         "name": "Gavin Newsom",
         "role": "Governor of California",
         "odds": "15%",
-        "oddsNum": 14.6,
+        "oddsNum": 15,
         "pollAvg": 15,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Governor%20of%20California%20Gavin%20Newsom,%202026%20Official%20Portrait%202.jpg?width=300",
         "vibe": "Polished and combative in interviews. Built a media profile sparring directly with conservative hosts.",
@@ -145,13 +145,13 @@
         "lane": "Institutional.",
         "laneClass": "institutional",
         "pollingStatus": "listed",
-        "marketChange1d": -0.5,
-        "marketChange1w": -2.7,
-        "marketChange1m": -5.2,
+        "marketChange1d": -0.1,
+        "marketChange1w": -1.8,
+        "marketChange1m": -4.8,
         "winnerOddsNum": 8.2,
         "winnerOdds": "8%",
         "marketPulseDir": "down",
-        "marketPulse": "-2.7 points in the last week on Polymarket."
+        "marketPulse": "-1.8 points in the last week on Polymarket."
       },
       {
         "name": "Jon Ossoff",
@@ -173,9 +173,9 @@
         "laneClass": "institutional",
         "pollAvg": 7.3,
         "pollingStatus": "listed",
-        "marketChange1d": 0,
+        "marketChange1d": -0.1,
         "marketChange1w": -0.1,
-        "marketChange1m": -1.1,
+        "marketChange1m": -1,
         "winnerOddsNum": 9.8,
         "winnerOdds": "10%",
         "marketPulseDir": "flat",
@@ -258,7 +258,7 @@
         "lane": "Institutional.",
         "laneClass": "institutional",
         "pollingStatus": "listed",
-        "marketChange1d": -0.1,
+        "marketChange1d": null,
         "marketChange1w": 0.1,
         "marketChange1m": -0.3,
         "winnerOddsNum": 2.5,
@@ -286,13 +286,13 @@
         "laneClass": "mixed",
         "pollAvg": 4.5,
         "pollingStatus": "listed",
-        "marketChange1d": 0.3,
-        "marketChange1w": 0.3,
-        "marketChange1m": 0.2,
+        "marketChange1d": 0.2,
+        "marketChange1w": 0.2,
+        "marketChange1m": 0.1,
         "winnerOddsNum": 1.2,
         "winnerOdds": "1%",
         "marketPulseDir": "flat",
-        "marketPulse": "+0.3 points in the last week on Polymarket."
+        "marketPulse": "+0.2 points in the last week on Polymarket."
       },
       {
         "name": "JB Pritzker",
@@ -370,9 +370,9 @@
         "laneClass": "mixed",
         "pollAvg": 1,
         "pollingStatus": "listed",
-        "marketChange1d": 0.1,
+        "marketChange1d": null,
         "marketChange1w": 0,
-        "marketChange1m": 0.5,
+        "marketChange1m": 0.4,
         "winnerOddsNum": 1,
         "winnerOdds": "1%",
         "marketPulseDir": "flat",
@@ -426,13 +426,13 @@
         "lane": "Institutional record, but an increasingly insurgent-coded profile given the direct fight with the administration.",
         "laneClass": "mixed",
         "pollingStatus": "listed",
-        "marketChange1d": 0.2,
-        "marketChange1w": 0.2,
+        "marketChange1d": 0.1,
+        "marketChange1w": 0.3,
         "marketChange1m": 1.1,
         "winnerOddsNum": 1.5,
         "winnerOdds": "2%",
         "marketPulseDir": "flat",
-        "marketPulse": "+0.2 points in the last week on Polymarket."
+        "marketPulse": "+0.3 points in the last week on Polymarket."
       },
       {
         "name": "Rahm Emanuel",
@@ -569,15 +569,15 @@
         "pollingStatus": "not-listed",
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Mark%20Cuban.jpg?width=500",
         "vibe": "A nationally known business outsider with media fluency, money, and no conventional campaign organization.",
-        "pulseDir": "flat",
-        "pulse": "The Bell’s combined momentum read is holding.",
+        "pulseDir": "watch",
+        "pulse": "Not enough current movement evidence for a directional label.",
         "lane": "Centrist outsider.",
         "laneClass": "insurgent",
         "winnerOddsNum": null,
         "winnerOdds": "Not listed",
         "marketChange1d": null,
         "marketChange1w": null,
-        "marketChange1m": -0.1,
+        "marketChange1m": null,
         "marketPulseDir": "flat",
         "marketPulse": "No reliable short-term market change is available."
       },
@@ -643,12 +643,12 @@
         "laneClass": "institutional",
         "pollingStatus": "listed",
         "marketChange1d": null,
-        "marketChange1w": 0.4,
-        "marketChange1m": 4.2,
+        "marketChange1w": null,
+        "marketChange1m": 4.5,
         "winnerOddsNum": 23.4,
         "winnerOdds": "23%",
-        "marketPulseDir": "flat",
-        "marketPulse": "+0.4 points in the last week on Polymarket."
+        "marketPulseDir": "up",
+        "marketPulse": "No reliable short-term market change is available."
       },
       {
         "name": "Marco Rubio",
@@ -670,7 +670,7 @@
         "lane": "Institutional record, insurgent-coded momentum right now.",
         "laneClass": "mixed",
         "pollingStatus": "listed",
-        "marketChange1d": -0.2,
+        "marketChange1d": -0.1,
         "marketChange1w": -2.6,
         "marketChange1m": -7.7,
         "winnerOddsNum": 10.9,
@@ -738,7 +738,7 @@
         "name": "Ron DeSantis",
         "role": "Governor of Florida",
         "odds": "2%",
-        "oddsNum": 1.8,
+        "oddsNum": 2,
         "pollAvg": 8.2,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Ron%20DeSantis%20official%20photo%20(cropped).jpg?width=300",
         "vibe": "Widely panned for a stiff, unpersuasive interview and debate style during his 2024 run. The opposite of a natural retail politician.",
@@ -754,13 +754,13 @@
         "lane": "Institutional, diminished.",
         "laneClass": "institutional",
         "pollingStatus": "listed",
-        "marketChange1d": -0.8,
-        "marketChange1w": -1.2,
-        "marketChange1m": -1,
+        "marketChange1d": -0.6,
+        "marketChange1w": -1,
+        "marketChange1m": -0.8,
         "winnerOddsNum": 1.4,
         "winnerOdds": "1%",
         "marketPulseDir": "down",
-        "marketPulse": "-1.2 points in the last week on Polymarket."
+        "marketPulse": "-1.0 points in the last week on Polymarket."
       },
       {
         "name": "Nikki Haley",
@@ -812,12 +812,12 @@
         "pollAvg": null,
         "pollingStatus": "not-listed",
         "marketChange1d": null,
-        "marketChange1w": null,
-        "marketChange1m": 0.9,
+        "marketChange1w": 0.1,
+        "marketChange1m": 0.2,
         "winnerOddsNum": 2.4,
         "winnerOdds": "2%",
         "marketPulseDir": "flat",
-        "marketPulse": "No reliable short-term market change is available."
+        "marketPulse": "+0.1 points in the last week on Polymarket."
       },
       {
         "name": "Brian Kemp",
@@ -897,9 +897,9 @@
         "laneClass": "insurgent",
         "winnerOddsNum": 0.8,
         "winnerOdds": "0.8%",
-        "marketChange1d": null,
+        "marketChange1d": 0,
         "marketChange1w": 0.1,
-        "marketChange1m": 0.6,
+        "marketChange1m": 0.5,
         "marketPulseDir": "flat",
         "marketPulse": "+0.1 points in the last week on Polymarket."
       }
@@ -998,7 +998,7 @@
         },
         {
           "label": "Ron DeSantis",
-          "probability": 1.8,
+          "probability": 2,
           "platform": "Polymarket"
         }
       ]
@@ -1013,12 +1013,12 @@
       "outcomes": [
         {
           "label": "Alexandria Ocasio-Cortez",
-          "probability": 22.2,
+          "probability": 22.6,
           "platform": "Polymarket"
         },
         {
           "label": "Gavin Newsom",
-          "probability": 14.6,
+          "probability": 15,
           "platform": "Polymarket"
         },
         {
@@ -1086,32 +1086,32 @@
   "marketMeta": {
     "source": "Polymarket public market data",
     "platformCount": 1,
-    "retrievedAt": "2026-08-23T17:53:31.672Z",
+    "retrievedAt": "2026-08-24T03:38:33.001Z",
     "partyIndex": {
       "democratic": 58.7,
       "republican": 41.3
     },
     "party": {
-      "volume": 2098130.355442,
-      "liquidity": 415781.7985
+      "volume": 2098334.8154420005,
+      "liquidity": 369410.3791
     },
     "democraticNomination": {
-      "volume": 1266133381.1115072,
-      "liquidity": 80135309.56441
+      "volume": 1266169578.5571022,
+      "liquidity": 80123306.88632
     },
     "republicanNomination": {
-      "volume": 690566177.761921,
-      "liquidity": 57828576.28727
+      "volume": 690632135.647429,
+      "liquidity": 57646629.92074
     },
     "presidentialWinner": {
-      "volume": 692054643.2385521,
-      "liquidity": 64313719.47129
+      "volume": 692069950.1317852,
+      "liquidity": 64070897.96919
     }
   },
-  "marketUpdatedAt": "2026-08-23T17:53:31.672Z",
+  "marketUpdatedAt": "2026-08-24T03:38:33.001Z",
   "modelMeta": {
     "version": "3.0",
-    "updatedAt": "2026-08-23T17:53:33.934Z",
+    "updatedAt": "2026-08-24T03:38:34.933Z",
     "status": "scored",
     "signalCoverage": "9/9",
     "score": 24.8,
@@ -1173,11 +1173,11 @@
         },
         {
           "name": "Pete Buttigieg",
-          "score": 40.7,
+          "score": 40.6,
           "primaryPath": 0.85,
           "factors": {
             "polling": 0.7253521126760563,
-            "bettingMarkets": 0.14324324324324325,
+            "bettingMarkets": 0.1407079646017699,
             "campaignFundamentals": 0.625,
             "candidateQuality": 0.75,
             "coalitionStrength": 0.595,
@@ -1193,7 +1193,7 @@
           "primaryPath": 0.45,
           "factors": {
             "polling": 0.7552464788732394,
-            "bettingMarkets": 0.3945945945945946,
+            "bettingMarkets": 0.3982300884955752,
             "campaignFundamentals": 0.6375,
             "candidateQuality": 0.6,
             "coalitionStrength": 0.4875,
@@ -1205,11 +1205,11 @@
         },
         {
           "name": "Jon Ossoff",
-          "score": 32.6,
+          "score": 32.5,
           "primaryPath": 0.25,
           "factors": {
             "polling": 0.5377699530516432,
-            "bettingMarkets": 0.4,
+            "bettingMarkets": 0.3929203539823009,
             "campaignFundamentals": 0.32499999999999996,
             "candidateQuality": 0.55,
             "coalitionStrength": 0.5275,
@@ -1225,7 +1225,7 @@
           "primaryPath": 0.75,
           "factors": {
             "polling": 0.8075,
-            "bettingMarkets": 0.2027027027027027,
+            "bettingMarkets": 0.1991150442477876,
             "campaignFundamentals": 0.825,
             "candidateQuality": 0.35,
             "coalitionStrength": 0.5775,
@@ -1275,7 +1275,7 @@
           "primaryPath": 0.45,
           "factors": {
             "polling": 0.20603015075376885,
-            "bettingMarkets": 0.02278481012658228,
+            "bettingMarkets": 0.02531645569620253,
             "campaignFundamentals": 0.6000000000000001,
             "candidateQuality": 0.35,
             "coalitionStrength": 0.525,
@@ -1319,16 +1319,16 @@
         }
       ]
     },
-    "evidenceUpdatedAt": "2026-08-23T17:53:33.167Z",
+    "evidenceUpdatedAt": "2026-08-24T03:38:34.189Z",
     "structuralInputsReviewedAt": "2026-08-19T15:35:34.000Z"
   },
   "pollingMeta": {
     "source": "270toWin polling averages",
-    "retrievedAt": "2026-08-23T17:53:31.741Z",
+    "retrievedAt": "2026-08-24T03:38:33.109Z",
     "parties": {
       "democratic": {
         "url": "https://www.270towin.com/2028-democratic-nomination/",
-        "retrievedAt": "2026-08-23T17:53:31.741Z",
+        "retrievedAt": "2026-08-24T03:38:33.109Z",
         "averages": {
           "Harris": 21.3,
           "Newsom": 15,
@@ -1354,7 +1354,7 @@
       },
       "republican": {
         "url": "https://www.270towin.com/2028-republican-nomination/",
-        "retrievedAt": "2026-08-23T17:53:31.741Z",
+        "retrievedAt": "2026-08-24T03:38:33.109Z",
         "averages": {
           "Vance": 39.8,
           "Rubio": 22.2,
@@ -1389,7 +1389,7 @@
     "aggregationStatus": "single-poll context",
     "url": "https://emersoncollegepolling.com/august-2026-national-poll/",
     "fielded": "Aug. 16-17, 2026",
-    "retrievedAt": "2026-08-23T17:53:31.741Z",
+    "retrievedAt": "2026-08-24T03:38:33.109Z",
     "trumpApproval": 40,
     "trumpDisapproval": 56,
     "genericBallotDemocratic": 51,
@@ -1412,7 +1412,7 @@
     "url": "https://emersoncollegepolling.com/august-2026-national-poll/",
     "fielded": "Aug. 16-17, 2026",
     "sample": "1,000 likely voters",
-    "retrievedAt": "2026-08-23T17:53:31.741Z",
+    "retrievedAt": "2026-08-24T03:38:33.109Z",
     "matchups": [
       {
         "democrat": "Pete Buttigieg",
@@ -1487,7 +1487,7 @@
     ]
   },
   "modelSafeguards": {
-    "updatedAt": "2026-08-23T17:53:33.934Z",
+    "updatedAt": "2026-08-24T03:38:34.933Z",
     "status": "accepted",
     "rawDemocratic": 56.2,
     "publishedDemocratic": 56.2,
@@ -1514,7 +1514,7 @@
     }
   },
   "editorialRefresh": {
-    "evaluatedAt": "2026-08-23T17:53:33.934Z",
+    "evaluatedAt": "2026-08-24T03:38:34.933Z",
     "headlineChangeWarranted": false,
     "triggers": [],
     "policy": "Headlines change for a meaningful evidence shift, not merely because the scheduled model ran."
