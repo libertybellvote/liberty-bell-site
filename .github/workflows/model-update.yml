@@ -1,9 +1,6 @@
 name: The Bell Model Update
 
 on:
-  push:
-    paths:
-      - '.model-run-trigger'
   schedule:
     # Avoid minute 00, when GitHub says scheduled jobs are most likely to be delayed or dropped.
     - cron: '17 11 * * *'
