@@ -1,6 +1,6 @@
 {
   "lastUpdated": "2026-08-19T02:30:45.655Z",
-  "modelUpdatedAt": "2026-08-28T21:49:34.986Z",
+  "modelUpdatedAt": "2026-08-28T21:59:17.167Z",
   "latestVideo": {
     "videoId": "WihZVHeGeeY",
     "title": "A WOMAN PRESIDENT?! Can AOC Win The Nomination?",
@@ -15,7 +15,7 @@
     "republican": 43.8
   },
   "electoralProjection": {
-    "updatedAt": "2026-08-28T21:49:34.986Z",
+    "updatedAt": "2026-08-28T21:59:17.167Z",
     "democraticEV": 286,
     "republicanEV": 252,
     "tossupEV": 0,
@@ -642,7 +642,7 @@
         "lane": "Was insurgent in spirit; now institutional as the sitting VP.",
         "laneClass": "institutional",
         "pollingStatus": "listed",
-        "marketChange1d": 0.6,
+        "marketChange1d": 0.7,
         "marketChange1w": 0.7,
         "marketChange1m": 5,
         "winnerOddsNum": 23.8,
@@ -653,8 +653,8 @@
       {
         "name": "Marco Rubio",
         "role": "Secretary of State",
-        "odds": "17%",
-        "oddsNum": 17.4,
+        "odds": "18%",
+        "oddsNum": 17.5,
         "pollAvg": 17.5,
         "photo": "https://en.wikipedia.org/wiki/Special:FilePath/Official%20portrait%20of%20Secretary%20Marco%20Rubio.jpg?width=300",
         "vibe": "No longer running as the safe establishment alternative. A hardline foreign policy record, built through the Iran conflict and a public push to dismantle the ICC, is what’s actually driving his rise now.",
@@ -670,13 +670,13 @@
         "lane": "Institutional record, insurgent-coded momentum right now.",
         "laneClass": "mixed",
         "pollingStatus": "listed",
-        "marketChange1d": 0.1,
-        "marketChange1w": -3.6,
-        "marketChange1m": -9.6,
+        "marketChange1d": 0.2,
+        "marketChange1w": -3.5,
+        "marketChange1m": -9.5,
         "winnerOddsNum": 10.7,
         "winnerOdds": "11%",
         "marketPulseDir": "down",
-        "marketPulse": "-3.6 points in the last week on Polymarket."
+        "marketPulse": "-3.5 points in the last week on Polymarket."
       },
       {
         "name": "Robert F. Kennedy Jr.",
@@ -983,7 +983,7 @@
         },
         {
           "label": "Marco Rubio",
-          "probability": 17.4,
+          "probability": 17.5,
           "platform": "Polymarket"
         },
         {
@@ -1086,32 +1086,32 @@
   "marketMeta": {
     "source": "Polymarket public market data",
     "platformCount": 1,
-    "retrievedAt": "2026-08-28T21:49:33.293Z",
+    "retrievedAt": "2026-08-28T21:59:15.021Z",
     "partyIndex": {
       "democratic": 58.7,
       "republican": 41.3
     },
     "party": {
       "volume": 2101906.2913210005,
-      "liquidity": 359397.1221
+      "liquidity": 359396.5781
     },
     "democraticNomination": {
-      "volume": 1267949731.466324,
-      "liquidity": 81356933.96761
+      "volume": 1267949992.349157,
+      "liquidity": 81361514.39281
     },
     "republicanNomination": {
-      "volume": 692214536.368754,
-      "liquidity": 57162339.70846
+      "volume": 692214734.2432541,
+      "liquidity": 57121116.06715
     },
     "presidentialWinner": {
-      "volume": 693793899.3307189,
-      "liquidity": 64498271.47653
+      "volume": 693794053.025607,
+      "liquidity": 64169292.83685
     }
   },
-  "marketUpdatedAt": "2026-08-28T21:49:33.293Z",
+  "marketUpdatedAt": "2026-08-28T21:59:15.021Z",
   "modelMeta": {
     "version": "3.0",
-    "updatedAt": "2026-08-28T21:49:34.986Z",
+    "updatedAt": "2026-08-28T21:59:17.167Z",
     "status": "scored",
     "signalCoverage": "9/9",
     "score": 24.8,
@@ -1259,7 +1259,7 @@
           "primaryPath": 0.65,
           "factors": {
             "polling": 0.47833333333333333,
-            "bettingMarkets": 0.2175,
+            "bettingMarkets": 0.21874999999999997,
             "campaignFundamentals": 0.725,
             "candidateQuality": 0.7,
             "coalitionStrength": 0.61625,
@@ -1319,16 +1319,16 @@
         }
       ]
     },
-    "evidenceUpdatedAt": "2026-08-28T21:49:34.429Z",
+    "evidenceUpdatedAt": "2026-08-28T21:59:16.366Z",
     "structuralInputsReviewedAt": "2026-08-19T15:35:34.000Z"
   },
   "pollingMeta": {
     "source": "270toWin polling averages",
-    "retrievedAt": "2026-08-28T21:49:33.366Z",
+    "retrievedAt": "2026-08-28T21:59:15.134Z",
     "parties": {
       "democratic": {
         "url": "https://www.270towin.com/2028-democratic-nomination/",
-        "retrievedAt": "2026-08-28T21:49:33.366Z",
+        "retrievedAt": "2026-08-28T21:59:15.134Z",
         "averages": {
           "Harris": 25,
           "Newsom": 14,
@@ -1355,7 +1355,7 @@
       },
       "republican": {
         "url": "https://www.270towin.com/2028-republican-nomination/",
-        "retrievedAt": "2026-08-28T21:49:33.366Z",
+        "retrievedAt": "2026-08-28T21:59:15.134Z",
         "averages": {
           "Vance": 37.5,
           "Rubio": 17.5,
@@ -1391,7 +1391,7 @@
     "aggregationStatus": "single-poll context",
     "url": "https://emersoncollegepolling.com/august-2026-national-poll/",
     "fielded": "Aug. 16-17, 2026",
-    "retrievedAt": "2026-08-28T21:49:33.366Z",
+    "retrievedAt": "2026-08-28T21:59:15.134Z",
     "trumpApproval": 40,
     "trumpDisapproval": 56,
     "genericBallotDemocratic": 51,
@@ -1414,7 +1414,7 @@
     "url": "https://emersoncollegepolling.com/august-2026-national-poll/",
     "fielded": "Aug. 16-17, 2026",
     "sample": "1,000 likely voters",
-    "retrievedAt": "2026-08-28T21:49:33.366Z",
+    "retrievedAt": "2026-08-28T21:59:15.134Z",
     "matchups": [
       {
         "democrat": "Pete Buttigieg",
@@ -1489,7 +1489,7 @@
     ]
   },
   "modelSafeguards": {
-    "updatedAt": "2026-08-28T21:49:34.986Z",
+    "updatedAt": "2026-08-28T21:59:17.167Z",
     "status": "accepted",
     "rawDemocratic": 56.2,
     "publishedDemocratic": 56.2,
@@ -1516,11 +1516,9 @@
     }
   },
   "editorialRefresh": {
-    "evaluatedAt": "2026-08-28T21:49:34.986Z",
-    "headlineChangeWarranted": true,
-    "triggers": [
-      "breakout watch changed"
-    ],
+    "evaluatedAt": "2026-08-28T21:59:17.167Z",
+    "headlineChangeWarranted": false,
+    "triggers": [],
     "policy": "Headlines change for a meaningful evidence shift, not merely because the scheduled model ran."
   },
   "issueBoard": {
