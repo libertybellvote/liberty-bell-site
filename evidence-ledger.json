@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-26T14:08:23.434Z",
+  "updatedAt": "2026-08-28T01:32:27.844Z",
   "modelVersion": "3.0",
   "callStatus": "scored",
   "coverage": {
@@ -29,30 +29,30 @@
       "factor": "bettingMarkets",
       "url": "https://polymarket.com",
       "status": "current",
-      "retrievedAt": "2026-08-26T14:08:22.302Z",
+      "retrievedAt": "2026-08-28T01:32:26.800Z",
       "evidence": {
         "source": "Polymarket public market data",
         "platformCount": 1,
-        "retrievedAt": "2026-08-26T14:08:22.302Z",
+        "retrievedAt": "2026-08-28T01:32:26.800Z",
         "partyIndex": {
           "democratic": 58.7,
           "republican": 41.3
         },
         "party": {
-          "volume": 2100798.973738,
-          "liquidity": 329605.4438
+          "volume": 2101906.291321,
+          "liquidity": 335631.3209
         },
         "democraticNomination": {
-          "volume": 1267112204.9746916,
-          "liquidity": 80549738.65567
+          "volume": 1267714177.6968632,
+          "liquidity": 80687874.86629
         },
         "republicanNomination": {
-          "volume": 691626795.7592952,
-          "liquidity": 57360992.61436
+          "volume": 691998413.969028,
+          "liquidity": 56803938.13678
         },
         "presidentialWinner": {
-          "volume": 692933910.1626421,
-          "liquidity": 63946303.90243
+          "volume": 693677619.904506,
+          "liquidity": 64032058.42872
         }
       }
     },
@@ -62,7 +62,7 @@
       "factor": "bettingMarkets",
       "url": "https://kalshi.com",
       "status": "unavailable",
-      "retrievedAt": "2026-08-26T14:08:23.434Z",
+      "retrievedAt": "2026-08-28T01:32:27.844Z",
       "error": "No open 2028 presidential market was returned"
     },
     {
@@ -71,7 +71,7 @@
       "factor": "economicBackdrop",
       "url": "https://www.bls.gov/developers/",
       "status": "current",
-      "retrievedAt": "2026-08-26T14:08:23.434Z",
+      "retrievedAt": "2026-08-28T01:32:27.844Z",
       "evidence": [
         {
           "seriesId": "CUUR0000SA0",
@@ -231,7 +231,7 @@
       "factor": "polling",
       "url": "https://www.realclearpolling.com/latest-polls/2028",
       "status": "unavailable",
-      "retrievedAt": "2026-08-26T14:08:23.434Z",
+      "retrievedAt": "2026-08-28T01:32:27.844Z",
       "error": "HTTP 403"
     },
     {
@@ -240,8 +240,13 @@
       "factor": "polling",
       "url": "https://votehub.com/feed/",
       "status": "current",
-      "retrievedAt": "2026-08-26T14:08:23.434Z",
+      "retrievedAt": "2026-08-28T01:32:27.844Z",
       "evidence": [
+        {
+          "title": "2026 Campaign Tracker",
+          "link": "https://votehub.com/2026-campaign-tracker/",
+          "publishedAt": "Wed, 26 Aug 2026 19:51:52 +0000"
+        },
         {
           "title": "Trump&#8217;s Test: The August 25 Runoffs",
           "link": "https://votehub.com/2026/08/25/trumps-test-the-august-25-runoffs/",
@@ -286,11 +291,6 @@
           "title": "Another Midwest Madhouse: Previewing the August 11 Primaries",
           "link": "https://votehub.com/2026/08/11/another-midwest-madhouse-previewing-the-august-11-primaries/",
           "publishedAt": "Tue, 11 Aug 2026 18:23:08 +0000"
-        },
-        {
-          "title": "Weekly Polling Rundown: Missing in Michigan, Internals Uncertainty, and the National Democratic Rally",
-          "link": "https://votehub.com/2026/08/07/weekly-polling-rundown-missing-in-michigan-internals-uncertainty-and-the-national-democratic-rally/",
-          "publishedAt": "Fri, 07 Aug 2026 17:21:38 +0000"
         }
       ]
     },
@@ -300,7 +300,7 @@
       "factor": "momentum",
       "url": "https://decisiondeskhq.com/feed/",
       "status": "unavailable",
-      "retrievedAt": "2026-08-26T14:08:23.434Z",
+      "retrievedAt": "2026-08-28T01:32:27.844Z",
       "error": "HTTP 404"
     },
     {
@@ -309,7 +309,7 @@
       "factor": "campaignFundamentals",
       "url": "https://www.cookpolitical.com/ratings",
       "status": "unavailable",
-      "retrievedAt": "2026-08-26T14:08:23.434Z",
+      "retrievedAt": "2026-08-28T01:32:27.844Z",
       "error": "HTTP 403"
     }
   ],
