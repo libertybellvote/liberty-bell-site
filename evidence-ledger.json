@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-30T17:23:24.734Z",
+  "updatedAt": "2026-08-31T00:23:26.880Z",
   "modelVersion": "3.0",
   "callStatus": "scored",
   "coverage": {
@@ -29,30 +29,30 @@
       "factor": "bettingMarkets",
       "url": "https://polymarket.com",
       "status": "current",
-      "retrievedAt": "2026-08-30T17:23:23.180Z",
+      "retrievedAt": "2026-08-31T00:23:25.683Z",
       "evidence": {
         "source": "Polymarket public market data",
         "platformCount": 1,
-        "retrievedAt": "2026-08-30T17:23:23.180Z",
+        "retrievedAt": "2026-08-31T00:23:25.683Z",
         "partyIndex": {
           "democratic": 59.1,
           "republican": 40.9
         },
         "party": {
           "volume": 2107223.033828,
-          "liquidity": 573535.7704
+          "liquidity": 371471.693
         },
         "democraticNomination": {
-          "volume": 1268305184.740528,
-          "liquidity": 80681030.64558
+          "volume": 1268329274.5481703,
+          "liquidity": 80485182.30864
         },
         "republicanNomination": {
-          "volume": 693240339.129449,
-          "liquidity": 56362031.69838
+          "volume": 693274171.8700342,
+          "liquidity": 56417541.44782
         },
         "presidentialWinner": {
-          "volume": 695980394.3229201,
-          "liquidity": 63480077.09166
+          "volume": 696013152.8625422,
+          "liquidity": 63529669.94802
         }
       }
     },
@@ -62,7 +62,7 @@
       "factor": "bettingMarkets",
       "url": "https://kalshi.com",
       "status": "unavailable",
-      "retrievedAt": "2026-08-30T17:23:24.734Z",
+      "retrievedAt": "2026-08-31T00:23:26.880Z",
       "error": "No open 2028 presidential market was returned"
     },
     {
@@ -71,7 +71,7 @@
       "factor": "economicBackdrop",
       "url": "https://www.bls.gov/developers/",
       "status": "current",
-      "retrievedAt": "2026-08-30T17:23:24.734Z",
+      "retrievedAt": "2026-08-31T00:23:26.880Z",
       "evidence": [
         {
           "seriesId": "CUUR0000SA0",
@@ -231,7 +231,7 @@
       "factor": "polling",
       "url": "https://www.realclearpolling.com/latest-polls/2028",
       "status": "unavailable",
-      "retrievedAt": "2026-08-30T17:23:24.734Z",
+      "retrievedAt": "2026-08-31T00:23:26.880Z",
       "error": "HTTP 403"
     },
     {
@@ -240,7 +240,7 @@
       "factor": "polling",
       "url": "https://votehub.com/feed/",
       "status": "current",
-      "retrievedAt": "2026-08-30T17:23:24.734Z",
+      "retrievedAt": "2026-08-31T00:23:26.880Z",
       "evidence": [
         {
           "title": "Trump&#8217;s Test: The August 25 Runoffs",
@@ -300,7 +300,7 @@
       "factor": "momentum",
       "url": "https://decisiondeskhq.com/feed/",
       "status": "unavailable",
-      "retrievedAt": "2026-08-30T17:23:24.734Z",
+      "retrievedAt": "2026-08-31T00:23:26.880Z",
       "error": "HTTP 404"
     },
     {
@@ -309,7 +309,7 @@
       "factor": "campaignFundamentals",
       "url": "https://www.cookpolitical.com/ratings",
       "status": "unavailable",
-      "retrievedAt": "2026-08-30T17:23:24.734Z",
+      "retrievedAt": "2026-08-31T00:23:26.880Z",
       "error": "HTTP 403"
     }
   ],
