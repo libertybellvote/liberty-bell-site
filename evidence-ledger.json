@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-11T11:27:04.613Z",
+  "updatedAt": "2026-09-11T17:27:47.096Z",
   "modelVersion": "3.0",
   "callStatus": "scored",
   "coverage": {
@@ -29,30 +29,30 @@
       "factor": "bettingMarkets",
       "url": "https://polymarket.com",
       "status": "current",
-      "retrievedAt": "2026-09-11T11:27:03.470Z",
+      "retrievedAt": "2026-09-11T17:27:46.074Z",
       "evidence": {
         "source": "Polymarket public market data",
         "platformCount": 1,
-        "retrievedAt": "2026-09-11T11:27:03.470Z",
+        "retrievedAt": "2026-09-11T17:27:46.074Z",
         "partyIndex": {
-          "democratic": 60.5,
-          "republican": 39.5
+          "democratic": 61.7,
+          "republican": 38.3
         },
         "party": {
-          "volume": 2134756.5266490006,
-          "liquidity": 317372.9847
+          "volume": 2147800.1766490005,
+          "liquidity": 354150.4229
         },
         "democraticNomination": {
-          "volume": 1276107787.3915865,
-          "liquidity": 78650635.6834
+          "volume": 1276703716.6353514,
+          "liquidity": 78704293.0065
         },
         "republicanNomination": {
-          "volume": 702189274.1005261,
-          "liquidity": 54259403.92496
+          "volume": 703461852.3172492,
+          "liquidity": 53217055.21883
         },
         "presidentialWinner": {
-          "volume": 704290672.785243,
-          "liquidity": 61040566.66309
+          "volume": 704367509.6656551,
+          "liquidity": 61004621.3376
         }
       }
     },
@@ -62,7 +62,7 @@
       "factor": "bettingMarkets",
       "url": "https://kalshi.com",
       "status": "unavailable",
-      "retrievedAt": "2026-09-11T11:27:04.613Z",
+      "retrievedAt": "2026-09-11T17:27:47.096Z",
       "error": "No open 2028 presidential market was returned"
     },
     {
@@ -71,11 +71,16 @@
       "factor": "economicBackdrop",
       "url": "https://www.bls.gov/developers/",
       "status": "current",
-      "retrievedAt": "2026-09-11T11:27:04.613Z",
+      "retrievedAt": "2026-09-11T17:27:47.096Z",
       "evidence": [
         {
           "seriesId": "CUUR0000SA0",
           "observations": [
+            {
+              "year": "2026",
+              "period": "M08",
+              "value": 334.98
+            },
             {
               "year": "2026",
               "period": "M07",
@@ -140,11 +145,6 @@
               "year": "2025",
               "period": "M07",
               "value": 323.048
-            },
-            {
-              "year": "2025",
-              "period": "M06",
-              "value": 322.561
             }
           ]
         },
@@ -231,7 +231,7 @@
       "factor": "polling",
       "url": "https://www.realclearpolling.com/latest-polls/2028",
       "status": "unavailable",
-      "retrievedAt": "2026-09-11T11:27:04.613Z",
+      "retrievedAt": "2026-09-11T17:27:47.096Z",
       "error": "HTTP 403"
     },
     {
@@ -240,7 +240,7 @@
       "factor": "polling",
       "url": "https://votehub.com/feed/",
       "status": "current",
-      "retrievedAt": "2026-09-11T11:27:04.613Z",
+      "retrievedAt": "2026-09-11T17:27:47.096Z",
       "evidence": [
         {
           "title": "VoteHub&#8217;s Voter Power Index: Finding 2026&#8217;s Most Impactful Ballots",
@@ -300,7 +300,7 @@
       "factor": "momentum",
       "url": "https://decisiondeskhq.com/feed/",
       "status": "unavailable",
-      "retrievedAt": "2026-09-11T11:27:04.613Z",
+      "retrievedAt": "2026-09-11T17:27:47.096Z",
       "error": "HTTP 404"
     },
     {
@@ -309,7 +309,7 @@
       "factor": "campaignFundamentals",
       "url": "https://www.cookpolitical.com/ratings",
       "status": "unavailable",
-      "retrievedAt": "2026-09-11T11:27:04.613Z",
+      "retrievedAt": "2026-09-11T17:27:47.096Z",
       "error": "HTTP 403"
     }
   ],
@@ -327,7 +327,7 @@
       "weight": 12,
       "status": "scored",
       "sourceCount": 1,
-      "score": 0.105,
+      "score": 0.117,
       "note": "Calculated from current separately labeled market prices."
     },
     "campaignFundamentals": {
