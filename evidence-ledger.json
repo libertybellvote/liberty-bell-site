@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-17T11:27:40.417Z",
+  "updatedAt": "2026-09-17T20:21:21.571Z",
   "modelVersion": "3.0",
   "callStatus": "scored",
   "coverage": {
@@ -29,30 +29,30 @@
       "factor": "bettingMarkets",
       "url": "https://polymarket.com",
       "status": "current",
-      "retrievedAt": "2026-09-17T11:27:39.435Z",
+      "retrievedAt": "2026-09-17T20:21:20.023Z",
       "evidence": {
         "source": "Polymarket public market data",
         "platformCount": 1,
-        "retrievedAt": "2026-09-17T11:27:39.435Z",
+        "retrievedAt": "2026-09-17T20:21:20.023Z",
         "partyIndex": {
           "democratic": 65.2,
           "republican": 34.8
         },
         "party": {
-          "volume": 2335685.243573,
-          "liquidity": 491438.8225
+          "volume": 2335735.243573,
+          "liquidity": 506265.342
         },
         "democraticNomination": {
-          "volume": 1279606542.5441406,
-          "liquidity": 77370775.45019
+          "volume": 1279739614.0965796,
+          "liquidity": 77164065.33569
         },
         "republicanNomination": {
-          "volume": 705333353.6105771,
-          "liquidity": 52959530.7872
+          "volume": 705489193.21106,
+          "liquidity": 52883930.0346
         },
         "presidentialWinner": {
-          "volume": 706394585.1543112,
-          "liquidity": 60649912.38866
+          "volume": 706469327.2261891,
+          "liquidity": 60681825.96382
         }
       }
     },
@@ -62,7 +62,7 @@
       "factor": "bettingMarkets",
       "url": "https://kalshi.com",
       "status": "unavailable",
-      "retrievedAt": "2026-09-17T11:27:40.417Z",
+      "retrievedAt": "2026-09-17T20:21:21.571Z",
       "error": "No open 2028 presidential market was returned"
     },
     {
@@ -71,7 +71,7 @@
       "factor": "economicBackdrop",
       "url": "https://www.bls.gov/developers/",
       "status": "current",
-      "retrievedAt": "2026-09-17T11:27:40.417Z",
+      "retrievedAt": "2026-09-17T20:21:21.571Z",
       "evidence": [
         {
           "seriesId": "CUUR0000SA0",
@@ -231,7 +231,7 @@
       "factor": "polling",
       "url": "https://www.realclearpolling.com/latest-polls/2028",
       "status": "unavailable",
-      "retrievedAt": "2026-09-17T11:27:40.417Z",
+      "retrievedAt": "2026-09-17T20:21:21.571Z",
       "error": "HTTP 403"
     },
     {
@@ -240,8 +240,13 @@
       "factor": "polling",
       "url": "https://votehub.com/feed/",
       "status": "current",
-      "retrievedAt": "2026-09-17T11:27:40.417Z",
+      "retrievedAt": "2026-09-17T20:21:21.571Z",
       "evidence": [
+        {
+          "title": "Where Congress Will Be Decided, Hispanic Voters Have The Most Voting Power",
+          "link": "https://votehub.com/2026/09/17/where-congress-will-be-decided-hispanic-voters-have-the-most-voting-power/",
+          "publishedAt": "Thu, 17 Sep 2026 04:53:21 +0000"
+        },
         {
           "title": "VoteHub&#8217;s Voter Power Index: Finding 2026&#8217;s Most Impactful Ballots",
           "link": "https://votehub.com/2026/09/10/votehubs-voter-power-index-finding-2026s-most-impactful-ballots/",
@@ -286,11 +291,6 @@
           "title": "An Upper Midwest Marathon: Primaries Postmortem",
           "link": "https://votehub.com/2026/08/17/an-upper-midwest-marathon-primaries-postmortem/",
           "publishedAt": "Mon, 17 Aug 2026 16:27:58 +0000"
-        },
-        {
-          "title": "Wisconsin Gubernatorial Democratic Primary",
-          "link": "https://votehub.com/2026_wi_gov_dem_primary",
-          "publishedAt": "Tue, 11 Aug 2026 22:56:13 +0000"
         }
       ]
     },
@@ -300,7 +300,7 @@
       "factor": "momentum",
       "url": "https://decisiondeskhq.com/feed/",
       "status": "unavailable",
-      "retrievedAt": "2026-09-17T11:27:40.417Z",
+      "retrievedAt": "2026-09-17T20:21:21.571Z",
       "error": "HTTP 404"
     },
     {
@@ -309,7 +309,7 @@
       "factor": "campaignFundamentals",
       "url": "https://www.cookpolitical.com/ratings",
       "status": "unavailable",
-      "retrievedAt": "2026-09-17T11:27:40.417Z",
+      "retrievedAt": "2026-09-17T20:21:21.571Z",
       "error": "HTTP 403"
     }
   ],
