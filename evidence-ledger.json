@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-16T17:27:31.531Z",
+  "updatedAt": "2026-09-17T00:36:06.049Z",
   "modelVersion": "3.0",
   "callStatus": "scored",
   "coverage": {
@@ -29,30 +29,30 @@
       "factor": "bettingMarkets",
       "url": "https://polymarket.com",
       "status": "current",
-      "retrievedAt": "2026-09-16T17:27:30.476Z",
+      "retrievedAt": "2026-09-17T00:36:04.882Z",
       "evidence": {
         "source": "Polymarket public market data",
         "platformCount": 1,
-        "retrievedAt": "2026-09-16T17:27:30.476Z",
+        "retrievedAt": "2026-09-17T00:36:04.882Z",
         "partyIndex": {
-          "democratic": 64.5,
-          "republican": 35.5
+          "democratic": 64.8,
+          "republican": 35.2
         },
         "party": {
-          "volume": 2334118.388017,
-          "liquidity": 584260.0154
+          "volume": 2334613.9435730004,
+          "liquidity": 533548.8896
         },
         "democraticNomination": {
-          "volume": 1279168552.6763327,
-          "liquidity": 77185619.26534
+          "volume": 1279500947.7853296,
+          "liquidity": 76950204.5093
         },
         "republicanNomination": {
-          "volume": 705303910.4786072,
-          "liquidity": 52897323.88893
+          "volume": 705305750.7123451,
+          "liquidity": 52928998.23162
         },
         "presidentialWinner": {
-          "volume": 706114825.2518691,
-          "liquidity": 60355307.73341
+          "volume": 706215002.4468051,
+          "liquidity": 60571808.31866
         }
       }
     },
@@ -62,7 +62,7 @@
       "factor": "bettingMarkets",
       "url": "https://kalshi.com",
       "status": "unavailable",
-      "retrievedAt": "2026-09-16T17:27:31.531Z",
+      "retrievedAt": "2026-09-17T00:36:06.049Z",
       "error": "No open 2028 presidential market was returned"
     },
     {
@@ -71,7 +71,7 @@
       "factor": "economicBackdrop",
       "url": "https://www.bls.gov/developers/",
       "status": "current",
-      "retrievedAt": "2026-09-16T17:27:31.531Z",
+      "retrievedAt": "2026-09-17T00:36:06.049Z",
       "evidence": [
         {
           "seriesId": "CUUR0000SA0",
@@ -231,7 +231,7 @@
       "factor": "polling",
       "url": "https://www.realclearpolling.com/latest-polls/2028",
       "status": "unavailable",
-      "retrievedAt": "2026-09-16T17:27:31.531Z",
+      "retrievedAt": "2026-09-17T00:36:06.049Z",
       "error": "HTTP 403"
     },
     {
@@ -240,7 +240,7 @@
       "factor": "polling",
       "url": "https://votehub.com/feed/",
       "status": "current",
-      "retrievedAt": "2026-09-16T17:27:31.531Z",
+      "retrievedAt": "2026-09-17T00:36:06.049Z",
       "evidence": [
         {
           "title": "VoteHub&#8217;s Voter Power Index: Finding 2026&#8217;s Most Impactful Ballots",
@@ -300,7 +300,7 @@
       "factor": "momentum",
       "url": "https://decisiondeskhq.com/feed/",
       "status": "unavailable",
-      "retrievedAt": "2026-09-16T17:27:31.531Z",
+      "retrievedAt": "2026-09-17T00:36:06.049Z",
       "error": "HTTP 404"
     },
     {
@@ -309,7 +309,7 @@
       "factor": "campaignFundamentals",
       "url": "https://www.cookpolitical.com/ratings",
       "status": "unavailable",
-      "retrievedAt": "2026-09-16T17:27:31.531Z",
+      "retrievedAt": "2026-09-17T00:36:06.049Z",
       "error": "HTTP 403"
     }
   ],
@@ -327,7 +327,7 @@
       "weight": 12,
       "status": "scored",
       "sourceCount": 1,
-      "score": 0.145,
+      "score": 0.148,
       "note": "Calculated from current separately labeled market prices."
     },
     "campaignFundamentals": {
