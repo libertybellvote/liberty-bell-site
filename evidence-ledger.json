@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-18T19:39:39.952Z",
+  "updatedAt": "2026-09-19T04:41:37.684Z",
   "modelVersion": "3.0",
   "callStatus": "scored",
   "coverage": {
@@ -29,30 +29,30 @@
       "factor": "bettingMarkets",
       "url": "https://polymarket.com",
       "status": "current",
-      "retrievedAt": "2026-09-18T19:39:39.051Z",
+      "retrievedAt": "2026-09-19T04:41:36.723Z",
       "evidence": {
         "source": "Polymarket public market data",
         "platformCount": 1,
-        "retrievedAt": "2026-09-18T19:39:39.051Z",
+        "retrievedAt": "2026-09-19T04:41:36.723Z",
         "partyIndex": {
           "democratic": 64.1,
           "republican": 35.9
         },
         "party": {
           "volume": 2343050.152035,
-          "liquidity": 514855.9352
+          "liquidity": 513864.449
         },
         "democraticNomination": {
-          "volume": 1280129613.3140025,
-          "liquidity": 76950054.79919
+          "volume": 1280167513.5422058,
+          "liquidity": 76941813.91844
         },
         "republicanNomination": {
-          "volume": 705645123.9397622,
-          "liquidity": 52767163.92175
+          "volume": 705650276.3715072,
+          "liquidity": 52790954.16505
         },
         "presidentialWinner": {
-          "volume": 706896867.797392,
-          "liquidity": 60530124.28178
+          "volume": 706923594.39808,
+          "liquidity": 60534522.15193
         }
       }
     },
@@ -62,7 +62,7 @@
       "factor": "bettingMarkets",
       "url": "https://kalshi.com",
       "status": "unavailable",
-      "retrievedAt": "2026-09-18T19:39:39.952Z",
+      "retrievedAt": "2026-09-19T04:41:37.684Z",
       "error": "No open 2028 presidential market was returned"
     },
     {
@@ -71,7 +71,7 @@
       "factor": "economicBackdrop",
       "url": "https://www.bls.gov/developers/",
       "status": "current",
-      "retrievedAt": "2026-09-18T19:39:39.952Z",
+      "retrievedAt": "2026-09-19T04:41:37.684Z",
       "evidence": [
         {
           "seriesId": "CUUR0000SA0",
@@ -231,7 +231,7 @@
       "factor": "polling",
       "url": "https://www.realclearpolling.com/latest-polls/2028",
       "status": "unavailable",
-      "retrievedAt": "2026-09-18T19:39:39.952Z",
+      "retrievedAt": "2026-09-19T04:41:37.684Z",
       "error": "HTTP 403"
     },
     {
@@ -240,7 +240,7 @@
       "factor": "polling",
       "url": "https://votehub.com/feed/",
       "status": "current",
-      "retrievedAt": "2026-09-18T19:39:39.952Z",
+      "retrievedAt": "2026-09-19T04:41:37.684Z",
       "evidence": [
         {
           "title": "Where Congress Will Be Decided, Hispanic Voters Have The Most Voting Power",
@@ -300,7 +300,7 @@
       "factor": "momentum",
       "url": "https://decisiondeskhq.com/feed/",
       "status": "unavailable",
-      "retrievedAt": "2026-09-18T19:39:39.952Z",
+      "retrievedAt": "2026-09-19T04:41:37.684Z",
       "error": "HTTP 404"
     },
     {
@@ -309,7 +309,7 @@
       "factor": "campaignFundamentals",
       "url": "https://www.cookpolitical.com/ratings",
       "status": "unavailable",
-      "retrievedAt": "2026-09-18T19:39:39.952Z",
+      "retrievedAt": "2026-09-19T04:41:37.684Z",
       "error": "HTTP 403"
     }
   ],
