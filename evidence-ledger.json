@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-09-19T14:26:25.292Z",
+  "updatedAt": "2026-09-19T19:20:15.282Z",
   "modelVersion": "3.0",
   "callStatus": "scored",
   "coverage": {
     "currentFactors": 9,
     "requiredFactors": 6,
-    "sourceFamilies": 3,
+    "sourceFamilies": 2,
     "requiredSourceFamilies": 3
   },
   "safeguards": {
@@ -29,30 +29,30 @@
       "factor": "bettingMarkets",
       "url": "https://polymarket.com",
       "status": "current",
-      "retrievedAt": "2026-09-19T14:26:23.982Z",
+      "retrievedAt": "2026-09-19T19:20:13.946Z",
       "evidence": {
         "source": "Polymarket public market data",
         "platformCount": 1,
-        "retrievedAt": "2026-09-19T14:26:23.982Z",
+        "retrievedAt": "2026-09-19T19:20:13.946Z",
         "partyIndex": {
           "democratic": 64.1,
           "republican": 35.9
         },
         "party": {
-          "volume": 2343050.1520349993,
-          "liquidity": 436448.6824
+          "volume": 2346453.432035,
+          "liquidity": 452282.8705
         },
         "democraticNomination": {
-          "volume": 1280188329.2910285,
-          "liquidity": 77129077.2909
+          "volume": 1280558260.6842673,
+          "liquidity": 76337827.16237
         },
         "republicanNomination": {
-          "volume": 705676148.5624841,
-          "liquidity": 52649942.71934
+          "volume": 705684922.8759072,
+          "liquidity": 52304206.26687
         },
         "presidentialWinner": {
-          "volume": 707174584.088897,
-          "liquidity": 60259574.62927
+          "volume": 707180046.0895019,
+          "liquidity": 59817542.1728
         }
       }
     },
@@ -62,7 +62,7 @@
       "factor": "bettingMarkets",
       "url": "https://kalshi.com",
       "status": "unavailable",
-      "retrievedAt": "2026-09-19T14:26:25.292Z",
+      "retrievedAt": "2026-09-19T19:20:15.282Z",
       "error": "No open 2028 presidential market was returned"
     },
     {
@@ -71,7 +71,7 @@
       "factor": "economicBackdrop",
       "url": "https://www.bls.gov/developers/",
       "status": "current",
-      "retrievedAt": "2026-09-19T14:26:25.292Z",
+      "retrievedAt": "2026-09-19T19:20:15.282Z",
       "evidence": [
         {
           "seriesId": "CUUR0000SA0",
@@ -231,7 +231,7 @@
       "factor": "polling",
       "url": "https://www.realclearpolling.com/latest-polls/2028",
       "status": "unavailable",
-      "retrievedAt": "2026-09-19T14:26:25.292Z",
+      "retrievedAt": "2026-09-19T19:20:15.282Z",
       "error": "HTTP 403"
     },
     {
@@ -239,60 +239,9 @@
       "family": "election-analysis",
       "factor": "polling",
       "url": "https://votehub.com/feed/",
-      "status": "current",
-      "retrievedAt": "2026-09-19T14:26:25.292Z",
-      "evidence": [
-        {
-          "title": "Where Congress Will Be Decided, Hispanic Voters Have The Most Voting Power",
-          "link": "https://votehub.com/2026/09/17/where-congress-will-be-decided-hispanic-voters-have-the-most-voting-power/",
-          "publishedAt": "Thu, 17 Sep 2026 04:53:21 +0000"
-        },
-        {
-          "title": "VoteHub&#8217;s Voter Power Index: Finding 2026&#8217;s Most Impactful Ballots",
-          "link": "https://votehub.com/2026/09/10/votehubs-voter-power-index-finding-2026s-most-impactful-ballots/",
-          "publishedAt": "Thu, 10 Sep 2026 13:52:58 +0000"
-        },
-        {
-          "title": "2026 Campaign Tracker",
-          "link": "https://votehub.com/2026-campaign-tracker/",
-          "publishedAt": "Wed, 26 Aug 2026 19:51:52 +0000"
-        },
-        {
-          "title": "Trump&#8217;s Test: The August 25 Runoffs",
-          "link": "https://votehub.com/2026/08/25/trumps-test-the-august-25-runoffs/",
-          "publishedAt": "Tue, 25 Aug 2026 20:01:12 +0000"
-        },
-        {
-          "title": "Ideological Contests and a Special: Recapping the August 17 Elections",
-          "link": "https://votehub.com/2026/08/19/ideological-contests-and-a-special-recapping-the-august-17-elections/",
-          "publishedAt": "Wed, 19 Aug 2026 21:13:29 +0000"
-        },
-        {
-          "title": "2026 Florida Republican Gubernatorial Primary",
-          "link": "https://votehub.com/2026_fl_gov_rep_primary_49122341_internal",
-          "publishedAt": "Wed, 19 Aug 2026 03:01:42 +0000"
-        },
-        {
-          "title": "2026 FL-20 Democratic Primary",
-          "link": "https://votehub.com/2026_fl20dem_primary",
-          "publishedAt": "Tue, 18 Aug 2026 17:40:14 +0000"
-        },
-        {
-          "title": "2026 FL-25 Democratic Primary",
-          "link": "https://votehub.com/2026_fl25dem_primary",
-          "publishedAt": "Tue, 18 Aug 2026 17:39:39 +0000"
-        },
-        {
-          "title": "A Sunshine State Showdown: August 17 Primaries Preview",
-          "link": "https://votehub.com/2026/08/18/a-sunshine-state-showdown-august-17-primaries-preview/",
-          "publishedAt": "Tue, 18 Aug 2026 15:42:26 +0000"
-        },
-        {
-          "title": "An Upper Midwest Marathon: Primaries Postmortem",
-          "link": "https://votehub.com/2026/08/17/an-upper-midwest-marathon-primaries-postmortem/",
-          "publishedAt": "Mon, 17 Aug 2026 16:27:58 +0000"
-        }
-      ]
+      "status": "unavailable",
+      "retrievedAt": "2026-09-19T19:20:15.282Z",
+      "error": "HTTP 403"
     },
     {
       "name": "Decision Desk HQ",
@@ -300,7 +249,7 @@
       "factor": "momentum",
       "url": "https://decisiondeskhq.com/feed/",
       "status": "unavailable",
-      "retrievedAt": "2026-09-19T14:26:25.292Z",
+      "retrievedAt": "2026-09-19T19:20:15.282Z",
       "error": "HTTP 404"
     },
     {
@@ -309,7 +258,7 @@
       "factor": "campaignFundamentals",
       "url": "https://www.cookpolitical.com/ratings",
       "status": "unavailable",
-      "retrievedAt": "2026-09-19T14:26:25.292Z",
+      "retrievedAt": "2026-09-19T19:20:15.282Z",
       "error": "HTTP 403"
     }
   ],
@@ -318,7 +267,7 @@
       "label": "Polling",
       "weight": 18,
       "status": "scored",
-      "sourceCount": 1,
+      "sourceCount": 0,
       "score": 0.101,
       "note": "Scored from the current reviewed Bell Model input."
     },
