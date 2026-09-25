@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-09-24T20:31:26.514Z",
+  "updatedAt": "2026-09-25T05:01:51.899Z",
   "modelVersion": "3.0",
   "callStatus": "scored",
   "coverage": {
     "currentFactors": 9,
     "requiredFactors": 6,
-    "sourceFamilies": 2,
+    "sourceFamilies": 1,
     "requiredSourceFamilies": 3
   },
   "safeguards": {
@@ -29,30 +29,30 @@
       "factor": "bettingMarkets",
       "url": "https://polymarket.com",
       "status": "current",
-      "retrievedAt": "2026-09-24T20:31:25.464Z",
+      "retrievedAt": "2026-09-25T05:01:50.997Z",
       "evidence": {
         "source": "Polymarket public market data",
         "platformCount": 1,
-        "retrievedAt": "2026-09-24T20:31:25.464Z",
+        "retrievedAt": "2026-09-25T05:01:50.997Z",
         "partyIndex": {
           "democratic": 66.5,
           "republican": 33.5
         },
         "party": {
-          "volume": 2436956.169200999,
-          "liquidity": 544409.9401
+          "volume": 2436961.169201,
+          "liquidity": 528761.2843
         },
         "democraticNomination": {
-          "volume": 1284169374.9493225,
-          "liquidity": 76334716.28581
+          "volume": 1284798309.1980433,
+          "liquidity": 77537155.61063
         },
         "republicanNomination": {
-          "volume": 707963082.5255811,
-          "liquidity": 51349165.76045
+          "volume": 707968015.7825892,
+          "liquidity": 51801481.09066
         },
         "presidentialWinner": {
-          "volume": 708879540.1913401,
-          "liquidity": 60281741.27958
+          "volume": 709071986.880125,
+          "liquidity": 60789748.01993
         }
       }
     },
@@ -62,7 +62,7 @@
       "factor": "bettingMarkets",
       "url": "https://kalshi.com",
       "status": "unavailable",
-      "retrievedAt": "2026-09-24T20:31:26.514Z",
+      "retrievedAt": "2026-09-25T05:01:51.899Z",
       "error": "No open 2028 presidential market was returned"
     },
     {
@@ -70,160 +70,9 @@
       "family": "government-economic-data",
       "factor": "economicBackdrop",
       "url": "https://www.bls.gov/developers/",
-      "status": "current",
-      "retrievedAt": "2026-09-24T20:31:26.514Z",
-      "evidence": [
-        {
-          "seriesId": "CUUR0000SA0",
-          "observations": [
-            {
-              "year": "2026",
-              "period": "M08",
-              "value": 334.98
-            },
-            {
-              "year": "2026",
-              "period": "M07",
-              "value": 333.918
-            },
-            {
-              "year": "2026",
-              "period": "M06",
-              "value": 333.952
-            },
-            {
-              "year": "2026",
-              "period": "M05",
-              "value": 335.123
-            },
-            {
-              "year": "2026",
-              "period": "M04",
-              "value": 333.02
-            },
-            {
-              "year": "2026",
-              "period": "M03",
-              "value": 330.213
-            },
-            {
-              "year": "2026",
-              "period": "M02",
-              "value": 326.785
-            },
-            {
-              "year": "2026",
-              "period": "M01",
-              "value": 325.252
-            },
-            {
-              "year": "2025",
-              "period": "M12",
-              "value": 324.054
-            },
-            {
-              "year": "2025",
-              "period": "M11",
-              "value": 324.122
-            },
-            {
-              "year": "2025",
-              "period": "M10",
-              "value": null
-            },
-            {
-              "year": "2025",
-              "period": "M09",
-              "value": 324.8
-            },
-            {
-              "year": "2025",
-              "period": "M08",
-              "value": 323.976
-            },
-            {
-              "year": "2025",
-              "period": "M07",
-              "value": 323.048
-            }
-          ]
-        },
-        {
-          "seriesId": "LNS14000000",
-          "observations": [
-            {
-              "year": "2026",
-              "period": "M08",
-              "value": 4.1
-            },
-            {
-              "year": "2026",
-              "period": "M07",
-              "value": 4.1
-            },
-            {
-              "year": "2026",
-              "period": "M06",
-              "value": 4.2
-            },
-            {
-              "year": "2026",
-              "period": "M05",
-              "value": 4.3
-            },
-            {
-              "year": "2026",
-              "period": "M04",
-              "value": 4.3
-            },
-            {
-              "year": "2026",
-              "period": "M03",
-              "value": 4.3
-            },
-            {
-              "year": "2026",
-              "period": "M02",
-              "value": 4.4
-            },
-            {
-              "year": "2026",
-              "period": "M01",
-              "value": 4.3
-            },
-            {
-              "year": "2025",
-              "period": "M12",
-              "value": 4.4
-            },
-            {
-              "year": "2025",
-              "period": "M11",
-              "value": 4.5
-            },
-            {
-              "year": "2025",
-              "period": "M10",
-              "value": null
-            },
-            {
-              "year": "2025",
-              "period": "M09",
-              "value": 4.4
-            },
-            {
-              "year": "2025",
-              "period": "M08",
-              "value": 4.3
-            },
-            {
-              "year": "2025",
-              "period": "M07",
-              "value": 4.3
-            }
-          ]
-        }
-      ]
+      "status": "unavailable",
+      "retrievedAt": "2026-09-25T05:01:51.899Z",
+      "error": "Request could not be serviced, as the daily threshold for total number of requests allocated to the user with registration key  has been reached."
     },
     {
       "name": "RealClearPolling",
@@ -231,7 +80,7 @@
       "factor": "polling",
       "url": "https://www.realclearpolling.com/latest-polls/2028",
       "status": "unavailable",
-      "retrievedAt": "2026-09-24T20:31:26.514Z",
+      "retrievedAt": "2026-09-25T05:01:51.899Z",
       "error": "HTTP 403"
     },
     {
@@ -240,7 +89,7 @@
       "factor": "polling",
       "url": "https://votehub.com/feed/",
       "status": "unavailable",
-      "retrievedAt": "2026-09-24T20:31:26.514Z",
+      "retrievedAt": "2026-09-25T05:01:51.899Z",
       "error": "HTTP 403"
     },
     {
@@ -249,7 +98,7 @@
       "factor": "momentum",
       "url": "https://decisiondeskhq.com/feed/",
       "status": "unavailable",
-      "retrievedAt": "2026-09-24T20:31:26.514Z",
+      "retrievedAt": "2026-09-25T05:01:51.899Z",
       "error": "HTTP 404"
     },
     {
@@ -258,7 +107,7 @@
       "factor": "campaignFundamentals",
       "url": "https://www.cookpolitical.com/ratings",
       "status": "unavailable",
-      "retrievedAt": "2026-09-24T20:31:26.514Z",
+      "retrievedAt": "2026-09-25T05:01:51.899Z",
       "error": "HTTP 403"
     }
   ],
@@ -323,7 +172,7 @@
       "label": "Economic backdrop",
       "weight": 14,
       "status": "scored",
-      "sourceCount": 1,
+      "sourceCount": 0,
       "score": 0.6,
       "note": "Scored from the current reviewed Bell Model input."
     },
