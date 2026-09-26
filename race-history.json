@@ -19907,5 +19907,174 @@
         "pollAvg": null
       }
     ]
+  },
+  {
+    "timestamp": "2026-09-26T05:04:17.667Z",
+    "libertyBellIndex": {
+      "democratic": 56.4,
+      "republican": 43.6
+    },
+    "calls": {
+      "presidential": "Leans Democratic",
+      "democratic": "Alexandria Ocasio-Cortez",
+      "republican": "JD Vance"
+    },
+    "candidates": [
+      {
+        "name": "Alexandria Ocasio-Cortez",
+        "oddsNum": 18.3,
+        "pollAvg": 9.8
+      },
+      {
+        "name": "Gavin Newsom",
+        "oddsNum": 15.3,
+        "pollAvg": 12.8
+      },
+      {
+        "name": "Jon Ossoff",
+        "oddsNum": 15.6,
+        "pollAvg": 12
+      },
+      {
+        "name": "Pete Buttigieg",
+        "oddsNum": 5.1,
+        "pollAvg": 13.5
+      },
+      {
+        "name": "Kamala Harris",
+        "oddsNum": 6.3,
+        "pollAvg": 25.8
+      },
+      {
+        "name": "Josh Shapiro",
+        "oddsNum": 6.2,
+        "pollAvg": 5
+      },
+      {
+        "name": "Andy Beshear",
+        "oddsNum": 2.8,
+        "pollAvg": 2
+      },
+      {
+        "name": "JB Pritzker",
+        "oddsNum": 1.4,
+        "pollAvg": 2.7
+      },
+      {
+        "name": "Cory Booker",
+        "oddsNum": 0.7,
+        "pollAvg": 3.5
+      },
+      {
+        "name": "Wes Moore",
+        "oddsNum": 1.9,
+        "pollAvg": 1
+      },
+      {
+        "name": "Ro Khanna",
+        "oddsNum": 1.4,
+        "pollAvg": 0
+      },
+      {
+        "name": "Mark Kelly",
+        "oddsNum": 3,
+        "pollAvg": 7
+      },
+      {
+        "name": "Rahm Emanuel",
+        "oddsNum": 2.1,
+        "pollAvg": 0.5
+      },
+      {
+        "name": "Gretchen Whitmer",
+        "oddsNum": 0.8,
+        "pollAvg": 2
+      },
+      {
+        "name": "Stephen A. Smith",
+        "oddsNum": 0.2,
+        "pollAvg": 2
+      },
+      {
+        "name": "Roy Cooper",
+        "oddsNum": 0.2,
+        "pollAvg": 0
+      },
+      {
+        "name": "Elissa Slotkin",
+        "oddsNum": 0.2,
+        "pollAvg": null
+      },
+      {
+        "name": "Mark Cuban",
+        "oddsNum": 0.5,
+        "pollAvg": null
+      },
+      {
+        "name": "Barack Obama",
+        "oddsNum": 0.2,
+        "pollAvg": null
+      },
+      {
+        "name": "Joe Biden",
+        "oddsNum": 0,
+        "pollAvg": null
+      },
+      {
+        "name": "JD Vance",
+        "oddsNum": 51,
+        "pollAvg": 39.5
+      },
+      {
+        "name": "Marco Rubio",
+        "oddsNum": 15.6,
+        "pollAvg": 21.3
+      },
+      {
+        "name": "Robert F. Kennedy Jr.",
+        "oddsNum": 0.3,
+        "pollAvg": 5
+      },
+      {
+        "name": "Ted Cruz",
+        "oddsNum": 2,
+        "pollAvg": 3
+      },
+      {
+        "name": "Ron DeSantis",
+        "oddsNum": 2.9,
+        "pollAvg": 6.7
+      },
+      {
+        "name": "Nikki Haley",
+        "oddsNum": 0.2,
+        "pollAvg": 3
+      },
+      {
+        "name": "Donald Trump",
+        "oddsNum": 2.1,
+        "pollAvg": null
+      },
+      {
+        "name": "Brian Kemp",
+        "oddsNum": 0.4,
+        "pollAvg": null
+      },
+      {
+        "name": "Tim Scott",
+        "oddsNum": 0.1,
+        "pollAvg": null
+      },
+      {
+        "name": "Glenn Youngkin",
+        "oddsNum": 0.4,
+        "pollAvg": 0.5
+      },
+      {
+        "name": "Donald Trump Jr.",
+        "oddsNum": 1.8,
+        "pollAvg": null
+      }
+    ]
   }
 ]
