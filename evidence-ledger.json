@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-02T05:44:22.382Z",
+  "updatedAt": "2026-10-02T16:38:42.021Z",
   "modelVersion": "3.0",
   "callStatus": "scored",
   "coverage": {
@@ -29,30 +29,30 @@
       "factor": "bettingMarkets",
       "url": "https://polymarket.com",
       "status": "current",
-      "retrievedAt": "2026-10-02T05:44:21.365Z",
+      "retrievedAt": "2026-10-02T16:38:40.685Z",
       "evidence": {
         "source": "Polymarket public market data",
         "platformCount": 1,
-        "retrievedAt": "2026-10-02T05:44:21.365Z",
+        "retrievedAt": "2026-10-02T16:38:40.685Z",
         "partyIndex": {
           "democratic": 65.2,
           "republican": 34.8
         },
         "party": {
-          "volume": 2453399.7477460005,
-          "liquidity": 588598.5132
+          "volume": 2456082.317746,
+          "liquidity": 659218.8217
         },
         "democraticNomination": {
-          "volume": 1286924335.70279,
-          "liquidity": 77558398.54278
+          "volume": 1286997861.2324662,
+          "liquidity": 78195955.63124
         },
         "republicanNomination": {
-          "volume": 708810515.15751,
-          "liquidity": 52078728.00237
+          "volume": 709117254.572612,
+          "liquidity": 52548774.89141
         },
         "presidentialWinner": {
-          "volume": 711878647.2028941,
-          "liquidity": 59358684.6396
+          "volume": 711939078.498968,
+          "liquidity": 59927348.84173
         }
       }
     },
@@ -62,7 +62,7 @@
       "factor": "bettingMarkets",
       "url": "https://kalshi.com",
       "status": "unavailable",
-      "retrievedAt": "2026-10-02T05:44:22.382Z",
+      "retrievedAt": "2026-10-02T16:38:42.021Z",
       "error": "No open 2028 presidential market was returned"
     },
     {
@@ -71,7 +71,7 @@
       "factor": "economicBackdrop",
       "url": "https://www.bls.gov/developers/",
       "status": "current",
-      "retrievedAt": "2026-10-02T05:44:22.382Z",
+      "retrievedAt": "2026-10-02T16:38:42.021Z",
       "evidence": [
         {
           "seriesId": "CUUR0000SA0",
@@ -153,6 +153,11 @@
           "observations": [
             {
               "year": "2026",
+              "period": "M09",
+              "value": 4.2
+            },
+            {
+              "year": "2026",
               "period": "M08",
               "value": 4.1
             },
@@ -215,11 +220,6 @@
               "year": "2025",
               "period": "M08",
               "value": 4.3
-            },
-            {
-              "year": "2025",
-              "period": "M07",
-              "value": 4.3
             }
           ]
         }
@@ -231,7 +231,7 @@
       "factor": "polling",
       "url": "https://www.realclearpolling.com/latest-polls/2028",
       "status": "unavailable",
-      "retrievedAt": "2026-10-02T05:44:22.382Z",
+      "retrievedAt": "2026-10-02T16:38:42.021Z",
       "error": "HTTP 403"
     },
     {
@@ -240,7 +240,7 @@
       "factor": "polling",
       "url": "https://votehub.com/feed/",
       "status": "current",
-      "retrievedAt": "2026-10-02T05:44:22.382Z",
+      "retrievedAt": "2026-10-02T16:38:42.021Z",
       "evidence": [
         {
           "title": "Decoding the Early Vote: What We Can, And Can’t, Learn From the Early Voting Window",
@@ -300,7 +300,7 @@
       "factor": "momentum",
       "url": "https://decisiondeskhq.com/feed/",
       "status": "unavailable",
-      "retrievedAt": "2026-10-02T05:44:22.382Z",
+      "retrievedAt": "2026-10-02T16:38:42.021Z",
       "error": "HTTP 404"
     },
     {
@@ -309,7 +309,7 @@
       "factor": "campaignFundamentals",
       "url": "https://www.cookpolitical.com/ratings",
       "status": "unavailable",
-      "retrievedAt": "2026-10-02T05:44:22.382Z",
+      "retrievedAt": "2026-10-02T16:38:42.021Z",
       "error": "HTTP 403"
     }
   ],
